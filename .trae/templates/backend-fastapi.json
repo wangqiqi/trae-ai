@@ -1,0 +1,60 @@
+{
+  "name": "FastAPI后端基础骨架",
+  "tech_stack": {
+    "framework": "FastAPI",
+    "language": "Python 3.11+",
+    "database": "SQLAlchemy",
+    "migration": "Alembic",
+    "validation": "Pydantic",
+    "testing": ["pytest", "httpx"],
+    "async": "asyncpg",
+    "docs": "FastAPI自动文档"
+  },
+  "structure": {
+    "app/": {
+      "api/": {
+        "v1/": {
+          "endpoints/": ["auth.py", "users.py", "health.py"],
+          "schemas/": ["user.py", "auth.py"],
+          "dependencies/": ["auth.py", "database.py"]
+        }
+      },
+      "core/": ["config.py", "security.py", "database.py"],
+      "models/": ["user.py", "base.py"],
+      "crud/": ["base.py", "user.py"],
+      "services/": ["auth_service.py", "user_service.py"],
+      "utils/": ["exceptions.py", "validators.py"],
+      "main.py": "// FastAPI应用入口"
+    },
+    "tests/": {
+      "unit/": ["test_auth.py", "test_users.py"],
+      "integration/": ["test_api.py"],
+      "conftest.py": "// pytest配置"
+    },
+    "alembic/": "// 数据库迁移",
+    "requirements.txt": [
+      "fastapi==0.104.1",
+      "uvicorn[standard]==0.24.0",
+      "sqlalchemy==2.0.23",
+      "alembic==1.12.1",
+      "pydantic==2.5.0",
+      "python-jose[cryptography]==3.3.0",
+      "passlib[bcrypt]==1.7.4",
+      "python-multipart==0.0.6",
+      "asyncpg==0.29.0",
+      "pytest==7.4.3",
+      "httpx==0.25.2"
+    ],
+    "Dockerfile": "# FastAPI容器化",
+    "docker-compose.yml": "# 开发环境编排"
+  },
+  "key_files": {
+    "main.py": "from fastapi import FastAPI\nfrom fastapi.middleware.cors import CORSMiddleware\nfrom app.core.config import settings\nfrom app.api.v1.endpoints import auth, users, health\n\napp = FastAPI(\n    title=settings.PROJECT_NAME,\n    version=settings.PROJECT_VERSION,\n    openapi_url=f\"{settings.API_V1_STR}/openapi.json\"\n)\n\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=settings.BACKEND_CORS_ORIGINS,\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\n\napp.include_router(health.router, prefix=settings.API_V1_STR)\napp.include_router(auth.router, prefix=settings.API_V1_STR)\napp.include_router(users.router, prefix=settings.API_V1_STR)\n\nif __name__ == \"__main__\":\n    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8000)",
+
+    "app/core/config.py": "from pydantic_settings import BaseSettings\nfrom typing import List\n\nclass Settings(BaseSettings):\n    PROJECT_NAME: str = \"FastAPI项目\"\n    PROJECT_VERSION: str = \"1.0.0\"\n    API_V1_STR: str = \"/api/v1\"\n    \n    # 数据库\n    DATABASE_URL: str = \"postgresql://user:password@localhost/dbname\"\n    \n    # 安全配置\n    SECRET_KEY: str = \"your-secret-key-here\"\n    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30\n    ALGORITHM: str = \"HS256\"\n    \n    # CORS\n    BACKEND_CORS_ORIGINS: List[str] = [\"http://localhost:3000\"]\n    \n    class Config:\n        env_file = \".env\"\n\nsettings = Settings()",
+
+    "app/models/user.py": "from sqlalchemy import Column, Integer, String, Boolean, DateTime\nfrom sqlalchemy.sql import func\nfrom app.models.base import Base\n\nclass User(Base):\n    __tablename__ = \"users\"\n    \n    id = Column(Integer, primary_key=True, index=True)\n    email = Column(String, unique=True, index=True)\n    username = Column(String, unique=True, index=True)\n    hashed_password = Column(String)\n    is_active = Column(Boolean, default=True)\n    is_superuser = Column(Boolean, default=False)\n    created_at = Column(DateTime(timezone=True), server_default=func.now())\n    updated_at = Column(DateTime(timezone=True), onupdate=func.now())",
+
+    "app/api/v1/endpoints/health.py": "from fastapi import APIRouter\n\nrouter = APIRouter()\n\n@router.get(\"/health\")\nasync def health_check():\n    return {\"status\": \"healthy\", \"message\": \"API运行正常\"}"
+  }
+}

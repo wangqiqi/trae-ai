@@ -1,0 +1,51 @@
+{
+  "name": "Angular前端基础骨架",
+  "tech_stack": {
+    "framework": "Angular 17",
+    "language": "TypeScript",
+    "build_tool": "Angular CLI",
+    "state_management": "NgRx",
+    "router": "Angular Router",
+    "styling": "TailwindCSS",
+    "testing": ["Jasmine", "Karma"]
+  },
+  "structure": {
+    "src/": {
+      "app/": {
+        "components/": {
+          "common/": ["button.component.ts", "input.component.ts", "modal.component.ts"],
+          "layout/": ["header.component.ts", "footer.component.ts", "sidebar.component.ts"]
+        },
+        "pages/": ["home.component.ts", "about.component.ts", "not-found.component.ts"],
+        "services/": ["api.service.ts", "auth.service.ts"],
+        "guards/": ["auth.guard.ts"],
+        "interceptors/": ["auth.interceptor.ts"],
+        "models/": ["user.model.ts", "api.model.ts"],
+        "store/": ["app.state.ts", "user.state.ts"],
+        "utils/": ["http.util.ts", "storage.util.ts"]
+      },
+      "assets/": {
+        "css/": ["styles.css", "tailwind.css"],
+        "images/": ["logo.svg"]
+      }
+    },
+    "angular.json": "// Angular CLI配置",
+    "package.json": {
+      "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "ng build",
+        "watch": "ng build --watch --configuration development",
+        "test": "ng test",
+        "lint": "ng lint"
+      }
+    }
+  },
+  "key_files": {
+    "main.ts": "// Angular应用入口文件\nimport { bootstrapApplication } from '@angular/platform-browser'\nimport { provideRouter } from '@angular/router'\nimport { provideHttpClient, withInterceptors } from '@angular/common/http'\nimport { provideStore } from '@ngrx/store'\nimport { routes } from './app/app.routes'\nimport { AppComponent } from './app/app.component'\nimport { authInterceptor } from './app/interceptors/auth.interceptor'\n\nbootstrapApplication(AppComponent, {\n  providers: [\n    provideRouter(routes),\n    provideHttpClient(withInterceptors([authInterceptor])),\n    provideStore()\n  ]\n}).catch(err => console.error(err))",
+
+    "app.component.ts": "import { Component } from '@angular/core'\nimport { RouterOutlet } from '@angular/router'\nimport { HeaderComponent } from './components/layout/header.component'\nimport { FooterComponent } from './components/layout/footer.component'\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [RouterOutlet, HeaderComponent, FooterComponent],\n  template: `\n    <div class=\"min-h-screen bg-gray-50\">\n      <app-header />\n      <main class=\"container mx-auto px-4 py-8\">\n        <router-outlet />\n      </main>\n      <app-footer />\n    </div>\n  `\n})\nexport class AppComponent {}",
+
+    "app.routes.ts": "import { Routes } from '@angular/router'\nimport { HomeComponent } from './pages/home.component'\nimport { AboutComponent } from './pages/about.component'\nimport { NotFoundComponent } from './pages/not-found.component'\n\nexport const routes: Routes = [\n  { path: '', component: HomeComponent },\n  { path: 'about', component: AboutComponent },\n  { path: '**', component: NotFoundComponent }\n]"
+  }
+}

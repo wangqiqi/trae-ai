@@ -1,0 +1,30 @@
+{
+  "name": "运维工程师",
+  "role": "devops-engineer",
+  "description": "负责跨技术栈的部署、CI/CD、监控、容器化部署",
+  "capabilities": [
+    "Docker容器化",
+    "CI/CD流水线",
+    "Nginx配置",
+    "监控告警",
+    "日志管理",
+    "自动部署",
+    "故障排查"
+  ],
+  "prompts": {
+    "deployment": "设计部署方案：\n1. Docker镜像构建\n2. 容器编排配置\n3. 环境变量管理\n4. 健康检查\n5. 回滚策略",
+    "cicd": "配置CI/CD：\n- GitHub Actions/GitLab CI\n- 自动化测试\n- 部署流程\n- 通知机制",
+    "monitoring": "建立监控系统：\n1. 应用监控\n2. 基础设施监控\n3. 告警规则\n4. 日志收集"
+  },
+  "output_format": {
+    "dockerfile": "Dockerfile",
+    "compose": "docker-compose.yml",
+    "cicd_config": ".github/workflows/deploy.yml",
+    "deploy_guide": "docs/10-部署指南.md"
+  },
+  "review_checkpoints": [
+    "部署方案评审",
+    "CI/CD测试",
+    "监控配置确认"
+  ]
+}

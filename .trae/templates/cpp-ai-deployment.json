@@ -1,0 +1,75 @@
+{
+  "name": "C++ AI部署基础骨架",
+  "tech_stack": {
+    "inference_engines": "TensorRT + ONNX Runtime",
+    "build_system": "CMake 3.20+",
+    "image_processing": "OpenCV 4.8+",
+    "optimization": "CUDA + SIMD",
+    "testing": "GoogleTest + Benchmark",
+    "deployment": "Docker + CI/CD"
+  },
+  "structure": {
+    "src/": {
+      "core/": {
+        "inference/": ["inference_engine.cpp", "inference_engine.h", "engine_factory.cpp"],
+        "image/": ["image_processor.cpp", "image_processor.h", "preprocessor.cpp"],
+        "utils/": ["timer.cpp", "logger.h", "config_loader.cpp"]
+      },
+      "engines/": {
+        "tensorrt/": ["tensorrt_engine.cpp", "tensorrt_engine.h", "calibrator.cpp"],
+        "onnxruntime/": ["onnx_engine.cpp", "onnx_engine.h"],
+        "ncnn/": ["ncnn_engine.cpp", "ncnn_engine.h"]
+      },
+      "examples/": {
+        "basic_inference/": ["main.cpp", "CMakeLists.txt"],
+        "batch_processing/": ["batch_inference.cpp"],
+        "real_time/": ["realtime_inference.cpp"]
+      }
+    },
+    "include/": {
+      "ai_deployment/": [
+        "inference_engine.h",
+        "image_processor.h",
+        "common_types.h"
+      ]
+    },
+    "tests/": {
+      "unit/": ["test_inference_engine.cpp", "test_image_processor.cpp"],
+      "integration/": ["test_end_to_end.cpp"],
+      "benchmarks/": ["benchmark_performance.cpp"]
+    },
+    "cmake/": {
+      "dependencies.cmake": "# 依赖管理",
+      "utils.cmake": "# 工具函数",
+      "options.cmake": "# 编译选项"
+    },
+    "config/": {
+      "tensorrt_config.yaml": "# TensorRT配置",
+      "onnx_config.yaml": "# ONNX Runtime配置",
+      "deployment_config.json": "# 部署配置"
+    },
+    "scripts/": {
+      "build.sh": "# Unix构建脚本",
+      "build.bat": "# Windows构建脚本",
+      "convert_model.py": "# 模型转换脚本",
+      "benchmark.sh": "# 性能测试脚本"
+    },
+    "docker/": {
+      "Dockerfile": "# 容器化配置",
+      "docker-compose.yml": "# 多服务编排"
+    },
+    "third_party/": "# 第三方依赖",
+    "CMakeLists.txt": "# 主CMake配置",
+    "vcpkg.json": "# vcpkg依赖管理",
+    "conanfile.py": "# Conan包管理"
+  },
+  "key_files": {
+    "CMakeLists.txt": "cmake_minimum_required(VERSION 3.20)\nproject(AI_Deployment)\n\n# 设置C++标准\nset(CMAKE_CXX_STANDARD 17)\nset(CMAKE_CXX_STANDARD_REQUIRED ON)\n\n# 查找依赖\nfind_package(OpenCV REQUIRED)\nfind_package(CUDA REQUIRED)\n\n# TensorRT\nfind_path(TENSORRT_INCLUDE_DIR NvInfer.h PATHS /usr/include/x86_64-linux-gnu)\nfind_library(TENSORRT_LIBRARY nvinfer PATHS /usr/lib/x86_64-linux-gnu)\n\n# ONNX Runtime\nfind_path(ONNXRUNTIME_INCLUDE_DIR onnxruntime_cxx_api.h)\nfind_library(ONNXRUNTIME_LIBRARY onnxruntime)\n\n# 包含目录\ninclude_directories(\n    ${CMAKE_CURRENT_SOURCE_DIR}/include\n    ${OpenCV_INCLUDE_DIRS}\n    ${TENSORRT_INCLUDE_DIR}\n    ${ONNXRUNTIME_INCLUDE_DIR}\n)\n\n# 源文件\nfile(GLOB_RECURSE SOURCES \"src/*.cpp\")\n\n# 创建可执行文件\nadd_executable(ai_inference ${SOURCES})\n\n# 链接库\ntarget_link_libraries(ai_inference\n    ${OpenCV_LIBS}\n    ${TENSORRT_LIBRARY}\n    ${ONNXRUNTIME_LIBRARY}\n    ${CUDA_LIBRARIES}\n)\n\n# 测试\nenable_testing()\nadd_subdirectory(tests)",
+
+    "src/core/inference_engine.h": "#pragma once\n\n#include <memory>\n#include <string>\n#include <vector>\n#include <opencv2/opencv.hpp>\n\nnamespace ai_deployment {\n\nstruct InferenceConfig {\n    std::string model_path;\n    std::string engine_type;  // \"tensorrt\", \"onnx\", \"ncnn\"\n    int input_width = 224;\n    int input_height = 224;\n    float confidence_threshold = 0.5f;\n    bool use_gpu = true;\n};\n\nclass InferenceEngine {\npublic:\n    virtual ~InferenceEngine() = default;\n    virtual bool Initialize(const InferenceConfig& config) = 0;\n    virtual std::vector<float> Predict(const cv::Mat& image) = 0;\n    virtual void Warmup() = 0;\n};\n\nclass EngineFactory {\npublic:\n    static std::unique_ptr<InferenceEngine> CreateEngine(const std::string& type);\n};\n\n} // namespace ai_deployment",
+
+    "src/engines/tensorrt/tensorrt_engine.cpp": "#include \"tensorrt_engine.h\"\n#include <NvInfer.h>\n#include <cuda_runtime.h>\n\nnamespace ai_deployment {\n\nclass TensorRTEngine : public InferenceEngine {\nprivate:\n    std::unique_ptr<nvinfer1::ICudaEngine> engine_;\n    std::unique_ptr<nvinfer1::IExecutionContext> context_;\n    void* buffers_[2];  // 输入输出缓冲区\n    cudaStream_t stream_;\n    \npublic:\n    bool Initialize(const InferenceConfig& config) override {\n        // TensorRT引擎初始化逻辑\n        return true;\n    }\n    \n    std::vector<float> Predict(const cv::Mat& image) override {\n        // 推理实现\n        return {};\n    }\n    \n    void Warmup() override {\n        // 预热引擎\n    }\n};\n\n} // namespace ai_deployment",
+
+    "scripts/convert_model.py": "#!/usr/bin/env python3\n\"\"\"\n模型转换脚本：PyTorch → ONNX → TensorRT\n\"\"\"\n\nimport torch\nimport onnx\nimport tensorrt as trt\nimport argparse\nimport os\n\ndef pytorch_to_onnx(model_path, output_path, input_shape=(1, 3, 224, 224)):\n    \"\"\"PyTorch模型转ONNX\"\"\"\n    model = torch.load(model_path)\n    model.eval()\n    \n    dummy_input = torch.randn(input_shape)\n    torch.onnx.export(\n        model, dummy_input, output_path,\n        export_params=True,\n        opset_version=11,\n        do_constant_folding=True,\n        input_names=['input'],\n        output_names=['output']\n    )\n    print(f\"ONNX模型已保存: {output_path}\")\n\ndef onnx_to_tensorrt(onnx_path, output_path, fp16=True):\n    \"\"\"ONNX转TensorRT引擎\"\"\"\n    logger = trt.Logger(trt.Logger.WARNING)\n    builder = trt.Builder(logger)\n    network = builder.create_network()\n    parser = trt.OnnxParser(network, logger)\n    \n    with open(onnx_path, 'rb') as f:\n        parser.parse(f.read())\n    \n    config = builder.create_builder_config()\n    if fp16:\n        config.set_flag(trt.BuilderFlag.FP16)\n    \n    engine = builder.build_engine(network, config)\n    with open(output_path, 'wb') as f:\n        f.write(engine.serialize())\n    \n    print(f\"TensorRT引擎已保存: {output_path}\")\n\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser()\n    parser.add_argument('--model', required=True)\n    parser.add_argument('--output-dir', default='models')\n    args = parser.parse_args()\n    \n    os.makedirs(args.output_dir, exist_ok=True)\n    \n    # 转换流程\n    onnx_path = os.path.join(args.output_dir, 'model.onnx')\n    trt_path = os.path.join(args.output_dir, 'model.trt')\n    \n    pytorch_to_onnx(args.model, onnx_path)\n    onnx_to_tensorrt(onnx_path, trt_path)\n    \n    print(\"模型转换完成！\")"
+  }
+}

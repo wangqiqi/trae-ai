@@ -1,0 +1,93 @@
+{
+  "name": "Node.js后端基础骨架",
+  "tech_stack": {
+    "framework": "Express.js",
+    "language": "TypeScript",
+    "database": "Prisma ORM",
+    "validation": "Zod",
+    "testing": ["Jest", "Supertest"],
+    "auth": "JWT",
+    "docs": "Swagger",
+    "container": "Docker"
+  },
+  "structure": {
+    "src/": {
+      "controllers/": ["auth.controller.ts", "user.controller.ts", "health.controller.ts"],
+      "services/": ["auth.service.ts", "user.service.ts"],
+      "models/": ["user.model.ts"],
+      "routes/": ["auth.routes.ts", "user.routes.ts", "health.routes.ts", "index.ts"],
+      "middleware/": ["auth.middleware.ts", "error.middleware.ts", "validation.middleware.ts"],
+      "utils/": ["database.ts", "logger.ts", "response.ts"],
+      "types/": ["index.ts", "user.types.ts"],
+      "config/": ["database.ts", "app.config.ts"],
+      "app.ts": "// Express应用配置",
+      "server.ts": "// 服务器启动文件"
+    },
+    "prisma/": {
+      "schema.prisma": "// 数据库Schema定义",
+      "migrations/": "// 数据库迁移"
+    },
+    "tests/": {
+      "unit/": ["auth.test.ts", "user.test.ts"],
+      "integration/": ["api.test.ts"],
+      "setup.ts": "// 测试配置"
+    },
+    "package.json": {
+      "scripts": {
+        "dev": "nodemon src/server.ts",
+        "build": "tsc",
+        "start": "node dist/server.js",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "migrate": "prisma migrate dev",
+        "studio": "prisma studio",
+        "lint": "eslint src/**/*.ts",
+        "format": "prettier --write src/**/*.ts"
+      },
+      "dependencies": [
+        "express",
+        "cors",
+        "helmet",
+        "morgan",
+        "compression",
+        "jsonwebtoken",
+        "bcryptjs",
+        "zod",
+        "@prisma/client",
+        "swagger-ui-express",
+        "swagger-jsdoc"
+      ],
+      "devDependencies": [
+        "@types/express",
+        "@types/cors",
+        "@types/jsonwebtoken",
+        "@types/bcryptjs",
+        "@types/swagger-ui-express",
+        "typescript",
+        "nodemon",
+        "ts-node",
+        "jest",
+        "@types/jest",
+        "ts-jest",
+        "supertest",
+        "@types/supertest",
+        "eslint",
+        "prettier",
+        "prisma"
+      ]
+    },
+    "Dockerfile": "# Node.js容器化",
+    "docker-compose.yml": "# 开发环境编排"
+  },
+  "key_files": {
+    "src/server.ts": "import app from './app'\nimport { config } from './config/app.config'\nimport { logger } from './utils/logger'\n\nconst PORT = config.PORT || 3000\n\napp.listen(PORT, () => {\n  logger.info(`服务器运行在端口 ${PORT}`)\n  logger.info(`环境: ${config.NODE_ENV}`)\n})",
+
+    "src/app.ts": "import express from 'express'\nimport cors from 'cors'\nimport helmet from 'helmet'\nimport morgan from 'morgan'\nimport compression from 'compression'\nimport { routes } from './routes'\nimport { errorHandler } from './middleware/error.middleware'\nimport { config } from './config/app.config'\n\nconst app = express()\n\n// 中间件\napp.use(helmet())\napp.use(cors({\n  origin: config.CORS_ORIGIN,\n  credentials: true\n}))\napp.use(morgan('combined'))\napp.use(compression())\napp.use(express.json())\napp.use(express.urlencoded({ extended: true }))\n\n// 路由\napp.use('/api/v1', routes)\n\n// 健康检查\napp.get('/health', (req, res) => {\n  res.json({ status: 'healthy', message: 'API运行正常' })\n})\n\n// 错误处理\napp.use(errorHandler)\n\nexport default app",
+
+    "src/config/app.config.ts": "import dotenv from 'dotenv'\ndotenv.config()\n\nexport const config = {\n  NODE_ENV: process.env.NODE_ENV || 'development',\n  PORT: parseInt(process.env.PORT || '3000'),\n  CORS_ORIGIN: process.env.CORS_ORIGIN || 'http://localhost:3000',\n  \n  // 数据库\n  DATABASE_URL: process.env.DATABASE_URL || 'postgresql://user:password@localhost/dbname',\n  \n  // JWT\n  JWT_SECRET: process.env.JWT_SECRET || 'your-jwt-secret',\n  JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || '1h',\n  \n  // 加密\n  BCRYPT_ROUNDS: 12\n}",
+
+    "prisma/schema.prisma": "generator client {\n  provider = \"prisma-client-js\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id        String   @id @default(cuid())\n  email     String   @unique\n  username  String   @unique\n  password  String\n  isActive  Boolean  @default(true)\n  isAdmin   Boolean  @default(false)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}",
+
+    "src/controllers/auth.controller.ts": "import { Request, Response } from 'express'\nimport { AuthService } from '../services/auth.service'\nimport { asyncHandler } from '../utils/response'\n\nexport class AuthController {\n  private authService = new AuthService()\n\n  login = asyncHandler(async (req: Request, res: Response) => {\n    const { email, password } = req.body\n    const result = await this.authService.login(email, password)\n    res.json(result)\n  })\n\n  register = asyncHandler(async (req: Request, res: Response) => {\n    const userData = req.body\n    const result = await this.authService.register(userData)\n    res.status(201).json(result)\n  })\n}"
+  }
+}
