@@ -44,6 +44,21 @@
       "description": "专精C++ AI模型部署，负责跨平台推理优化、CMake构建、TensorRT/ONNX Runtime/ncnn集成及高性能部署"
     },
     {
+      "name": "Flutter工程师",
+      "role": "flutter-engineer",
+      "description": "专精Flutter跨平台移动应用开发，支持iOS/Android/Web三端统一"
+    },
+    {
+      "name": "Go工程师",
+      "role": "go-engineer",
+      "description": "专精Go语言高性能后端开发，支持微服务架构和云原生部署"
+    },
+    {
+      "name": "Rust工程师",
+      "role": "rust-engineer",
+      "description": "专精Rust系统级编程，支持高性能Web服务和WebAssembly开发"
+    },
+    {
       "name": "FastAPI工程师",
       "role": "fastapi-engineer",
       "description": "专精FastAPI后端开发"
@@ -152,8 +167,8 @@
     }
   ],
   "tech_stack_priority": {
-    "frontend": ["Vue", "React", "Angular"],
-    "backend": ["FastAPI", "Node.js"]
+    "frontend": ["Vue", "React", "Angular", "Flutter"],
+    "backend": ["FastAPI", "Node.js", "Go", "Rust"]
   },
   "documentation": {
     "format": "markdown",
