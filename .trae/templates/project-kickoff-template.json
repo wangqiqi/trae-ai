@@ -1,0 +1,163 @@
+{
+  "template_name": "项目经理项目启动模板",
+  "version": "1.0.0",
+  "description": "项目经理一键启动新项目的标准模板，包含18人团队完整配置",
+  "project_types": {
+    "web_application": {
+      "name": "Web应用项目",
+      "description": "标准Web应用开发，前后端分离架构",
+      "team_config": {
+        "required_roles": [
+          {
+            "role": "vue-engineer",
+            "tasks": ["前端框架搭建", "组件开发", "页面实现"],
+            "timeline": "1-2周"
+          },
+          {
+            "role": "fastapi-engineer", 
+            "tasks": ["API设计", "数据库建模", "后端实现"],
+            "timeline": "1-2周"
+          },
+          {
+            "role": "test-engineer",
+            "tasks": ["测试计划", "测试用例", "自动化测试"],
+            "timeline": "并行进行"
+          }
+        ],
+        "optional_roles": [
+          {
+            "role": "ui-x-designer",
+            "tasks": ["界面设计", "交互优化"],
+            "trigger": "需要专业UI设计"
+          },
+          {
+            "role": "devops-engineer",
+            "tasks": ["CI/CD配置", "部署脚本"],
+            "trigger": "需要生产部署"
+          }
+        ]
+      },
+      "milestones": [
+        "需求确认(第1天)",
+        "技术方案(第3天)",
+        "原型开发(第7天)",
+        "功能开发(第14天)",
+        "测试完成(第21天)",
+        "上线部署(第28天)"
+      ],
+      "deliverables": [
+        "前端代码仓库",
+        "后端API文档",
+        "测试报告",
+        "部署文档"
+      ]
+    },
+    "mobile_application": {
+      "name": "移动应用项目",
+      "description": "Flutter跨平台移动应用开发",
+      "team_config": {
+        "required_roles": [
+          {
+            "role": "flutter-engineer",
+            "tasks": ["应用架构", "UI实现", "功能开发"],
+            "timeline": "2-4周"
+          },
+          {
+            "role": "nodejs-engineer",
+            "tasks": ["后端API", "数据服务", "推送服务"],
+            "timeline": "1-3周"
+          }
+        ],
+        "milestones": [
+          "需求分析(第1-2天)",
+          "UI设计(第3-7天)",
+          "核心功能(第8-21天)",
+          "测试优化(第22-28天)",
+          "应用发布(第29-35天)"
+        ]
+      }
+    },
+    "mini_program": {
+      "name": "小程序项目",
+      "description": "uni-app跨平台小程序开发",
+      "team_config": {
+        "required_roles": [
+          {
+            "role": "uniapp-engineer",
+            "tasks": ["小程序开发", "多端适配", "接口对接"],
+            "timeline": "1-3周"
+          }
+        ],
+        "milestones": [
+          "需求确认(第1天)",
+          "页面开发(第3-10天)",
+          "功能测试(第11-14天)",
+          "微信审核(第15-21天)"
+        ]
+      }
+    },
+    "ai_system": {
+      "name": "AI系统项目",
+      "description": "Python AI算法系统开发",
+      "team_config": {
+        "required_roles": [
+          {
+            "role": "python-ai-engineer",
+            "tasks": ["算法开发", "模型训练", "API封装"],
+            "timeline": "3-6周"
+          },
+          {
+            "role": "cpp-ai-deployment-engineer",
+            "tasks": ["模型优化", "推理部署", "性能调优"],
+            "timeline": "2-4周"
+          }
+        ],
+        "milestones": [
+          "算法验证(第1-7天)",
+          "模型训练(第8-21天)",
+          "部署优化(第22-35天)",
+          "性能测试(第36-42天)"
+        ]
+      }
+    }
+  },
+  "standard_workflow": {
+    "phase1_requirements": {
+      "duration": "1-2天",
+      "roles": ["project-manager", "product-manager"],
+      "outputs": ["需求文档", "技术方案"]
+    },
+    "phase2_design": {
+      "duration": "2-5天", 
+      "roles": ["ui-x-designer", "system-architect"],
+      "outputs": ["设计稿", "架构图"]
+    },
+    "phase3_development": {
+      "duration": "1-4周",
+      "roles": ["技术工程师"],
+      "outputs": ["代码", "测试"]
+    },
+    "phase4_deployment": {
+      "duration": "1-3天",
+      "roles": ["devops-engineer"],
+      "outputs": ["部署文档", "运行环境"]
+    }
+  },
+  "communication_templates": {
+    "daily_standup": {
+      "format": "markdown",
+      "content": "## 每日站会\n- 昨日完成：{completed}\n- 今日计划：{planned}\n- 遇到问题：{blockers}\n- 需要支持：{support}"
+    },
+    "weekly_report": {
+      "format": "markdown",
+      "content": "## 周报\n### 本周进展\n{progress}\n\n### 下周计划\n{plans}\n\n### 风险预警\n{risks}"
+    }
+  },
+  "quality_checkpoints": [
+    "代码Review完成",
+    "测试覆盖率达标",
+    "文档完整性检查",
+    "性能基准测试",
+    "安全扫描通过"
+  ]
+}

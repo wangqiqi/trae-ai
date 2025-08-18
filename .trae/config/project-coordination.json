@@ -1,0 +1,130 @@
+{
+  "project_manager_config": {
+    "name": "18人超级团队协调配置",
+    "version": "3.0.0",
+    "description": "项目经理协调18个AI智能体的完整配置，包括角色映射、沟通机制、任务分配策略",
+    "team_structure": {
+      "project_manager": {
+        "role": "project-manager",
+        "responsibilities": [
+          "统一指挥接口",
+          "跨角色协调",
+          "进度跟踪",
+          "风险管控"
+        ]
+      },
+      "technical_groups": {
+        "frontend_team": {
+          "name": "前端开发组",
+          "members": ["angular-engineer", "react-engineer", "vue-engineer"],
+          "lead": "system-architect",
+          "priority": 1
+        },
+        "mobile_team": {
+          "name": "移动&小程序组", 
+          "members": ["flutter-engineer", "uniapp-engineer"],
+          "lead": "system-architect",
+          "priority": 2
+        },
+        "backend_team": {
+          "name": "后端开发组",
+          "members": ["fastapi-engineer", "go-engineer", "nodejs-engineer", "rust-engineer"],
+          "lead": "system-architect", 
+          "priority": 3
+        },
+        "ai_team": {
+          "name": "AI&系统组",
+          "members": ["python-ai-engineer", "cpp-ai-deployment-engineer", "system-architect"],
+          "lead": "system-architect",
+          "priority": 4
+        },
+        "support_team": {
+          "name": "专业支持组",
+          "members": ["devops-engineer", "test-engineer", "technical-writer", "ui-x-designer"],
+          "lead": "project-manager",
+          "priority": 5
+        }
+      }
+    },
+    "coordination_rules": {
+      "communication_flow": {
+        "daily_sync": "项目经理统一收集各组进度",
+        "weekly_review": "技术组长联合评审",
+        "milestone_check": "全员里程碑会议",
+        "risk_escalation": "问题逐级上报机制"
+      },
+      "task_assignment": {
+        "strategy": "项目经理统一分配",
+        "priority_matrix": {
+          "P0": "项目阻塞问题",
+          "P1": "核心功能开发", 
+          "P2": "优化和增强",
+          "P3": "文档和测试"
+        },
+        "review_chain": [
+          "技术组长初审",
+          "系统架构师复审", 
+          "项目经理终审"
+        ]
+      }
+    },
+    "project_templates": {
+      "web_app": {
+        "required_roles": ["vue-engineer", "fastapi-engineer", "test-engineer"],
+        "optional_roles": ["devops-engineer", "technical-writer"],
+        "timeline": "2-4周"
+      },
+      "mobile_app": {
+        "required_roles": ["flutter-engineer", "nodejs-engineer", "test-engineer"],
+        "optional_roles": ["ui-x-designer", "devops-engineer"],
+        "timeline": "3-6周"
+      },
+      "miniprogram": {
+        "required_roles": ["uniapp-engineer", "nodejs-engineer", "test-engineer"],
+        "optional_roles": ["ui-x-designer"],
+        "timeline": "1-3周"
+      },
+      "ai_system": {
+        "required_roles": ["python-ai-engineer", "cpp-ai-deployment-engineer", "system-architect"],
+        "optional_roles": ["devops-engineer", "test-engineer"],
+        "timeline": "4-8周"
+      }
+    },
+    "progress_tracking": {
+      "status_levels": {
+        "todo": "待分配",
+        "assigned": "已分配",
+        "in_progress": "开发中",
+        "review": "待评审",
+        "completed": "已完成",
+        "blocked": "已阻塞"
+      },
+      "update_frequency": {
+        "daily": "各组内部同步",
+        "weekly": "项目经理汇总",
+        "milestone": "全员汇报"
+      }
+    },
+    "risk_management": {
+      "risk_categories": [
+        "技术风险",
+        "进度风险", 
+        "资源风险",
+        "质量风险",
+        "沟通风险"
+      ],
+      "escalation_levels": [
+        "组内解决",
+        "跨组协调",
+        "项目经理介入",
+        "技术专家会诊"
+      ]
+    }
+  },
+  "integration_settings": {
+    "auto_sync": true,
+    "notification_channels": ["console", "markdown"],
+    "backup_frequency": "daily",
+    "version_control": "git"
+  }
+}
