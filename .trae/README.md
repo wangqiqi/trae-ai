@@ -1,16 +1,16 @@
 # 🚀 超级个体开发团队 - AI智能体系统
 
-这是一个**完整的17角色AI智能体开发团队**，模拟真实开发团队的全生命周期工作流程，覆盖从需求分析到AI模型部署的完整技术栈。
+这是一个**完整的18角色AI智能体开发团队**，模拟真实开发团队的全生命周期工作流程，覆盖从需求分析到AI模型部署的完整技术栈。新增**项目经理**角色，统一协调17个技术专家。
 
 ## 🎯 系统特色
 
-- **17个专业角色** - 覆盖AI、Web、移动、小程序、系统级开发的完整技术栈
+- **18个专业角色** - 覆盖AI、Web、移动、小程序、系统级开发的完整技术栈
 - **9种技术模板** - 支持Python AI、C++部署、Web全栈、小程序开发
 - **强制Review机制** - 每个阶段都有质量保障
 - **多端全栈** - Vue/React/Angular/Flutter/uni-app + FastAPI/Node.js/Go/Rust
 - **AI全链路** - 从模型训练到生产部署
 
-## 👥 17角色智能体团队
+## 👥 18角色智能体团队
 
 ### 🤖 AI开发链
 | 角色 | 职责 | 技术栈 | 输出 |
@@ -38,6 +38,7 @@
 ### 🎯 专业支持团队
 | 角色 | 职责 | 核心能力 | 输出 |
 |------|------|----------|------|
+| **项目经理** | 跨角色协调、项目规划、进度跟踪 | 任务分配、风险管理、团队协调 | 项目计划、进度报告、风险清单 |
 | **产品经理** | 需求分析、产品规划 | 用户故事、竞品分析 | PRD文档、功能清单 |
 | **UI-X设计师** | 界面设计、用户体验 | Figma、设计系统 | 原型图、设计规范 |
 | **系统架构师** | 架构设计、技术选型 | 系统设计、性能优化 | 架构图、技术方案 |
@@ -45,14 +46,14 @@
 | **运维工程师** | CI/CD、容器化、监控 | Docker、K8s、监控 | 部署脚本、监控配置 |
 | **技术文档工程师** | 文档编写、API文档 | 技术写作、文档维护 | API文档、用户手册 |
 
-## 🔄 8阶段工作流程（含强制Review）
+## 🔄 8阶段工作流程（项目经理统一协调）
 
 ```
-需求分析 → 系统设计 → 模型开发 → 推理优化 → 服务封装 → 前端开发 → 测试验证 → 部署运维
-    ↓         ↓         ↓         ↓         ↓         ↓         ↓         ↓
-产品经理   架构师    Python AI  C++部署   FastAPI    Vue/React   测试工程师   运维工程师
-   🔍        🔍        🔍        🔍        🔍        🔍        🔍        🔍
-  Review    Review    Review    Review    Review    Review    Review    Review
+项目经理启动 → 需求分析 → 系统设计 → 模型开发 → 推理优化 → 服务封装 → 前端开发 → 测试验证 → 部署运维
+      ↓           ↓         ↓         ↓         ↓         ↓         ↓         ↓         ↓
+   项目规划    产品经理   架构师    Python AI  C++部署   FastAPI    Vue/React   测试工程师   运维工程师
+      🎯         🔍        🔍        🔍        🔍        🔍        🔍        🔍        🔍
+   统一协调    Review    Review    Review    Review    Review    Review    Review    Review
 ```
 
 ## 📁 完整目录结构
@@ -60,7 +61,8 @@
 ```
 .trae/
 ├── 📋 README.md                    # 本说明文档
-├── 🤖 agents/                      # 17个智能体配置
+├── 🤖 agents/                      # 18个智能体配置
+│   ├── project-manager.json        # 项目经理 - 统一协调
 │   ├── python-ai-engineer.json     # Python AI工程师
 │   ├── cpp-ai-deployment-engineer.json  # C++ AI部署工程师
 │   ├── flutter-engineer.json       # Flutter跨平台工程师
@@ -79,11 +81,14 @@
 │   ├── devops-engineer.json        # 运维工程师
 │   └── technical-writer.json       # 技术文档工程师
 ├── 📊 config/                      # 团队配置
-│   └── team-config.json            # 角色优先级配置
+│   ├── team-config.json            # 角色优先级配置
+│   └── project-coordination.json   # 项目经理协调配置
 ├── 📋 rules/                       # 工作规则
 │   ├── workflow-rules.md           # 8阶段工作流程
-│   └── coding-standards.md         # 编码规范
-└── 📦 templates/                   # 9种技术模板
+│   ├── coding-standards.md         # 编码规范
+│   └── project-management-rules.md # 项目管理规范
+└── 📦 templates/                   # 10种技术模板
+    ├── project-kickoff-template.json # 项目启动模板
     ├── ai-python.json              # Python AI项目模板
     ├── cpp-ai-deployment.json      # C++ AI部署模板
     ├── backend-fastapi.json        # FastAPI后端模板
@@ -97,17 +102,43 @@
 
 ## 🚀 快速开始指南
 
-### 1️⃣ 选择项目类型
+### 🎯 项目经理统一指挥模式（推荐）
 
-#### 🎯 AI项目组合
-- **完整AI应用**: Python AI + C++部署 + Vue前端
-- **模型服务化**: Python AI + FastAPI + React前端
-- **边缘部署**: Python AI + C++部署 + 无前端
+#### 1️⃣ 项目经理启动项目
+```bash
+# 直接指挥项目经理
+"作为项目经理，请启动一个电商小程序项目，包含商品展示、购物车、支付功能，预计2周完成"
 
-#### 🌐 Web项目组合
-- **Vue全栈**: Vue + FastAPI + PostgreSQL
-- **React全栈**: React + Node.js + MongoDB
-- **Angular企业级**: Angular + FastAPI + MySQL
+# 项目经理将自动：
+# - 加载project-kickoff-template.json模板
+# - 分配uni-app工程师 + FastAPI工程师 + 产品经理
+# - 制定详细时间线和里程碑
+# - 协调各角色按阶段交付
+```
+
+#### 2️⃣ 项目经理任务分配
+```bash
+# 项目经理统一分配任务
+"项目经理，请为以下需求分配团队：
+- 开发一个企业级AI图像识别系统
+- 需要Web管理后台和移动App
+- 支持实时视频流分析
+- 提供RESTful API接口"
+```
+
+### 🔄 传统单角色模式（可选）
+
+#### 3️⃣ 选择项目类型
+
+**AI项目组合**
+- **完整AI应用**: 项目经理 → Python AI + C++部署 + Vue前端
+- **模型服务化**: 项目经理 → Python AI + FastAPI + React前端
+- **边缘部署**: 项目经理 → Python AI + C++部署
+
+**Web项目组合**
+- **Vue全栈**: 项目经理 → Vue + FastAPI + PostgreSQL
+- **React全栈**: 项目经理 → React + Node.js + MongoDB
+- **Angular企业级**: 项目经理 → Angular + FastAPI + MySQL
 
 ### 2️⃣ 初始化项目模板
 
@@ -136,7 +167,25 @@ cp .trae/templates/backend-fastapi.json ./backend-template.json
 
 ### 3️⃣ 智能体调用示例
 
-#### 📋 需求分析阶段
+#### 🎯 项目经理统一指挥
+```bash
+# 项目经理统一协调
+"项目经理，请启动AI图像识别项目：
+- 支持1000类物体识别
+- 实时视频流处理  
+- Web端可视化界面
+- 移动App支持
+请分配团队并制定开发计划"
+
+# 项目经理将自动：
+# 1. 分析需求并选择Python AI工程师
+# 2. 分配C++部署工程师做推理优化
+# 3. 安排Vue工程师开发Web界面
+# 4. 指定Flutter工程师开发移动App
+# 5. 制定8周开发计划
+```
+
+#### 📋 传统单角色调用
 ```bash
 # 产品经理智能体
 "作为产品经理，请分析以下AI图像识别需求：
@@ -144,16 +193,6 @@ cp .trae/templates/backend-fastapi.json ./backend-template.json
 - 实时视频流处理
 - Web端可视化界面
 请输出：用户故事、功能清单、技术方案"
-```
-
-#### 🏗️ 架构设计阶段
-```bash
-# 系统架构师智能体
-"作为系统架构师，请基于产品经理的需求文档，设计：
-1. 系统架构图
-2. 技术选型方案
-3. 数据流设计
-4. 性能优化策略"
 ```
 
 #### 🤖 AI开发阶段
@@ -332,6 +371,6 @@ git commit -m "feat: [Python AI工程师] 完成了ResNet50模型训练 - 支持
 
 ---
 
-**🎉 恭喜！你现在拥有了一个完整的17角色AI开发团队，可以开始构建任何类型的项目了！**
+**🎉 恭喜！你现在拥有了一个完整的18角色AI开发团队（17个技术专家 + 1个项目经理），可以开始构建任何类型的项目了！**
 
 **下一步：让我们创建Git仓库来管理这些珍贵的智能体配置！**

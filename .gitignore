@@ -114,3 +114,9 @@ output/
 test-results/
 playwright-report/
 coverage/
+
+# 测试项目目录
+todo-proj/
+test-*/
+example-*/
+demo-*/
