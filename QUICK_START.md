@@ -41,6 +41,38 @@ cp ..\.trae\templates\backend-fastapi.json backend.json
 "作为产品经理，请分析用户管理系统的需求，包含注册登录、用户CRUD、权限管理"
 ```
 
+### 场景3：Flutter跨平台App（实时聊天）
+
+```bash
+# 1. 创建新项目
+mkdir my-flutter-chat
+cd my-flutter-chat
+
+# 2. 复制Flutter和Go模板
+cp ..\.trae\templates\frontend-flutter.json frontend.json
+cp ..\.trae\templates\backend-go.json backend.json
+
+# 3. 开始开发
+# 在Trae中调用：
+"作为Flutter工程师，请创建跨平台聊天App，支持iOS/Android，包含实时消息、用户认证、消息历史"
+```
+
+### 场景4：Rust高性能服务（实时数据处理）
+
+```bash
+# 1. 创建新项目
+mkdir my-rust-service
+cd my-rust-service
+
+# 2. 复制Rust和React模板
+cp ..\.trae\templates\backend-rust.json backend.json
+cp ..\.trae\templates\frontend-react.json frontend.json
+
+# 3. 开始开发
+# 在Trae中调用：
+"作为Rust工程师，请创建高性能实时数据处理服务，支持WebSocket连接，React前端监控面板"
+```
+
 ## 🔧 智能体调用模板
 
 ### 📋 需求分析
@@ -82,6 +114,9 @@ cp ..\.trae\templates\backend-fastapi.json backend.json
 | **Vue全栈** | Vue + FastAPI | `frontend-vue.json` + `backend-fastapi.json` |
 | **React全栈** | React + Node.js | `frontend-react.json` + `backend-nodejs.json` |
 | **Angular企业级** | Angular + FastAPI | `frontend-angular.json` + `backend-fastapi.json` |
+| **跨平台App** | Flutter + Go | `frontend-flutter.json` + `backend-go.json` |
+| **微服务** | Go + React | `backend-go.json` + `frontend-react.json` |
+| **系统级** | Rust + 任意前端 | `backend-rust.json` + 对应前端模板 |
 
 ## 🎯 下一步学习路径
 
