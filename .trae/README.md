@@ -4,10 +4,10 @@
 
 ## 🎯 系统特色
 
-- **16个专业角色** - 覆盖AI、Web、移动、系统级开发的完整技术栈
-- **8种技术模板** - 支持Python AI、C++部署、Web全栈开发
+- **17个专业角色** - 覆盖AI、Web、移动、小程序、系统级开发的完整技术栈
+- **9种技术模板** - 支持Python AI、C++部署、Web全栈、小程序开发
 - **强制Review机制** - 每个阶段都有质量保障
-- **多端全栈** - Vue/React/Angular/Flutter + FastAPI/Node.js/Go/Rust
+- **多端全栈** - Vue/React/Angular/Flutter/uni-app + FastAPI/Node.js/Go/Rust
 - **AI全链路** - 从模型训练到生产部署
 
 ## 👥 14角色智能体团队
@@ -26,13 +26,14 @@
 | **Go工程师** | 微服务、云原生 | Gin、GORM、Docker、K8s | 高性能微服务、容器化应用 |
 | **Rust工程师** | 系统级、WebAssembly | Actix-web、Tokio、WebAssembly | 高性能Web服务、系统组件 |
 
-### 📱 移动开发链
+### 📱 移动&小程序开发链
 | 角色 | 职责 | 技术栈 | 输出 |
 |------|------|--------|------|
 | **Vue工程师** | 第1优先前端 | Vue3、TypeScript、Element Plus | 响应式Web应用 |
 | **React工程师** | 第2优先前端 | React18、TypeScript、Ant Design | 组件化Web应用 |
 | **Angular工程师** | 第3优先前端 | Angular16、TypeScript、Material | 企业级Web应用 |
 | **Flutter工程师** | 跨平台移动应用 | Flutter、Dart、Firebase | iOS/Android/Web统一应用 |
+| **uni-app工程师** | 跨平台小程序 | uni-app、Vue.js、小程序原生API | 微信/支付宝/百度/QQ小程序 |
 
 ### 🎯 专业支持团队
 | 角色 | 职责 | 核心能力 | 输出 |
@@ -59,12 +60,13 @@
 ```
 .trae/
 ├── 📋 README.md                    # 本说明文档
-├── 🤖 agents/                      # 16个智能体配置
+├── 🤖 agents/                      # 17个智能体配置
 │   ├── python-ai-engineer.json     # Python AI工程师
 │   ├── cpp-ai-deployment-engineer.json  # C++ AI部署工程师
 │   ├── flutter-engineer.json       # Flutter跨平台工程师
 │   ├── go-engineer.json            # Go高性能后端工程师
 │   ├── rust-engineer.json          # Rust系统级工程师
+│   ├── uniapp-engineer.json        # uni-app小程序工程师
 │   ├── fastapi-engineer.json       # FastAPI工程师
 │   ├── nodejs-engineer.json        # Node.js工程师
 │   ├── vue-engineer.json           # Vue工程师
@@ -81,15 +83,16 @@
 ├── 📋 rules/                       # 工作规则
 │   ├── workflow-rules.md           # 8阶段工作流程
 │   └── coding-standards.md         # 编码规范
-└── 📦 templates/                   # 8种技术模板
+└── 📦 templates/                   # 9种技术模板
     ├── ai-python.json              # Python AI项目模板
     ├── cpp-ai-deployment.json      # C++ AI部署模板
     ├── backend-fastapi.json        # FastAPI后端模板
     ├── backend-nodejs.json         # Node.js后端模板
-    ├── frontend-vue.json            # Vue前端模板
+    ├── frontend-vue.json           # Vue前端模板
     ├── frontend-react.json         # React前端模板
     ├── frontend-angular.json       # Angular前端模板
-    └── config-templates.json        # 通用配置模板
+    ├── frontend-uniapp.json        # uni-app小程序模板
+    └── config-templates.json       # 通用配置模板
 ```
 
 ## 🚀 快速开始指南

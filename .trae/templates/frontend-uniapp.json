@@ -1,0 +1,145 @@
+{
+  "template_name": "uni-app小程序模板",
+  "template_type": "frontend",
+  "framework": "uni-app",
+  "description": "基于uni-app的跨平台小程序开发模板，支持微信、支付宝、百度、QQ等主流小程序平台",
+  "prerequisites": [
+    "Node.js >= 16",
+    "HBuilderX 或 VS Code + uni-app插件",
+    "微信开发者工具",
+    "支付宝小程序开发者工具（可选）",
+    "百度开发者工具（可选）"
+  ],
+  "project_structure": {
+    "src/": {
+      "description": "源代码目录",
+      "structure": {
+        "pages/": "页面文件，每个页面一个文件夹",
+        "components/": "公共组件",
+        "static/": "静态资源（图片、字体等）",
+        "utils/": "工具函数",
+        "store/": "状态管理（Vuex）",
+        "api/": "API接口封装",
+        "mixins/": "混合代码",
+        "common/": "公共样式和配置"
+      }
+    },
+    "manifest.json": "应用配置文件",
+    "pages.json": "页面路由配置",
+    "uni.scss": "全局样式",
+    "package.json": "项目依赖配置"
+  },
+  "dependencies": {
+    "core": [
+      "@dcloudio/uni-app": "^3.0.0",
+      "vue": "^3.2.0",
+      "vuex": "^4.0.0"
+    ],
+    "ui": [
+      "uview-ui": "^2.0.0",
+      "uni-ui": "^1.4.0"
+    ],
+    "utils": [
+      "lodash": "^4.17.21",
+      "dayjs": "^1.11.0"
+    ]
+  },
+  "build_config": {
+    "dev": {
+      "command": "npm run dev:%PLATFORM%",
+      "description": "开发模式，支持微信、支付宝、百度、QQ等平台"
+    },
+    "build": {
+      "command": "npm run build:%PLATFORM%",
+      "description": "生产构建，生成各平台小程序代码"
+    }
+  },
+  "platform_configs": {
+    "wechat": {
+      "appid": "你的微信小程序AppID",
+      "setting": {
+        "urlCheck": false,
+        "es6": true,
+        "enhance": true
+      }
+    },
+    "alipay": {
+      "appid": "你的支付宝小程序AppID"
+    },
+    "baidu": {
+      "appid": "你的百度小程序AppID"
+    }
+  },
+  "features": [
+    {
+      "name": "用户登录",
+      "description": "支持微信登录、手机号登录",
+      "implementation": "使用uni.login和uni.getUserProfile"
+    },
+    {
+      "name": "页面路由",
+      "description": "支持页面跳转、TabBar导航",
+      "implementation": "使用uni.navigateTo和pages.json配置"
+    },
+    {
+      "name": "网络请求",
+      "description": "封装统一的API调用",
+      "implementation": "使用uni.request封装"
+    },
+    {
+      "name": "数据缓存",
+      "description": "本地数据存储",
+      "implementation": "使用uni.setStorageSync和uni.getStorageSync"
+    },
+    {
+      "name": "图片上传",
+      "description": "支持图片选择和上传",
+      "implementation": "使用uni.chooseImage和uni.uploadFile"
+    },
+    {
+      "name": "支付功能",
+      "description": "支持微信支付、支付宝支付",
+      "implementation": "使用各平台支付API"
+    },
+    {
+      "name": "地图功能",
+      "description": "支持地图展示和位置选择",
+      "implementation": "使用uni.getLocation和map组件"
+    },
+    {
+      "name": "分享功能",
+      "description": "支持页面分享和海报生成",
+      "implementation": "使用onShareAppMessage和canvas"
+    }
+  ],
+  "best_practices": [
+    "使用rpx作为单位，适配不同屏幕",
+    "合理使用条件编译处理平台差异",
+    "组件化开发，提高代码复用性",
+    "使用小程序云开发减少服务器成本",
+    "优化图片资源，减少包体积",
+    "合理使用缓存，提升用户体验",
+    "遵循各平台设计规范",
+    "使用async/await处理异步操作",
+    "添加错误处理和用户提示",
+    "使用TypeScript提高代码质量"
+  ],
+  "deployment_guide": {
+    "wechat": [
+      "1. 注册微信小程序账号",
+      "2. 获取AppID",
+      "3. 配置服务器域名",
+      "4. 上传代码到微信开发者工具",
+      "5. 提交审核",
+      "6. 发布上线"
+    ],
+    "alipay": [
+      "1. 注册支付宝小程序账号",
+      "2. 获取AppID",
+      "3. 配置服务器域名",
+      "4. 上传代码到支付宝开发者工具",
+      "5. 提交审核",
+      "6. 发布上线"
+    ]
+  }
+}

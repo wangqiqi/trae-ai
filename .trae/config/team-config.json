@@ -34,6 +34,11 @@
       "description": "专精Angular前端开发（第3优先级）"
     },
     {
+      "name": "uni-app工程师",
+      "role": "uniapp-engineer",
+      "description": "专精uni-app跨平台小程序开发，支持微信、支付宝、百度、QQ等主流小程序平台"
+    },
+    {
       "name": "Python AI工程师",
       "role": "python-ai-engineer",
       "description": "专精Python AI开发，负责CV算法、神经网络模型、PyTorch框架应用及AI工具开发"
@@ -167,7 +172,7 @@
     }
   ],
   "tech_stack_priority": {
-    "frontend": ["Vue", "React", "Angular", "Flutter"],
+    "frontend": ["Vue", "React", "Angular", "Flutter", "uni-app"],
     "backend": ["FastAPI", "Node.js", "Go", "Rust"]
   },
   "documentation": {
