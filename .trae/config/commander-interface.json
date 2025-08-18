@@ -1,0 +1,112 @@
+{
+  "commander_system": {
+    "name": "统一项目指挥官",
+    "version": "2.0.0",
+    "description": "确保所有项目都通过标准化决策流程，用户拥有最终指挥权",
+    "workflow": {
+      "universal_command_flow": [
+        {
+          "step": 1,
+          "action": "启动决策流程",
+          "tool": "python .trae/scripts/project-init.py",
+          "user_control": "全程参与每个决策点",
+          "output": "项目决策记录文档"
+        },
+        {
+          "step": 2,
+          "action": "团队自动组建",
+          "tool": "基于决策结果调用对应AI专家",
+          "user_control": "可调整团队配置",
+          "output": "项目团队配置"
+        },
+        {
+          "step": 3,
+          "action": "项目执行",
+          "tool": "项目经理统一指挥",
+          "user_control": "实时查看进度、随时调整",
+          "output": "每日进度报告"
+        },
+        {
+          "step": 4,
+          "action": "里程碑评审",
+          "tool": "项目经理组织评审会议",
+          "user_control": "参与评审、提出修改意见",
+          "output": "里程碑评审报告"
+        }
+      ]
+    },
+    "user_command_interface": {
+      "universal_commands": {
+        "start_project": {
+          "description": "启动任何类型项目",
+          "usage": "python .trae/scripts/project-init.py",
+          "guarantee": "100%经过标准化决策流程"
+        },
+        "adjust_team": {
+          "description": "调整团队配置",
+          "usage": "通知项目经理重新配置",
+          "guarantee": "实时响应调整需求"
+        },
+        "change_requirements": {
+          "description": "修改项目需求",
+          "usage": "直接告知项目经理",
+          "guarantee": "评估影响、调整计划"
+        },
+        "emergency_stop": {
+          "description": "紧急停止项目",
+          "usage": "直接下达停止命令",
+          "guarantee": "立即执行、保存当前状态"
+        }
+      }
+    },
+    "decision_authority": {
+      "user_final_say": [
+        "技术栈选择",
+        "团队配置调整", 
+        "项目时间线修改",
+        "功能范围变更",
+        "质量标准设定",
+        "上线时间决策"
+      ],
+      "ai_advisory_only": [
+        "技术实现建议",
+        "最佳实践推荐",
+        "风险评估报告",
+        "性能优化建议"
+      ]
+    },
+    "monitoring_dashboard": {
+      "real_time_info": [
+        "当前项目状态",
+        "各组工作进度",
+        "遇到的技术难题",
+        "预计完成时间",
+        "风险预警信息"
+      ],
+      "user_actions": [
+        "查看详细进度",
+        "调整优先级",
+        "增加/减少功能",
+        "更换技术方案",
+        "提前/延后交付"
+      ]
+    }
+  },
+  "project_types": {
+    "web_application": {
+      "decision_template": ".trae/templates/project-decision-checklist.json",
+      "team_template": ".trae/templates/backend-fastapi.json + .trae/templates/frontend-vue.json",
+      "standard_flow": true
+    },
+    "mobile_application": {
+      "decision_template": ".trae/templates/project-decision-checklist.json", 
+      "team_template": ".trae/templates/mobile-flutter.json",
+      "standard_flow": true
+    },
+    "ai_system": {
+      "decision_template": ".trae/templates/project-decision-checklist.json",
+      "team_template": ".trae/templates/ai-python.json",
+      "standard_flow": true
+    }
+  }
+}

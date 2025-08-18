@@ -1,14 +1,19 @@
 # 🚀 超级个体开发团队 - AI智能体系统
 
+**版本：v2.1.0-MVP** | **最后更新：2024-12-19**
+
 这是一个**完整的18角色AI智能体开发团队**，模拟真实开发团队的全生命周期工作流程，覆盖从需求分析到AI模型部署的完整技术栈。新增**项目经理**角色，统一协调17个技术专家。
 
 ## 🎯 系统特色
 
 - **18个专业角色** - 覆盖AI、Web、移动、小程序、系统级开发的完整技术栈
-- **9种技术模板** - 支持Python AI、C++部署、Web全栈、小程序开发
+- **12种技术模板** - 支持Python AI、C++部署、Web全栈、小程序开发
+- **MVP极速模式** - 1小时启动项目，1-2周交付完整产品
+- **编码问题自动修复** - 中文乱码、端口冲突等常见问题秒级解决
 - **强制Review机制** - 每个阶段都有质量保障
 - **多端全栈** - Vue/React/Angular/Flutter/uni-app + FastAPI/Node.js/Go/Rust
 - **AI全链路** - 从模型训练到生产部署
+- **统一指挥** - 项目经理全权协调，减少80%沟通成本
 
 ## 👥 18角色智能体团队
 
@@ -87,7 +92,7 @@
 │   ├── workflow-rules.md           # 8阶段工作流程
 │   ├── coding-standards.md         # 编码规范
 │   └── project-management-rules.md # 项目管理规范
-└── 📦 templates/                   # 10种技术模板
+└── 📦 templates/                   # 12种技术模板
     ├── project-kickoff-template.json # 项目启动模板
     ├── ai-python.json              # Python AI项目模板
     ├── cpp-ai-deployment.json      # C++ AI部署模板
@@ -97,12 +102,29 @@
     ├── frontend-react.json         # React前端模板
     ├── frontend-angular.json       # Angular前端模板
     ├── frontend-uniapp.json        # uni-app小程序模板
+    ├── mvp-web-app.json            # MVP Web应用模板（新增！）
+    ├── mvp-miniprogram.json        # MVP小程序模板（新增！） 
     └── config-templates.json       # 通用配置模板
 ```
 
 ## 🚀 快速开始指南
 
 ### 🎯 项目经理统一指挥模式（推荐）
+
+#### 🚀 MVP极速模式（新增！）
+```bash
+# 1小时快速启动MVP项目
+"作为项目经理，请启动MVP Todo应用，1周内完成：
+- Vue3 + FastAPI + SQLite
+- 基础CRUD功能
+- 解决中文乱码和端口冲突问题"
+
+# 项目经理将自动：
+# - 选择mvp_web_app模板
+# - 分配Vue工程师 + FastAPI工程师
+# - 内置编码问题修复
+# - 1-2周交付完整可用产品
+```
 
 #### 1️⃣ 项目经理启动项目
 ```bash
@@ -124,6 +146,21 @@
 - 需要Web管理后台和移动App
 - 支持实时视频流分析
 - 提供RESTful API接口"
+```
+
+#### 🔧 编码问题快速修复（新增！）
+```bash
+# 遇到中文乱码？
+"项目经理，当前项目出现中文乱码，请协调团队修复：
+- Python UTF-8设置
+- 数据库编码配置
+- 响应头charset设置"
+
+# 端口冲突？
+"项目经理，服务启动报端口占用错误，请：
+- 检测占用进程
+- 清理冲突端口
+- 重新启动服务"
 ```
 
 ### 🔄 传统单角色模式（可选）

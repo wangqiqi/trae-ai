@@ -1,8 +1,14 @@
 {
   "project_manager_config": {
-    "name": "18人超级团队协调配置",
-    "version": "3.0.0",
-    "description": "项目经理协调18个AI智能体的完整配置，包括角色映射、沟通机制、任务分配策略",
+    "name": "18人超级团队协调配置（MVP增强版）",
+    "version": "4.0.0",
+    "description": "项目经理统一指挥的18角色AI智能体体系，新增MVP快速决策流程、标准化工作流、编码问题快速修复机制",
+    "core_principles": {
+      "统一指挥": "所有任务由项目经理统一分配和协调",
+      "MVP优先": "优先采用最小可行产品模式",
+      "快速迭代": "2-4周为一个完整迭代周期",
+      "编码保障": "内置乱码、端口冲突等常见问题解决方案"
+    },
     "team_structure": {
       "project_manager": {
         "role": "project-manager",
@@ -69,24 +75,42 @@
       }
     },
     "project_templates": {
+      "mvp_web_app": {
+        "name": "MVP Web应用",
+        "required_roles": ["vue-engineer", "fastapi-engineer"],
+        "optional_roles": ["project-manager"],
+        "timeline": "1-2周",
+        "features": ["基础CRUD", "用户认证", "响应式设计"],
+        "tech_stack": ["Vue3", "FastAPI", "SQLite"],
+        "deployment": "本地开发服务器"
+      },
+      "mvp_miniprogram": {
+        "name": "MVP小程序",
+        "required_roles": ["uniapp-engineer", "fastapi-engineer"],
+        "optional_roles": ["project-manager"],
+        "timeline": "3-7天",
+        "features": ["列表展示", "表单提交", "数据存储"],
+        "tech_stack": ["uni-app", "FastAPI", "SQLite"],
+        "deployment": "本地测试"
+      },
       "web_app": {
         "required_roles": ["vue-engineer", "fastapi-engineer", "test-engineer"],
-        "optional_roles": ["devops-engineer", "technical-writer"],
+        "optional_roles": ["devops-engineer", "technical-writer", "project-manager"],
         "timeline": "2-4周"
       },
       "mobile_app": {
         "required_roles": ["flutter-engineer", "nodejs-engineer", "test-engineer"],
-        "optional_roles": ["ui-x-designer", "devops-engineer"],
+        "optional_roles": ["ui-x-designer", "devops-engineer", "project-manager"],
         "timeline": "3-6周"
       },
       "miniprogram": {
         "required_roles": ["uniapp-engineer", "nodejs-engineer", "test-engineer"],
-        "optional_roles": ["ui-x-designer"],
+        "optional_roles": ["ui-x-designer", "project-manager"],
         "timeline": "1-3周"
       },
       "ai_system": {
         "required_roles": ["python-ai-engineer", "cpp-ai-deployment-engineer", "system-architect"],
-        "optional_roles": ["devops-engineer", "test-engineer"],
+        "optional_roles": ["devops-engineer", "test-engineer", "project-manager"],
         "timeline": "4-8周"
       }
     },
@@ -111,9 +135,42 @@
         "进度风险", 
         "资源风险",
         "质量风险",
-        "沟通风险"
+        "沟通风险",
+        "编码问题"
       ],
+      "common_issues": {
+        "encoding_problems": {
+          "description": "中文乱码、编码不一致",
+          "solutions": [
+            "Python强制UTF-8设置",
+            "数据库UTF-8配置",
+            "响应头charset设置",
+            "Windows控制台编码修复"
+          ],
+          "auto_fix": true
+        },
+        "port_conflicts": {
+          "description": "端口占用、服务冲突",
+          "solutions": [
+            "自动检测端口占用",
+            "动态端口分配",
+            "进程清理脚本",
+            "服务重启机制"
+          ],
+          "auto_fix": true
+        },
+        "dependency_issues": {
+          "description": "依赖版本冲突、环境配置",
+          "solutions": [
+            "虚拟环境隔离",
+            "requirements.txt标准化",
+            "Docker容器化",
+            "CI/CD自动化"
+          ]
+        }
+      },
       "escalation_levels": [
+        "自动修复",
         "组内解决",
         "跨组协调",
         "项目经理介入",

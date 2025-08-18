@@ -1,0 +1,70 @@
+{
+  "template_name": "项目启动决策检查清单",
+  "version": "1.0.0",
+  "description": "确保每个项目启动都经过标准化决策流程",
+  "decision_checkpoints": [
+    {
+      "checkpoint": "需求确认",
+      "phase": "启动前",
+      "user_action_required": true,
+      "questions": [
+        "项目类型确认：Web应用/移动应用/小程序/AI系统？",
+        "技术栈选择：是否需要从模板中选择？",
+        "项目规模：入门级/中级/高级？",
+        "开发周期：1周/2-4周/1-2个月？",
+        "团队配置：是否需要完整团队还是精简版？"
+      ],
+      "outputs": [
+        "需求规格说明书",
+        "技术选型确认",
+        "项目时间线"
+      ]
+    },
+    {
+      "checkpoint": "团队组建",
+      "phase": "启动前",
+      "user_action_required": true,
+      "questions": [
+        "是否需要产品经理参与需求分析？",
+        "UI/UX设计是否需要专业设计师？",
+        "测试工程师是否从项目开始就介入？",
+        "DevOps工程师是否需要参与部署规划？"
+      ],
+      "selection_interface": {
+        "team_templates": {
+          "精简团队": ["项目经理", "全栈工程师", "测试工程师"],
+          "标准团队": ["项目经理", "前端工程师", "后端工程师", "测试工程师"],
+          "完整团队": ["项目经理", "产品经理", "UI设计师", "前端工程师", "后端工程师", "测试工程师", "DevOps工程师"]
+        }
+      }
+    },
+    {
+      "checkpoint": "里程碑确认",
+      "phase": "启动前",
+      "user_action_required": true,
+      "milestones": [
+        "需求确认和设计阶段",
+        "核心功能开发完成",
+        "UI/UX设计完成",
+        "集成测试完成",
+        "部署和上线"
+      ],
+      "customization_options": [
+        "是否跳过设计阶段？",
+        "是否采用MVP（最小可行产品）模式？",
+        "是否需要演示每个里程碑？"
+      ]
+    }
+  ],
+  "decision_recording": {
+    "format": "markdown",
+    "location": "docs/project-decisions.md",
+    "required_fields": [
+      "决策时间",
+      "决策人",
+      "决策内容",
+      "决策依据",
+      "预期影响"
+    ]
+  }
+}

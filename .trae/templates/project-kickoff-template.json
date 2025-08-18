@@ -3,9 +3,77 @@
   "version": "1.0.0",
   "description": "项目经理一键启动新项目的标准模板，包含18人团队完整配置",
   "project_types": {
+    "mvp_web_app": {
+      "name": "MVP Web应用（极速版）",
+      "description": "最小可行产品，1-2周完成基础功能，包含编码问题自动修复",
+      "team_config": {
+        "required_roles": [
+          {
+            "role": "vue-engineer",
+            "tasks": ["Vue3页面开发", "响应式布局", "API对接"],
+            "timeline": "3-5天"
+          },
+          {
+            "role": "fastapi-engineer", 
+            "tasks": ["CRUD API", "SQLite数据库", "编码修复"],
+            "timeline": "2-4天"
+          }
+        ],
+        "optional_roles": [
+          {
+            "role": "project-manager",
+            "tasks": ["项目协调", "进度跟踪", "问题修复"],
+            "trigger": "需要统一指挥"
+          }
+        ]
+      },
+      "milestones": [
+        "需求确认(2小时)",
+        "技术方案(4小时)",
+        "基础开发(2-3天)",
+        "编码修复(1天)",
+        "功能测试(1天)",
+        "交付完成(1-2周)"
+      ],
+      "deliverables": [
+        "完整前后端代码",
+        "编码问题修复报告",
+        "运行指南"
+      ],
+      "auto_fix": ["中文乱码", "端口冲突", "依赖问题"]
+    },
+    "mvp_miniprogram": {
+      "name": "MVP小程序（极速版）",
+      "description": "最小可行小程序，3-7天完成核心功能",
+      "team_config": {
+        "required_roles": [
+          {
+            "role": "uniapp-engineer",
+            "tasks": ["小程序页面", "多端适配", "数据绑定"],
+            "timeline": "2-4天"
+          },
+          {
+            "role": "fastapi-engineer",
+            "tasks": ["数据API", "用户管理", "存储服务"],
+            "timeline": "1-3天"
+          }
+        ]
+      },
+      "milestones": [
+        "需求确认(1小时)",
+        "页面开发(2-3天)",
+        "接口对接(1天)",
+        "测试发布(1-2天)"
+      ],
+      "deliverables": [
+        "小程序源码",
+        "后端API",
+        "部署说明"
+      ]
+    },
     "web_application": {
-      "name": "Web应用项目",
-      "description": "标准Web应用开发，前后端分离架构",
+      "name": "标准Web应用项目",
+      "description": "完整Web应用开发，前后端分离架构",
       "team_config": {
         "required_roles": [
           {
@@ -34,6 +102,11 @@
             "role": "devops-engineer",
             "tasks": ["CI/CD配置", "部署脚本"],
             "trigger": "需要生产部署"
+          },
+          {
+            "role": "project-manager",
+            "tasks": ["统一指挥", "进度协调", "风险管理"],
+            "trigger": "复杂项目需要"
           }
         ]
       },
