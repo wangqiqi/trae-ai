@@ -1,76 +1,52 @@
 # 🚀 超级个体开发团队 - 快速上手指南
 
-## 📋 你现在拥有的
+## 📋 系统概览
 
-✅ **14个AI智能体角色** - 完整的技术团队
-✅ **8种项目模板** - 覆盖AI、Web、部署全场景
-✅ **Git版本管理** - 所有配置已安全保存
-✅ **强制Review流程** - 每个阶段质量保障
+✅ **17个AI智能体角色** - 完整的技术团队
+✅ **9种项目模板** - 覆盖主流技术栈
+✅ **8阶段工作流程** - 从需求到部署的完整链路
+✅ **自然语言驱动** - 用对话就能开发项目
 
 ## 🎯 3分钟启动你的第一个项目
 
 ### 场景1：Python AI项目（图像分类）
 
 ```bash
-# 1. 进入项目目录
-cd e:\study\learn_trae
+# 1. 启动项目（选择Python AI + FastAPI + Vue）
+python-ai-engineer "创建一个图像识别API，支持上传图片并返回识别结果"
 
-# 2. 复制AI模板到新项目目录
-mkdir my-ai-project
-cd my-ai-project
-cp ..\.trae\templates\ai-python.json project-template.json
-
-# 3. 开始AI开发
-# 在Trae中调用：
-"作为Python AI工程师，请创建ResNet50图像分类项目，支持猫狗分类，包含训练脚本和Streamlit界面"
+# 2. 等待8个阶段完成...
+# 3. 部署上线！
 ```
 
-### 场景2：Vue全栈项目（用户管理系统）
+### 场景2：Vue全栈应用
 
 ```bash
-# 1. 创建新项目
-mkdir my-vue-app
-cd my-vue-app
+# 1. 启动项目（选择Vue + FastAPI）
+vue-engineer "创建一个电商网站，包含商品展示、购物车、订单管理"
 
-# 2. 复制前后端模板
-cp ..\.trae\templates\frontend-vue.json frontend.json
-cp ..\.trae\templates\backend-fastapi.json backend.json
-
-# 3. 开始开发
-# 在Trae中调用：
-"作为产品经理，请分析用户管理系统的需求，包含注册登录、用户CRUD、权限管理"
+# 2. 等待8个阶段完成...
+# 3. 部署上线！
 ```
 
-### 场景3：Flutter跨平台App（实时聊天）
+### 场景3：微信小程序项目
 
 ```bash
-# 1. 创建新项目
-mkdir my-flutter-chat
-cd my-flutter-chat
+# 1. 启动项目（选择uni-app + FastAPI）
+uniapp-engineer "创建一个电商小程序，包含商品展示、购物车、微信支付"
 
-# 2. 复制Flutter和Go模板
-cp ..\.trae\templates\frontend-flutter.json frontend.json
-cp ..\.trae\templates\backend-go.json backend.json
-
-# 3. 开始开发
-# 在Trae中调用：
-"作为Flutter工程师，请创建跨平台聊天App，支持iOS/Android，包含实时消息、用户认证、消息历史"
+# 2. 等待8个阶段完成...
+# 3. 发布上线！
 ```
 
-### 场景4：Rust高性能服务（实时数据处理）
+### 场景4：跨平台小程序项目
 
 ```bash
-# 1. 创建新项目
-mkdir my-rust-service
-cd my-rust-service
+# 1. 启动项目（uni-app多端小程序）
+uniapp-engineer "创建跨平台小程序，支持微信+支付宝+百度，统一后台管理"
 
-# 2. 复制Rust和React模板
-cp ..\.trae\templates\backend-rust.json backend.json
-cp ..\.trae\templates\frontend-react.json frontend.json
-
-# 3. 开始开发
-# 在Trae中调用：
-"作为Rust工程师，请创建高性能实时数据处理服务，支持WebSocket连接，React前端监控面板"
+# 2. 等待8个阶段完成...
+# 3. 多端发布！
 ```
 
 ## 🔧 智能体调用模板
@@ -155,7 +131,7 @@ A: 每个项目创建时复制`.trae`目录，然后按需修改配置文件
 ## 🎉 恭喜！
 
 你现在拥有了一个完整的AI开发团队！
-- **14个专家级智能体**随时待命
+- **17个专家级智能体**随时待命
 - **8种项目模板**一键生成
 - **Git版本管理**安全可靠
 - **强制质量保障**每个环节
