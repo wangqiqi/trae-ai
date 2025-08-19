@@ -16,46 +16,57 @@
 SOLO-AI-Assistant/
 ├── .trae/                  # AI系统核心目录
 │   ├── agents/            # 智能体配置（18个角色）
-│   ├── data/              # 项目数据存储
 │   ├── scripts/           # API服务器
 │   ├── templates/         # 项目模板
+│   ├── trae-console.py    # 🚀 统一控制台（推荐）
 │   ├── .trae-config.json  # 智能体配置
-│   └── trae-dev.py        # 启动脚本
-├── .trae-dev.py           # 极简入口
+│   └── PROJECT-CHOICE-GUIDE.md  # 智能体选择指南
+├── .trae-dev.py           # 极简入口（兼容旧版）
+├── user-data/            # 📊 用户项目数据（独立管理）
 ├── .gitignore            # Git配置
 └── README.md             # 本文档
 ```
 
 ## 🚀 快速开始
 
-### 1. 直接对话开发（推荐）
+### 🆕 方法1：统一控制台（推荐）
 
-在Trae对话框直接输入：
-
+**交互模式**（最直观）：
+```bash
+python .trae/trae-console.py
+# 然后输入：我想创建一个Vue3任务管理系统
 ```
-@产品经理 我想创建一个Vue3任务管理应用
+
+**命令行模式**：
+```bash
+# 创建项目
+python .trae/trae-console.py create-project "Vue3任务管理系统"
+
+# 查看项目列表  
+python .trae/trae-console.py list-projects
+
+# 管理智能体
+python .trae/trae-console.py list-agents
 ```
 
-### 2. 项目模板快速创建
+### 🔄 方法2：极简入口（兼容旧版）
 
-```
+```bash
+# 快速创建
+python .trae-dev.py "创建React电商网站"
+
+# 项目模板
 #todo 任务管理应用
 #ecommerce 电商网站
-#blog 博客系统  
+#blog 博客系统
 #ai AI识别系统
 ```
 
-### 3. 命令行使用
+### 🌐 方法3：对话开发（自然语言）
 
-```bash
-# 创建项目
-python .trae-dev.py "创建React电商网站"
-
-# 列出所有项目
-python .trae-dev.py list
-
-# 启动Web界面
-python .trae/scripts/solo-api-server.py
+在Trae对话框直接输入：
+```
+@产品经理 我想创建一个Vue3任务管理应用
 ```
 
 ## 🤖 可用智能体
@@ -135,9 +146,11 @@ python .trae-dev.py "开始项目"
 ## 📊 项目数据
 
 项目信息存储在：
-- `.trae/data/projects.json` - 项目列表
-- `.trae/data/risks.json` - 风险评估
-- `.trae/data/demo-projects.json` - 示例项目
+- `user-data/projects.json` - 项目列表（用户数据独立管理）
+- `user-data/risks.json` - 风险评估
+- `user-data/demo-projects.json` - 示例项目
+
+> 💡 **数据分离设计**：系统配置与用户数据完全分离，便于版本管理和迁移
 
 ## 🔧 API接口
 
@@ -161,10 +174,13 @@ open http://localhost:8000
 
 ### 测试智能体
 ```bash
-# 测试产品经理智能体
+# 测试统一控制台
+python .trae/trae-console.py create-project "测试项目"
+
+# 测试极简入口（兼容）
 python .trae-dev.py "@产品经理 分析需求"
 
-# 测试项目创建
+# 测试项目模板
 python .trae-dev.py "#todo 创建任务管理应用"
 ```
 
@@ -174,7 +190,8 @@ python .trae-dev.py "#todo 创建任务管理应用"
 
 1. **添加新智能体**: 在`.trae/agents/`目录添加配置文件
 2. **创建新模板**: 在`.trae/templates/`目录添加模板文件
-3. **优化逻辑**: 修改`.trae/scripts/`中的处理逻辑
+3. **优化逻辑**: 修改`.trae/trae-console.py`中的处理逻辑
+4. **查看智能体选择**: 参考`.trae/PROJECT-CHOICE-GUIDE.md`了解智能体设计思路
 
 ## 🐛 常见问题
 
