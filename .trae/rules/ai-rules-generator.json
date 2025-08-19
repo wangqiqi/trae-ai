@@ -1,0 +1,110 @@
+{
+  "name": "AI规则生成器",
+  "version": "2.1.0",
+  "description": "基于6A工作流和最佳实践的AI规则自动生成器",
+  "rule_types": {
+    "web_development": {
+      "description": "Web开发规则集",
+      "prompts": [
+        "前端开发规范",
+        "后端API设计",
+        "数据库设计",
+        "安全最佳实践"
+      ],
+      "templates": [
+        "vue3-fastapi-template",
+        "react-express-template",
+        "angular-spring-template"
+      ]
+    },
+    "mobile_development": {
+      "description": "移动开发规则集", 
+      "prompts": [
+        "小程序开发规范",
+        "React Native最佳实践",
+        "Flutter开发指南",
+        "原生开发规范"
+      ],
+      "templates": [
+        "uniapp-template",
+        "flutter-template",
+        "react-native-template"
+      ]
+    },
+    "ai_integration": {
+      "description": "AI集成规则集",
+      "prompts": [
+        "模型集成规范",
+        "推理优化指南",
+        "数据处理标准",
+        "性能监控规范"
+      ],
+      "templates": [
+        "ai-service-template",
+        "ml-pipeline-template"
+      ]
+    }
+  },
+  "generation_rules": {
+    "context_analysis": {
+      "description": "项目上下文分析",
+      "steps": [
+        "识别项目类型",
+        "分析技术栈",
+        "确定团队规模",
+        "评估时间约束"
+      ]
+    },
+    "rule_selection": {
+      "description": "规则选择策略",
+      "criteria": [
+        "项目复杂度",
+        "团队经验水平", 
+        "交付时间要求",
+        "质量要求等级"
+      ]
+    },
+    "customization": {
+      "description": "规则定制选项",
+      "parameters": [
+        "代码风格偏好",
+        "测试覆盖率要求",
+        "文档详细程度",
+        "部署环境配置"
+      ]
+    }
+  },
+  "integration_workflow": {
+    "step1_context": "分析项目需求和约束",
+    "step2_select": "选择最适合的规则模板",
+    "step3_customize": "根据项目特点定制规则",
+    "step4_validate": "验证规则适用性",
+    "step5_deploy": "部署规则到项目"
+  },
+  "quality_gates": {
+    "code_review": "代码审查标准",
+    "testing": "测试覆盖率要求",
+    "documentation": "文档完整性检查",
+    "performance": "性能基准测试"
+  },
+  "usage_examples": {
+    "web_project": {
+      "command": "generate-rules web_development --stack vue3+fastapi --team 3 --timeline 2weeks",
+      "output": [
+        "前端Vue3开发规范",
+        "FastAPI后端规范",
+        "数据库设计规范",
+        "API文档标准"
+      ]
+    },
+    "mobile_project": {
+      "command": "generate-rules mobile_development --type uniapp --features payment+auth",
+      "output": [
+        "UniApp开发规范",
+        "支付集成规范",
+        "用户认证规范",
+        "小程序发布流程"
+      ]
+    }
+  }
+}
