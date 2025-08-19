@@ -1,102 +1,10 @@
 {
   "trae_ai_assistant": {
-    "version": "2.0",
+    "version": "2.1",
     "mode": "in_dialog",
-    "agents": {
-      "@产品经理": {
-        "role": "产品需求分析和规划",
-        "description": "负责需求分析、功能规划、用户故事编写",
-        "prompt": "作为产品经理，请分析以下需求并输出：1) 用户故事 2) 功能清单 3) 技术方案建议",
-        "examples": [
-          "@产品经理 我想做一个任务管理应用",
-          "@产品经理 分析这个电商项目需求"
-        ]
-      },
-      "@系统架构师": {
-        "role": "技术选型和架构设计", 
-        "description": "负责技术选型、系统架构、数据库设计",
-        "prompt": "作为系统架构师，请为以下项目设计：1) 技术栈选择 2) 系统架构图 3) 数据库设计",
-        "examples": [
-          "@系统架构师 设计一个Vue3+FastAPI的架构",
-          "@系统架构师 这个AI项目用什么技术栈"
-        ]
-      },
-      "@Vue工程师": {
-        "role": "Vue.js前端开发",
-        "description": "负责Vue.js前端开发、组件设计、状态管理",
-        "prompt": "作为Vue工程师，请创建以下功能的前端代码：使用Vue3+TypeScript，包含组件结构、状态管理、API调用",
-        "examples": [
-          "@Vue工程师 创建一个任务列表页面",
-          "@Vue工程师 设计用户登录表单"
-        ]
-      },
-      "@React工程师": {
-        "role": "React前端开发",
-        "description": "负责React前端开发、Hooks、状态管理",
-        "prompt": "作为React工程师，请使用React+TypeScript创建以下功能，包含组件、状态管理、API集成",
-        "examples": [
-          "@React工程师 创建一个电商商品页面",
-          "@React工程师 设计响应式导航栏"
-        ]
-      },
-      "@Python工程师": {
-        "role": "Python后端开发",
-        "description": "负责FastAPI后端、数据库、API设计",
-        "prompt": "作为Python工程师，请使用FastAPI创建以下功能的API，包含路由、模型、验证、数据库操作",
-        "examples": [
-          "@Python工程师 创建任务管理的CRUD API",
-          "@Python工程师 设计用户认证系统"
-        ]
-      },
-      "@Node工程师": {
-        "role": "Node.js后端开发",
-        "description": "负责Express.js后端、MongoDB、API设计",
-        "prompt": "作为Node工程师，请使用Express.js创建以下功能的API，包含路由、模型、验证、数据库操作",
-        "examples": [
-          "@Node工程师 创建博客系统的API",
-          "@Node工程师 设计文件上传功能"
-        ]
-      },
-      "@AI工程师": {
-        "role": "AI模型开发和集成",
-        "description": "负责机器学习模型、AI功能、数据处理",
-        "prompt": "作为AI工程师，请设计并实现以下AI功能：包含数据预处理、模型选择、训练、部署、API集成",
-        "examples": [
-          "@AI工程师 集成图像识别功能",
-          "@AI工程师 创建文本分类模型"
-        ]
-      },
-      "@测试工程师": {
-        "role": "测试和质量保证",
-        "description": "负责单元测试、集成测试、自动化测试",
-        "prompt": "作为测试工程师，请为以下功能创建完整的测试方案：单元测试、集成测试、端到端测试",
-        "examples": [
-          "@测试工程师 为登录功能写测试",
-          "@测试工程师 设计API测试用例"
-        ]
-      },
-      "@DevOps工程师": {
-        "role": "部署和运维",
-        "description": "负责Docker部署、CI/CD、服务器配置",
-        "prompt": "作为DevOps工程师，请设计以下部署方案：Docker容器化、CI/CD流程、生产环境配置",
-        "examples": [
-          "@DevOps工程师 部署Vue+FastAPI项目",
-          "@DevOps工程师 配置GitHub Actions"
-        ]
-      },
-      "@项目经理": {
-        "role": "项目整体管理和协调",
-        "description": "负责项目规划、进度管理、风险预警、团队协作",
-        "prompt": "作为项目经理，请为以下项目制定：项目计划、里程碑、任务分配、风险识别、时间估算",
-        "examples": [
-          "@项目经理 启动一个电商项目",
-          "@项目经理 评估这个项目的风险"
-        ]
-      }
-    },
     "interaction_modes": {
       "direct_call": "@智能体名 需求描述",
-      "project_mode": "#项目类型 需求描述",
+      "project_mode": "#项目类型 需求描述", 
       "workflow_mode": "开始工作流 项目名称"
     },
     "response_format": {
@@ -104,6 +12,66 @@
       "include_code": true,
       "include_plan": true,
       "include_next_steps": true
+    },
+    "workflows": {
+      "project_startup": {
+        "name": "项目启动工作流",
+        "description": "从需求到代码的完整项目启动流程",
+        "steps": [
+          {
+            "step": 1,
+            "agent": "@产品经理",
+            "action": "需求分析和功能规划",
+            "output": "PRD文档和功能清单"
+          },
+          {
+            "step": 2,
+            "agent": "@系统架构师", 
+            "action": "技术选型和架构设计",
+            "output": "技术方案文档和架构图"
+          },
+          {
+            "step": 3,
+            "agent": "@项目经理",
+            "action": "项目计划和任务分解",
+            "output": "项目计划和里程碑"
+          },
+          {
+            "step": 4,
+            "agent": "对应技术栈工程师",
+            "action": "项目初始化和基础代码",
+            "output": "项目骨架和初始代码"
+          }
+        ],
+        "trigger": "开始项目",
+        "example": "开始项目 电商网站 Vue+FastAPI"
+      },
+      "code_review": {
+        "name": "代码审查工作流",
+        "description": "自动化的代码质量检查和优化建议",
+        "steps": [
+          {
+            "step": 1,
+            "agent": "@测试工程师",
+            "action": "生成测试用例",
+            "output": "单元测试和集成测试"
+          },
+          {
+            "step": 2,
+            "agent": "@系统架构师",
+            "action": "架构和性能评估",
+            "output": "代码优化建议"
+          },
+          {
+            "step": 3,
+            "agent": "@DevOps工程师",
+            "action": "部署配置检查",
+            "output": "部署优化方案"
+          }
+        ],
+        "trigger": "审查代码",
+        "example": "审查代码 src/main.py"
+      }
     }
   }
 }
