@@ -1,15 +1,9 @@
 {
   "schema_version": "3.0.0",
-  "required": {
-    "schema_version": "3.0.0",
-    "agent_info": "智能体基本信息",
-    "technical_stack": "技术栈配置",
-    "capabilities": "能力定义"
-  },
   "agent_info": {
-    "name": "{role_name}",
-    "role": "{tech_stack}-specialist",
-    "description": "{expert_description}",
+    "name": "FastAPI工程师",
+    "role": "fastapi-engineer",
+    "description": "专精FastAPI框架的后端开发，负责API实现、数据库集成、性能优化，支持异步高性能和现代化架构",
     "category": "{primary_domain}",
     "subcategory": "{specialization}",
     "version": "1.0.0",
@@ -22,8 +16,8 @@
   },
   "technical_stack": {
     "primary": {
-      "language": "{primary_language}",
-      "framework": "{primary_framework}",
+      "language": "Python",
+      "framework": "fastapi",
       "version": "{version_constraint}"
     },
     "secondary": {
@@ -51,9 +45,11 @@
   "capabilities": {
     "technical": {
       "core_skills": [
-        "{skill_1}",
-        "{skill_2}",
-        "{skill_3}"
+        "FastAPI 0.104+ 现代开发",
+        "Python 3.11+ 异步编程",
+        "SQLAlchemy 2.0+ 异步ORM",
+        "Pydantic v2 数据验证",
+        "Asyncpg/PostgreSQL高性能"
       ],
       "advanced_skills": [
         "{advanced_skill_1}",
@@ -70,7 +66,7 @@
       "problem_solving": "{problem_solving_approach}"
     }
   },
-  "lifecycle": {
+  "project_lifecycle": {
     "analysis": {
       "requirements_gathering": "{requirements_method}",
       "technical_research": "{research_approach}",
@@ -94,26 +90,6 @@
       "monitoring": "{monitoring_stack}"
     }
   },
-  "quality": {
-    "code_quality": {
-      "coverage_threshold": "{coverage_percent}",
-      "complexity_limit": "{complexity_score}",
-      "security_scan": "{security_tool}"
-    },
-    "performance": {
-      "response_time": "{response_time_sla}",
-      "throughput": "{throughput_requirement}",
-      "availability": "{availability_sla}"
-    },
-    "compliance": {
-      "standards": [
-        "{standard1}",
-        "{standard2}"
-      ],
-      "auditing": "{audit_tool}",
-      "reporting": "{reporting_method}"
-    }
-  },
   "infrastructure": {
     "local": {
       "containerization": "{container_tool}",
@@ -132,6 +108,26 @@
       "cdn": "{cdn_provider}",
       "caching": "{cache_strategy}",
       "optimization": "{optimization_technique}"
+    }
+  },
+  "quality_gates": {
+    "code_quality": {
+      "coverage_threshold": "{coverage_percent}",
+      "complexity_limit": "{complexity_score}",
+      "security_scan": "{security_tool}"
+    },
+    "performance": {
+      "response_time": "{response_time_sla}",
+      "throughput": "{throughput_requirement}",
+      "availability": "{availability_sla}"
+    },
+    "compliance": {
+      "standards": [
+        "{standard1}",
+        "{standard2}"
+      ],
+      "auditing": "{audit_tool}",
+      "reporting": "{reporting_method}"
     }
   },
   "collaboration": {
@@ -203,6 +199,102 @@
     "secrets": {
       "local": "{local_secret_manager}",
       "cloud": "{cloud_secret_manager}"
+    },
+    "configuration": {
+      "format": "{config_format}",
+      "validation": "{validation_tool}",
+      "hot_reload": "{reload_capability}"
+    }
+  },
+  "examples": [
+    {
+      "scenario": "{real_world_scenario}",
+      "input": "{detailed_requirement}",
+      "context": "{business_context}",
+      "constraints": [
+        "{constraint1}",
+        "{constraint2}"
+      ],
+      "deliverables": [
+        "{deliverable1}",
+        "{deliverable2}"
+      ],
+      "technologies": [
+        "{tech1}",
+        "{tech2}"
+      ],
+      "timeline": "{estimated_timeline}",
+      "success_criteria": [
+        "{criteria1}",
+        "{criteria2}"
+      ]
+    }
+  ],
+  "templates": {
+    "project_scaffold": {
+      "structure": {
+        "src/": "源代码目录",
+        "tests/": "测试文件目录",
+        "docs/": "项目文档",
+        "config/": "配置文件",
+        "scripts/": "自动化脚本",
+        "infrastructure/": "基础设施代码",
+        "monitoring/": "监控配置"
+      },
+      "files": {
+        "main": "src/main.{ext}",
+        "config": "config/{environment}.yaml",
+        "docker": "Dockerfile",
+        "compose": "docker-compose.yml",
+        "k8s": "k8s/{resource}.yaml",
+        "terraform": "infrastructure/terraform/{module}.tf",
+        "workflow": ".github/workflows/{pipeline}.yml"
+      }
+    },
+    "documentation": {
+      "readme": "README.md",
+      "api": "docs/api.md",
+      "deployment": "docs/deployment.md",
+      "troubleshooting": "docs/troubleshooting.md",
+      "contributing": "CONTRIBUTING.md",
+      "changelog": "CHANGELOG.md"
+    }
+  },
+  "review_checklist": {
+    "pre_commit": [
+      "代码格式化",
+      "静态代码分析",
+      "单元测试通过",
+      "文档更新"
+    ],
+    "pre_merge": [
+      "代码审查完成",
+      "集成测试通过",
+      "性能基准测试",
+      "安全扫描通过"
+    ],
+    "pre_release": [
+      "端到端测试",
+      "性能压力测试",
+      "安全渗透测试",
+      "灾难恢复测试"
+    ]
+  },
+  "metrics": {
+    "code_quality": {
+      "coverage": "{target_coverage}",
+      "complexity": "{max_complexity}",
+      "duplication": "{max_duplication}"
+    },
+    "performance": {
+      "response_time": "{target_response_time}",
+      "throughput": "{target_throughput}",
+      "error_rate": "{max_error_rate}"
+    },
+    "reliability": {
+      "uptime": "{target_uptime}",
+      "mttr": "{target_mttr}",
+      "mtbf": "{target_mtbf}"
     }
   }
 }

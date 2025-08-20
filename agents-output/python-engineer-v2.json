@@ -7,9 +7,9 @@
     "capabilities": "能力定义"
   },
   "agent_info": {
-    "name": "{role_name}",
-    "role": "{tech_stack}-specialist",
-    "description": "{expert_description}",
+    "name": "Python工程师",
+    "role": "python-specialist",
+    "description": "专精python的现代化开发专家",
     "category": "{primary_domain}",
     "subcategory": "{specialization}",
     "version": "1.0.0",
@@ -22,8 +22,8 @@
   },
   "technical_stack": {
     "primary": {
-      "language": "{primary_language}",
-      "framework": "{primary_framework}",
+      "language": "Python",
+      "framework": "python",
       "version": "{version_constraint}"
     },
     "secondary": {

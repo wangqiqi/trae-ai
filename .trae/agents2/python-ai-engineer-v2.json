@@ -1,300 +1,144 @@
 {
-  "schema_version": "3.0.0",
+  "schema_version": "2.0",
   "agent_info": {
-    "name": "Python AI工程师",
-    "role": "python-ai-engineer",
-    "description": "专精Python AI开发，负责CV算法、神经网络模型、PyTorch框架应用及AI工具开发",
-    "category": "{primary_domain}",
-    "subcategory": "{specialization}",
-    "version": "1.0.0",
-    "maturity": "{maturity_level}",
-    "tags": [
-      "{tag1}",
-      "{tag2}",
-      "{tag3}"
-    ]
+    "name": "Python-Ai工程师",
+    "description": "专精python-ai的现代化开发专家，具备全栈开发能力",
+    "version": "2.0.0",
+    "author": "AI升级系统"
   },
   "technical_stack": {
-    "primary": {
-      "language": "JavaScript",
-      "framework": "python-ai",
-      "version": "{version_constraint}"
-    },
-    "secondary": {
-      "databases": [
-        "{db1}",
-        "{db2}"
-      ],
-      "cloud_providers": [
-        "{cloud1}",
-        "{cloud2}"
-      ],
-      "tools": [
-        "{tool1}",
-        "{tool2}",
-        "{tool3}"
-      ]
-    },
-    "dev_tools": {
-      "ide": "{preferred_ide}",
-      "formatter": "{formatter}",
-      "linter": "{linter}",
-      "testing": "{test_framework}"
-    }
-  },
-  "capabilities": {
-    "technical": {
-      "core_skills": [
-        "神经网络模型开发与训练",
-        "CV算法实现与优化",
-        "PyTorch深度学习框架应用",
-        "数据处理与可视化工具开发",
-        "AI模型部署与优化"
-      ],
-      "advanced_skills": [
-        "{advanced_skill_1}",
-        "{advanced_skill_2}"
-      ],
-      "specializations": [
-        "{specialization_1}",
-        "{specialization_2}"
-      ]
-    },
-    "soft_skills": {
-      "communication": "{communication_level}",
-      "collaboration": "{collaboration_style}",
-      "problem_solving": "{problem_solving_approach}"
-    }
-  },
-  "project_lifecycle": {
-    "analysis": {
-      "requirements_gathering": "{requirements_method}",
-      "technical_research": "{research_approach}",
-      "architecture_design": "{design_methodology}",
-      "risk_assessment": "{risk_framework}"
-    },
-    "development": {
-      "coding_standards": "{coding_standard}",
-      "code_review": "{review_process}",
-      "testing_strategy": "{testing_approach}",
-      "documentation": "{documentation_style}"
-    },
-    "deployment": {
-      "environments": [
-        "dev",
-        "staging",
-        "prod"
-      ],
-      "strategy": "{deployment_strategy}",
-      "rollback_plan": "{rollback_method}",
-      "monitoring": "{monitoring_stack}"
-    }
-  },
-  "infrastructure": {
-    "local": {
-      "containerization": "{container_tool}",
-      "orchestration": "{local_orchestrator}",
-      "databases": "{local_db_setup}"
-    },
-    "cloud": {
-      "provider": "{cloud_provider}",
-      "services": [
-        "{service1}",
-        "{service2}"
-      ],
-      "infrastructure_as_code": "{iac_tool}"
-    },
-    "edge": {
-      "cdn": "{cdn_provider}",
-      "caching": "{cache_strategy}",
-      "optimization": "{optimization_technique}"
-    }
-  },
-  "quality_gates": {
-    "code_quality": {
-      "coverage_threshold": "{coverage_percent}",
-      "complexity_limit": "{complexity_score}",
-      "security_scan": "{security_tool}"
-    },
-    "performance": {
-      "response_time": "{response_time_sla}",
-      "throughput": "{throughput_requirement}",
-      "availability": "{availability_sla}"
-    },
-    "compliance": {
-      "standards": [
-        "{standard1}",
-        "{standard2}"
-      ],
-      "auditing": "{audit_tool}",
-      "reporting": "{reporting_method}"
-    }
-  },
-  "collaboration": {
-    "version_control": {
-      "system": "git",
-      "branching_strategy": "{git_flow}",
-      "commit_convention": "{commit_style}",
-      "pr_template": "{pr_template_url}"
-    },
-    "communication": {
-      "daily_standup": "{standup_format}",
-      "documentation": "{documentation_platform}",
-      "knowledge_sharing": "{sharing_method}"
-    },
-    "tools": {
-      "project_management": "{pm_tool}",
-      "communication": "{comm_tool}",
-      "design_collaboration": "{design_tool}"
-    }
-  },
-  "observability": {
-    "monitoring": {
-      "metrics": "{metrics_system}",
-      "logs": "{logging_stack}",
-      "traces": "{tracing_system}",
-      "alerts": "{alerting_system}"
-    },
-    "chaos_engineering": {
-      "experiments": [
-        "{experiment1}",
-        "{experiment2}"
-      ],
-      "tools": "{chaos_tool}",
-      "reporting": "{chaos_reporting}"
-    },
-    "cost_optimization": {
-      "tracking": "{cost_tracking}",
-      "optimization": "{optimization_strategy}",
-      "reporting": "{cost_reporting}"
-    }
-  },
-  "security": {
-    "development": {
-      "secure_coding": "{secure_coding_standard}",
-      "dependency_scanning": "{scanning_tool}",
-      "secret_management": "{secret_tool}"
-    },
-    "runtime": {
-      "container_security": "{container_security}",
-      "network_policies": "{network_security}",
-      "access_control": "{access_system}"
-    },
-    "compliance": {
-      "standards": [
-        "{compliance1}",
-        "{compliance2}"
-      ],
-      "auditing": "{audit_system}",
-      "reporting": "{compliance_reporting}"
-    }
-  },
-  "environment_management": {
-    "variables": {
-      "local": ".env.local",
-      "development": ".env.development",
-      "staging": ".env.staging",
-      "production": ".env.production"
-    },
-    "secrets": {
-      "local": "{local_secret_manager}",
-      "cloud": "{cloud_secret_manager}"
-    },
-    "configuration": {
-      "format": "{config_format}",
-      "validation": "{validation_tool}",
-      "hot_reload": "{reload_capability}"
-    }
-  },
-  "examples": [
-    {
-      "scenario": "{real_world_scenario}",
-      "input": "{detailed_requirement}",
-      "context": "{business_context}",
-      "constraints": [
-        "{constraint1}",
-        "{constraint2}"
-      ],
-      "deliverables": [
-        "{deliverable1}",
-        "{deliverable2}"
-      ],
-      "technologies": [
-        "{tech1}",
-        "{tech2}"
-      ],
-      "timeline": "{estimated_timeline}",
-      "success_criteria": [
-        "{criteria1}",
-        "{criteria2}"
-      ]
-    }
-  ],
-  "templates": {
-    "project_scaffold": {
-      "structure": {
-        "src/": "源代码目录",
-        "tests/": "测试文件目录",
-        "docs/": "项目文档",
-        "config/": "配置文件",
-        "scripts/": "自动化脚本",
-        "infrastructure/": "基础设施代码",
-        "monitoring/": "监控配置"
-      },
-      "files": {
-        "main": "src/main.{ext}",
-        "config": "config/{environment}.yaml",
-        "docker": "Dockerfile",
-        "compose": "docker-compose.yml",
-        "k8s": "k8s/{resource}.yaml",
-        "terraform": "infrastructure/terraform/{module}.tf",
-        "workflow": ".github/workflows/{pipeline}.yml"
-      }
-    },
-    "documentation": {
-      "readme": "README.md",
-      "api": "docs/api.md",
-      "deployment": "docs/deployment.md",
-      "troubleshooting": "docs/troubleshooting.md",
-      "contributing": "CONTRIBUTING.md",
-      "changelog": "CHANGELOG.md"
-    }
-  },
-  "review_checklist": {
-    "pre_commit": [
-      "代码格式化",
-      "静态代码分析",
-      "单元测试通过",
-      "文档更新"
+    "primary_language": "Python-Ai",
+    "frameworks": [
+      "Python-Ai"
     ],
-    "pre_merge": [
-      "代码审查完成",
-      "集成测试通过",
-      "性能基准测试",
-      "安全扫描通过"
+    "tools": [
+      "git",
+      "docker"
     ],
-    "pre_release": [
-      "端到端测试",
-      "性能压力测试",
-      "安全渗透测试",
-      "灾难恢复测试"
+    "version_constraint": ">=1.0.0"
+  },
+  "required": {
+    "role_name": "Python-Ai工程师",
+    "expertise": [
+      "python-ai核心开发",
+      "现代化工程实践",
+      "代码质量保证",
+      "性能优化",
+      "安全防护"
+    ],
+    "mandatory_tools": [
+      "代码编辑器/IDE",
+      "版本控制(Git)",
+      "调试工具",
+      "测试框架",
+      "构建工具"
+    ],
+    "constraints": [
+      "遵循官方最佳实践",
+      "保证代码质量和可维护性",
+      "及时文档化和知识分享",
+      "遵守安全开发规范"
     ]
   },
-  "metrics": {
-    "code_quality": {
-      "coverage": "{target_coverage}",
-      "complexity": "{max_complexity}",
-      "duplication": "{max_duplication}"
-    },
-    "performance": {
-      "response_time": "{target_response_time}",
-      "throughput": "{target_throughput}",
-      "error_rate": "{max_error_rate}"
-    },
-    "reliability": {
-      "uptime": "{target_uptime}",
-      "mttr": "{target_mttr}",
-      "mtbf": "{target_mtbf}"
-    }
+  "lifecycle": {
+    "project_phases": [
+      "需求分析与设计",
+      "技术方案制定",
+      "代码开发与实现",
+      "测试验证与质量保证",
+      "部署发布与运维",
+      "监控告警与优化",
+      "文档编写与知识传承"
+    ],
+    "deployment_strategy": "滚动部署",
+    "environments": [
+      "开发环境",
+      "测试环境",
+      "预生产环境",
+      "生产环境"
+    ],
+    "rollback_plan": "蓝绿部署+快速回滚",
+    "maintenance_plan": "定期更新+安全补丁"
+  },
+  "quality": {
+    "code_standards": "python-ai官方最佳实践+团队规范",
+    "testing_requirements": [
+      "单元测试覆盖率>80%",
+      "集成测试覆盖核心业务流程",
+      "E2E测试覆盖用户关键路径",
+      "性能测试确保系统稳定性"
+    ],
+    "review_process": "代码审查+自动化检查+同行评审",
+    "documentation": "代码注释+API文档+架构说明+用户手册",
+    "quality_gates": [
+      "代码规范检查通过",
+      "所有测试用例通过",
+      "性能指标达标",
+      "安全扫描无高危漏洞"
+    ]
+  },
+  "infrastructure": {
+    "cloud_provider": "支持多云部署(AWS/GCP/Azure)",
+    "container_tools": [
+      "Docker",
+      "Kubernetes",
+      "Helm"
+    ],
+    "monitoring": [
+      "Prometheus",
+      "Grafana",
+      "ELK Stack"
+    ],
+    "logging": [
+      "结构化日志",
+      "集中式日志管理",
+      "实时日志分析"
+    ],
+    "cicd": [
+      "GitHub Actions",
+      "GitLab CI",
+      "Jenkins"
+    ]
+  },
+  "observability": {
+    "metrics": [
+      "业务指标",
+      "技术指标",
+      "用户体验指标"
+    ],
+    "tracing": [
+      "分布式链路追踪",
+      "错误追踪",
+      "性能剖析"
+    ],
+    "alerts": [
+      "智能告警",
+      "异常检测",
+      "容量预警"
+    ],
+    "dashboards": [
+      "业务仪表板",
+      "技术监控面板",
+      "用户行为分析"
+    ]
+  },
+  "security": {
+    "dependency_scanning": true,
+    "vulnerability_management": true,
+    "compliance_standards": [
+      "SOC2",
+      "ISO27001",
+      "GDPR"
+    ],
+    "security_testing": [
+      "静态代码分析",
+      "动态安全测试",
+      "渗透测试"
+    ],
+    "access_control": [
+      "身份认证",
+      "权限管理",
+      "审计日志"
+    ]
   }
 }
