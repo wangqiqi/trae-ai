@@ -1,176 +1,179 @@
-# 🚀 Trae AI v2.0 开发助手
+# 🤖 Trae AI v2.0 智能开发助手
 
-> **🎉 重大更新！** 已全面升级到v2.0标准，包含19个标准化智能体
->
-> ✅ **迁移完成**：所有v1智能体已升级到v2.0格式
-> ✅ **智能兼容**：支持v1和v2.0格式共存
-> ✅ **功能增强**：新增项目管理和模板系统
+## 🎯 这是什么？
 
-## 📋 快速开始
+**Trae AI v2.0** 是一个独立的智能开发助手系统，通过19个专业AI角色协作帮你完成软件开发项目。
 
-### 🎯 一键启动
+## 🚀 快速开始
+
+### 🎯 方法1：控制台模式
 ```bash
-# 方式1：直接运行（推荐）
+python .trae\trae-console.py
+```
+
+### 🎯 方法2：命令行模式
+```bash
+# 创建项目
+python .trae\trae-console.py create "我的新项目"
+
+# 查看项目列表
+python .trae\trae-console.py list
+```
+
+### 🎯 方法3：开发模式
+```bash
+# 使用开发助手
 python .trae-dev.py
 
-# 方式2：使用控制台
-python .trae/trae-console.py
-
-# 方式3：查看帮助
-python .trae-dev.py help
+# 调用智能体
+python .trae-dev.py "@产品经理 创建一个Vue3任务管理系统"
 ```
 
-### 💡 使用示例
-
-#### 🧠 智能体调用
-```bash
-# 产品经理模式
-@产品经理 创建一个Vue3任务管理系统，包含用户登录、任务CRUD、拖拽排序功能
-
-# 架构师模式  
-@系统架构师 设计一个微服务架构的电商平台，支持高并发和水平扩展
-
-# 开发工程师
-@Vue工程师 实现响应式任务看板，支持拖拽排序和状态管理
-@Python工程师 开发RESTful API，使用FastAPI和SQLAlchemy
-```
-
-#### 🏗️ 项目创建
-```bash
-# 直接描述需求
-创建React电商网站，包含商品展示、购物车、支付功能
-
-# 指定技术栈
-用Python做RESTful API，支持用户认证和数据库操作
-
-# 移动端开发
-帮我设计Flutter移动应用，实现本地存储和离线功能
-```
-
-## 🗂️ 目录结构（v2.0标准）
+## 📁 系统结构
 
 ```
 learn_trae/
-├── .trae/                    # Trae AI系统目录
-│   ├── agents2/             # v2.0智能体目录（19个标准智能体）
-│   │   ├── 产品经理-v2.json
-│   │   ├── Vue工程师-v2.json
-│   │   ├── Python工程师-v2.json
-│   │   └── ...（共19个）
-│   ├── scripts/             # 管理工具
-│   │   ├── agent-suitev2.py # v2.0管理工具
-│   │   └── templates/       # 模板文件
-│   ├── templates/           # 项目模板
-│   ├── .trae-config.json    # 系统配置
-│   ├── README.md           # 系统文档
-│   └── trae-console.py     # 控制台程序
-├── .trae-dev.py            # 极简入口（推荐）
-└── README.md               # 本文件
+├── .trae/                     # 🎯 Trae AI v2.0系统
+│   ├── trae-console.py       # 控制台程序
+│   ├── .trae-config.json     # 系统配置
+│   ├── agents2/              # 🎭 19个v2.0智能体
+│   ├── scripts/              # 管理工具
+│   └── user-data/            # 用户数据
+├── .trae-dev.py             # 🛠️ 开发助手
+├── README.md                # 📖 本文档
+└── [你的项目]/               # 🚀 创建的项目
 ```
 
-## 🧩 可用智能体（19个v2.0标准）
+## 🎭 v2.0 智能体团队
 
-### 👥 管理类
+### 管理类
 - **产品经理** - 需求分析和产品设计
-- **系统架构师** - 技术架构和系统设计
-- **测试工程师** - 测试策略和自动化测试
-- **DevOps工程师** - 部署和运维
+- **系统架构师** - 技术架构设计  
+- **项目经理** - 项目统筹管理
 
-### 💻 前端开发
+### 开发类
 - **Vue工程师** - Vue3/TypeScript开发
-- **React工程师** - React18/TypeScript开发
-- **Flutter工程师** - 跨平台移动开发
-- **小程序工程师** - 微信小程序开发
-
-### 🖥️ 后端开发
+- **React工程师** - React18开发
 - **Python工程师** - FastAPI/Django开发
 - **Node工程师** - Express/Nest.js开发
-- **Java工程师** - Spring Boot开发
-- **Go工程师** - Go微服务开发
+- **Go工程师** - Go语言后端开发
+- **Rust工程师** - Rust系统开发
 
-### 🗄️ 数据与AI
-- **数据工程师** - 数据处理和分析
-- **AI工程师** - 机器学习模型开发
-- **算法工程师** - 算法设计和优化
+### 移动端
+- **Flutter工程师** - 跨平台移动开发
+- **Uniapp工程师** - 小程序+App开发
 
-### 🛠️ 专项技术
-- **全栈工程师** - 前后端全栈开发
-- **安全工程师** - 安全审计和防护
-- **性能工程师** - 性能优化和调优
-- **运维工程师** - 系统监控和维护
+### 专项技术
+- **测试工程师** - 测试策略和质量保证
+- **DevOps工程师** - 部署和运维
+- **UI/UX设计师** - 界面和用户体验
+- **技术文档工程师** - 文档和技术写作
 
-## 🎯 项目模板
+## 🚀 项目模板
 
-| 模板类型 | 关键词 | 技术栈 | 功能特性 |
-|---------|--------|--------|----------|
-| **任务管理** | `任务管理`, `todo` | Vue3 + FastAPI | 任务CRUD、用户认证、拖拽排序 |
-| **电商平台** | `电商`, `购物` | React + Node.js | 商品管理、购物车、支付集成 |
-| **博客系统** | `博客`, `文章` | Vue3 + FastAPI | 文章发布、分类管理、评论系统 |
-| **AI应用** | `AI`, `人工智能` | Python + FastAPI | 图像识别、文本分析、模型训练 |
-| **Vue应用** | `Vue` | Vue3 + TypeScript | 组件化开发、状态管理 |
-| **React应用** | `React` | React18 + TypeScript | 函数式组件、Hooks |
-| **Python API** | `Python` | FastAPI + SQLAlchemy | RESTful API、数据库操作 |
+| 模板类型 | 技术栈 | 适用场景 |
+|---------|--------|----------|
+| **Web应用** | Vue3+TypeScript+FastAPI | 管理后台、企业应用 |
+| **电商平台** | React18+Node.js+PostgreSQL | 在线商城、交易系统 |
+| **移动应用** | Flutter+Firebase | 跨平台App |
+| **小程序** | Uniapp+SpringBoot | 微信/支付宝小程序 |
+| **API服务** | FastAPI+PostgreSQL | 后端API服务 |
+| **静态网站** | Next.js+Vercel | 博客、官网 |
+| **桌面应用** | Electron+Vue3 | 跨平台桌面软件 |
 
-## 🚀 高级用法
+## 💡 使用示例
 
-### 📊 系统状态检查
+### 创建Vue3任务管理系统
 ```bash
-# 查看智能体状态
-python .trae/trae-console.py --status
-
-# 列出所有智能体
-python .trae/trae-console.py --list-agents
-
-# 创建新项目
-python .trae/trae-console.py --new-project
+python .trae-dev.py "@产品经理 创建一个Vue3任务管理系统"
 ```
 
-### 🔧 开发工作流
+### 创建React电商平台
+```bash
+python .trae\trae-console.py create "React电商平台"
+```
 
-1. **需求分析** → 使用`@产品经理`
-2. **架构设计** → 使用`@系统架构师`
-3. **前端开发** → 使用`@Vue工程师`或`@React工程师`
-4. **后端开发** → 使用`@Python工程师`或`@Node工程师`
-5. **测试验证** → 使用`@测试工程师`
-6. **部署上线** → 使用`@DevOps工程师`
+### 控制台交互
+```bash
+python .trae\trae-console.py
+# 输入：我想做一个Vue3+TypeScript的任务管理系统
+```
+
+## 🎯 立即开始
+
+### 第1步：启动系统
+```bash
+# 控制台模式
+python .trae\trae-console.py
+
+# 或开发助手模式
+python .trae-dev.py
+```
+
+### 第2步：描述需求
+```
+"我想做一个Vue3+TypeScript的任务管理系统，
+需要用户登录、任务列表、任务状态管理、
+拖拽排序、数据持久化等功能"
+```
+
+### 第3步：开始开发
+- AI团队会分析需求
+- 提供技术方案
+- 生成项目结构
+- 给出开发步骤
+
+## 🔧 高级用法
+
+### 查看智能体列表
+```bash
+python .trae\trae-console.py list-agents
+```
+
+### 专业咨询
+```bash
+# 咨询架构设计
+python .trae-dev.py "@系统架构师 如何设计微服务架构？"
+
+# 咨询前端技术
+python .trae-dev.py "@Vue工程师 Vue3的Composition API最佳实践？"
+```
+
+### 项目查看
+```bash
+# 查看所有项目
+python .trae\trae-console.py list
+
+# 查看项目详情
+python .trae\trae-console.py show [项目名]
+```
 
 ## 📚 学习资源
 
-### 🎓 从v1升级到v2.0
-- ✅ 自动识别v1/v2.0格式
-- ✅ 向后兼容，不破坏现有使用
-- ✅ 智能迁移，无需手动操作
-- ✅ 增强功能，更多模板和工具
+### 新手入门
+1. **第1天**：启动控制台创建第一个项目
+2. **第2天**：观察19个AI角色如何协作
+3. **第3天**：尝试不同的项目模板
+4. **第4天**：学习专业咨询技巧
 
-### 💡 最佳实践
-- **小项目**：直接使用`.trae-dev.py`一键启动
-- **复杂项目**：使用控制台程序进行分阶段开发
-- **团队协作**：使用智能体分工，提高开发效率
-- **学习目的**：查看`.trae/agents2/`目录中的智能体配置
+### 进阶技巧
+- 使用专业智能体进行技术咨询
+- 创建复杂的跨技术栈项目
+- 自定义项目模板
+- 团队协作开发
 
-## 🛡️ 安全与备份
+## 🎉 开始你的第一个项目
 
-- **自动备份**：重要操作前自动创建备份
-- **版本控制**：建议使用Git管理项目
-- **权限管理**：敏感配置存储在`.trae-config.json`
-- **日志记录**：所有操作都有详细日志
+```bash
+# 🚀 立即开始！
+python .trae\trae-console.py
 
-## 🆘 常见问题
+# 然后输入：
+"我想创建一个Vue3+TypeScript的现代化任务管理系统"
 
-### Q: 如何添加新的智能体？
-A: 将新的`-v2.json`文件放入`.trae/agents2/`目录即可自动识别
-
-### Q: 支持哪些编程语言？
-A: 支持Python、JavaScript/TypeScript、Java、Go、Flutter等多种语言
-
-### Q: 如何自定义项目模板？
-A: 编辑`.trae/templates/`目录中的模板文件
-
-### Q: 出现错误怎么办？
-A: 使用`python .trae-dev.py help`查看帮助，或检查`.trae/`目录权限
+# 让19个AI专家为你工作！
+```
 
 ---
 
-**🎉 Trae AI v2.0 - 让AI开发更简单！**
-
-*最后更新：2024年12月 - v2.0标准*
+**🎯 记住：描述你的需求，剩下的交给Trae AI v2.0！**

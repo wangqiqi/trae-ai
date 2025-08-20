@@ -1,11 +1,10 @@
 {
   "trae_ai_assistant": {
-    "version": "2.1",
+    "version": "2.0",
     "mode": "in_dialog",
     "interaction_modes": {
       "direct_call": "@智能体名 需求描述",
-      "project_mode": "#项目类型 需求描述", 
-      "workflow_mode": "开始工作流 项目名称"
+      "project_mode": "#项目类型 需求描述"
     },
     "response_format": {
       "structured": true,
@@ -14,64 +13,36 @@
       "include_next_steps": true
     },
     "workflows": {
-    "project_startup": {
-      "name": "项目启动工作流",
-      "description": "从需求到代码的完整项目启动流程",
-      "steps": [
-        {
-          "step": 1,
-          "agent": "@产品经理",
-          "action": "需求分析和功能规划",
-          "output": "PRD文档和功能清单"
-        },
-        {
-          "step": 2,
-          "agent": "@系统架构师", 
-          "action": "技术选型和架构设计",
-          "output": "技术方案文档和架构图"
-        },
-        {
-          "step": 3,
-          "agent": "@项目经理",
-          "action": "项目计划和任务分解",
-          "output": "项目计划和里程碑"
-        },
-        {
-          "step": 4,
-          "agent": "对应技术栈工程师",
-          "action": "项目初始化和基础代码",
-          "output": "项目骨架和初始代码"
-        }
-      ],
-      "trigger": "开始项目",
-      "example": "开始项目 电商网站 Vue+FastAPI"
-    },
-    "code_review": {
-      "name": "代码审查工作流",
-      "description": "自动化的代码质量检查和优化建议",
-      "steps": [
-        {
-          "step": 1,
-          "agent": "@测试工程师",
-          "action": "生成测试用例",
-          "output": "单元测试和集成测试"
-        },
-        {
-          "step": 2,
-          "agent": "@系统架构师",
-          "action": "架构和性能评估",
-          "output": "代码优化建议"
-        },
-        {
-          "step": 3,
-          "agent": "@DevOps工程师",
-          "action": "部署配置检查",
-          "output": "部署优化方案"
-        }
-      ],
-      "trigger": "审查代码",
-      "example": "审查代码 src/main.py"
+      "project_startup": {
+        "name": "项目启动",
+        "description": "从需求到代码的完整流程",
+        "steps": [
+          {
+            "step": 1,
+            "agent": "@产品经理",
+            "action": "需求分析",
+            "output": "功能清单"
+          },
+          {
+            "step": 2,
+            "agent": "@系统架构师",
+            "action": "技术选型",
+            "output": "技术方案"
+          },
+          {
+            "step": 3,
+            "agent": "@项目经理",
+            "action": "任务分解",
+            "output": "开发计划"
+          },
+          {
+            "step": 4,
+            "agent": "开发工程师",
+            "action": "代码实现",
+            "output": "项目代码"
+          }
+        ]
+      }
     }
-  }
   }
 }
