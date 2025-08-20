@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Trae AI v2.0 智能开发助手
-独立的v2.0系统，只支持v2.0标准智能体
+Trae AI 智能开发助手
+独立的系统，支持标准智能体
 """
 import os
 import sys
@@ -10,29 +10,29 @@ import json
 from pathlib import Path
 from typing import Dict, Any, Optional
 
-class TraeDevV2:
-    """Trae AI v2.0 智能开发助手 - 纯v2.0版本"""
+class TraeDev:
+    """Trae AI 智能开发助手"""
     
     def __init__(self):
         self.base_dir = Path(__file__).parent.parent  # 指向 .trae 目录
-        self.agents_dir = self.base_dir / "agents2"  # 仅v2.0目录
-        self.agents = self._load_v2_agents()
+        self.agents_dir = self.base_dir / "agent"  # 智能体目录
+        self.agents = self._load_agents()
         
-    def _load_v2_agents(self) -> Dict[str, Any]:
-        """仅加载v2.0智能体"""
+    def _load_agents(self) -> Dict[str, Any]:
+        """加载智能体"""
         agents = {}
         
         if not self.agents_dir.exists():
-            print("⚠️  v2.0智能体目录不存在")
+            print("⚠️  智能体目录不存在")
             return agents
         
-        for agent_file in self.agents_dir.glob("*-v2.json"):
+        for agent_file in self.agents_dir.glob("*.json"):
             try:
                 with open(agent_file, 'r', encoding='utf-8') as f:
                     agent_config = json.load(f)
                 
                 name = agent_config.get('name', '')
-                role = agent_config.get('role', agent_file.stem.replace('-v2', ''))
+                role = agent_config.get('role', agent_file.stem)
                 
                 # 建立映射
                 if name:
@@ -136,7 +136,7 @@ class TraeDevV2:
         agents_list = [name for name in self.agents.keys() if "工程师" in name or "经理" in name]
         
         return {
-            "help": "Trae AI v2.0 智能助手",
+            "help": "Trae AI 智能助手",
             "usage": {
                 "智能体调用": "@智能体名 需求描述",
                 "项目创建": "直接描述需求"
@@ -154,7 +154,7 @@ def main():
     if len(sys.argv) > 1:
         command = " ".join(sys.argv[1:])
     else:
-        print("🤖 Trae AI v2.0 智能助手")
+        print("🤖 Trae AI 智能助手")
         print("=" * 40)
         print("💡 使用方法：")
         print("   • @产品经理 创建Vue3任务管理应用")
@@ -164,10 +164,10 @@ def main():
         command = input("🎯 请输入需求: ")
     
     if command.lower() in ['help', 'h', '?']:
-        ai = TraeDevV2()
+        ai = TraeDev()
         result = ai.display_help()
     else:
-        ai = TraeDevV2()
+        ai = TraeDev()
         result = ai.process_command(command)
     
     print(json.dumps(result, indent=2, ensure_ascii=False))

@@ -46,7 +46,7 @@ your-project/
 │   │   ├── trae-console.py       # AI控制台
 │   │   ├── .trae-dev.py          # 开发助手
 │   │   └── templates/            # 模板目录
-│   ├── agents2/             # 🎭 v2.0智能体目录（24个智能体）
+│   ├── agent/               # 🎭 智能体目录（20个智能体）
 │   ├── .trae-config.json    # ⚙️ 系统配置
 │   ├── start.bat           # Windows启动脚本
 │   ├── start.sh            # Linux/Mac启动脚本
@@ -149,7 +149,7 @@ python .trae/scripts/agent-suitev2.py generate react
 创建 `.env` 文件：
 ```bash
 # Trae团队配置
-TRAE_AGENTS_DIR=.trae/agents2
+TRAE_AGENTS_DIR=.trae/agent
 TRAE_LOGS_DIR=.trae/logs
 TRAE_BACKUP_DIR=.trae/backups
 ```

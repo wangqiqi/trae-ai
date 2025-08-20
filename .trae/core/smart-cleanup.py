@@ -12,7 +12,7 @@ class SmartCleanup:
         self.cleanup_candidates = {
             "old_principles": {
                 "files": ["principles.md"],
-                "reason": "已更新为principles-v2.md",
+                "reason": "已更新为principles.md",
                 "action": "backup_and_remove"
             },
             "broken_scripts": {

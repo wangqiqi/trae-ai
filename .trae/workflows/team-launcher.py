@@ -17,7 +17,7 @@ class TeamLauncher:
     
     def __init__(self):
         self.trae_dir = Path(__file__).parent.parent  # 指向 .trae 目录
-        self.agents_dir = self.trae_dir / "agents2"
+        self.agents_dir = self.trae_dir / "agent"
         self.scripts_dir = self.trae_dir / "scripts"
         self.project_root = self.trae_dir.parent
         
@@ -41,12 +41,12 @@ class TeamLauncher:
     def list_agents(self) -> List[Dict]:
         """列出所有可用智能体"""
         agents = []
-        for agent_file in self.agents_dir.glob("*-v2.json"):
+        for agent_file in self.agents_dir.glob("*.json"):
             try:
                 with open(agent_file, 'r', encoding='utf-8') as f:
                     config = json.load(f)
                     agents.append({
-                        "name": agent_file.stem.replace("-v2", ""),
+                        "name": agent_file.stem,
                         "file": agent_file.name,
                         "description": config.get("agent_info", {}).get("description", "暂无描述"),
                         "role": config.get("agent_info", {}).get("role", "未知角色")
@@ -140,7 +140,7 @@ class TeamLauncher:
    your-project/
    ├── .trae/
    │   ├── team-launcher.py      # 团队启动器
-   │   ├── agents2/              # 智能体配置
+   │   ├── agent/                # 智能体配置
    │   └── scripts/              # 工具脚本
    └── your-project-files...
 

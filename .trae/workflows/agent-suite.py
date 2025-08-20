@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-智能体套件 v2.0 - 基于agent-templatev2.json的现代化管理工具
+智能体套件 - 基于agent-template.json的现代化管理工具
 支持完整的DevOps生命周期管理、团队协作、云原生部署等高级功能
 
 用法:
-    python agent-suitev2.py create                    # 交互式创建
-    python agent-suitev2.py check [文件]             # 深度检查
-    python agent-suitev2.py generate [技术栈]        # 快速生成
-    python agent-suitev2.py dashboard                # 可视化仪表板
-    python agent-suitev2.py batch --action=check     # 批量检查
+    python agent-suite.py create                    # 交互式创建
+    python agent-suite.py check [文件]             # 深度检查
+    python agent-suite.py generate [技术栈]        # 快速生成
+    python agent-suite.py dashboard                # 可视化仪表板
+    python agent-suite.py batch --action=check     # 批量检查
 """
 
 import json
@@ -19,19 +19,19 @@ import datetime
 from pathlib import Path
 from typing import Dict, List, Any, Tuple
 
-class AgentSuiteV2:
-    """智能体套件v2.0 - 现代化DevOps智能体管理"""
+class AgentSuite:
+    """智能体套件 - 现代化DevOps智能体管理"""
     
     def __init__(self, agents_dir: str):
         self.base_dir = Path(__file__).parent.parent  # 指向 .trae 目录
-        self.agents_dir = Path(agents_dir) if agents_dir else self.base_dir / "agents2"
-        self.template_path = Path(__file__).parent / "templates" / "agent-templatev2.json"
+        self.agents_dir = Path(agents_dir) if agents_dir else self.base_dir / "agent"
+        self.template_path = Path(__file__).parent / "templates" / "agent-template.json"
         
         # 确保输出目录存在
         self.agents_dir.mkdir(parents=True, exist_ok=True)
         
-        # v2.0 核心字段验证
-        self.v2_schema = {
+        # 核心字段验证
+        self.schema = {
             "required": ["schema_version", "agent_info", "technical_stack", "capabilities"],
             "lifecycle": ["analysis", "development", "deployment"],
             "infrastructure": ["local", "cloud", "edge"],
@@ -42,12 +42,12 @@ class AgentSuiteV2:
         }
 
     def load_template(self) -> Dict[str, Any]:
-        """加载v2.0标准模板"""
+        """加载标准模板"""
         try:
             with open(self.template_path, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except Exception as e:
-            print(f"❌ v2.0模板加载失败: {e}")
+            print(f"❌ 模板加载失败: {e}")
             return {}
 
     def load_agent(self, filepath: Path) -> Tuple[Dict[str, Any], bool]:
@@ -60,8 +60,8 @@ class AgentSuiteV2:
             return {}, False
 
     def create_agent_interactive(self) -> str:
-        """交互式创建v2.0智能体"""
-        print("🚀 智能体v2.0创建器")
+        """交互式创建智能体"""
+        print("🚀 智能体创建器")
         print("=" * 60)
         
         # 基础信息采集
@@ -70,16 +70,16 @@ class AgentSuiteV2:
         infrastructure_info = self._collect_infrastructure_info()
         
         # 生成配置
-        config = self._generate_v2_config(tech_info, lifecycle_info, infrastructure_info)
+        config = self._generate_config(tech_info, lifecycle_info, infrastructure_info)
         
         # 保存文件
-        filename = f"{tech_info['tech_stack']}-engineer-v2.json"
+        filename = f"{tech_info['tech_stack']}-engineer.json"
         filepath = self.agents_dir / filename
         
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(config, f, ensure_ascii=False, indent=2)
         
-        print(f"✅ v2.0智能体创建成功: {filename}")
+        print(f"✅ 智能体创建成功: {filename}")
         return str(filepath)
 
     def _collect_tech_info(self) -> Dict[str, Any]:
@@ -119,8 +119,8 @@ class AgentSuiteV2:
             "iac_tool": "terraform"
         }
 
-    def _generate_v2_config(self, tech_info: Dict, lifecycle: Dict, infra: Dict) -> Dict[str, Any]:
-        """生成完整的v2.0配置"""
+    def _generate_config(self, tech_info: Dict, lifecycle: Dict, infra: Dict) -> Dict[str, Any]:
+        """生成完整的配置"""
         template = self.load_template()
         if not template:
             return {}
@@ -148,15 +148,15 @@ class AgentSuiteV2:
         
         return config
 
-    def check_v2_compliance(self, filepath: Path) -> Dict[str, Any]:
-        """检查v2.0标准合规性"""
+    def check_compliance(self, filepath: Path) -> Dict[str, Any]:
+        """检查标准合规性"""
         agent, success = self.load_agent(filepath)
         if not success:
             return {"status": "error", "message": "文件读取失败"}
         
         report = {
             "file": filepath.name,
-            "v2_compliant": True,
+            "compliant": True,
             "score": 100,
             "missing_sections": [],
             "recommendations": [],
@@ -165,16 +165,16 @@ class AgentSuiteV2:
         
         # 检查schema版本
         if "schema_version" not in agent:
-            report["v2_compliant"] = False
+            report["compliant"] = False
             report["missing_sections"].append("schema_version")
             report["score"] -= 20
         
         # 检查核心模块
-        for section, subsections in self.v2_schema.items():
+        for section, subsections in self.schema.items():
             if section not in agent:
                 report["missing_sections"].append(section)
                 report["score"] -= 15
-                report["v2_compliant"] = False
+                report["compliant"] = False
             elif isinstance(subsections, list):
                 missing = [sub for sub in subsections if sub not in agent.get(section, {})]
                 if missing:
@@ -218,13 +218,13 @@ class AgentSuiteV2:
             if filepath.name.startswith(("_", ".", "dashboard")):
                 continue
                 
-            report = self.check_v2_compliance(filepath)
+            report = self.check_compliance(filepath)
             results.append(report)
         
         return {
             "generated_at": datetime.datetime.now().isoformat(),
             "total_files": len(results),
-            "v2_compliant": sum(1 for r in results if r["v2_compliant"]),
+            "compliant": sum(1 for r in results if r["compliant"]),
             "average_score": sum(r["score"] for r in results) / len(results) if results else 0,
             "details": results
         }
@@ -247,7 +247,7 @@ class AgentSuiteV2:
         config["technical_stack"]["primary"]["framework"] = tech_stack
         
         # 保存文件
-        filename = f"{tech_stack}-engineer-v2.json"
+        filename = f"{tech_stack}-engineer.json"
         filepath = self.agents_dir / filename
         
         with open(filepath, 'w', encoding='utf-8') as f:
@@ -268,7 +268,7 @@ class AgentSuiteV2:
             
             for action in actions:
                 if action == "check":
-                    report = self.check_v2_compliance(filepath)
+                    report = self.check_compliance(filepath)
                     print(f"   合规性: {report['score']}分")
 
     def _guess_language(self, tech_stack: str) -> str:
@@ -296,7 +296,7 @@ class AgentSuiteV2:
 <!DOCTYPE html>
 <html>
 <head>
-    <title>智能体v2.0仪表板</title>
+    <title>智能体仪表板</title>
     <meta charset="utf-8">
     <style>
         body {{ font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }}
@@ -313,7 +313,7 @@ class AgentSuiteV2:
 </head>
 <body>
     <div class="header">
-        <h1>🚀 智能体v2.0仪表板</h1>
+        <h1>🚀 智能体仪表板</h1>
         <p>生成时间: {report['generated_at']}</p>
     </div>
     
@@ -323,8 +323,8 @@ class AgentSuiteV2:
             <p>总文件数</p>
         </div>
         <div class="stat-card">
-            <h3>{report['v2_compliant']}</h3>
-            <p>v2.0兼容</p>
+            <h3>{report['compliant']}</h3>
+            <p>兼容</p>
         </div>
         <div class="stat-card">
             <h3>{report['average_score']:.1f}</h3>
@@ -351,34 +351,34 @@ def main():
     """主函数"""
     if len(sys.argv) < 2:
         print("""
-🚀 智能体套件v2.0 - 现代化DevOps智能体管理
+🚀 智能体套件 - 现代化DevOps智能体管理
 
-📁 默认输出目录: .trae/agents2/ (便于复用)
+📁 默认输出目录: .trae/agent/ (便于复用)
 
 用法:
-    python agent-suitev2.py create                    # 交互式创建v2.0智能体
-    python agent-suitev2.py check [文件]             # 检查v2.0合规性
-    python agent-suitev2.py generate [技术栈]        # 快速生成
-    python agent-suitev2.py dashboard                # 生成仪表板
-    python agent-suitev2.py batch --action=check     # 批量检查
+    python agent-suite.py create                    # 交互式创建智能体
+    python agent-suite.py check [文件]             # 检查合规性
+    python agent-suite.py generate [技术栈]        # 快速生成
+    python agent-suite.py dashboard                # 生成仪表板
+    python agent-suite.py batch --action=check     # 批量检查
     
 高级用法:
-    python agent-suitev2.py create --output ./custom-dir  # 自定义输出目录
-    python agent-suitev2.py generate python --output ../agents
+    python agent-suite.py create --output ./custom-dir  # 自定义输出目录
+    python agent-suite.py generate python --output ../agents
         
 示例:
-    python agent-suitev2.py create                    # 创建到 .trae/agents2/
-    python agent-suitev2.py check environment-manager-v2.json
-    python agent-suitev2.py generate python           # 创建python专家
-    python agent-suitev2.py dashboard                # 生成可视化仪表板
+    python agent-suite.py create                    # 创建到 .trae/agent/
+    python agent-suite.py check environment-manager.json
+    python agent-suite.py generate python           # 创建python专家
+    python agent-suite.py dashboard                # 生成可视化仪表板
         """)
         return
 
-    # 使用 .trae/agents2 作为标准输出目录，便于复用
+    # 使用 .trae/agent 作为标准输出目录，便于复用
     project_root = Path(__file__).parent.parent
-    agents_dir = project_root / "agents2"
+    agents_dir = project_root / "agent"
     
-    # 确保agents2目录存在
+    # 确保agent目录存在
     agents_dir.mkdir(exist_ok=True)
     
     # 也支持自定义输出目录
@@ -387,7 +387,7 @@ def main():
         sys.argv.pop(2)  # 移除--output参数
         sys.argv.pop(2)  # 移除路径参数
     
-    suite = AgentSuiteV2(str(agents_dir))
+    suite = AgentSuite(str(agents_dir))
     
     command = sys.argv[1]
     
@@ -395,7 +395,7 @@ def main():
         suite.create_agent_interactive()
     elif command == "check" and len(sys.argv) > 2:
         filepath = agents_dir / sys.argv[2]
-        report = suite.check_v2_compliance(filepath)
+        report = suite.check_compliance(filepath)
         print(json.dumps(report, ensure_ascii=False, indent=2))
     elif command == "generate" and len(sys.argv) > 2:
         tech_stack = sys.argv[2]

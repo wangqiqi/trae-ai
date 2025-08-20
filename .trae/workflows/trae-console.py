@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Trae AI v2.0 控制台
-独立的v2.0系统，专注于智能体管理和项目协作
+Trae AI 控制台
+独立的系统，专注于智能体管理和项目协作
 """
 import json
 import os
@@ -13,11 +13,11 @@ import argparse
 from typing import Dict, List, Optional, Any
 
 class TraeConsole:
-    """Trae AI v2.0 控制台 - 纯v2.0版本"""
+    """Trae AI 控制台"""
     
     def __init__(self):
         self.base_dir = Path(__file__).parent.parent  # 指向 .trae 目录
-        self.agents_dir = self.base_dir / "agents2"
+        self.agents_dir = self.base_dir / "agent"
         self.user_data_dir = self.base_dir / "user-data"
         self.projects_file = self.user_data_dir / "projects.json"
         
@@ -53,12 +53,12 @@ class TraeConsole:
             json.dump(data, f, indent=2, ensure_ascii=False)
     
     def get_all_agents(self) -> List[Dict[str, Any]]:
-        """获取所有v2.0智能体"""
+        """获取所有智能体"""
         agents = []
         if not self.agents_dir.exists():
             return agents
         
-        for agent_file in self.agents_dir.glob("*-v2.json"):
+        for agent_file in self.agents_dir.glob("*.json"):
             try:
                 with open(agent_file, 'r', encoding='utf-8') as f:
                     agent_data = json.load(f)
@@ -72,7 +72,7 @@ class TraeConsole:
     def display_welcome(self):
         """显示欢迎界面"""
         print("\n" + "="*50)
-        print("🤖 Trae AI v2.0 控制台")
+        print("🤖 Trae AI 控制台")
         print("="*50)
         print("💡 描述需求，让AI专家为你服务！")
     
@@ -116,7 +116,7 @@ class TraeConsole:
         
         agents = self.get_all_agents()
         if agents:
-            print(f"📊 已加载 {len(agents)} 个v2.0智能体")
+            print(f"📊 已加载 {len(agents)} 个智能体")
         
         while True:
             try:
@@ -141,7 +141,7 @@ class TraeConsole:
 
 def main():
     """主函数"""
-    parser = argparse.ArgumentParser(description='Trae AI v2.0 控制台')
+    parser = argparse.ArgumentParser(description='Trae AI 控制台')
     parser.add_argument('action', nargs='?', choices=['create', 'list'])
     parser.add_argument('name', nargs='?')
     
