@@ -6,7 +6,6 @@
 用法:
     python agent-suitev2.py create                    # 交互式创建
     python agent-suitev2.py check [文件]             # 深度检查
-    python agent-suitev2.py migrate [文件]           # 从v1迁移到v2
     python agent-suitev2.py generate [技术栈]        # 快速生成
     python agent-suitev2.py dashboard                # 可视化仪表板
     python agent-suitev2.py batch --action=check     # 批量检查
@@ -26,6 +25,9 @@ class AgentSuiteV2:
     def __init__(self, agents_dir: str):
         self.agents_dir = Path(agents_dir)
         self.template_path = Path(__file__).parent / "templates" / "agent-templatev2.json"
+        
+        # 确保输出目录存在
+        self.agents_dir.mkdir(parents=True, exist_ok=True)
         
         # v2.0 核心字段验证
         self.v2_schema = {
@@ -193,38 +195,6 @@ class AgentSuiteV2:
         
         return report
 
-    def migrate_from_v1(self, filepath: Path) -> str:
-        """从v1迁移到v2"""
-        v1_agent, success = self.load_agent(filepath)
-        if not success:
-            return ""
-        
-        print(f"🔄 开始迁移: {filepath.name}")
-        
-        # 创建v2基础结构
-        v2_config = self.load_template()
-        
-        # 迁移基础信息
-        v2_config["agent_info"]["name"] = v1_agent.get("name", "未命名智能体")
-        v2_config["agent_info"]["description"] = v1_agent.get("description", "从v1迁移的智能体")
-        
-        # 迁移技术栈
-        capabilities = v1_agent.get("capabilities", [])
-        if capabilities:
-            v2_config["capabilities"]["technical"]["core_skills"] = capabilities[:3]
-        
-        # 生成新文件名
-        base_name = filepath.stem.replace("-standardized", "")
-        new_filename = f"{base_name}-v2.json"
-        new_filepath = self.agents_dir / new_filename
-        
-        # 保存v2版本
-        with open(new_filepath, 'w', encoding='utf-8') as f:
-            json.dump(v2_config, f, ensure_ascii=False, indent=2)
-        
-        print(f"✅ 迁移完成: {new_filename}")
-        return str(new_filepath)
-
     def generate_dashboard(self) -> None:
         """生成可视化仪表板"""
         report = self.generate_comprehensive_report()
@@ -257,6 +227,48 @@ class AgentSuiteV2:
             "average_score": sum(r["score"] for r in results) / len(results) if results else 0,
             "details": results
         }
+
+    def create_agent(self, tech_stack: str, name: str, description: str) -> str:
+        """快速创建智能体"""
+        print(f"🚀 快速创建: {tech_stack} 智能体")
+        
+        config = self.load_template()
+        if not config:
+            return ""
+            
+        # 填充模板
+        config["agent_info"]["name"] = name
+        config["agent_info"]["role"] = f"{tech_stack}-specialist"
+        config["agent_info"]["description"] = description
+        
+        # 技术栈
+        config["technical_stack"]["primary"]["language"] = self._guess_language(tech_stack)
+        config["technical_stack"]["primary"]["framework"] = tech_stack
+        
+        # 保存文件
+        filename = f"{tech_stack}-engineer-v2.json"
+        filepath = self.agents_dir / filename
+        
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(config, f, ensure_ascii=False, indent=2)
+        
+        print(f"✅ 快速创建成功: {filename}")
+        return str(filepath)
+
+    def process_all_files(self, actions: List[str]) -> None:
+        """批量处理文件"""
+        json_files = list(self.agents_dir.glob("*.json"))
+        
+        for filepath in json_files:
+            if filepath.name.startswith(("_", ".", "dashboard")):
+                continue
+                
+            print(f"\n📁 处理: {filepath.name}")
+            
+            for action in actions:
+                if action == "check":
+                    report = self.check_v2_compliance(filepath)
+                    print(f"   合规性: {report['score']}分")
 
     def _guess_language(self, tech_stack: str) -> str:
         """根据技术栈猜测语言"""
@@ -343,7 +355,6 @@ def main():
 用法:
     python agent-suitev2.py create                    # 交互式创建v2.0智能体
     python agent-suitev2.py check [文件]             # 检查v2.0合规性
-    python agent-suitev2.py migrate [文件]             # 从v1迁移到v2
     python agent-suitev2.py generate [技术栈]         # 快速生成
     python agent-suitev2.py dashboard                # 生成仪表板
     python agent-suitev2.py batch --action=check     # 批量检查
@@ -351,12 +362,13 @@ def main():
 示例:
     python agent-suitev2.py create
     python agent-suitev2.py check react-engineer-v2.json
-    python agent-suitev2.py migrate react-engineer-standardized.json
     python agent-suitev2.py generate python
         """)
         return
 
-    agents_dir = Path(__file__).parent.parent / "agents"
+    # 使用项目根目录下的 agents-output 作为输出目录
+    project_root = Path(__file__).parent.parent.parent
+    agents_dir = project_root / "agents-output"
     suite = AgentSuiteV2(str(agents_dir))
     
     command = sys.argv[1]
@@ -367,9 +379,6 @@ def main():
         filepath = agents_dir / sys.argv[2]
         report = suite.check_v2_compliance(filepath)
         print(json.dumps(report, ensure_ascii=False, indent=2))
-    elif command == "migrate" and len(sys.argv) > 2:
-        filepath = agents_dir / sys.argv[2]
-        suite.migrate_from_v1(filepath)
     elif command == "generate" and len(sys.argv) > 2:
         tech_stack = sys.argv[2]
         suite.create_agent(tech_stack, f"{tech_stack.title()}工程师", f"专精{tech_stack}的现代化开发专家")
@@ -380,6 +389,5 @@ def main():
         suite.process_all_files([action])
     else:
         print("❌ 无效的命令或参数")
-
 if __name__ == "__main__":
     main()
