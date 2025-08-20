@@ -86,7 +86,12 @@ class TraeAIConsole:
     def add_agent(self, config: Dict[str, Any], filename: str = None) -> str:
         """添加新智能体"""
         if not filename:
-            filename = f"{config.get('role', 'new-agent')}.json"
+            role = config.get('role', 'new-agent')
+            # 确保使用标准化格式
+            if not role.endswith('-standardized'):
+                filename = f"{role}-standardized.json"
+            else:
+                filename = f"{role}.json"
         
         agent_file = self.agents_dir / filename
         

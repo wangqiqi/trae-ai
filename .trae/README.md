@@ -37,15 +37,17 @@
 
 ```
 .trae/
-├── trae-console.py          # 🎯 统一控制台 - 对话式操作
-├── agent_toolkit.py         # 🔧 智能体管理工具
-├── agents/                  # 🎭 19个专业AI角色
-│   ├── project-manager.json     # 项目经理 - 统筹全局
-│   ├── react-engineer.json      # React工程师 - 前端开发
-│   ├── python-ai-engineer.json  # Python工程师 - 后端开发
-│   └── ... 共19个角色
-├── templates/              # 📋 项目模板
-└── scripts/                # 🛠️ 辅助工具
+├── trae-console.py                      # 🎯 统一控制台 - 对话式操作
+├── .trae-config.json                    # ⚙️ 系统配置文件
+├── agents/                              # 🎭 19个标准化AI角色
+│   ├── project-manager-standardized.json     # 项目经理 - 统筹全局
+│   ├── react-engineer-standardized.json      # React工程师 - 前端开发
+│   ├── python-ai-engineer-standardized.json  # Python工程师 - 后端开发
+│   └── ... 共19个标准化角色
+├── templates/                           # 📋 项目模板
+└── scripts/                             # 🛠️ 统一工具集
+    ├── agent-standardization-suite.py   # 🔧 全能管理工具（创建+检查+修复+优化+报告）
+    └── templates/                       # 📋 标准模板
 ```
 
 ---
@@ -86,19 +88,34 @@ python .trae/trae-console.py list-agents
 
 ## 🛠️ 日常维护
 
-### 🔧 检查智能体状态
+### 🔧 智能体管理（统一工具）
 ```bash
-# 检查所有智能体是否正常
-python .trae/scripts/agent_toolkit.py --all-files check
+# 🔍 检查所有智能体状态
+python .trae/scripts/agent-standardization-suite.py --all-files check
 
-# 一键优化所有配置
-python .trae/scripts/agent_toolkit.py --all-files all
+# 🔧 一键修复所有问题
+python .trae/scripts/agent-standardization-suite.py --all-files fix
+
+# ⚡ 一键优化所有配置
+python .trae/scripts/agent-standardization-suite.py --all-files optimize
+
+# 📊 生成完整报告
+python .trae/scripts/agent-standardization-suite.py --all-files report
+
+# ✅ 一键完成所有操作
+python .trae/scripts/agent-standardization-suite.py --all-files all
 ```
 
-### 🆕 添加新智能体
+### 🆕 创建和管理智能体
 ```bash
-# 创建新的AI角色
-python .trae/trae-console.py add-agent --name "Swift工程师" --role "swift-engineer"
+# 🎯 交互式创建新智能体
+python .trae/scripts/agent-standardization-suite.py create
+
+# 📋 检查单个智能体
+python .trae/scripts/agent-standardization-suite.py check 智能体文件名.json
+
+# 🛠️ 完整处理单个文件
+python .trae/scripts/agent-standardization-suite.py all 智能体文件名.json
 ```
 
 ---
@@ -191,8 +208,9 @@ python .trae/trae-console.py add-agent --name "Swift工程师" --role "swift-eng
 - **功能清单** → "需要用户注册、文章发布、评论功能"列出核心功能
 
 ### 🔧 故障排查
-- **检查智能体状态**：`agent_toolkit.py --all-files check`
-- **重置配置**：删除有问题的智能体重新创建
+- **检查智能体状态**：`agent-standardization-suite.py --all-files check`
+- **一键修复**：`agent-standardization-suite.py --all-files fix`
+- **重置配置**：删除有问题的智能体，用`create`命令重新创建
 - **查看日志**：控制台会显示每个步骤的详细信息
 
 ---
@@ -212,8 +230,9 @@ python .trae/trae-console.py
 
 ### 📞 需要帮助？
 - **控制台命令**：在控制台输入 `help` 查看所有命令
-- **智能体管理**：使用 `agent_toolkit.py --help` 查看工具用法
+- **智能体管理**：使用 `agent-standardization-suite.py --help` 查看完整工具用法
 - **查看示例**：每个智能体都有详细的使用示例
+- **统一工具**：一个命令管理所有智能体相关操作
 
 ---
 

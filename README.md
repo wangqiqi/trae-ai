@@ -14,17 +14,19 @@
 
 ```
 SOLO-AI-Assistant/
-├── .trae/                  # AI系统核心目录
-│   ├── agents/            # 智能体配置（18个角色）
-│   ├── scripts/           # API服务器
-│   ├── templates/         # 项目模板
-│   ├── trae-console.py    # 🚀 统一控制台（推荐）
-│   ├── .trae-config.json  # 智能体配置
-│   └── PROJECT-CHOICE-GUIDE.md  # 智能体选择指南
-├── .trae-dev.py           # 极简入口（兼容旧版）
-├── user-data/            # 📊 用户项目数据（独立管理）
-├── .gitignore            # Git配置
-└── README.md             # 本文档
+├── .trae/                           # AI系统核心目录
+│   ├── agents/                     # 智能体配置（19个标准化角色）
+│   │   ├── *-standardized.json   # 标准化智能体文件
+│   ├── scripts/                    # 工具脚本
+│   │   ├── agent-standardization-suite.py  # 🔧 统一智能体管理工具
+│   │   └── templates/             # 标准模板
+│   ├── trae-console.py            # 🚀 统一控制台（项目管理+基础智能体管理）
+│   ├── .trae-config.json          # 智能体配置
+│   └── PROJECT-CHOICE-GUIDE.md    # 智能体选择指南
+├── .trae-dev.py                    # 极简入口（兼容旧版）
+├── user-data/                     # 📊 用户项目数据（独立管理）
+├── .gitignore                     # Git配置
+└── README.md                      # 本文档
 ```
 
 ## 🚀 快速开始
