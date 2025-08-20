@@ -1,13 +1,19 @@
-# 🤖 Trae AI 智能体管理系统
+# 🤖 Trae AI 智能体管理系统 v2.0
 
 ## 🎯 这是什么？
 
-**Trae AI** 是一个智能体协作平台，通过AI角色分工协作，帮你从0到1完成软件开发项目。
+**Trae AI v2.0** 是一个智能体协作平台，通过AI角色分工协作，帮你从0到1完成软件开发项目。
 
 ### 🎭 核心概念
 - **智能体(Agent)** = 专业的AI角色（如前端工程师、后端工程师、产品经理等）
 - **项目(Project)** = 你的具体需求（如"做个博客网站"）
 - **协作(Collaboration)** = 多个AI角色像真实团队一样分工合作
+
+### 🚀 v2.0 新特性
+- ✅ **19个v2.0标准智能体** - 全新结构化格式
+- ✅ **智能体迁移** - 从v1到v2.0的平滑升级
+- ✅ **增强的项目管理** - 支持项目跟踪和进度管理
+- ✅ **统一控制台** - 一站式管理和操作
 
 ---
 
@@ -33,94 +39,95 @@
 
 ---
 
-## 📁 系统结构
+## 📁 v2.0 系统结构
 
 ```
 .trae/
 ├── trae-console.py                      # 🎯 统一控制台 - 对话式操作
-├── .trae-config.json                    # ⚙️ 系统配置文件
-├── agents/                              # 🎭 19个标准化AI角色
-│   ├── project-manager-standardized.json     # 项目经理 - 统筹全局
-│   ├── react-engineer-standardized.json      # React工程师 - 前端开发
-│   ├── python-ai-engineer-standardized.json  # Python工程师 - 后端开发
-│   └── ... 共19个标准化角色
-├── templates/                           # 📋 项目模板
-└── scripts/                             # 🛠️ 统一工具集
-    ├── agent-standardization-suite.py   # 🔧 全能管理工具（创建+检查+修复+优化+报告）
-    └── templates/                       # 📋 标准模板
+├── .trae-config.json                    # ⚙️ 系统配置文件 (v2.1)
+├── agents2/                             # 🎭 19个v2.0标准智能体
+│   ├── angular-engineer-v2.json        # Angular工程师 - 前端开发
+│   ├── react-engineer-v2.json          # React工程师 - 前端开发
+│   ├── python-ai-engineer-v2.json    # Python AI工程师 - 后端+AI
+│   └── ... 共19个v2.0智能体
+├── scripts/                             # 🛠️ 统一工具集
+│   ├── agent-suitev2.py               # 🔧 v2.0全能管理工具
+│   └── templates/                       # 📋 v2.0标准模板
+│       └── agent-templatev2.json       # v2.0智能体模板
+└── user-data/                           # 📊 用户项目数据
+    └── projects.json                   # 项目跟踪和进度管理
 ```
 
 ---
 
-## 🎮 怎么用？
+## 🚀 5分钟快速开始
 
-### 🚀 5分钟快速开始
-
-#### 方法1：对话模式（推荐新手）
+### 🎯 方法1：对话模式（推荐新手）
 ```bash
-python .trae/trae-console.py
+cd .trae
+python trae-console.py
 ```
 然后直接说："我想做一个Vue3任务管理系统"
 
-#### 方法2：命令行模式
+### 🎯 方法2：命令行模式
 ```bash
 # 创建项目
-python .trae/trae-console.py create-project "React博客系统"
+cd .trae
+python trae-console.py create-project "React博客系统"
 
-# 查看智能体
-python .trae/trae-console.py list-agents
+# 查看所有v2.0智能体
+cd .trae
+python agent-suitev2.py list
+
+# 创建新的v2.0智能体
+cd .trae
+python agent-suitev2.py create
 ```
-
-### 🎯 智能体选择指南
-
-#### 🎯 一句话区分
-- **项目经理** = "我有一个复杂项目，需要17个AI专家一起协作"
-- **项目协调员** = "我想快速把需求变成技术方案和开发计划"
-
-#### 📊 选择决策表
-| 你的情况 | 推荐智能体 | 使用示例 |
-|---------|------------|----------|
-| **新手第一次做项目** | 🎯 项目协调员 | `@项目协调员 我想做个博客网站` |
-| **需要完整技术方案** | 🎯 项目协调员 | `@项目协调员 用React+Node做电商` |
-| **团队项目多人协作** | 👥 项目经理 | `@项目经理 启动AI图像识别项目` |
 
 ---
 
-## 🛠️ 日常维护
+## 🛠️ v2.0 智能体管理
 
-### 🔧 智能体管理（统一工具）
+### 🔧 使用agent-suitev2.py（推荐）
 ```bash
-# 🔍 检查所有智能体状态
-python .trae/scripts/agent-standardization-suite.py --all-files check
+cd .trae
 
-# 🔧 一键修复所有问题
-python .trae/scripts/agent-standardization-suite.py --all-files fix
+# 🔍 检查所有v2.0智能体状态
+python scripts/agent-suitev2.py check
 
 # ⚡ 一键优化所有配置
-python .trae/scripts/agent-standardization-suite.py --all-files optimize
+python scripts/agent-suitev2.py optimize
 
 # 📊 生成完整报告
-python .trae/scripts/agent-standardization-suite.py --all-files report
+python scripts/agent-suitev2.py report
 
 # ✅ 一键完成所有操作
-python .trae/scripts/agent-standardization-suite.py --all-files all
+python scripts/agent-suitev2.py all
+
+# 🎯 创建新的v2.0智能体
+python scripts/agent-suitev2.py create
 ```
 
-### 🆕 创建和管理智能体
+### 🎯 使用trae-console.py
 ```bash
-# 🎯 交互式创建新智能体
-python .trae/scripts/agent-standardization-suite.py create
+cd .trae
 
-# 📋 检查单个智能体
-python .trae/scripts/agent-standardization-suite.py check 智能体文件名.json
+# 启动交互模式
+python trae-console.py
 
-# 🛠️ 完整处理单个文件
-python .trae/scripts/agent-standardization-suite.py all 智能体文件名.json
+# 创建项目
+python trae-console.py create-project "我想做Vue3电商网站"
+
+# 查看项目列表
+python trae-console.py list-projects
+
+# 查看智能体列表
+python trae-console.py list-agents
 ```
 
 ---
 
-## 🎭 19个AI角色介绍
+## 🎭 v2.0 智能体介绍
 
 ### 🎯 管理类
 - **项目经理** - 统筹复杂项目，分配任务
@@ -135,7 +142,6 @@ python .trae/scripts/agent-standardization-suite.py all 智能体文件名.json
 - **Node.js工程师** - Node.js后端开发
 - **Go工程师** - Go语言后端开发
 - **Rust工程师** - Rust系统开发
-- **C++部署工程师** - C++高性能部署
 
 ### 📱 移动端
 - **Flutter工程师** - 跨平台移动开发
@@ -143,7 +149,7 @@ python .trae/scripts/agent-standardization-suite.py all 智能体文件名.json
 
 ### 🎨 设计类
 - **UI/UX设计师** - 界面和用户体验设计
-- **技术架构师** - 系统架构设计
+- **系统架构师** - 系统架构设计
 
 ### 🔧 专项技术
 - **FastAPI工程师** - Python API开发
@@ -153,87 +159,74 @@ python .trae/scripts/agent-standardization-suite.py all 智能体文件名.json
 
 ---
 
-## 🎯 实际效果展示
+## 🎯 从v1迁移到v2.0
 
-### 📋 项目创建流程
-```
-用户：我想做个博客网站
-↓
-项目协调员：收到！我来帮你规划
-↓
-技术方案：Vue3 + Node.js + MongoDB
-↓
-开发计划：
-- 第1周：前端界面（Vue工程师）
-- 第2周：后端API（Node.js工程师）
-- 第3周：测试上线（测试工程师）
-```
+### ✅ 迁移完成状态
+- ✅ **19个v1智能体** → **19个v2.0智能体**
+- ✅ **旧agents目录** → **新agents2目录**
+- ✅ **v1模板** → **v2.0模板**
+- ✅ **v1管理工具** → **v2.0管理工具**
 
-### 🔄 迭代开发流程
-```
-用户：现有项目要加支付功能
-↓
-架构师：分析现有架构，设计支付模块
-↓
-后端：集成支付宝/微信支付API
-↓
-前端：开发支付页面
-↓
-测试：验证支付流程
-```
+### 🚀 迁移后优势
+- **结构化字段** - 15个新增结构化字段
+- **技术栈升级** - TypeScript 5.3+, React 18.2+, Next.js 14+
+- **开发流程** - 完整的项目生命周期管理
+- **质量门控** - 自动化测试和部署
 
 ---
 
 ## 🎓 学习路径
 
-### 🔰 新手入门
-1. **第1天**：用项目协调员创建第一个项目
-2. **第2天**：观察AI如何分工协作
-3. **第3天**：尝试修改生成的代码
-4. **第4天**：学习如何与AI角色对话
+### 🔰 新手入门（v2.0版）
+1. **第1天**：用`trae-console.py`创建第一个项目
+2. **第2天**：观察19个v2.0智能体如何协作
+3. **第3天**：学习使用`agent-suitev2.py`管理工具
+4. **第4天**：创建自定义的v2.0智能体
 
 ### 🚀 进阶使用
-1. **自定义智能体**：添加你需要的专业角色
-2. **模板系统**：创建自己的项目模板
-3. **团队协作**：多人共享智能体配置
+1. **自定义智能体**：使用v2.0标准创建专业角色
+2. **项目模板**：创建自己的项目模板
+3. **团队协作**：多人共享v2.0智能体配置
 4. **高级定制**：调整AI角色的能力和行为
 
 ---
 
 ## 💡 使用技巧
 
-### 🎯 高效对话
-- **具体需求** → "用React做一个带用户登录的博客"比"做个网站"好
-- **技术约束** → "用MySQL数据库，部署到阿里云"给出明确限制
-- **功能清单** → "需要用户注册、文章发布、评论功能"列出核心功能
+### 🎯 高效对话（v2.0版）
+- **具体需求** → "用React18+TypeScript做带用户登录的博客"
+- **技术约束** → "用Next.js14部署到Vercel"
+- **功能清单** → "需要用户注册、文章发布、评论、支付功能"
 
 ### 🔧 故障排查
-- **检查智能体状态**：`agent-standardization-suite.py --all-files check`
-- **一键修复**：`agent-standardization-suite.py --all-files fix`
-- **重置配置**：删除有问题的智能体，用`create`命令重新创建
-- **查看日志**：控制台会显示每个步骤的详细信息
+- **检查智能体**：`python scripts/agent-suitev2.py check`
+- **查看项目**：`python trae-console.py list-projects`
+- **重置配置**：删除问题智能体，用`create`重新创建
 
 ---
 
-## 🎉 立即开始
+## 🎉 立即开始（v2.0版）
 
 ### 🚀 第一步
 ```bash
-# 1. 启动控制台
-python .trae/trae-console.py
+# 1. 进入目录
+cd .trae
 
-# 2. 输入你的第一个需求
-"我想做一个个人博客网站"
+# 2. 启动控制台
+python trae-console.py
 
-# 3. 坐等AI团队给你完整方案！
+# 3. 输入需求
+"我想做一个Vue3+TypeScript的任务管理系统"
+
+# 4. 坐等19个AI专家给你完整方案！
 ```
 
 ### 📞 需要帮助？
-- **控制台命令**：在控制台输入 `help` 查看所有命令
-- **智能体管理**：使用 `agent-standardization-suite.py --help` 查看完整工具用法
-- **查看示例**：每个智能体都有详细的使用示例
-- **统一工具**：一个命令管理所有智能体相关操作
+- **控制台命令**：在控制台输入`help`
+- **管理工具**：`python scripts/agent-suitev2.py --help`
+- **查看示例**：每个v2.0智能体都有详细示例
+- **统一工具**：一个命令管理所有v2.0智能体
 
 ---
 
-**🎯 记住：你只需要描述需求，剩下的交给AI团队！**
+**🎯 记住：你只需要描述需求，19个AI专家会给你完整的v2.0标准方案！**
