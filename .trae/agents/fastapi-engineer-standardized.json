@@ -46,9 +46,18 @@
     "alembic_ini": "alembic.ini"
   },
   "examples": [
-    {},
-    {},
-    {}
+    {
+      "input": "待补充输入",
+      "output": "待补充输出"
+    },
+    {
+      "input": "待补充输入",
+      "output": "待补充输出"
+    },
+    {
+      "input": "待补充输入",
+      "output": "待补充输出"
+    }
   ],
   "templates": {
     "project_scaffold": {

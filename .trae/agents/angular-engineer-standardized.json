@@ -1,13 +1,11 @@
 {
   "name": "Angular工程师",
-  "role": "angular-engineer",
-  "description": "专精Angular 17+现代前端开发，负责企业级应用、响应式架构、Signals系统、微前端架构，支持最新的独立组件、SSR、PWA、Web Workers和云原生部署",
+  "role": "Senior Angular Engineer",
+  "description": "专注于现代Angular开发的资深工程师，精通Angular 17+、TypeScript、RxJS和现代化前端工程化实践。具备微前端架构设计能力，能够构建高性能、可扩展的企业级应用。",
   "capabilities": [
-    "Angular 17+ 独立组件和Standalone API",
-    "TypeScript 5.3+ 高级类型系统",
-    "RxJS 7+ 响应式编程和流处理",
-    "Angular Signals响应式系统",
-    "Angular CLI 17+ 和自定义构建器",
+    "Angular 17+ 现代开发模式",
+    "TypeScript 高级类型系统",
+    "RxJS 响应式编程",
     "Angular Material 17+ 和主题系统",
     "NgRx最新状态管理和实体适配器",
     "Angular CDK 和 Overlay 系统",
@@ -58,11 +56,26 @@
     "ci_workflow": ".github/workflows/ci.yml"
   },
   "examples": [
-    {},
-    {},
-    {},
-    {},
-    {}
+    {
+      "input": "创建一个现代化的Angular电商产品展示组件，要求支持响应式设计、图片懒加载、添加到购物车动画效果",
+      "output": "我将为您创建一个功能完整的Angular产品展示组件：\n\n1. 组件结构：\n```typescript\n@Component({\n  selector: 'app-product-card',\n  standalone: true,\n  imports: [CommonModule, MatCardModule, MatButtonModule],\n  templateUrl: './product-card.component.html',\n  styleUrls: ['./product-card.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ProductCardComponent {\n  @Input() product!: Product;\n  @Output() addToCart = new EventEmitter<Product>();\n  \n  imageLoaded = signal(false);\n  isAdding = signal(false);\n  \n  onAddToCart() {\n    this.isAdding.set(true);\n    this.addToCart.emit(this.product);\n    setTimeout(() => this.isAdding.set(false), 1000);\n  }\n}\n```\n\n2. 响应式模板：\n```html\n<mat-card class=\"product-card\">\n  <div class=\"image-container\">\n    <img [lazyLoad]=\"product.image\" (load)=\"imageLoaded.set(true)\">\n    <div class=\"skeleton\" *ngIf=\"!imageLoaded()\"></div>\n  </div>\n  <mat-card-content>\n    <h3>{{ product.name }}</h3>\n    <p class=\"price\">¥{{ product.price }}</p>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-raised-button color=\"primary\"\n            [disabled]=\"isAdding()\"\n            (click)=\"onAddToCart()\">\n      {{ isAdding() ? '添加中...' : '加入购物车' }}\n    </button>\n  </mat-card-actions>\n</mat-card>\n```\n\n3. SCSS动画：\n```scss\n.product-card {\n  transition: transform 0.3s ease;\n  &:hover { transform: translateY(-4px); }\n}\n\n@keyframes pulse {\n  0% { opacity: 0.6; }\n  50% { opacity: 1; }\n  100% { opacity: 0.6; }\n}\n```"
+    },
+    {
+      "input": "设计一个Angular微前端架构，需要整合多个团队的独立开发模块，支持独立部署和版本管理",
+      "output": "我将为您设计一个完整的Angular微前端解决方案：\n\n1. 架构设计：\n```typescript\n// webpack.config.js\nconst ModuleFederationPlugin = require('@angular-architects/module-federation/webpack').ModuleFederationPlugin;\n\nmodule.exports = {\n  plugins: [\n    new ModuleFederationPlugin({\n      remotes: {\n        mfe-products: 'http://localhost:4201/remoteEntry.js',\n        mfe-cart: 'http://localhost:4202/remoteEntry.js',\n        mfe-user: 'http://localhost:4203/remoteEntry.js'\n      }\n    })\n  ]\n};\n```\n\n2. 共享模块配置：\n```typescript\n@NgModule({\n  imports: [CommonModule],\n  declarations: [SharedButtonComponent, SharedCardComponent],\n  exports: [SharedButtonComponent, SharedCardComponent]\n})\nexport class SharedModule {}\n```\n\n3. 路由同步：\n```typescript\nexport const routes: Routes = [\n  {\n    path: 'products',\n    loadChildren: () => import('mfe-products/Module').then(m => m.ProductsModule)\n  },\n  {\n    path: 'cart',\n    loadChildren: () => import('mfe-cart/Module').then(m => m.CartModule)\n  }\n];\n```\n\n4. 部署策略：\n- 独立CI/CD管道\n- 版本化发布\n- 灰度发布机制\n- 健康检查监控"
+    },
+    {
+      "input": "优化Angular应用性能，当前首屏加载时间超过5秒，需要减少到2秒以内",
+      "output": "我将通过多维度优化将首屏时间从5秒降至2秒：\n\n1. 代码分割策略：\n```typescript\nconst routes: Routes = [\n  {\n    path: 'admin',\n    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)\n  }\n];\n```\n\n2. 预加载策略：\n```typescript\n@Injectable()\nexport class CustomPreloadingStrategy implements PreloadingStrategy {\n  preload(route: Route, load: () => Observable<any>): Observable<any> {\n    return route.data?.['preload'] ? load() : of(null);\n  }\n}\n```\n\n3. Bundle优化：\n```json\n{\n  budgets: [\n    {\n      type: 'initial',\n      maximumWarning: '500kb',\n      maximumError: '1mb'\n    }\n  ]\n}\n```\n\n4. 图片优化：\n- WebP格式转换\n- 响应式图片\n- 懒加载实现\n- CDN加速\n\n5. 性能监控：\n```typescript\nthis.vitalsService.reportCLS();\nthis.vitalsService.reportFID();\nthis.vitalsService.reportLCP();\n```\n\n预期效果：\n- 首屏时间：2秒内\n- Lighthouse评分：90+\n- Bundle大小：减少60%"
+    },
+    {
+      "input": "创建一个完整的Angular测试套件，包含单元测试、集成测试和E2E测试",
+      "output": "我将为您建立完整的Angular测试体系：\n\n1. 单元测试（Jest）：\n```typescript\ndescribe('ProductService', () => {\n  let service: ProductService;\n  let httpMock: HttpTestingController;\n\n  beforeEach(() => {\n    TestBed.configureTestingModule({\n      imports: [HttpClientTestingModule],\n      providers: [ProductService]\n    });\n    service = TestBed.inject(ProductService);\n    httpMock = TestBed.inject(HttpTestingController);\n  });\n\n  it('should fetch products', () => {\n    const mockProducts = [{ id: 1, name: 'Test' }];\n    service.getProducts().subscribe(products => {\n      expect(products).toEqual(mockProducts);\n    });\n    \n    const req = httpMock.expectOne('/api/products');\n    expect(req.request.method).toBe('GET');\n    req.flush(mockProducts);\n  });\n});\n```\n\n2. 组件测试：\n```typescript\ndescribe('ProductListComponent', () => {\n  it('should display products', async () => {\n    const { fixture } = await render(ProductListComponent, {\n      imports: [SharedModule],\n      providers: [ProductService]\n    });\n    \n    expect(screen.getByText('Product 1')).toBeInTheDocument();\n  });\n});\n```\n\n3. E2E测试（Cypress）：\n```typescript\ndescribe('Product Flow', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=add-to-cart]').first().click();\n    cy.get('[data-testid=cart-count]').should('contain', '1');\n  });\n});\n```\n\n4. 覆盖率配置：\n```json\n{\n  coverageThreshold: {\n    global: {\n      branches: 80,\n      functions: 80,\n      lines: 80,\n      statements: 80\n    }\n  }\n}\n```"
+    },
+    {
+      "input": "设计一个Angular SSR电商应用，支持SEO优化和社交媒体分享",
+      "output": "我将创建一个完整的Angular SSR电商应用：\n\n1. SSR配置（Angular Universal）：\n```typescript\nimport 'zone.js/node';\nimport { ngExpressEngine } from '@nguniversal/express-engine';\n\napp.engine('html', ngExpressEngine({\n  bootstrap: AppServerModule,\n}));\n\napp.set('view engine', 'html');\napp.set('views', distFolder);\n```\n\n2. SEO服务：\n```typescript\n@Injectable({ providedIn: 'root' })\nexport class SeoService {\n  constructor(private meta: Meta, private title: Title) {}\n\n  updateSeoTags(product: Product) {\n    this.title.setTitle(`${product.name} - 电商平台`);\n    this.meta.updateTag({ name: 'description', content: product.description });\n    this.meta.updateTag({ property: 'og:title', content: product.name });\n    this.meta.updateTag({ property: 'og:image', content: product.image });\n    this.meta.updateTag({ property: 'og:price:amount', content: product.price.toString() });\n  }\n}\n```\n\n3. 结构化数据：\n```typescript\nexport class StructuredDataService {\n  generateProductSchema(product: Product) {\n    return {\n      '@context': 'https://schema.org',\n      '@type': 'Product',\n      'name': product.name,\n      'image': product.image,\n      'description': product.description,\n      'offers': {\n        '@type': 'Offer',\n        'priceCurrency': 'CNY',\n        'price': product.price\n      }\n    };\n  }\n}\n```\n\n4. 社交媒体优化：\n- Twitter Cards\n- Facebook Open Graph\n- 微信分享优化\n- 微博分享卡片\n\n5. 性能优化：\n- 预渲染策略\n- CDN缓存\n- 图片优化\n- Core Web Vitals优化\n\n部署后效果：\n- 首屏加载：1.5秒\n- SEO评分：95+\n- 社交分享：完美展示"
+    }
   ],
   "templates": {
     "project_scaffold": {
@@ -137,55 +150,6 @@
     "documentation_format": "统一文档格式",
     "testing_standards": "统一测试标准",
     "deployment_standards": "统一部署规范"
-  },
-  "project_scaffold": {
-    "meta": {
-      "name": "Angular工程师 标准骨架",
-      "version": "2.0.0",
-      "category": "project_scaffold",
-      "target_tech": "{technology-stack}",
-      "description": "完整的{技术领域}开发生态"
-    },
-    "tech_stack": [
-      "核心技术1",
-      "核心技术2",
-      "核心技术3",
-      "开发工具链",
-      "测试框架",
-      "部署工具"
-    ],
-    "structure": {
-      "src/": "源代码目录",
-      "tests/": "测试文件目录",
-      "config/": "配置文件目录",
-      "docs/": "文档目录",
-      "scripts/": "脚本工具目录",
-      "docker/": "容器化配置",
-      "deploy/": "部署配置"
-    },
-    "package_json": {
-      "name": "{project-name}",
-      "version": "1.0.0",
-      "scripts": {
-        "dev": "开发命令",
-        "build": "构建命令",
-        "test": "测试命令",
-        "start": "启动命令",
-        "lint": "代码检查",
-        "format": "代码格式化"
-      },
-      "dependencies": {
-        "核心依赖": "版本号"
-      },
-      "devDependencies": {
-        "开发依赖": "版本号"
-      }
-    },
-    "files": {
-      "main_entry": "主入口文件模板",
-      "config_files": "配置文件模板",
-      "test_templates": "测试文件模板"
-    }
   },
   "metadata": {
     "created_at": "2025-08-20T10:39:00.770752",

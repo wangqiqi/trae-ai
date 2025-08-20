@@ -31,19 +31,12 @@
   },
   "examples": [
     {
-      "input": "monolith",
-      "output": "待补充",
-      "category": "general"
+      "input": "设计一个支持10亿用户的全球分布式社交网络平台，要求低延迟、高可用、数据一致性",
+      "output": "我将为您设计10亿级用户的全球分布式社交网络架构：\n\n1. 整体架构设计：\n- 地理分布：5大洲12个区域，36个可用区\n- 架构模式：微服务 + 事件驱动 + CQRS + 分布式缓存\n- 技术栈：Kubernetes + Istio + Apache Kafka + Redis + Cassandra\n- 数据分区：基于地理位置和社交图谱的水平分片\n\n2. 核心组件设计：\n\na) 用户服务集群：\n- 用户注册/登录：OAuth 2.0 + JWT + 多因子认证\n- 用户资料：Cassandra分布式存储，按用户ID分片\n- 缓存策略：Redis Cluster，L1本地缓存 + L2分布式缓存\n- 一致性：最终一致性，使用向量时钟解决冲突\n\nb) 社交图谱服务：\n- 图数据库：Neo4j集群存储社交关系\n- 图算法：最短路径、社区发现、影响力分析\n- 缓存：Redis存储热点用户的社交关系\n- 分区策略：基于用户ID的哈希分片\n\nc) 动态消息服务：\n- 消息存储：Cassandra时序数据，TTL自动过期\n- 消息队列：Kafka处理消息发布和消费\n- 缓存：Redis存储热门消息\n- 分页：基于时间戳的游标分页\n\nd) 实时通信：\n- WebSocket：Nginx负载均衡 + Socket.IO集群\n- 消息同步：Kafka Streams处理实时消息流\n- 在线状态：Redis存储用户在线状态\n- 推送服务：Firebase/APNs推送通知\n\n3. 数据架构：\n- 用户数据：Cassandra（写密集型）\n- 社交图谱：Neo4j（复杂关系查询）\n- 消息数据：Cassandra（时序数据）\n- 缓存数据：Redis（高性能读写）\n- 搜索数据：Elasticsearch（全文搜索）\n\n4. 性能优化：\n- 延迟优化：<100ms全球延迟\n- 缓存命中率：>95%\n- 数据库查询：P99 < 50ms\n- API响应：P99 < 200ms\n\n5. 扩展性设计：\n- 水平扩展：支持10倍用户增长\n- 自动伸缩：基于CPU/内存/自定义指标\n- 服务网格：Istio管理服务通信\n- 数据迁移：在线数据重分片\n\n6. 监控与运维：\n- 监控：Prometheus + Grafana + Jaeger\n- 日志：ELK Stack集中日志管理\n- 告警：基于SLI/SLO的自动告警\n- 灾备：多活架构 + 自动故障转移\n\n7. 安全架构：\n- 认证：OAuth 2.0 + 多因子认证\n- 授权：RBAC + ABAC细粒度权限\n- 加密：TLS 1.3 + AES-256\n- 审计：全面的操作日志和审计追踪\n\n8. 成本预估：\n- 基础设施：月成本500万美元\n- 人力成本：200人技术团队\n- 第三方服务：月成本100万美元\n- 总拥有成本：年成本1亿美元\n\n预期效果：支持10亿用户，99.99%可用性，全球延迟<100ms"
     },
     {
-      "input": "microservices",
-      "output": "待补充",
-      "category": "general"
-    },
-    {
-      "input": "serverless",
-      "output": "待补充",
-      "category": "general"
+      "input": "设计一个支持每秒100万订单的电商秒杀系统，要求不超卖、不漏单、高可用",
+      "output": "我将为您设计100万QPS的电商秒杀系统架构：\n\n1. 整体架构：\n- 分层架构：接入层 + 业务层 + 数据层 + 消息层\n- 技术选型：Nginx + Lua + Redis + MySQL + RocketMQ\n- 部署模式：多机房部署 + 异地多活\n- 高可用：99.99%可用性，RTO<30秒\n\n2. 流量削峰策略：\n- 验证码：防止机器人刷单\n- 队列限流：令牌桶算法，100万QPS\n- 本地缓存：商品库存本地缓存\n- CDN缓存：静态资源CDN分发\n\n3. 核心设计：\n\na) 库存扣减：\n- 预扣库存：Redis原子操作扣减库存\n- 最终扣减：MySQL事务保证数据一致性\n- 库存预热：活动开始前加载到Redis\n- 库存回滚：订单超时自动回滚库存\n\nb) 订单处理：\n- 异步处理：RocketMQ消息队列削峰\n- 批量处理：每批1000个订单批量写入\n- 幂等设计：订单号保证幂等性\n- 最终一致性：消息重试保证最终一致\n\nc) 防刷机制：\n- 用户限流：每用户每秒1次请求\n- IP限流：每IP每秒10次请求\n- 设备指纹：识别异常设备\n- 风控系统：实时风险评估\n\n4. 技术实现：\n```lua\n-- Nginx + Lua限流脚本\nlocal limit_req = require \"resty.limit.req\"\nlocal lim, err = limit_req.new(\"seckill_limit\", 1000000, 0)\nif not lim then\n    ngx.log(ngx.ERR, \"failed to instantiate a resty.limit.req object: \", err)\n    return ngx.exit(500)\nend\n\nlocal delay, err = lim:incoming(ngx.var.binary_remote_addr, true)\nif not delay then\n    if err == \"rejected\" then\n        return ngx.exit(503)\n    end\n    ngx.log(ngx.ERR, \"failed to limit req: \", err)\n    return ngx.exit(500)\nend\n```\n\n5. 数据库设计：\n- 分库分表：按用户ID分16个库，每库64张表\n- 读写分离：主从复制，读写分离\n- 索引优化：联合索引优化查询\n- 数据归档：历史订单定期归档\n\n6. 缓存策略：\n- 多级缓存：L1本地缓存 + L2 Redis + L3 MySQL\n- 缓存穿透：布隆过滤器防止缓存穿透\n- 缓存雪崩：随机过期时间防止雪崩\n- 缓存更新：消息队列更新缓存\n\n7. 监控告警：\n- 实时监控：Prometheus + Grafana\n- 业务监控：订单成功率、库存准确率\n- 技术监控：QPS、延迟、错误率\n- 告警机制：多维指标自动告警\n\n8. 容灾方案：\n- 多机房部署：3个机房同时提供服务\n- 数据同步：异地多活数据同步\n- 故障转移：自动故障检测和切换\n- 数据备份：实时备份 + 定期全量备份\n\n9. 性能测试：\n- 压测结果：120万QPS峰值\n- 延迟：P99 < 50ms\n- 成功率：99.9%\n- 资源使用：CPU<70%，内存<80%\n\n10. 成本控制：\n- 服务器：200台高配服务器\n- 网络：10Gbps带宽\n- 存储：SSD + 内存数据库\n- 总成本：活动期100万，平时20万\n\n预期效果：支持100万QPS，零超卖，零漏单，99.99%可用性"
     }
   ],
   "templates": {

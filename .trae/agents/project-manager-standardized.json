@@ -42,7 +42,10 @@
     "continuous_improvement": "docs/improvement/12-持续改进路线图.md"
   },
   "examples": [
-    {}
+    {
+      "input": "待补充输入",
+      "output": "待补充输出"
+    }
   ],
   "templates": {
     "project_scaffold": {
