@@ -1,215 +1,176 @@
-# 🚀 SOLO AI 开发助手
+# 🚀 Trae AI v2.0 开发助手
 
-一个基于Trae IDE的AI驱动开发助手，通过自然语言对话就能完成项目开发。
+> **🎉 重大更新！** 已全面升级到v2.0标准，包含19个标准化智能体
+>
+> ✅ **迁移完成**：所有v1智能体已升级到v2.0格式
+> ✅ **智能兼容**：支持v1和v2.0格式共存
+> ✅ **功能增强**：新增项目管理和模板系统
 
-## ✨ 核心特性
+## 📋 快速开始
 
-- **🎯 自然语言开发**：直接对话就能创建项目
-- **🤖 多智能体协作**：产品经理、架构师、工程师等角色分工合作
-- **📦 一键迁移**：复制`.trae`目录即可在新项目使用
-- **🔄 零配置**：开箱即用，无需复杂设置
-- **🌐 全栈支持**：Vue、React、Python、Node.js等技术栈
-
-## 📁 项目结构
-
-```
-SOLO-AI-Assistant/
-├── .trae/                           # AI系统核心目录
-│   ├── agents/                     # 智能体配置（19个标准化角色）
-│   │   ├── *-standardized.json   # 标准化智能体文件
-│   ├── scripts/                    # 工具脚本
-│   │   ├── agent-standardization-suite.py  # 🔧 统一智能体管理工具
-│   │   └── templates/             # 标准模板
-│   ├── trae-console.py            # 🚀 统一控制台（项目管理+基础智能体管理）
-│   ├── .trae-config.json          # 智能体配置
-│   └── PROJECT-CHOICE-GUIDE.md    # 智能体选择指南
-├── .trae-dev.py                    # 极简入口（兼容旧版）
-├── user-data/                     # 📊 用户项目数据（独立管理）
-├── .gitignore                     # Git配置
-└── README.md                      # 本文档
-```
-
-## 🚀 快速开始
-
-### 🆕 方法1：统一控制台（推荐）
-
-**交互模式**（最直观）：
+### 🎯 一键启动
 ```bash
+# 方式1：直接运行（推荐）
+python .trae-dev.py
+
+# 方式2：使用控制台
 python .trae/trae-console.py
-# 然后输入：我想创建一个Vue3任务管理系统
+
+# 方式3：查看帮助
+python .trae-dev.py help
 ```
 
-**命令行模式**：
+### 💡 使用示例
+
+#### 🧠 智能体调用
 ```bash
-# 创建项目
-python .trae/trae-console.py create-project "Vue3任务管理系统"
+# 产品经理模式
+@产品经理 创建一个Vue3任务管理系统，包含用户登录、任务CRUD、拖拽排序功能
 
-# 查看项目列表  
-python .trae/trae-console.py list-projects
+# 架构师模式  
+@系统架构师 设计一个微服务架构的电商平台，支持高并发和水平扩展
 
-# 管理智能体
-python .trae/trae-console.py list-agents
+# 开发工程师
+@Vue工程师 实现响应式任务看板，支持拖拽排序和状态管理
+@Python工程师 开发RESTful API，使用FastAPI和SQLAlchemy
 ```
 
-### 🔄 方法2：极简入口（兼容旧版）
-
+#### 🏗️ 项目创建
 ```bash
-# 快速创建
-python .trae-dev.py "创建React电商网站"
+# 直接描述需求
+创建React电商网站，包含商品展示、购物车、支付功能
 
-# 项目模板
-#todo 任务管理应用
-#ecommerce 电商网站
-#blog 博客系统
-#ai AI识别系统
+# 指定技术栈
+用Python做RESTful API，支持用户认证和数据库操作
+
+# 移动端开发
+帮我设计Flutter移动应用，实现本地存储和离线功能
 ```
 
-### 🌐 方法3：对话开发（自然语言）
+## 🗂️ 目录结构（v2.0标准）
 
-在Trae对话框直接输入：
 ```
-@产品经理 我想创建一个Vue3任务管理应用
-```
-
-## 🤖 可用智能体
-
-| 智能体 | 角色描述 | 使用示例 |
-|---|---|---|
-| `@产品经理` | 需求分析、功能规划 | `@产品经理 分析这个需求` |
-| `@系统架构师` | 技术选型、架构设计 | `@系统架构师 设计Vue3+FastAPI架构` |
-| `@Vue工程师` | Vue.js前端开发 | `@Vue工程师 创建任务列表页面` |
-| `@React工程师` | React前端开发 | `@React工程师 设计组件结构` |
-| `@Python工程师` | FastAPI后端开发 | `@Python工程师 创建CRUD API` |
-| `@Node工程师` | Express.js后端开发 | `@Node工程师 创建用户认证API` |
-| `@AI工程师` | AI模型集成 | `@AI工程师 添加图像识别功能` |
-| `@测试工程师` | 测试方案设计 | `@测试工程师 为登录功能写测试` |
-| `@DevOps工程师` | 部署和运维 | `@DevOps工程师 部署到Docker` |
-| `@项目经理` | 项目管理和规划 | `@项目经理 制定项目计划` |
-
-## 🎯 使用场景示例
-
-### 场景1：创建新项目
-```
-@产品经理 我想做一个类似Trello的任务管理应用，需要支持拖拽功能
+learn_trae/
+├── .trae/                    # Trae AI系统目录
+│   ├── agents2/             # v2.0智能体目录（19个标准智能体）
+│   │   ├── 产品经理-v2.json
+│   │   ├── Vue工程师-v2.json
+│   │   ├── Python工程师-v2.json
+│   │   └── ...（共19个）
+│   ├── scripts/             # 管理工具
+│   │   ├── agent-suitev2.py # v2.0管理工具
+│   │   └── templates/       # 模板文件
+│   ├── templates/           # 项目模板
+│   ├── .trae-config.json    # 系统配置
+│   ├── README.md           # 系统文档
+│   └── trae-console.py     # 控制台程序
+├── .trae-dev.py            # 极简入口（推荐）
+└── README.md               # 本文件
 ```
 
-### 场景2：设计技术架构
-```
-@系统架构师 为这个任务管理应用设计技术栈和架构
-```
+## 🧩 可用智能体（19个v2.0标准）
 
-### 场景3：开发具体功能
-```
-@Vue工程师 创建一个支持拖拽的任务看板组件
-```
+### 👥 管理类
+- **产品经理** - 需求分析和产品设计
+- **系统架构师** - 技术架构和系统设计
+- **测试工程师** - 测试策略和自动化测试
+- **DevOps工程师** - 部署和运维
 
-### 场景4：后端API开发
-```
-@Python工程师 创建任务的CRUD API，包含状态管理
-```
+### 💻 前端开发
+- **Vue工程师** - Vue3/TypeScript开发
+- **React工程师** - React18/TypeScript开发
+- **Flutter工程师** - 跨平台移动开发
+- **小程序工程师** - 微信小程序开发
 
-## 🔄 迁移到新项目
+### 🖥️ 后端开发
+- **Python工程师** - FastAPI/Django开发
+- **Node工程师** - Express/Nest.js开发
+- **Java工程师** - Spring Boot开发
+- **Go工程师** - Go微服务开发
 
-### 方法1：复制目录
+### 🗄️ 数据与AI
+- **数据工程师** - 数据处理和分析
+- **AI工程师** - 机器学习模型开发
+- **算法工程师** - 算法设计和优化
+
+### 🛠️ 专项技术
+- **全栈工程师** - 前后端全栈开发
+- **安全工程师** - 安全审计和防护
+- **性能工程师** - 性能优化和调优
+- **运维工程师** - 系统监控和维护
+
+## 🎯 项目模板
+
+| 模板类型 | 关键词 | 技术栈 | 功能特性 |
+|---------|--------|--------|----------|
+| **任务管理** | `任务管理`, `todo` | Vue3 + FastAPI | 任务CRUD、用户认证、拖拽排序 |
+| **电商平台** | `电商`, `购物` | React + Node.js | 商品管理、购物车、支付集成 |
+| **博客系统** | `博客`, `文章` | Vue3 + FastAPI | 文章发布、分类管理、评论系统 |
+| **AI应用** | `AI`, `人工智能` | Python + FastAPI | 图像识别、文本分析、模型训练 |
+| **Vue应用** | `Vue` | Vue3 + TypeScript | 组件化开发、状态管理 |
+| **React应用** | `React` | React18 + TypeScript | 函数式组件、Hooks |
+| **Python API** | `Python` | FastAPI + SQLAlchemy | RESTful API、数据库操作 |
+
+## 🚀 高级用法
+
+### 📊 系统状态检查
 ```bash
-# 复制到新项目
-cp -r .trae .trae-dev.py /path/to/new-project/
-cd /path/to/new-project
+# 查看智能体状态
+python .trae/trae-console.py --status
 
-# 开始开发
-python .trae-dev.py "创建新项目"
+# 列出所有智能体
+python .trae/trae-console.py --list-agents
+
+# 创建新项目
+python .trae/trae-console.py --new-project
 ```
 
-### 方法2：Git子模块（推荐）
-```bash
-git submodule add https://github.com/your-repo/SOLO-AI-Assistant.git .ai-assistant
-cd .ai-assistant
-python .trae-dev.py "开始项目"
-```
+### 🔧 开发工作流
 
-## 🛠️ 技术栈支持
+1. **需求分析** → 使用`@产品经理`
+2. **架构设计** → 使用`@系统架构师`
+3. **前端开发** → 使用`@Vue工程师`或`@React工程师`
+4. **后端开发** → 使用`@Python工程师`或`@Node工程师`
+5. **测试验证** → 使用`@测试工程师`
+6. **部署上线** → 使用`@DevOps工程师`
 
-### 前端技术栈
-- **Vue.js**: Vue3 + TypeScript + Vite
-- **React.js**: React18 + TypeScript + Vite
-- **Uniapp**: 跨平台小程序开发
+## 📚 学习资源
 
-### 后端技术栈  
-- **Python**: FastAPI + SQLAlchemy + Pydantic
-- **Node.js**: Express.js + MongoDB + TypeScript
-- **Go**: Gin框架 + GORM
-- **Rust**: Actix-web + Diesel
+### 🎓 从v1升级到v2.0
+- ✅ 自动识别v1/v2.0格式
+- ✅ 向后兼容，不破坏现有使用
+- ✅ 智能迁移，无需手动操作
+- ✅ 增强功能，更多模板和工具
 
-### 全栈模板
-- **Vue + FastAPI**: 前后端分离
-- **React + Node.js**: MERN技术栈
-- **Flutter**: 跨平台移动应用
+### 💡 最佳实践
+- **小项目**：直接使用`.trae-dev.py`一键启动
+- **复杂项目**：使用控制台程序进行分阶段开发
+- **团队协作**：使用智能体分工，提高开发效率
+- **学习目的**：查看`.trae/agents2/`目录中的智能体配置
 
-## 📊 项目数据
+## 🛡️ 安全与备份
 
-项目信息存储在：
-- `user-data/projects.json` - 项目列表（用户数据独立管理）
-- `user-data/risks.json` - 风险评估
-- `user-data/demo-projects.json` - 示例项目
+- **自动备份**：重要操作前自动创建备份
+- **版本控制**：建议使用Git管理项目
+- **权限管理**：敏感配置存储在`.trae-config.json`
+- **日志记录**：所有操作都有详细日志
 
-> 💡 **数据分离设计**：系统配置与用户数据完全分离，便于版本管理和迁移
+## 🆘 常见问题
 
-## 🔧 API接口
+### Q: 如何添加新的智能体？
+A: 将新的`-v2.json`文件放入`.trae/agents2/`目录即可自动识别
 
-启动API服务器后：
-- `GET /api/projects` - 获取项目列表
-- `POST /api/projects` - 创建新项目
-- `POST /api/analyze-requirement` - 需求分析
-- `GET /api/templates` - 获取模板列表
-- `GET /api/health` - 健康检查
+### Q: 支持哪些编程语言？
+A: 支持Python、JavaScript/TypeScript、Java、Go、Flutter等多种语言
 
-## 🎮 开发调试
+### Q: 如何自定义项目模板？
+A: 编辑`.trae/templates/`目录中的模板文件
 
-### 启动开发模式
-```bash
-# 启动API服务器
-python .trae/scripts/solo-api-server.py
+### Q: 出现错误怎么办？
+A: 使用`python .trae-dev.py help`查看帮助，或检查`.trae/`目录权限
 
-# 访问Web界面
-open http://localhost:8000
-```
+---
 
-### 测试智能体
-```bash
-# 测试统一控制台
-python .trae/trae-console.py create-project "测试项目"
+**🎉 Trae AI v2.0 - 让AI开发更简单！**
 
-# 测试极简入口（兼容）
-python .trae-dev.py "@产品经理 分析需求"
-
-# 测试项目模板
-python .trae-dev.py "#todo 创建任务管理应用"
-```
-
-## 📝 贡献指南
-
-欢迎贡献新的智能体或改进现有功能：
-
-1. **添加新智能体**: 在`.trae/agents/`目录添加配置文件
-2. **创建新模板**: 在`.trae/templates/`目录添加模板文件
-3. **优化逻辑**: 修改`.trae/trae-console.py`中的处理逻辑
-4. **查看智能体选择**: 参考`.trae/PROJECT-CHOICE-GUIDE.md`了解智能体设计思路
-
-## 🐛 常见问题
-
-**Q: 智能体没有响应？**
-A: 确保API服务器已启动：`python .trae/scripts/solo-api-server.py`
-
-**Q: 如何自定义智能体？**
-A: 编辑`.trae/.trae-config.json`中的智能体配置
-
-**Q: 支持哪些项目类型？**
-A: 支持todo、ecommerce、blog、ai等模板，可扩展
-
-## 📄 许可证
-
-MIT License - 可自由使用和修改
-
-## 🌟 Star
-
-如果这个项目对你有帮助，请给个Star！ ⭐
+*最后更新：2024年12月 - v2.0标准*
