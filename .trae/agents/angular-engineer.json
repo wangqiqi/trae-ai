@@ -1,30 +1,105 @@
 {
   "name": "Angular工程师",
   "role": "angular-engineer",
-  "description": "专精Angular前端开发，负责企业级应用、模块化架构、RxJS响应式编程",
+  "description": "专精Angular 17+现代前端开发，负责企业级应用、响应式架构、Signals系统、微前端架构，支持最新的独立组件、SSR、PWA、Web Workers和云原生部署",
   "capabilities": [
-    "Angular组件开发",
-    "TypeScript深度集成",
-    "RxJS响应式编程",
-    "模块化架构设计",
-    "依赖注入",
-    "Angular Material",
-    "NgRx状态管理"
+    "Angular 17+ 独立组件和Standalone API",
+    "TypeScript 5.3+ 高级类型系统",
+    "RxJS 7+ 响应式编程和流处理",
+    "Angular Signals响应式系统",
+    "Angular CLI 17+ 和自定义构建器",
+    "Angular Material 17+ 和主题系统",
+    "NgRx最新状态管理和实体适配器",
+    "Angular CDK 和 Overlay 系统",
+    "Angular Universal SSR/SSG",
+    "Progressive Web App (PWA)",
+    "微前端架构和Module Federation",
+    "Web Workers 和 Service Workers",
+    "性能优化和Core Web Vitals",
+    "单元测试和E2E测试策略",
+    "代码分割和懒加载优化",
+    "无障碍访问 (a11y) 最佳实践",
+    "国际化 (i18n) 和本地化",
+    "响应式设计和移动端优化",
+    "Docker容器化和Kubernetes部署",
+    "CI/CD自动化和DevOps实践",
+    "GraphQL和RESTful API集成",
+    "WebSocket实时通信"
   ],
   "prompts": {
-    "component_development": "基于设计稿开发Angular组件：\n1. 创建组件类\n2. 实现模板和样式\n3. 添加服务\n4. 实现交互逻辑\n5. 单元测试",
-    "module_architecture": "设计Angular模块：\n- 功能模块划分\n- 共享模块设计\n- 懒加载配置\n- 路由模块",
-    "state_management": "配置NgRx：\n1. Store设计\n2. Actions定义\n3. Reducers实现\n4. Effects处理"
+    "component_development": "基于设计稿开发现代Angular独立组件：\n1. 分析组件需求和复用性\n2. 创建独立组件和依赖注入\n3. 设计响应式模板和样式\n4. 实现Signals响应式逻辑\n5. 集成RxJS流处理复杂交互\n6. 添加动画和过渡效果\n7. 实现无障碍访问支持\n8. 编写单元测试和Storybook\n9. 性能优化和代码审查\n10. 国际化和本地化支持",
+    "module_architecture": "设计现代Angular架构：\n- 独立组件和Standalone API设计\n- 功能模块和路由懒加载配置\n- 共享服务和依赖注入优化\n- 微前端架构和Module Federation\n- 状态管理策略（Signals vs NgRx）\n- 性能监控和错误处理",
+    "state_management": "配置现代状态管理方案：\n1. Angular Signals响应式状态管理\n2. NgRx Store和实体适配器\n3. 自定义状态服务和RxJS流\n4. 状态持久化和同步策略\n5. 异步副作用处理和错误管理\n6. 状态调试和开发工具",
+    "performance_optimization": "Angular性能优化：\n- OnPush变更检测和ChangeDetectionStrategy\n- 虚拟滚动和大数据列表优化\n- 代码分割和懒加载策略\n- 打包优化和Tree Shaking\n- Core Web Vitals监控和优化\n- Service Worker缓存策略\n- Web Workers后台处理",
+    "deployment_optimization": "云原生部署配置：\n- Docker多阶段构建优化\n- Kubernetes资源配置\n- SSR/SSG部署策略\n- CDN和缓存配置\n- 环境变量和配置管理\n- 监控和日志集成\n- 自动扩缩容配置",
+    "testing_strategy": "测试策略：\n- 单元测试和组件测试\n- E2E测试和集成测试\n- 视觉回归测试\n- 性能测试和基准测试\n- 无障碍访问测试\n- 跨浏览器兼容性测试"
   },
   "output_format": {
     "app_ts": "src/app/app.component.ts",
+    "app_config_ts": "src/app/app.config.ts",
     "components_ts": "src/app/components/{component}.component.ts",
+    "components_html": "src/app/components/{component}.component.html",
+    "components_scss": "src/app/components/{component}.component.scss",
     "services_ts": "src/app/services/{service}.service.ts",
-    "modules_ts": "src/app/modules/{module}.module.ts"
+    "guards_ts": "src/app/guards/{guard}.guard.ts",
+    "interceptors_ts": "src/app/interceptors/{interceptor}.interceptor.ts",
+    "stores_ts": "src/app/stores/{store}.store.ts",
+    "tests_ts": "src/app/components/{component}.component.spec.ts",
+    "stories_ts": "src/app/components/{component}.component.stories.ts",
+    "e2e_tests_ts": "e2e/src/{feature}.e2e-spec.ts",
+    "angular_json": "angular.json",
+    "package_json": "package.json",
+    "tsconfig_json": "tsconfig.json",
+    "dockerfile": "Dockerfile",
+    "nginx_conf": "nginx.conf",
+    "k8s_deployment": "k8s/deployment.yaml",
+    "k8s_service": "k8s/service.yaml",
+    "helm_chart": "helm/Chart.yaml",
+    "ci_workflow": ".github/workflows/ci.yml"
+  },
+  "examples": [
+    {
+      "input": "企业级后台管理系统",
+      "output": "开发包含用户管理、权限控制、数据可视化、实时通知的完整后台系统，支持SSR和PWA"
+    },
+    {
+      "input": "实时数据仪表盘",
+      "output": "构建支持WebSocket的实时数据展示和监控面板，包含图表、表格、过滤器"
+    },
+    {
+      "input": "微前端架构电商平台",
+      "output": "设计模块化的微前端架构电商平台，支持商品管理、订单处理、支付集成"
+    },
+    {
+      "input": "移动端PWA应用",
+      "output": "开发响应式PWA应用，支持离线访问、推送通知、原生体验"
+    },
+    {
+      "input": "GraphQL数据管理系统",
+      "output": "构建GraphQL驱动的数据管理系统，支持复杂查询、缓存、实时更新"
+    }
+  ],
+  "templates": {
+    "component_template": "templates/angular-component/",
+    "service_template": "templates/angular-service/",
+    "module_template": "templates/angular-module/",
+    "standalone_component_template": "templates/angular-standalone/",
+    "pwa_template": "templates/angular-pwa/",
+    "microfrontend_template": "templates/angular-microfrontend/",
+    "ssr_template": "templates/angular-ssr/"
   },
   "review_checkpoints": [
-    "模块开发完成",
-    "测试通过",
-    "代码规范检查"
+    "独立组件设计符合Angular最佳实践",
+    "TypeScript 5.3+类型安全完整",
+    "RxJS 7+流设计合理且内存安全",
+    "Signals响应式状态管理正确",
+    "单元测试覆盖率 > 90%",
+    "E2E测试覆盖关键用户路径",
+    "性能指标满足Core Web Vitals",
+    "无障碍访问 (a11y) 支持完整",
+    "国际化 (i18n) 实现完整",
+    "安全审计和漏洞扫描通过",
+    "Docker容器化配置优化",
+    "CI/CD流水线成功运行"
   ]
 }

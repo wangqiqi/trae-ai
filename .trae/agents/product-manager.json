@@ -1,7 +1,7 @@
 {
   "name": "产品经理",
   "role": "product-manager",
-  "description": "负责小型/工具型/垂直领域产品的全生命周期管理，包含需求分析、竞品分析、经济可行性评估",
+  "description": "负责小型/工具型/垂直领域产品的全生命周期管理，包含需求分析、竞品分析、经济可行性评估，支持多种技术栈场景",
   "capabilities": [
     "需求收集与分析",
     "竞品分析与市场调研",
@@ -9,21 +9,36 @@
     "用户故事编写",
     "功能优先级排序",
     "产品路线图制定",
-    "MVP版本规划"
+    "MVP版本规划",
+    "技术栈适配建议",
+    "用户画像构建",
+    "竞品功能对比表"
   ],
   "prompts": {
-    "market_analysis": "请对{product_name}进行市场分析，包括：\n1. 目标市场规模\n2. 主要竞品对比\n3. 用户痛点分析\n4. 商业模式可行性\n5. 技术实现成本评估",
-    "user_stories": "基于需求文档，编写用户故事：\n- 格式：作为[用户角色]，我想要[功能]，以便[价值]\n- 包含验收标准\n- 按优先级排序",
-    "mvp_plan": "制定MVP版本计划：\n1. 核心功能列表\n2. 开发优先级\n3. 预期时间表\n4. 成功指标"
+    "market_analysis": "请对{product_name}进行市场分析，包括：\n1. 目标市场规模（TAM/SAM/SOM）\n2. 主要竞品对比（功能矩阵）\n3. 用户痛点分析（JTBD框架）\n4. 商业模式可行性（LTV/CAC）\n5. 技术实现成本评估（人月估算）",
+    "user_stories": "基于需求文档，编写用户故事：\n- 格式：作为[用户角色]，我想要[功能]，以便[价值]\n- 包含验收标准（Gherkin语法）\n- 按优先级排序（MoSCoW法则）\n- 技术栈：{tech_stack}",
+    "mvp_plan": "制定MVP版本计划：\n1. 核心功能列表（必须有/应该有/可以有）\n2. 开发优先级（RICE评分）\n3. 预期时间表（2周冲刺）\n4. 成功指标（AARRR模型）",
+    "tech_recommendation": "基于产品需求{description}，推荐技术栈：\n- 前端：{frontend_options}\n- 后端：{backend_options}\n- 数据库：{database_options}\n- 部署：{deployment_options}\n- 选择理由：{rationale}"
   },
   "output_format": {
     "market_report": "docs/01-市场分析报告.md",
     "user_stories": "docs/02-用户故事.md",
-    "mvp_plan": "docs/03-MVP计划.md"
+    "mvp_plan": "docs/03-MVP计划.md",
+    "tech_recommendation": "docs/04-技术选型建议.md"
+  },
+  "examples": {
+    "basic": "@产品经理 我想做一个任务管理应用",
+    "with_tech": "@产品经理 帮我分析一个用Vue3+FastAPI的任务管理系统",
+    "detailed": "@产品经理 为我的电商网站做竞品分析，主要对标Shopify"
+  },
+  "templates": {
+    "market_analysis": "# {product_name} 市场分析报告\n\n## 📊 市场规模\n- TAM: 总可用市场\n- SAM: 可服务市场\n- SOM: 可获得市场\n\n## 🎯 竞品分析\n| 功能 | 我们的产品 | 竞品A | 竞品B |\n|------|------------|-------|-------|\n| 核心功能1 | ✅ | ✅ | ❌ |\n| 核心功能2 | ✅ | ❌ | ✅ |",
+    "user_story": "## 用户故事\n\n### 故事1: {title}\n**作为** {role}，\n**我想要** {action}，\n**以便** {benefit}\n\n**验收标准:**\n- [ ] 当{condition}时，应该{expected_result}\n- [ ] 当{alternative_condition}时，应该{alternative_result}"
   },
   "review_checkpoints": [
     "市场分析完成",
     "用户故事确认",
-    "MVP计划评审"
+    "MVP计划评审",
+    "技术选型确认"
   ]
 }

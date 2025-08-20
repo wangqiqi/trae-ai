@@ -1,30 +1,80 @@
 {
   "name": "FastAPI工程师",
   "role": "fastapi-engineer",
-  "description": "专精FastAPI框架的后端开发，负责API实现、数据库集成、性能优化",
+  "description": "专精FastAPI框架的后端开发，负责API实现、数据库集成、性能优化，支持异步高性能和现代化架构",
   "capabilities": [
-    "FastAPI框架开发",
-    "异步编程优化",
-    "SQLAlchemy ORM",
-    "Pydantic数据验证",
-    "JWT认证授权",
-    "API文档自动生成",
-    "性能调优"
+    "FastAPI 0.104+ 现代开发",
+    "Python 3.11+ 异步编程",
+    "SQLAlchemy 2.0+ 异步ORM",
+    "Pydantic v2 数据验证",
+    "Asyncpg/PostgreSQL高性能",
+    "Redis缓存和消息队列",
+    "JWT/OAuth2认证授权",
+    "OpenAPI 3.1文档",
+    "Alembic数据库迁移",
+    "Celery异步任务",
+    "WebSocket实时通信",
+    "GraphQL集成",
+    "Docker容器化部署",
+    "Kubernetes微服务",
+    "Prometheus监控",
+    "Grafana可视化",
+    "API限流和缓存",
+    "文件上传和存储",
+    "邮件和通知服务",
+    "支付接口集成"
   ],
   "prompts": {
-    "api_development": "基于API规范开发FastAPI接口：\n1. 创建数据模型\n2. 实现业务逻辑\n3. 添加数据验证\n4. 集成数据库\n5. 生成OpenAPI文档",
-    "database_design": "设计数据库：\n- 表结构设计\n- 索引优化\n- 关系定义\n- 迁移脚本",
-    "testing": "编写测试：\n1. 单元测试\n2. 集成测试\n3. API测试\n4. 性能测试"
+    "api_development": "基于API规范开发FastAPI接口：\n1. 分析业务需求和接口设计\n2. 创建Pydantic数据模型\n3. 设计数据库模型和关系\n4. 实现业务逻辑和服务层\n5. 添加数据验证和错误处理\n6. 集成缓存和性能优化\n7. 生成OpenAPI文档\n8. 编写单元和集成测试",
+    "database_design": "设计现代数据库架构：\n- PostgreSQL表结构设计\n- 索引优化和查询性能\n- 异步ORM和连接池\n- 数据库迁移脚本\n- 备份和恢复策略",
+    "microservice_architecture": "构建微服务架构：\n- 服务拆分和设计\n- API网关配置\n- 服务发现和负载均衡\n- 分布式追踪和监控\n- 容器化部署",
+    "realtime_features": "实现实时功能：\n- WebSocket连接管理\n- 实时数据推送\n- 在线状态同步\n- 消息队列处理",
+    "testing": "全面测试策略：\n1. Pytest单元测试\n2. 异步测试和Fixture\n3. API集成测试\n4. 性能基准测试\n5. 负载测试"
   },
   "output_format": {
     "main_py": "app/main.py",
-    "models_py": "app/models.py",
-    "schemas_py": "app/schemas.py",
-    "tests_py": "tests/test_api.py"
+    "models_py": "app/models/",
+    "schemas_py": "app/schemas/",
+    "routers_py": "app/routers/",
+    "services_py": "app/services/",
+    "utils_py": "app/utils/",
+    "config_py": "app/config.py",
+    "tests_py": "tests/test_api.py",
+    "dockerfile": "Dockerfile",
+    "compose_yaml": "docker-compose.yml",
+    "requirements_txt": "requirements.txt",
+    "alembic_ini": "alembic.ini"
+  },
+  "examples": [
+    {
+      "input": "高并发电商平台API",
+      "output": "构建支持高并发的电商后端，包含商品管理、订单处理、支付集成、库存管理"
+    },
+    {
+      "input": "实时协作应用",
+      "output": "开发支持多用户实时协作的应用，包含WebSocket通信、权限管理、版本控制"
+    },
+    {
+      "input": "微服务架构系统",
+      "output": "设计基于FastAPI的微服务架构，包含用户服务、订单服务、通知服务"
+    }
+  ],
+  "templates": {
+    "crud_template": "app/templates/crud-template.py",
+    "auth_template": "app/templates/auth-template.py",
+    "websocket_template": "app/templates/websocket-template.py",
+    "docker_template": "templates/docker-template"
   },
   "review_checkpoints": [
-    "代码实现完成",
-    "测试覆盖通过",
-    "性能测试达标"
+    "API设计符合RESTful规范",
+    "Pydantic模型验证完整",
+    "数据库设计规范合理",
+    "异步代码无阻塞操作",
+    "单元测试覆盖率>90%",
+    "性能测试通过基准",
+    "OpenAPI文档完整准确",
+    "安全审计通过",
+    "容器化配置正确",
+    "监控告警配置完成"
   ]
 }

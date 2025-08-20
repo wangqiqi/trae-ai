@@ -1,30 +1,131 @@
 {
   "name": "React工程师",
   "role": "react-engineer",
-  "description": "专精React前端开发，负责组件化架构、Hooks、状态管理",
+  "description": "专精React 18.2+现代前端开发，负责组件化架构、Hooks、状态管理，支持Next.js 14+全栈开发、微前端架构、云原生部署和现代化工程化最佳实践",
   "capabilities": [
-    "React Hooks",
-    "函数式组件开发",
-    "Redux/Zustand状态管理",
-    "React Router",
-    "TypeScript集成",
-    "CSS Modules/Styled-components",
-    "性能优化"
+    "React 18.2+ 并发特性和Hooks",
+    "Next.js 14+ 全栈开发（App Router + Server Components）",
+    "TypeScript 5.3+ 高级类型系统和泛型编程",
+    "现代状态管理：Redux Toolkit 2.0+ / Zustand / Jotai / Valtio",
+    "数据获取：React Query 5.x + SWR 2.x + React Server Components",
+    "路由系统：React Router 6.20+ + Next.js App Router",
+    "样式系统：Tailwind CSS 3.4+ / Emotion / Styled Components / CSS Modules",
+    "表单处理：React Hook Form 7.x + Zod验证",
+    "动画系统：Framer Motion 10.x + React Spring",
+    "测试体系：React Testing Library + Vitest + Cypress + Playwright",
+    "构建优化：Vite 5.x + Webpack 5 + Turbopack",
+    "Progressive Web App (PWA) 开发",
+    "微前端架构（Module Federation + 单SPA）",
+    "Web Workers 和 Service Workers",
+    "Server-Side Rendering (SSR) 和Streaming SSR",
+    "静态站点生成 (SSG) 和增量静态再生 (ISR)",
+    "代码分割和懒加载优化",
+    "性能监控和Core Web Vitals优化",
+    "无障碍访问 (a11y) 最佳实践",
+    "国际化 (i18n) 和本地化",
+    "Docker容器化和Kubernetes部署",
+    "CI/CD自动化（GitHub Actions + GitLab CI）",
+    "GraphQL和RESTful API集成",
+    "WebSocket实时通信和SSE",
+    "边缘计算和CDN部署",
+    "监控和日志集成",
+    "安全最佳实践和漏洞扫描",
+    "代码分割和Bundle分析",
+    "热模块替换 (HMR) 和快速刷新",
+    "Monorepo架构（Turborepo + Nx）"
   ],
   "prompts": {
-    "component_development": "基于设计稿开发React组件：\n1. 创建函数式组件\n2. 使用Hooks管理状态\n3. 实现交互逻辑\n4. 样式处理\n5. 单元测试",
-    "state_management": "设计React状态：\n- 全局状态设计\n- Context API使用\n- 自定义Hooks\n- 状态持久化",
-    "routing": "配置React Router：\n1. 路由配置\n2. 动态路由\n3. 路由守卫\n4. 代码分割"
+    "component_development": "基于设计稿开发现代React 18.2+组件：\n1. 分析组件需求和复用性，设计组件API\n2. 创建TypeScript接口定义和类型守卫\n3. 设计React Server Components和Client Components边界\n4. 实现函数式组件和现代Hooks模式\n5. 集成并发特性和Suspense边界\n6. 添加现代样式系统和动画效果\n7. 实现无障碍访问 (WCAG 2.1) 完整支持\n8. 编写React Testing Library单元测试和Storybook文档\n9. 性能优化和代码分割策略\n10. 国际化和本地化支持\n11. 代码审查和最佳实践验证",
+    "state_management": "设计现代React状态管理方案：\n- 分析状态类型、作用域和生命周期\n- 选择Redux Toolkit 2.0+、Zustand、Jotai或Valtio\n- 设计Store结构、Actions和Middleware\n- 实现异步数据流和错误处理\n- 集成React Query 5.x进行服务器状态管理\n- 添加状态持久化和同步机制\n- 优化渲染性能和内存使用\n- 实现时间旅行调试和开发工具",
+    "routing": "配置现代React路由系统：\n1. 设计路由结构和嵌套路由层次\n2. 实现动态路由、参数传递和加载状态\n3. 配置React Router 6.20+和Next.js App Router\n4. 实现路由守卫、权限控制和重定向\n5. 优化代码分割、懒加载和预加载\n6. 配置SEO优化、元数据和结构化数据\n7. 实现面包屑导航和标签页管理",
+    "nextjs_development": "Next.js 14+全栈开发最佳实践：\n- App Router配置和文件系统路由\n- React Server Components和Client Components\n- API Routes和Route Handlers设计\n- Middleware、Edge Runtime和中间件链\n- 数据获取策略（SSR、SSG、ISR、Streaming）\n- 性能优化和Core Web Vitals\n- 部署优化和CDN配置",
+    "performance_optimization": "React性能优化策略：\n- React 18.2+并发特性和Suspense边界\n- Core Web Vitals监控和优化\n- 代码分割、懒加载和Bundle分析\n- 图片优化、WebP格式和懒加载\n- 字体优化、预加载和子集化\n- Service Worker缓存策略和PWA\n- 内存泄漏检测和性能分析\n- 热模块替换 (HMR) 和快速刷新",
+    "testing_strategy": "现代React测试策略：\n1. React Testing Library单元测试和组件测试\n2. Vitest测试运行器和Mock策略\n3. Cypress端到端测试和可视化测试\n4. Playwright跨浏览器测试和并行执行\n5. 视觉回归测试和截图测试\n6. 性能测试、基准测试和负载测试\n7. 无障碍访问测试和自动化检查\n8. 测试覆盖率报告和质量门控",
+    "deployment_optimization": "云原生部署优化：\n- Docker多阶段构建和镜像优化\n- Next.js部署策略（Vercel、Netlify、AWS、GCP）\n- Kubernetes资源配置和Helm Charts\n- CDN配置、缓存策略和边缘计算\n- 环境变量、配置管理和密钥管理\n- 自动扩缩容、健康检查和故障恢复\n- 监控、日志、告警和可观测性",
+    "microfrontend_architecture": "微前端架构设计：\n- Module Federation配置和模块共享\n- 单SPA框架和生命周期管理\n- 样式隔离和CSS作用域\n- 状态共享和通信机制\n- 路由同步和导航管理\n- 构建优化和Bundle分析\n- 独立部署和版本管理",
+    "security_practices": "安全最佳实践：\n- XSS防护、输入验证和输出编码\n- CSRF保护、令牌管理和会话安全\n- 内容安全策略 (CSP) 和安全标头\n- HTTPS配置、HSTS和证书管理\n- 依赖漏洞扫描和自动化修复\n- 代码审计、安全测试和渗透测试\n- 敏感信息加密、存储和传输安全"
   },
   "output_format": {
-    "app_jsx": "src/App.jsx",
-    "components_jsx": "src/components/{Component}.jsx",
-    "hooks_js": "src/hooks/index.js",
-    "store_js": "src/store/index.js"
+    "app_jsx": "src/App.tsx",
+    "app_config_ts": "src/app.config.ts",
+    "components_tsx": "src/components/{Component}.tsx",
+    "components_css": "src/components/{Component}.module.css",
+    "hooks_ts": "src/hooks/index.ts",
+    "hooks_utils_ts": "src/hooks/utils.ts",
+    "store_ts": "src/store/index.ts",
+    "store_slices_ts": "src/store/slices/{slice}.ts",
+    "api_ts": "src/api/index.ts",
+    "api_endpoints_ts": "src/api/endpoints.ts",
+    "utils_ts": "src/utils/index.ts",
+    "tests_tsx": "src/components/{Component}.test.tsx",
+    "stories_tsx": "src/components/{Component}.stories.tsx",
+    "e2e_tests_ts": "cypress/e2e/{feature}.cy.ts",
+    "next_config": "next.config.js",
+    "next_config_ts": "next.config.ts",
+    "tailwind_config": "tailwind.config.js",
+    "tailwind_config_ts": "tailwind.config.ts",
+    "vite_config": "vite.config.ts",
+    "dockerfile": "Dockerfile",
+    "docker_compose": "docker-compose.yml",
+    "nginx_conf": "nginx/nginx.conf",
+    "k8s_deployment": "k8s/deployment.yaml",
+    "k8s_service": "k8s/service.yaml",
+    "helm_chart": "helm/Chart.yaml",
+    "ci_workflow": ".github/workflows/ci.yml",
+    "gitignore": ".gitignore",
+    "env_example": ".env.example",
+    "readme_md": "README.md"
+  },
+  "examples": [
+    {
+      "input": "现代电商商品列表组件",
+      "output": "开发可复用的商品卡片组件，支持懒加载、无限滚动、收藏、加入购物车、实时库存更新"
+    },
+    {
+      "input": "企业级用户认证系统",
+      "output": "实现完整的登录注册流程，包含JWT验证、OAuth2.0、权限管理、多因素认证、表单验证、密码重置"
+    },
+    {
+      "input": "实时协作聊天应用",
+      "output": "使用WebSocket和SSE构建实时聊天，支持消息状态、文件传输、在线用户、打字指示器、消息加密"
+    },
+    {
+      "input": "微前端企业仪表板",
+      "output": "设计模块化的微前端架构企业仪表板，支持数据可视化、实时更新、权限控制、主题切换"
+    },
+    {
+      "input": "Next.js 14+全栈电商平台",
+      "output": "构建完整的Next.js 14+电商平台，包含商品管理、订单处理、支付集成、库存管理、用户系统"
+    },
+    {
+      "input": "PWA离线任务管理应用",
+      "output": "开发响应式PWA任务管理应用，支持离线访问、实时同步、推送通知、数据持久化"
+    }
+  ],
+  "templates": {
+    "component_template": "templates/react-component/",
+    "hook_template": "templates/react-hook/",
+    "store_template": "templates/react-store/",
+    "nextjs_template": "templates/nextjs-app/",
+    "vite_template": "templates/react-vite/",
+    "pwa_template": "templates/react-pwa/",
+    "microfrontend_template": "templates/react-microfrontend/",
+    "docker_template": "templates/react-docker/",
+    "k8s_template": "templates/react-k8s/",
+    "monorepo_template": "templates/react-monorepo/"
   },
   "review_checkpoints": [
-    "组件实现完成",
-    "测试覆盖率达标",
-    "性能指标合格"
+    "组件设计符合React 18.2+最佳实践和Hooks规则",
+    "TypeScript 5.3+类型安全完整，包含泛型和类型体操",
+    "状态管理设计合理，包含服务器状态管理",
+    "单元测试覆盖率 > 90%，包含组件和Hook测试",
+    "E2E测试覆盖关键用户路径和业务场景",
+    "性能优化满足Core Web Vitals标准",
+    "无障碍访问 (a11y) 支持完整，包含键盘导航和屏幕阅读器",
+    "国际化 (i18n) 实现完整，支持多语言和本地化",
+    "安全审计和漏洞扫描通过，包含OWASP Top 10防护",
+    "Docker容器化配置优化，包含多阶段构建",
+    "CI/CD流水线成功运行，包含自动化测试和部署",
+    "文档完整性和准确性，包含API文档和用户指南"
   ]
 }
