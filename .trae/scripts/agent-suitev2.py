@@ -23,7 +23,8 @@ class AgentSuiteV2:
     """智能体套件v2.0 - 现代化DevOps智能体管理"""
     
     def __init__(self, agents_dir: str):
-        self.agents_dir = Path(agents_dir)
+        self.base_dir = Path(__file__).parent.parent  # 指向 .trae 目录
+        self.agents_dir = Path(agents_dir) if agents_dir else self.base_dir / "agents2"
         self.template_path = Path(__file__).parent / "templates" / "agent-templatev2.json"
         
         # 确保输出目录存在
@@ -352,23 +353,40 @@ def main():
         print("""
 🚀 智能体套件v2.0 - 现代化DevOps智能体管理
 
+📁 默认输出目录: .trae/agents2/ (便于复用)
+
 用法:
     python agent-suitev2.py create                    # 交互式创建v2.0智能体
     python agent-suitev2.py check [文件]             # 检查v2.0合规性
-    python agent-suitev2.py generate [技术栈]         # 快速生成
+    python agent-suitev2.py generate [技术栈]        # 快速生成
     python agent-suitev2.py dashboard                # 生成仪表板
     python agent-suitev2.py batch --action=check     # 批量检查
+    
+高级用法:
+    python agent-suitev2.py create --output ./custom-dir  # 自定义输出目录
+    python agent-suitev2.py generate python --output ../agents
         
 示例:
-    python agent-suitev2.py create
-    python agent-suitev2.py check react-engineer-v2.json
-    python agent-suitev2.py generate python
+    python agent-suitev2.py create                    # 创建到 .trae/agents2/
+    python agent-suitev2.py check environment-manager-v2.json
+    python agent-suitev2.py generate python           # 创建python专家
+    python agent-suitev2.py dashboard                # 生成可视化仪表板
         """)
         return
 
-    # 使用项目根目录下的 agents-output 作为输出目录
-    project_root = Path(__file__).parent.parent.parent
-    agents_dir = project_root / "agents-output"
+    # 使用 .trae/agents2 作为标准输出目录，便于复用
+    project_root = Path(__file__).parent.parent
+    agents_dir = project_root / "agents2"
+    
+    # 确保agents2目录存在
+    agents_dir.mkdir(exist_ok=True)
+    
+    # 也支持自定义输出目录
+    if len(sys.argv) > 3 and sys.argv[2] == "--output":
+        agents_dir = Path(sys.argv[3])
+        sys.argv.pop(2)  # 移除--output参数
+        sys.argv.pop(2)  # 移除路径参数
+    
     suite = AgentSuiteV2(str(agents_dir))
     
     command = sys.argv[1]

@@ -16,7 +16,7 @@ class TraeConsole:
     """Trae AI v2.0 控制台 - 纯v2.0版本"""
     
     def __init__(self):
-        self.base_dir = Path(__file__).parent
+        self.base_dir = Path(__file__).parent.parent  # 指向 .trae 目录
         self.agents_dir = self.base_dir / "agents2"
         self.user_data_dir = self.base_dir / "user-data"
         self.projects_file = self.user_data_dir / "projects.json"

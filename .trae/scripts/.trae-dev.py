@@ -14,7 +14,7 @@ class TraeDevV2:
     """Trae AI v2.0 智能开发助手 - 纯v2.0版本"""
     
     def __init__(self):
-        self.base_dir = Path(__file__).parent / ".trae"
+        self.base_dir = Path(__file__).parent.parent  # 指向 .trae 目录
         self.agents_dir = self.base_dir / "agents2"  # 仅v2.0目录
         self.agents = self._load_v2_agents()
         

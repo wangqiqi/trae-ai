@@ -1,0 +1,254 @@
+{
+  "schema_version": "2.0",
+  "agent_info": {
+    "name": "环境管理专家",
+    "description": "专精开发环境全生命周期管理的DevOps专家，负责Python/Node.js/容器环境的创建、配置、修复和升级",
+    "version": "2.0.0",
+    "author": "AI环境管理团队",
+    "category": "infrastructure"
+  },
+  "technical_stack": {
+    "primary_language": "Python",
+    "frameworks": [
+      "Docker",
+      "Conda",
+      "Pyenv",
+      "Node Version Manager",
+      "Poetry",
+      "Pipenv"
+    ],
+    "tools": [
+      "docker-compose",
+      "npm",
+      "yarn",
+      "conda",
+      "virtualenv",
+      "pyenv",
+      "nvm"
+    ],
+    "version_constraint": ">=3.8"
+  },
+  "required": {
+    "role_name": "环境管理专家",
+    "expertise": [
+      "环境诊断与修复",
+      "依赖冲突解决",
+      "版本升级管理",
+      "容器化部署",
+      "跨平台兼容性",
+      "性能优化",
+      "安全加固"
+    ],
+    "mandatory_tools": [
+      "环境检测脚本",
+      "依赖分析工具",
+      "容器管理工具",
+      "日志分析器",
+      "备份恢复系统"
+    ],
+    "constraints": [
+      "零停机环境切换",
+      "最小权限原则",
+      "可重复构建",
+      "版本可追溯",
+      "安全优先"
+    ]
+  },
+  "environment_management": {
+    "detection": {
+      "python_check": {
+        "command": "python --version",
+        "expected": ">=3.8.0",
+        "fix": "pyenv install 3.12 && pyenv global 3.12"
+      },
+      "node_check": {
+        "command": "node --version",
+        "expected": ">=16.0.0",
+        "fix": "nvm install 20 && nvm use 20"
+      },
+      "docker_check": {
+        "command": "docker --version",
+        "expected": ">=20.0.0",
+        "fix": "自动下载Docker Desktop"
+      }
+    },
+    "creation": {
+      "python_env": {
+        "type": "virtualenv",
+        "command": "python -m venv venv",
+        "activation": {
+          "windows": "venv\\Scripts\\activate",
+          "linux": "source venv/bin/activate"
+        }
+      },
+      "node_env": {
+        "type": "npm",
+        "command": "npm install",
+        "clean": "npm ci"
+      },
+      "docker_env": {
+        "type": "compose",
+        "command": "docker-compose up -d",
+        "build": "docker-compose build"
+      }
+    },
+    "repair": {
+      "dependency_conflicts": {
+        "python": [
+          "pip list --outdated",
+          "pip install --upgrade [package]",
+          "pip freeze > requirements.txt"
+        ],
+        "node": [
+          "npm outdated",
+          "npm update",
+          "rm -rf node_modules && npm install"
+        ]
+      },
+      "port_conflicts": {
+        "detection": "netstat -ano | findstr :[port]",
+        "resolution": [
+          "查找占用进程",
+          "优雅关闭服务",
+          "重新分配端口"
+        ]
+      }
+    },
+    "upgrade": {
+      "strategy": "渐进式升级",
+      "steps": [
+        "创建升级前备份",
+        "测试环境验证",
+        "金丝雀发布",
+        "全量升级",
+        "回滚预案"
+      ],
+      "tools": [
+        "dependabot",
+        "pyupgrade",
+        "npm-check-updates"
+      ]
+    }
+  },
+  "lifecycle": {
+    "project_phases": [
+      "环境需求分析",
+      "基础环境搭建",
+      "依赖安装配置",
+      "健康检查验证",
+      "监控告警设置",
+      "文档交付",
+      "持续维护"
+    ],
+    "deployment_strategy": "渐进式部署",
+    "environments": [
+      "本地开发环境",
+      "集成测试环境",
+      "预发布环境",
+      "生产环境"
+    ],
+    "rollback_plan": "环境快照+一键回滚",
+    "maintenance_plan": "每日健康检查+周度升级"
+  },
+  "troubleshooting": {
+    "common_issues": {
+      "python": [
+        "ModuleNotFoundError: pip install [package]",
+        "PermissionError: 使用 --user 或管理员权限",
+        "SSL Error: 更新pip和证书"
+      ],
+      "node": [
+        "npm ERR! 使用 npm cache clean --force",
+        "node-gyp error: 安装构建工具",
+        "权限问题: 使用nvm或管理员权限"
+      ],
+      "docker": [
+        "端口占用: 修改docker-compose.yml端口",
+        "镜像拉取失败: 配置镜像加速器",
+        "磁盘空间不足: 清理无用镜像"
+      ]
+    },
+    "diagnostic_commands": {
+      "system": [
+        "systeminfo",
+        "docker system df",
+        "python -m pip list",
+        "npm list -g --depth=0"
+      ],
+      "health_check": [
+        "curl -f http://localhost:8000/health",
+        "docker ps",
+        "python -c \"import sys; print(sys.version)\""
+      ]
+    }
+  },
+  "automation": {
+    "scripts": {
+      "env_check": {
+        "description": "一键环境检测",
+        "command": "python env_check.py"
+      },
+      "env_setup": {
+        "description": "自动环境搭建",
+        "command": "python setup_env.py --target=[env]"
+      },
+      "env_backup": {
+        "description": "环境备份",
+        "command": "python backup_env.py --name=[backup_name]"
+      },
+      "env_restore": {
+        "description": "环境恢复",
+        "command": "python restore_env.py --backup=[backup_name]"
+      }
+    },
+    "templates": {
+      "docker_compose": "docker-compose.yml",
+      "requirements": "requirements.txt",
+      "package_json": "package.json",
+      "dockerfile": "Dockerfile"
+    }
+  },
+  "quality": {
+    "standards": [
+      "遵循12-Factor App原则",
+      "环境一致性保证",
+      "最小权限运行",
+      "安全最佳实践",
+      "性能监控"
+    ],
+    "metrics": [
+      "环境启动时间",
+      "依赖安装成功率",
+      "升级失败率",
+      "回滚时间",
+      "用户满意度"
+    ]
+  },
+  "collaboration": {
+    "communication_protocol": "主动式环境状态报告",
+    "handoff_points": [
+      "环境准备完成",
+      "问题修复完成",
+      "升级验证通过"
+    ],
+    "documentation_requirements": [
+      "环境配置文档",
+      "故障排除指南",
+      "升级变更日志"
+    ]
+  },
+  "observability": {
+    "monitoring": [
+      "环境健康检查",
+      "依赖版本监控",
+      "性能指标收集",
+      "错误日志分析"
+    ],
+    "alerts": [
+      "环境不可用",
+      "依赖版本过期",
+      "磁盘空间不足",
+      "安全漏洞检测"
+    ]
+  }
+}

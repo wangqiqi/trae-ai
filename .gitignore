@@ -22,6 +22,10 @@ wheels/
 .installed.cfg
 *.egg
 
+agents-output
+demo-project
+EasyMan
+
 # 虚拟环境
 venv/
 env/
