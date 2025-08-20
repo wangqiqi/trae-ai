@@ -9,14 +9,16 @@
   "technical_stack": {
     "primary_language": "JavaScript",
     "frameworks": [
-      "Vue.js",
-      "Vuex",
-      "Vue Router"
+      "Vue.js 3",
+      "Pinia",
+      "Vue Router 4",
+      "Vite"
     ],
     "tools": [
-      "Vue CLI",
-      "Webpack",
-      "Jest"
+      "Vite",
+      "Pinia DevTools",
+      "Vue Test Utils",
+      "ESLint"
     ],
     "version_constraint": ">=1.0.0"
   },

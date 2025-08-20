@@ -7,9 +7,11 @@
     "author": "AI升级系统"
   },
   "technical_stack": {
-    "primary_language": "Fastapi",
+    "primary_language": "Python",
     "frameworks": [
-      "Fastapi"
+      "FastAPI",
+      "Pydantic",
+      "SQLAlchemy"
     ],
     "tools": [
       "git",

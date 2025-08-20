@@ -9,7 +9,7 @@
 ✅ **智能检测** - 根据项目状态自动执行最合适的操作
 ✅ **统一入口** - 只需一个`trae.py`文件管理所有功能
 ✅ **跨平台支持** - Windows/macOS/Linux完美兼容
-✅ **24个AI专家** - 覆盖全栈开发的完整团队
+✅ **20个AI专家** - 覆盖全栈开发的完整团队
 ✅ **核心引擎** - 新增智能清理、提醒、增强等核心功能
 
 ## 📦 快速开始（零配置）
@@ -55,7 +55,7 @@ your-project/
 │   │   ├── trae-console.py       # AI控制台
 │   │   ├── universal-env-manager.py  # 统一环境管理
 │   │   └── .trae-dev.py          # 开发助手
-│   ├── agent/               # 🎭 智能体目录（18个专业智能体）
+│   ├── agent/               # 🎭 智能体目录（20个专业智能体）
 │   ├── templates/           # 📋 项目模板
 │   │   ├── agent-template.json
 │   │   ├── code-review-template.md
@@ -71,7 +71,7 @@ your-project/
 └── your-project-files...
 ```
 
-## 🎭 18个专业AI智能体
+## 🎭 20个专业AI智能体
 
 ### 管理类（4个）
 - **产品经理** - 需求分析、产品设计、用户故事

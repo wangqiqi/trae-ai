@@ -1,10 +1,12 @@
 {
   "trae_ai_assistant": {
-    "version": "3.0",
+    "version": "2.0",
     "mode": "principle_driven",
     "core_principles": {
+      "PRINCIPLE-005": "自动化文档生成原则",
+      "PRINCIPLE-006": "高效沟通协作原则",
       "PRINCIPLE-001": "需求澄清原则",
-      "PRINCIPLE-002": "技术选型对比原则", 
+      "PRINCIPLE-002": "技术选型对比原则",
       "PRINCIPLE-003": "文档驱动开发原则",
       "PRINCIPLE-004": "渐进式实施原则"
     },
@@ -20,7 +22,7 @@
       "include_next_steps": true,
       "mandatory_sections": [
         "需求重述",
-        "方案对比", 
+        "方案对比",
         "实施计划",
         "文档清单"
       ]
@@ -29,7 +31,9 @@
       "project_startup": {
         "name": "原则驱动的项目启动",
         "description": "基于PRINCIPLE-001~004的完整开发流程",
-        "prerequisites": ["principles.md"],
+        "prerequisites": [
+          "principles.md"
+        ],
         "steps": [
           {
             "step": 1,
@@ -40,7 +44,7 @@
           },
           {
             "step": 2,
-            "agent": "@系统架构师", 
+            "agent": "@系统架构师",
             "action": "技术选型对比",
             "principle": "PRINCIPLE-002",
             "output": "docs/tech-choice.md"
@@ -57,7 +61,7 @@
             "agent": "@技术文档工程师",
             "action": "文档框架建立",
             "principle": "PRINCIPLE-003",
-            "output": "docs/structure.md"
+            "output": "docs/structure.md""action_details": "自动生成API文档和用户手册，确保docs目录下包含所有必要文档"
           },
           {
             "step": 5,
@@ -72,24 +76,54 @@
         "name": "技术选型流程",
         "description": "基于PRINCIPLE-002的标准化技术选型",
         "template": {
-          "scheme_a": {"name": "", "pros": [], "cons": [], "score": 0},
-          "scheme_b": {"name": "", "pros": [], "cons": [], "score": 0},
-          "scheme_c": {"name": "", "pros": [], "cons": [], "score": 0}
+          "scheme_a": {
+            "name": "",
+            "pros": [],
+            "cons": [],
+            "score": 0
+          },
+          "scheme_b": {
+            "name": "",
+            "pros": [],
+            "cons": [],
+            "score": 0
+          },
+          "scheme_c": {
+            "name": "",
+            "pros": [],
+            "cons": [],
+            "score": 0
+          }
         }
       }
     },
     "quality_gates": {
       "requirement_check": {
         "gate": "需求确认",
-        "checklist": ["功能明确", "约束清晰", "目标量化", "标准具体"]
+        "checklist": [
+          "功能明确",
+          "约束清晰",
+          "目标量化",
+          "标准具体"
+        ]
       },
       "tech_choice_check": {
-        "gate": "技术选型", 
-        "checklist": ["≥2方案", "学习成本", "扩展性", "维护成本"]
+        "gate": "技术选型",
+        "checklist": [
+          "≥2方案",
+          "学习成本",
+          "扩展性",
+          "维护成本"
+        ]
       },
       "documentation_check": {
         "gate": "文档完整",
-        "checklist": ["需求文档", "技术文档", "部署文档", "用户文档"]
+        "checklist": [
+          "需求文档",
+          "技术文档",
+          "部署文档",
+          "用户文档"
+        ]
       }
     }
   }

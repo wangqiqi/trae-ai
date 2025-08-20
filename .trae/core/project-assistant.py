@@ -53,15 +53,17 @@ class ProjectAssistant:
         print("📁 检查项目结构...")
         
         standard_structure = {
-            "directories": ["src", "tests", "docs", "config", "scripts", ".git"],
-            "files": {
-                "README.md": "项目说明文档",
-                "requirements.txt": "Python依赖列表",
-                ".gitignore": "Git忽略文件",
-                ".trae-project.json": "Trae项目配置",
-                "PRD.md": "产品需求文档"
-            }
-        }
+    "directories": ["src", "tests", "docs", "config", "scripts", ".git", "frontend", "backend"],
+    "files": {
+        "README.md": "项目说明文档",
+        "requirements.txt": "Python依赖列表",
+        "package.json": "前端依赖列表",
+        "vite.config.js": "Vite配置文件",
+        ".gitignore": "Git忽略文件",
+        ".trae-project.json": "Trae项目配置",
+        "PRD.md": "产品需求文档"
+    }
+}
         
         results = {
             "directories": {"found": [], "missing": []},
