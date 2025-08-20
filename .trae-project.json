@@ -1,0 +1,11 @@
+{
+  "project_name": "EasyMan",
+  "trae_version": "3.0",
+  "initialized_at": "auto-generated",
+  "features": {
+    "ai_agents": true,
+    "environment_management": true,
+    "deployment_tools": true,
+    "monitoring": true
+  }
+}
