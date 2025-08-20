@@ -30,7 +30,7 @@ class TeamLauncher:
         print("""
 ╔══════════════════════════════════════════════════════════════╗
 ║                                                              ║
-║    🚀 Trae 超级团队启动器 v3.0                              ║
+║    🚀 Trae 超级团队启动器                              ║
 ║                                                              ║
 ║    一键启动完整AI智能体团队                                  ║
 ║    复制即用 · 零配置 · 全功能                               ║
@@ -110,7 +110,7 @@ class TeamLauncher:
         # 创建项目配置文件
         project_config = {
             "project_name": self.project_root.name,
-            "trae_version": "3.0",
+            "trae_version": "1.0",
             "active_agents": [agent["name"] for agent in self.list_agents()],
             "setup_date": "auto-generated"
         }

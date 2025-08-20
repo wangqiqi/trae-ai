@@ -1,6 +1,6 @@
-# Trae AI 超级团队 - 零感知版本
+# Trae AI 超级团队 - 零感知版本 v2.0
 
-这是一个完全自动化的AI开发工具集，Trae IDE会自动调用，无需手动操作。
+这是一个完全自动化的AI开发工具集，Trae IDE会自动调用，无需手动操作。现已全面升级，功能更强大，使用更简单！
 
 ## 🚀 核心特点
 
@@ -8,6 +8,9 @@
 ✅ **一键迁移** - 支持项目间快速复制
 ✅ **智能检测** - 根据项目状态自动执行最合适的操作
 ✅ **统一入口** - 只需一个`trae.py`文件管理所有功能
+✅ **跨平台支持** - Windows/macOS/Linux完美兼容
+✅ **24个AI专家** - 覆盖全栈开发的完整团队
+✅ **核心引擎** - 新增智能清理、提醒、增强等核心功能
 
 ## 📦 快速开始（零配置）
 
@@ -24,14 +27,14 @@ python .trae/trae.py start
 ### 方法2：使用初始化器
 ```bash
 # 在新项目中运行
-python /path/to/learn_trae/.trae/scripts/project-init.py quick
+python /path/to/learn_trae/.trae/workflows/project-init.py quick
 ```
 
 ### 方法3：零感知使用（最简单）
 1. 复制`.trae`目录到你的项目根目录
 2. **什么都不用做**，Trae IDE会自动处理一切
 
-## 📁 系统结构
+## 📁 系统结构（升级版）
 
 复制后你的项目将拥有：
 
@@ -39,108 +42,143 @@ python /path/to/learn_trae/.trae/scripts/project-init.py quick
 your-project/
 ├── .trae/
 │   ├── trae.py              # 🎯 统一入口程序
-│   ├── scripts/
+│   ├── core/                # 🔧 核心引擎模块
+│   │   ├── cross-platform-adapter.py    # 跨平台适配器
+│   │   ├── project-assistant.py        # 项目助手
+│   │   ├── smart-cleanup.py           # 智能清理
+│   │   ├── smart-reminder.py          # 智能提醒
+│   │   └── system-enhancer.py         # 系统增强
+│   ├── workflows/           # 🔄 工作流工具
 │   │   ├── team-launcher.py      # 团队启动器
 │   │   ├── project-init.py       # 项目初始化器
-│   │   ├── agent-suitev2.py      # 智能体创建工具
+│   │   ├── agent-suite.py        # 智能体创建工具
 │   │   ├── trae-console.py       # AI控制台
-│   │   ├── .trae-dev.py          # 开发助手
-│   │   └── templates/            # 模板目录
-│   ├── agent/               # 🎭 智能体目录（20个智能体）
+│   │   ├── universal-env-manager.py  # 统一环境管理
+│   │   └── .trae-dev.py          # 开发助手
+│   ├── agent/               # 🎭 智能体目录（18个专业智能体）
+│   ├── templates/           # 📋 项目模板
+│   │   ├── agent-template.json
+│   │   ├── code-review-template.md
+│   │   ├── deployment-template.md
+│   │   ├── requirements-template.md
+│   │   └── tech-choice-template.md
 │   ├── .trae-config.json    # ⚙️ 系统配置
+│   ├── user_preferences.json  # 👤 用户偏好
 │   ├── start.bat           # Windows启动脚本
 │   ├── start.sh            # Linux/Mac启动脚本
+│   ├── principles.md        # 🎯 设计原则
 │   └── README.md           # 本指南
 └── your-project-files...
 ```
 
-## 🎭 24个v2.0智能体
+## 🎭 18个专业AI智能体
 
-### 管理类
-- **产品经理** - 需求分析和产品设计
-- **系统架构师** - 技术架构设计
-- **项目经理** - 项目统筹管理
-- **项目协调员** - 项目协调和进度管理
+### 管理类（4个）
+- **产品经理** - 需求分析、产品设计、用户故事
+- **系统架构师** - 技术架构设计、系统规划
+- **项目经理** - 项目统筹、进度管理、风险控制
+- **项目协调员** - 团队协作、任务分配、进度跟踪
 
-### 开发类
-- **Vue工程师** - Vue3/TypeScript开发
-- **React工程师** - React18开发
-- **Python工程师** - FastAPI/Django开发
-- **Node工程师** - Express/Nest.js开发
-- **Go工程师** - Go语言后端开发
-- **Rust工程师** - Rust系统开发
-- **FastAPI工程师** - FastAPI专业开发
-- **C++部署工程师** - C++系统部署
+### 前端开发（5个）
+- **Vue工程师** - Vue3 + TypeScript + Vite现代化开发
+- **React工程师** - React18 + Hooks + Next.js全栈开发
+- **Angular工程师** - Angular15+企业级应用开发
+- **Uniapp工程师** - 小程序 + App跨平台开发
+- **Flutter工程师** - 跨平台移动应用开发
 
-### 移动端
-- **Flutter工程师** - 跨平台移动开发
-- **Uniapp工程师** - 小程序+App开发
-- **Angular工程师** - Angular现代化开发
+### 后端开发（5个）
+- **Python工程师** - FastAPI/Django/Flask全栈开发
+- **FastAPI工程师** - FastAPI专业API开发
+- **Node工程师** - Express/Nest.js服务端开发
+- **Go工程师** - Go语言高性能后端开发
+- **Rust工程师** - Rust系统级开发
 
-### 专项技术
-- **测试工程师** - 测试策略和质量保证
-- **DevOps工程师** - 部署和运维
-- **UI/UX设计师** - 界面和用户体验
-- **技术文档工程师** - 文档和技术写作
-- **环境管理工程师** - 开发环境管理
+### 专项技术（4个）
+- **测试工程师** - 自动化测试、质量保证、测试策略
+- **DevOps工程师** - CI/CD、容器化、云部署
+- **UI/UX设计师** - 界面设计、用户体验、交互原型
+- **技术文档工程师** - 技术文档、API文档、用户手册
+- **C++部署工程师** - C++系统部署和优化
 
-## 🎯 使用方法
+## 🎯 使用方法（全新升级）
 
 ### 1. 启动团队向导
 ```bash
 # 启动完整团队向导
 python .trae/trae.py start
 
-# 或直接使用脚本
-python .trae/scripts/team-launcher.py start
+# 或直接使用工作流
+python .trae/workflows/team-launcher.py start
 ```
 
-### 2. 列出所有智能体
+### 2. 项目初始化（新增）
 ```bash
-python .trae/scripts/team-launcher.py list
+# 快速初始化项目
+python .trae/workflows/project-init.py quick
+
+# 自定义初始化
+python .trae/workflows/project-init.py custom
 ```
 
-### 3. 项目初始化
+### 3. AI控制台交互
 ```bash
-python .trae/scripts/team-launcher.py setup
+# 启动AI控制台
+python .trae/workflows/trae-console.py
+
+# 在控制台中直接对话
+"我想创建一个Vue3电商网站"
 ```
 
-### 4. AI控制台交互
+### 4. 环境管理（新增）
 ```bash
-python .trae/scripts/trae-console.py
+# 统一环境管理
+python .trae/workflows/universal-env-manager.py setup
+python .trae/workflows/universal-env-manager.py check
 ```
 
 ### 5. 创建新智能体
 ```bash
-python .trae/scripts/agent-suitev2.py create
+# 交互式创建
+python .trae/workflows/agent-suite.py create
 
 # 快速生成特定技术栈
-python .trae/scripts/agent-suitev2.py generate python
-python .trae/scripts/agent-suitev2.py generate react
+python .trae/workflows/agent-suite.py generate python
+python .trae/workflows/agent-suite.py generate react
+python .trae/workflows/agent-suite.py generate vue
 ```
 
-## 🔧 高级用法
+### 6. 核心工具使用（新增）
+```bash
+# 智能清理项目
+python .trae/core/smart-cleanup.py
 
-### 开发者环境变量
-所有功能通过统一入口`trae.py`调用，支持以下环境变量：
+# 系统增强优化
+python .trae/core/system-enhancer.py
 
-- `TRAE_ACTION=auto` - 自动检测执行(默认)
-- `TRAE_ACTION=start` - 启动团队向导
-- `TRAE_ACTION=console` - 启动AI控制台
-- `TRAE_SILENT=true` - 静默模式
+# 项目助手
+python .trae/core/project-assistant.py
+```
 
-> 注意：普通用户完全不需要知道这些，Trae IDE会自动设置
+## 🔧 高级配置
 
-### 自定义项目配置
+### 项目配置文件
 创建 `.trae-project.json`：
 ```json
 {
   "project_name": "my-awesome-project",
-  "active_agents": ["python-ai-engineer", "react-engineer"],
+  "project_type": "web",
+  "active_agents": ["vue-engineer", "python-ai-engineer", "devops-engineer"],
   "features": {
     "ai_agents": true,
     "environment_management": true,
-    "deployment_tools": true
+    "deployment_tools": true,
+    "auto_cleanup": true,
+    "smart_reminders": true
+  },
+  "tech_stack": {
+    "frontend": "vue3",
+    "backend": "fastapi",
+    "database": "postgresql"
   }
 }
 ```
@@ -152,105 +190,203 @@ python .trae/scripts/agent-suitev2.py generate react
 TRAE_AGENTS_DIR=.trae/agent
 TRAE_LOGS_DIR=.trae/logs
 TRAE_BACKUP_DIR=.trae/backups
+TRAE_TEMP_DIR=.trae/temp
+
+# 开发环境
+NODE_ENV=development
+PYTHON_ENV=development
+
+# 个性化设置
+TRAE_THEME=dark
+TRAE_LANGUAGE=zh-CN
 ```
+
+### 开发者环境变量
+所有功能通过统一入口`trae.py`调用，支持以下环境变量：
+
+- `TRAE_ACTION=auto` - 自动检测执行(默认)
+- `TRAE_ACTION=start` - 启动团队向导
+- `TRAE_ACTION=console` - 启动AI控制台
+- `TRAE_ACTION=setup` - 项目初始化
+- `TRAE_ACTION=cleanup` - 智能清理
+- `TRAE_SILENT=true` - 静默模式
 
 ## 📱 跨平台支持
 
-- ✅ **Windows** (PowerShell/CMD) - 使用 `start.bat`
-- ✅ **macOS** (Terminal) - 使用 `start.sh`
-- ✅ **Linux** (Bash/Zsh) - 使用 `start.sh`
-
-## 🔄 更新和维护
-
-### 更新智能体
+### Windows
 ```bash
-# 在主项目中更新
-python .trae/scripts/agent-suitev2.py create
+# 使用启动脚本
+.trae\start.bat
 
-# 然后重新复制到新项目
+# 或直接运行
+python .trae\trae.py start
 ```
 
-### 备份配置
+### macOS/Linux
 ```bash
-# 备份当前项目配置
-cp .trae-project.json .trae-project.json.backup
+# 使用启动脚本
+./.trae/start.sh
+
+# 或直接运行
+python3 .trae/trae.py start
 ```
 
-## 🆘 故障排除
+## 🔄 更新和维护（全新流程）
 
-### 常见问题
+### 智能更新系统
+```bash
+# 检查更新
+python .trae/workflows/team-launcher.py check-update
+
+# 更新智能体
+python .trae/workflows/agent-suite.py update-all
+
+# 同步最新模板
+python .trae/workflows/project-init.py sync-templates
+```
+
+### 备份和恢复
+```bash
+# 备份当前配置
+python .trae/core/smart-cleanup.py backup
+
+# 恢复配置
+python .trae/core/smart-cleanup.py restore
+```
+
+### 清理和维护
+```bash
+# 智能清理临时文件
+python .trae/core/smart-cleanup.py clean
+
+# 优化系统性能
+python .trae/core/system-enhancer.py optimize
+```
+
+## 🆘 故障排除（2024新版）
+
+### 常见问题快速解决
 
 **Q: 复制后无法运行？**
 ```bash
-# 检查Python版本
-python --version  # 需要 Python 3.7+
+# 检查Python版本（需要3.7+）
+python --version
 
 # 检查文件权限
 chmod +x .trae/trae.py  # Linux/Mac
+# Windows: 右键→属性→解除锁定
 ```
 
 **Q: 智能体无法识别？**
 ```bash
 # 重新扫描智能体
-python .trae/scripts/team-launcher.py list
+python .trae/workflows/team-launcher.py list
+
+# 检查路径
+python .trae/workflows/team-launcher.py doctor
 ```
 
-**Q: 如何添加新智能体？**
+**Q: 环境配置问题？**
 ```bash
-# 在主项目中创建
-python .trae/scripts/agent-suitev2.py create
-# 然后复制到新项目
+# 诊断环境
+python .trae/workflows/universal-env-manager.py doctor
+
+# 重新配置
+python .trae/workflows/universal-env-manager.py reset
 ```
 
-**Q: 路径问题导致0个智能体？**
+**Q: 如何添加自定义智能体？**
 ```bash
-# 确保在正确目录下运行
-python .trae/scripts/team-launcher.py list
+# 使用模板创建
+python .trae/workflows/agent-suite.py create-custom
+
+# 或手动编辑
+# 复制agent-template.json并修改
 ```
 
-## 💡 使用技巧
+## 💡 使用技巧（专家级）
 
-### 控制台使用
-1. 启动控制台：`python .trae/scripts/trae-console.py`
-2. 描述需求："我想做一个Vue3任务管理系统"
-3. 查看项目：使用`list`命令
+### 控制台高级用法
+```bash
+# 启动控制台
+python .trae/workflows/trae-console.py
 
-### 智能体调用
-在控制台中可以直接@智能体名进行专业咨询：
-- `@产品经理 创建Vue3任务管理应用`
-- `@Vue工程师 实现响应式界面`
-- `@Python工程师 设计RESTful API`
+# 在控制台中：
+"@产品经理 帮我设计一个Vue3+FastAPI的任务管理系统"
+"@Vue工程师 创建响应式待办事项组件"
+"@Python工程师 设计RESTful API接口"
+"@DevOps工程师 配置Docker部署"
+```
 
 ### 项目最佳实践
-1. **首次使用**：先运行 `python .trae/trae.py setup`
-2. **日常开发**：使用 `python .trae/trae.py start`
-3. **团队协作**：将 `.trae` 加入版本控制
-4. **定期更新**：从主项目同步最新智能体
+1. **首次使用**：`python .trae/trae.py setup` 自动配置环境
+2. **日常开发**：`python .trae/trae.py start` 启动完整团队
+3. **快速原型**：`python .trae/workflows/trae-console.py` 直接对话
+4. **团队协作**：将 `.trae` 和 `.trae-project.json` 加入版本控制
+5. **定期维护**：每周运行 `python .trae/core/smart-cleanup.py`
 
-## 🎯 立即开始
-
-### 零配置方案（推荐新手）
+### 开发工作流
 ```bash
-# 1. 复制 .trae 目录到项目根目录
-# 2. 完成！Trae IDE会自动处理
+# 1. 初始化项目
+python .trae/workflows/project-init.py
+
+# 2. 启动AI团队
+python .trae/workflows/team-launcher.py start
+
+# 3. 进入控制台开发
+python .trae/workflows/trae-console.py
+
+# 4. 环境检查
+python .trae/workflows/universal-env-manager.py check
+
+# 5. 项目清理
+python .trae/core/smart-cleanup.py
 ```
 
-### 手动方案（推荐开发者）
+## 🎯 立即开始（3种方式）
+
+### 🟢 零配置方案（新手推荐）
+```bash
+# 1. 复制 .trae 目录到项目根目录
+# 2. 完成！Trae IDE会自动处理一切
+```
+
+### 🟡 快速方案（效率推荐）
+```bash
+# 1. 一键初始化
+python .trae/workflows/project-init.py quick
+
+# 2. 启动开发
+python .trae/trae.py start
+```
+
+### 🔵 专家方案（开发者推荐）
 ```bash
 # 1. 进入目录
 cd .trae
 
 # 2. 启动控制台
-python scripts/trae-console.py
+python workflows/trae-console.py
 
 # 3. 输入需求
-"创建一个Vue3+TypeScript的任务管理系统"
+"创建一个现代化的Vue3+TypeScript+FastAPI全栈应用"
 
-# 4. 开始开发！
+# 4. 开始专业开发！
 ```
 
-**🎯 记住：描述需求，AI专家会给你完整的开发方案！**
+---
+
+## 🎉 新功能预告
+
+- **智能代码审查** - 自动生成PR审查报告
+- **性能监控** - 实时性能分析和优化建议
+- **团队协作** - 多人AI协作开发
+- **云端部署** - 一键部署到主流云平台
+
+**🎯 记住：描述你的需求，18个AI专家会给你完整的解决方案！**
 
 ---
 
 **🚀 让AI为你的每个项目赋能！复制即用，零配置，零学习成本！**
+
+*最后更新：2024年12月 - v2.0 全面升级版本*
