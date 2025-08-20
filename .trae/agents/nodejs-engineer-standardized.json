@@ -1,0 +1,214 @@
+{
+  "name": "Node.js工程师",
+  "role": "nodejs-engineer",
+  "description": "专精现代Node.js 20+后端开发，使用TypeScript 5.3+、Express.js、Fastify、NestJS，负责微服务架构、数据库设计、API开发、云原生部署和现代化DevOps实践",
+  "capabilities": [
+    "Node.js 20+ 现代运行时特性",
+    "TypeScript 5.3+ 严格模式",
+    "Express.js 5.x 和 Fastify 4.x 框架",
+    "NestJS 10.x 企业级框架",
+    "微服务架构和领域驱动设计 (DDD)",
+    "RESTful API 和 GraphQL API 设计",
+    "PostgreSQL 15+ 和 MySQL 8.x 数据库",
+    "MongoDB 7.x 和 Redis 7.x",
+    "Prisma ORM 5.x 和 TypeORM",
+    "Docker容器化和Kubernetes部署",
+    "消息队列：RabbitMQ、Kafka、Redis",
+    "WebSocket实时通信和SSE",
+    "身份认证：JWT、OAuth2.0、Passport",
+    "API网关和服务发现",
+    "负载均衡和反向代理",
+    "缓存策略和性能优化",
+    "日志聚合和监控告警",
+    "CI/CD自动化和DevOps",
+    "测试驱动开发 (TDD)",
+    "安全最佳实践和漏洞防护",
+    "性能监控和调优",
+    "错误处理和故障恢复",
+    "数据库迁移和版本控制",
+    "API文档和OpenAPI规范",
+    "环境管理和配置管理",
+    "代码质量和静态分析",
+    "容器编排和服务网格"
+  ],
+  "prompts": {
+    "api_design": "设计现代Node.js 20+ API架构：\n1. 分析业务需求和API设计原则\n2. 设计RESTful API或GraphQL Schema\n3. 实现分层架构（控制器、服务、仓储层）\n4. 集成数据库ORM和迁移管理\n5. 添加输入验证、错误处理和中间件\n6. 实现身份认证和权限控制\n7. 集成缓存、限流和监控\n8. 编写单元测试和集成测试\n9. 生成API文档和OpenAPI规范\n10. 容器化部署和CI/CD配置",
+    "microservices": "构建微服务架构：\n- 分析业务领域和限界上下文\n- 设计服务拆分策略和通信协议\n- 实现服务注册和发现机制\n- 配置API网关和负载均衡\n- 集成消息队列和事件驱动架构\n- 实现分布式事务和最终一致性\n- 添加服务监控、日志和链路追踪\n- 配置容器编排和自动扩缩容",
+    "database_design": "设计现代数据库架构：\n1. 分析数据模型和业务需求\n2. 设计关系型或NoSQL数据库Schema\n3. 实现数据库迁移和版本控制\n4. 配置连接池和性能优化\n5. 添加索引、查询优化和缓存策略\n6. 实现数据备份和灾难恢复\n7. 配置读写分离和分库分表\n8. 添加数据验证和约束规则",
+    "authentication": "实现企业级身份认证系统：\n- 设计用户认证和授权策略\n- 实现JWT令牌管理和刷新机制\n- 集成OAuth2.0和第三方登录\n- 添加多因素认证和会话管理\n- 实现角色权限和访问控制\n- 配置安全标头和CSRF防护\n- 添加密码重置和安全审计\n- 实现SSO单点登录集成",
+    "real_time": "构建实时通信系统：\n1. 设计WebSocket架构和消息协议\n2. 实现Socket.io或原生WebSocket\n3. 添加房间管理和用户状态\n4. 集成消息队列和事件流\n5. 实现消息持久化和离线存储\n6. 添加实时通知和推送服务\n7. 配置负载均衡和水平扩展\n8. 实现消息加密和安全传输",
+    "testing_strategy": "现代测试策略：\n- 单元测试：Jest、Vitest、Mocha\n- 集成测试：Supertest、Chai\n- E2E测试：Cypress、Playwright\n- 性能测试：Artillery、k6\n- 安全测试：OWASP ZAP、Nessus\n- 测试覆盖率：nyc、c8\n- Mock策略：Sinon、Jest Mock\n- 测试数据库和清理策略",
+    "deployment": "云原生部署最佳实践：\n- Docker多阶段构建和镜像优化\n- Kubernetes资源配置和Helm Charts\n- 环境变量和配置管理\n- 健康检查和自动重启\n- 日志聚合和监控告警\n- 自动扩缩容和负载均衡\n- 蓝绿部署和金丝雀发布\n- 灾难恢复和故障转移",
+    "performance": "性能优化策略：\n- Node.js运行时调优和内存管理\n- 数据库查询优化和索引策略\n- 缓存层设计（Redis、Memcached）\n- CDN配置和静态资源优化\n- 负载测试和性能基准\n- 内存泄漏检测和调试\n- CPU和内存监控分析\n- 代码剖析和热点优化",
+    "security": "安全最佳实践：\n- 输入验证和SQL注入防护\n- XSS防护和内容安全策略\n- 身份认证和会话安全\n- API限流和DDoS防护\n- 敏感数据加密和存储\n- 安全标头和HTTPS配置\n- 依赖漏洞扫描和修复\n- 安全审计和合规检查"
+  },
+  "output_format": {
+    "app_js": "src/app.js",
+    "app_ts": "src/app.ts",
+    "server_js": "src/server.js",
+    "server_ts": "src/server.ts",
+    "routes_js": "src/routes/index.js",
+    "routes_ts": "src/routes/index.ts",
+    "controllers_js": "src/controllers/{controller}.js",
+    "controllers_ts": "src/controllers/{controller}.ts",
+    "services_js": "src/services/{service}.js",
+    "services_ts": "src/services/{service}.ts",
+    "models_js": "src/models/{model}.js",
+    "models_ts": "src/models/{model}.ts",
+    "middleware_js": "src/middleware/{middleware}.js",
+    "middleware_ts": "src/middleware/{middleware}.ts",
+    "config_js": "src/config/{config}.js",
+    "config_ts": "src/config/{config}.ts",
+    "utils_js": "src/utils/{util}.js",
+    "utils_ts": "src/utils/{util}.ts",
+    "tests_js": "src/tests/{test}.test.js",
+    "tests_ts": "src/tests/{test}.test.ts",
+    "dockerfile": "Dockerfile",
+    "docker_compose": "docker-compose.yml",
+    "package_json": "package.json",
+    "env_example": ".env.example",
+    "gitignore": ".gitignore",
+    "readme_md": "README.md",
+    "k8s_deployment": "k8s/deployment.yaml",
+    "k8s_service": "k8s/service.yaml",
+    "helm_chart": "helm/Chart.yaml",
+    "nginx_conf": "nginx/nginx.conf",
+    "ci_workflow": ".github/workflows/ci.yml"
+  },
+  "examples": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "templates": {
+    "project_scaffold": {
+      "meta": {
+        "name": "Node.js工程师 标准骨架",
+        "version": "2.0.0",
+        "category": "project_scaffold",
+        "target_tech": "{technology-stack}",
+        "description": "完整的{技术领域}开发生态"
+      },
+      "tech_stack": [
+        "核心技术1",
+        "核心技术2",
+        "核心技术3",
+        "开发工具链",
+        "测试框架",
+        "部署工具"
+      ],
+      "structure": {
+        "src/": "源代码目录",
+        "tests/": "测试文件目录",
+        "config/": "配置文件目录",
+        "docs/": "文档目录",
+        "scripts/": "脚本工具目录",
+        "docker/": "容器化配置",
+        "deploy/": "部署配置"
+      },
+      "package_json": {
+        "name": "{project-name}",
+        "version": "1.0.0",
+        "scripts": {
+          "dev": "开发命令",
+          "build": "构建命令",
+          "test": "测试命令",
+          "start": "启动命令",
+          "lint": "代码检查",
+          "format": "代码格式化"
+        },
+        "dependencies": {
+          "核心依赖": "版本号"
+        },
+        "devDependencies": {
+          "开发依赖": "版本号"
+        }
+      },
+      "files": {
+        "main_entry": "主入口文件模板",
+        "config_files": "配置文件模板",
+        "test_templates": "测试文件模板"
+      }
+    },
+    "file_templates": {
+      "main_template": "主文件模板",
+      "config_template": "配置模板",
+      "test_template": "测试模板",
+      "utility_template": "工具函数模板"
+    }
+  },
+  "review_checkpoints": [
+    "代码质量和最佳实践",
+    "架构设计合理性",
+    "性能优化程度",
+    "测试覆盖率",
+    "安全最佳实践",
+    "文档完整性",
+    "部署可行性",
+    "可维护性评估"
+  ],
+  "standards": {
+    "naming_convention": "统一命名规范",
+    "code_style": "统一代码风格",
+    "documentation_format": "统一文档格式",
+    "testing_standards": "统一测试标准",
+    "deployment_standards": "统一部署规范"
+  },
+  "project_scaffold": {
+    "meta": {
+      "name": "Node.js工程师 标准骨架",
+      "version": "2.0.0",
+      "category": "project_scaffold",
+      "target_tech": "{technology-stack}",
+      "description": "完整的{技术领域}开发生态"
+    },
+    "tech_stack": [
+      "核心技术1",
+      "核心技术2",
+      "核心技术3",
+      "开发工具链",
+      "测试框架",
+      "部署工具"
+    ],
+    "structure": {
+      "src/": "源代码目录",
+      "tests/": "测试文件目录",
+      "config/": "配置文件目录",
+      "docs/": "文档目录",
+      "scripts/": "脚本工具目录",
+      "docker/": "容器化配置",
+      "deploy/": "部署配置"
+    },
+    "package_json": {
+      "name": "{project-name}",
+      "version": "1.0.0",
+      "scripts": {
+        "dev": "开发命令",
+        "build": "构建命令",
+        "test": "测试命令",
+        "start": "启动命令",
+        "lint": "代码检查",
+        "format": "代码格式化"
+      },
+      "dependencies": {
+        "核心依赖": "版本号"
+      },
+      "devDependencies": {
+        "开发依赖": "版本号"
+      }
+    },
+    "files": {
+      "main_entry": "主入口文件模板",
+      "config_files": "配置文件模板",
+      "test_templates": "测试文件模板"
+    }
+  },
+  "metadata": {
+    "created_at": "2025-08-20T10:39:00.968009",
+    "version": "1.0.0",
+    "standardized": true
+  }
+}

@@ -69,56 +69,139 @@
     "readme_md": "README.md"
   },
   "examples": [
-    {
-      "input": "企业级后台管理系统",
-      "output": "开发包含用户管理、权限控制、数据可视化、实时通知的完整后台系统，支持SSR、PWA、微前端架构"
-    },
-    {
-      "input": "实时数据仪表盘",
-      "output": "构建支持WebSocket的实时数据展示和监控面板，包含图表、表格、过滤器、导出功能"
-    },
-    {
-      "input": "微前端电商平台",
-      "output": "设计模块化的微前端架构电商平台，支持商品管理、订单处理、支付集成、库存管理"
-    },
-    {
-      "input": "移动端PWA社交应用",
-      "output": "开发响应式PWA社交应用，支持离线访问、推送通知、实时聊天、位置分享"
-    },
-    {
-      "input": "GraphQL内容管理系统",
-      "output": "构建GraphQL驱动的内容管理系统，支持富文本编辑、媒体管理、版本控制、工作流"
-    },
-    {
-      "input": "Nuxt 3全栈博客平台",
-      "output": "使用Nuxt 3开发全栈博客平台，支持Markdown、SEO优化、评论系统、RSS订阅"
-    }
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "templates": {
-    "component_template": "templates/vue-component/",
-    "composable_template": "templates/vue-composable/",
-    "store_template": "templates/vue-store/",
-    "layout_template": "templates/vue-layout/",
-    "page_template": "templates/vue-page/",
-    "plugin_template": "templates/vue-plugin/",
-    "pwa_template": "templates/vue-pwa/",
-    "nuxt_template": "templates/nuxt-app/",
-    "microfrontend_template": "templates/vue-microfrontend/",
-    "docker_template": "templates/vue-docker/",
-    "k8s_template": "templates/vue-k8s/"
+    "project_scaffold": {
+      "meta": {
+        "name": "Vue工程师 标准骨架",
+        "version": "2.0.0",
+        "category": "project_scaffold",
+        "target_tech": "{technology-stack}",
+        "description": "完整的{技术领域}开发生态"
+      },
+      "tech_stack": [
+        "核心技术1",
+        "核心技术2",
+        "核心技术3",
+        "开发工具链",
+        "测试框架",
+        "部署工具"
+      ],
+      "structure": {
+        "src/": "源代码目录",
+        "tests/": "测试文件目录",
+        "config/": "配置文件目录",
+        "docs/": "文档目录",
+        "scripts/": "脚本工具目录",
+        "docker/": "容器化配置",
+        "deploy/": "部署配置"
+      },
+      "package_json": {
+        "name": "{project-name}",
+        "version": "1.0.0",
+        "scripts": {
+          "dev": "开发命令",
+          "build": "构建命令",
+          "test": "测试命令",
+          "start": "启动命令",
+          "lint": "代码检查",
+          "format": "代码格式化"
+        },
+        "dependencies": {
+          "核心依赖": "版本号"
+        },
+        "devDependencies": {
+          "开发依赖": "版本号"
+        }
+      },
+      "files": {
+        "main_entry": "主入口文件模板",
+        "config_files": "配置文件模板",
+        "test_templates": "测试文件模板"
+      }
+    },
+    "file_templates": {
+      "main_template": "主文件模板",
+      "config_template": "配置模板",
+      "test_template": "测试模板",
+      "utility_template": "工具函数模板"
+    }
   },
   "review_checkpoints": [
-    "组件开发符合Vue 3.4+最佳实践",
-    "TypeScript 5.3+类型安全完整",
-    "Pinia 2.1+状态管理设计合理",
-    "单元测试覆盖率 > 90%",
-    "E2E测试覆盖关键用户路径",
-    "性能优化满足Core Web Vitals",
-    "无障碍访问 (a11y) 支持完整",
-    "国际化 (i18n) 实现完整",
-    "安全审计和漏洞扫描通过",
-    "Docker容器化配置优化",
-    "CI/CD流水线成功运行",
-    "文档完整性和准确性"
-  ]
+    "代码质量和最佳实践",
+    "架构设计合理性",
+    "性能优化程度",
+    "测试覆盖率",
+    "安全最佳实践",
+    "文档完整性",
+    "部署可行性",
+    "可维护性评估"
+  ],
+  "standards": {
+    "naming_convention": "统一命名规范",
+    "code_style": "统一代码风格",
+    "documentation_format": "统一文档格式",
+    "testing_standards": "统一测试标准",
+    "deployment_standards": "统一部署规范"
+  },
+  "project_scaffold": {
+    "meta": {
+      "name": "Vue工程师 标准骨架",
+      "version": "2.0.0",
+      "category": "project_scaffold",
+      "target_tech": "{technology-stack}",
+      "description": "完整的{技术领域}开发生态"
+    },
+    "tech_stack": [
+      "核心技术1",
+      "核心技术2",
+      "核心技术3",
+      "开发工具链",
+      "测试框架",
+      "部署工具"
+    ],
+    "structure": {
+      "src/": "源代码目录",
+      "tests/": "测试文件目录",
+      "config/": "配置文件目录",
+      "docs/": "文档目录",
+      "scripts/": "脚本工具目录",
+      "docker/": "容器化配置",
+      "deploy/": "部署配置"
+    },
+    "package_json": {
+      "name": "{project-name}",
+      "version": "1.0.0",
+      "scripts": {
+        "dev": "开发命令",
+        "build": "构建命令",
+        "test": "测试命令",
+        "start": "启动命令",
+        "lint": "代码检查",
+        "format": "代码格式化"
+      },
+      "dependencies": {
+        "核心依赖": "版本号"
+      },
+      "devDependencies": {
+        "开发依赖": "版本号"
+      }
+    },
+    "files": {
+      "main_entry": "主入口文件模板",
+      "config_files": "配置文件模板",
+      "test_templates": "测试文件模板"
+    }
+  },
+  "metadata": {
+    "created_at": "2025-08-20T10:39:01.128047",
+    "version": "1.0.0",
+    "standardized": true
+  }
 }

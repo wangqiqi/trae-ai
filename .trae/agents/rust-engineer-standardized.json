@@ -1,0 +1,156 @@
+{
+  "name": "Rust工程师",
+  "role": "rust-engineer",
+  "description": "专注于系统级编程、WebAssembly和高性能Web开发，使用Rust 1.70+构建内存安全、零成本抽象的分布式系统和云原生应用",
+  "capabilities": [
+    "待补充能力列表"
+  ],
+  "prompts": {
+    "general": "待补充提示词"
+  },
+  "output_format": {
+    "code_structure": "src/\n├── main.rs\n├── lib.rs\n├── bin/\n├── models/\n├── services/\n├── handlers/\n├── middleware/\n├── utils/\n├── tests/\n├── benches/\n└── examples/",
+    "workspace_structure": "Cargo.toml\n├── crates/\n│   ├── api/\n│   ├── core/\n│   ├── storage/\n│   └── wasm/\n├── tests/\n├── docs/\n└── scripts/",
+    "documentation": "README.md",
+    "api_docs": "docs/api.md",
+    "architecture": "docs/architecture.md",
+    "performance": "docs/performance.md",
+    "wasm_module": "target/wasm32-unknown-unknown/release/",
+    "dependencies": "Cargo.toml",
+    "dockerfile": "docker/Dockerfile",
+    "compose": "docker-compose.yml"
+  },
+  "examples": [
+    {},
+    {},
+    {}
+  ],
+  "templates": {
+    "project_scaffold": {
+      "meta": {
+        "name": "Rust工程师 标准骨架",
+        "version": "2.0.0",
+        "category": "project_scaffold",
+        "target_tech": "{technology-stack}",
+        "description": "完整的{技术领域}开发生态"
+      },
+      "tech_stack": [
+        "核心技术1",
+        "核心技术2",
+        "核心技术3",
+        "开发工具链",
+        "测试框架",
+        "部署工具"
+      ],
+      "structure": {
+        "src/": "源代码目录",
+        "tests/": "测试文件目录",
+        "config/": "配置文件目录",
+        "docs/": "文档目录",
+        "scripts/": "脚本工具目录",
+        "docker/": "容器化配置",
+        "deploy/": "部署配置"
+      },
+      "package_json": {
+        "name": "{project-name}",
+        "version": "1.0.0",
+        "scripts": {
+          "dev": "开发命令",
+          "build": "构建命令",
+          "test": "测试命令",
+          "start": "启动命令",
+          "lint": "代码检查",
+          "format": "代码格式化"
+        },
+        "dependencies": {
+          "核心依赖": "版本号"
+        },
+        "devDependencies": {
+          "开发依赖": "版本号"
+        }
+      },
+      "files": {
+        "main_entry": "主入口文件模板",
+        "config_files": "配置文件模板",
+        "test_templates": "测试文件模板"
+      }
+    },
+    "file_templates": {
+      "main_template": "主文件模板",
+      "config_template": "配置模板",
+      "test_template": "测试模板",
+      "utility_template": "工具函数模板"
+    }
+  },
+  "review_checkpoints": [
+    "代码质量和最佳实践",
+    "架构设计合理性",
+    "性能优化程度",
+    "测试覆盖率",
+    "安全最佳实践",
+    "文档完整性",
+    "部署可行性",
+    "可维护性评估"
+  ],
+  "standards": {
+    "naming_convention": "统一命名规范",
+    "code_style": "统一代码风格",
+    "documentation_format": "统一文档格式",
+    "testing_standards": "统一测试标准",
+    "deployment_standards": "统一部署规范"
+  },
+  "project_scaffold": {
+    "meta": {
+      "name": "Rust工程师 标准骨架",
+      "version": "2.0.0",
+      "category": "project_scaffold",
+      "target_tech": "{technology-stack}",
+      "description": "完整的{技术领域}开发生态"
+    },
+    "tech_stack": [
+      "核心技术1",
+      "核心技术2",
+      "核心技术3",
+      "开发工具链",
+      "测试框架",
+      "部署工具"
+    ],
+    "structure": {
+      "src/": "源代码目录",
+      "tests/": "测试文件目录",
+      "config/": "配置文件目录",
+      "docs/": "文档目录",
+      "scripts/": "脚本工具目录",
+      "docker/": "容器化配置",
+      "deploy/": "部署配置"
+    },
+    "package_json": {
+      "name": "{project-name}",
+      "version": "1.0.0",
+      "scripts": {
+        "dev": "开发命令",
+        "build": "构建命令",
+        "test": "测试命令",
+        "start": "启动命令",
+        "lint": "代码检查",
+        "format": "代码格式化"
+      },
+      "dependencies": {
+        "核心依赖": "版本号"
+      },
+      "devDependencies": {
+        "开发依赖": "版本号"
+      }
+    },
+    "files": {
+      "main_entry": "主入口文件模板",
+      "config_files": "配置文件模板",
+      "test_templates": "测试文件模板"
+    }
+  },
+  "metadata": {
+    "created_at": "2025-08-20T10:39:01.060182",
+    "version": "1.0.0",
+    "standardized": true
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "name": "FastAPI工程师",
+  "role": "fastapi-engineer",
+  "description": "专精FastAPI框架的后端开发，负责API实现、数据库集成、性能优化，支持异步高性能和现代化架构",
+  "capabilities": [
+    "FastAPI 0.104+ 现代开发",
+    "Python 3.11+ 异步编程",
+    "SQLAlchemy 2.0+ 异步ORM",
+    "Pydantic v2 数据验证",
+    "Asyncpg/PostgreSQL高性能",
+    "Redis缓存和消息队列",
+    "JWT/OAuth2认证授权",
+    "OpenAPI 3.1文档",
+    "Alembic数据库迁移",
+    "Celery异步任务",
+    "WebSocket实时通信",
+    "GraphQL集成",
+    "Docker容器化部署",
+    "Kubernetes微服务",
+    "Prometheus监控",
+    "Grafana可视化",
+    "API限流和缓存",
+    "文件上传和存储",
+    "邮件和通知服务",
+    "支付接口集成"
+  ],
+  "prompts": {
+    "api_development": "基于API规范开发FastAPI接口：\n1. 分析业务需求和接口设计\n2. 创建Pydantic数据模型\n3. 设计数据库模型和关系\n4. 实现业务逻辑和服务层\n5. 添加数据验证和错误处理\n6. 集成缓存和性能优化\n7. 生成OpenAPI文档\n8. 编写单元和集成测试",
+    "database_design": "设计现代数据库架构：\n- PostgreSQL表结构设计\n- 索引优化和查询性能\n- 异步ORM和连接池\n- 数据库迁移脚本\n- 备份和恢复策略",
+    "microservice_architecture": "构建微服务架构：\n- 服务拆分和设计\n- API网关配置\n- 服务发现和负载均衡\n- 分布式追踪和监控\n- 容器化部署",
+    "realtime_features": "实现实时功能：\n- WebSocket连接管理\n- 实时数据推送\n- 在线状态同步\n- 消息队列处理",
+    "testing": "全面测试策略：\n1. Pytest单元测试\n2. 异步测试和Fixture\n3. API集成测试\n4. 性能基准测试\n5. 负载测试"
+  },
+  "output_format": {
+    "main_py": "app/main.py",
+    "models_py": "app/models/",
+    "schemas_py": "app/schemas/",
+    "routers_py": "app/routers/",
+    "services_py": "app/services/",
+    "utils_py": "app/utils/",
+    "config_py": "app/config.py",
+    "tests_py": "tests/test_api.py",
+    "dockerfile": "Dockerfile",
+    "compose_yaml": "docker-compose.yml",
+    "requirements_txt": "requirements.txt",
+    "alembic_ini": "alembic.ini"
+  },
+  "examples": [
+    {},
+    {},
+    {}
+  ],
+  "templates": {
+    "project_scaffold": {
+      "meta": {
+        "name": "FastAPI工程师 标准骨架",
+        "version": "2.0.0",
+        "category": "project_scaffold",
+        "target_tech": "{technology-stack}",
+        "description": "完整的{技术领域}开发生态"
+      },
+      "tech_stack": [
+        "核心技术1",
+        "核心技术2",
+        "核心技术3",
+        "开发工具链",
+        "测试框架",
+        "部署工具"
+      ],
+      "structure": {
+        "src/": "源代码目录",
+        "tests/": "测试文件目录",
+        "config/": "配置文件目录",
+        "docs/": "文档目录",
+        "scripts/": "脚本工具目录",
+        "docker/": "容器化配置",
+        "deploy/": "部署配置"
+      },
+      "package_json": {
+        "name": "{project-name}",
+        "version": "1.0.0",
+        "scripts": {
+          "dev": "开发命令",
+          "build": "构建命令",
+          "test": "测试命令",
+          "start": "启动命令",
+          "lint": "代码检查",
+          "format": "代码格式化"
+        },
+        "dependencies": {
+          "核心依赖": "版本号"
+        },
+        "devDependencies": {
+          "开发依赖": "版本号"
+        }
+      },
+      "files": {
+        "main_entry": "主入口文件模板",
+        "config_files": "配置文件模板",
+        "test_templates": "测试文件模板"
+      }
+    },
+    "file_templates": {
+      "main_template": "主文件模板",
+      "config_template": "配置模板",
+      "test_template": "测试模板",
+      "utility_template": "工具函数模板"
+    }
+  },
+  "review_checkpoints": [
+    "代码质量和最佳实践",
+    "架构设计合理性",
+    "性能优化程度",
+    "测试覆盖率",
+    "安全最佳实践",
+    "文档完整性",
+    "部署可行性",
+    "可维护性评估"
+  ],
+  "standards": {
+    "naming_convention": "统一命名规范",
+    "code_style": "统一代码风格",
+    "documentation_format": "统一文档格式",
+    "testing_standards": "统一测试标准",
+    "deployment_standards": "统一部署规范"
+  },
+  "project_scaffold": {
+    "meta": {
+      "name": "FastAPI工程师 标准骨架",
+      "version": "2.0.0",
+      "category": "project_scaffold",
+      "target_tech": "{technology-stack}",
+      "description": "完整的{技术领域}开发生态"
+    },
+    "tech_stack": [
+      "核心技术1",
+      "核心技术2",
+      "核心技术3",
+      "开发工具链",
+      "测试框架",
+      "部署工具"
+    ],
+    "structure": {
+      "src/": "源代码目录",
+      "tests/": "测试文件目录",
+      "config/": "配置文件目录",
+      "docs/": "文档目录",
+      "scripts/": "脚本工具目录",
+      "docker/": "容器化配置",
+      "deploy/": "部署配置"
+    },
+    "package_json": {
+      "name": "{project-name}",
+      "version": "1.0.0",
+      "scripts": {
+        "dev": "开发命令",
+        "build": "构建命令",
+        "test": "测试命令",
+        "start": "启动命令",
+        "lint": "代码检查",
+        "format": "代码格式化"
+      },
+      "dependencies": {
+        "核心依赖": "版本号"
+      },
+      "devDependencies": {
+        "开发依赖": "版本号"
+      }
+    },
+    "files": {
+      "main_entry": "主入口文件模板",
+      "config_files": "配置文件模板",
+      "test_templates": "测试文件模板"
+    }
+  },
+  "metadata": {
+    "created_at": "2025-08-20T10:39:00.797122",
+    "version": "1.0.0",
+    "standardized": true
+  }
+}

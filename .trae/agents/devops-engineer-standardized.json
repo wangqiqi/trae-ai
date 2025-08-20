@@ -104,57 +104,139 @@
     "health_check_sh": "scripts/health-check.sh"
   },
   "examples": [
-    {
-      "input": "云原生电商平台",
-      "output": "设计支持高并发的云原生电商架构，包含Kubernetes集群、微服务部署、自动扩缩容、全链路监控"
-    },
-    {
-      "input": "多环境CI/CD流水线",
-      "output": "构建从开发到生产的完整CI/CD流水线，包含GitOps、蓝绿部署、金丝雀发布、自动回滚"
-    },
-    {
-      "input": "企业级监控平台",
-      "output": "建立完整的企业级监控体系，包含应用监控、基础设施监控、日志分析、告警管理"
-    },
-    {
-      "input": "多云混合架构",
-      "output": "设计AWS+GCP的混合云架构，包含跨云负载均衡、数据同步、灾难恢复"
-    },
-    {
-      "input": "边缘计算IoT平台",
-      "output": "构建基于K3s的边缘计算IoT平台，支持设备管理、数据处理、实时分析"
-    },
-    {
-      "input": "零信任安全架构",
-      "output": "实现零信任网络安全架构，包含身份验证、授权控制、加密通信、安全监控"
-    }
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "templates": {
-    "k8s_template": "templates/k8s-template",
-    "terraform_template": "templates/terraform-template",
-    "cicd_template": "templates/cicd-template",
-    "monitoring_template": "templates/monitoring-template",
-    "security_template": "templates/security-template",
-    "edge_template": "templates/edge-template",
-    "platform_template": "templates/platform-template",
-    "chaos_template": "templates/chaos-template",
-    "backup_template": "templates/backup-template"
+    "project_scaffold": {
+      "meta": {
+        "name": "DevOps工程师 标准骨架",
+        "version": "2.0.0",
+        "category": "project_scaffold",
+        "target_tech": "{technology-stack}",
+        "description": "完整的{技术领域}开发生态"
+      },
+      "tech_stack": [
+        "核心技术1",
+        "核心技术2",
+        "核心技术3",
+        "开发工具链",
+        "测试框架",
+        "部署工具"
+      ],
+      "structure": {
+        "src/": "源代码目录",
+        "tests/": "测试文件目录",
+        "config/": "配置文件目录",
+        "docs/": "文档目录",
+        "scripts/": "脚本工具目录",
+        "docker/": "容器化配置",
+        "deploy/": "部署配置"
+      },
+      "package_json": {
+        "name": "{project-name}",
+        "version": "1.0.0",
+        "scripts": {
+          "dev": "开发命令",
+          "build": "构建命令",
+          "test": "测试命令",
+          "start": "启动命令",
+          "lint": "代码检查",
+          "format": "代码格式化"
+        },
+        "dependencies": {
+          "核心依赖": "版本号"
+        },
+        "devDependencies": {
+          "开发依赖": "版本号"
+        }
+      },
+      "files": {
+        "main_entry": "主入口文件模板",
+        "config_files": "配置文件模板",
+        "test_templates": "测试文件模板"
+      }
+    },
+    "file_templates": {
+      "main_template": "主文件模板",
+      "config_template": "配置模板",
+      "test_template": "测试模板",
+      "utility_template": "工具函数模板"
+    }
   },
   "review_checkpoints": [
-    "架构设计符合云原生和12要素应用最佳实践",
-    "容器镜像安全扫描通过（无高危漏洞）",
-    "Kubernetes配置符合Pod安全标准和最佳实践",
-    "CI/CD流水线运行稳定，构建时间优化",
-    "监控系统数据准确完整，SLI/SLO定义清晰",
-    "告警规则配置合理有效，避免告警疲劳",
-    "基础设施即代码可复用，模块化和版本化",
-    "安全策略符合合规要求（SOC2、ISO27001）",
-    "成本优化方案有效，资源利用率>70%",
-    "灾难恢复计划可执行，RTO/RPO符合业务要求",
-    "混沌工程实验验证系统韧性",
-    "平台工程提升开发者体验和生产力",
-    "边缘计算架构支持离线场景和数据同步",
-    "零信任安全架构实现端到端加密",
-    "FinOps成本治理和预算控制机制"
-  ]
+    "代码质量和最佳实践",
+    "架构设计合理性",
+    "性能优化程度",
+    "测试覆盖率",
+    "安全最佳实践",
+    "文档完整性",
+    "部署可行性",
+    "可维护性评估"
+  ],
+  "standards": {
+    "naming_convention": "统一命名规范",
+    "code_style": "统一代码风格",
+    "documentation_format": "统一文档格式",
+    "testing_standards": "统一测试标准",
+    "deployment_standards": "统一部署规范"
+  },
+  "project_scaffold": {
+    "meta": {
+      "name": "DevOps工程师 标准骨架",
+      "version": "2.0.0",
+      "category": "project_scaffold",
+      "target_tech": "{technology-stack}",
+      "description": "完整的{技术领域}开发生态"
+    },
+    "tech_stack": [
+      "核心技术1",
+      "核心技术2",
+      "核心技术3",
+      "开发工具链",
+      "测试框架",
+      "部署工具"
+    ],
+    "structure": {
+      "src/": "源代码目录",
+      "tests/": "测试文件目录",
+      "config/": "配置文件目录",
+      "docs/": "文档目录",
+      "scripts/": "脚本工具目录",
+      "docker/": "容器化配置",
+      "deploy/": "部署配置"
+    },
+    "package_json": {
+      "name": "{project-name}",
+      "version": "1.0.0",
+      "scripts": {
+        "dev": "开发命令",
+        "build": "构建命令",
+        "test": "测试命令",
+        "start": "启动命令",
+        "lint": "代码检查",
+        "format": "代码格式化"
+      },
+      "dependencies": {
+        "核心依赖": "版本号"
+      },
+      "devDependencies": {
+        "开发依赖": "版本号"
+      }
+    },
+    "files": {
+      "main_entry": "主入口文件模板",
+      "config_files": "配置文件模板",
+      "test_templates": "测试文件模板"
+    }
+  },
+  "metadata": {
+    "created_at": "2025-08-20T10:39:00.788623",
+    "version": "1.0.0",
+    "standardized": true
+  }
 }

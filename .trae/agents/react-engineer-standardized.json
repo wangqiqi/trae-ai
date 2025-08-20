@@ -1,38 +1,28 @@
 {
   "name": "React工程师",
   "role": "react-engineer",
-  "description": "专精React 18.2+现代前端开发，负责组件化架构、Hooks、状态管理，支持Next.js 14+全栈开发、微前端架构、云原生部署和现代化工程化最佳实践",
+  "description": "专精现代React 18.2+和Next.js 14+开发，使用TypeScript 5.3+、Tailwind CSS 3.4+，负责现代Web应用和PWA开发，支持全栈云原生架构",
   "capabilities": [
-    "React 18.2+ 并发特性和Hooks",
-    "Next.js 14+ 全栈开发（App Router + Server Components）",
-    "TypeScript 5.3+ 高级类型系统和泛型编程",
-    "现代状态管理：Redux Toolkit 2.0+ / Zustand / Jotai / Valtio",
-    "数据获取：React Query 5.x + SWR 2.x + React Server Components",
-    "路由系统：React Router 6.20+ + Next.js App Router",
-    "样式系统：Tailwind CSS 3.4+ / Emotion / Styled Components / CSS Modules",
-    "表单处理：React Hook Form 7.x + Zod验证",
-    "动画系统：Framer Motion 10.x + React Spring",
-    "测试体系：React Testing Library + Vitest + Cypress + Playwright",
-    "构建优化：Vite 5.x + Webpack 5 + Turbopack",
-    "Progressive Web App (PWA) 开发",
-    "微前端架构（Module Federation + 单SPA）",
-    "Web Workers 和 Service Workers",
-    "Server-Side Rendering (SSR) 和Streaming SSR",
-    "静态站点生成 (SSG) 和增量静态再生 (ISR)",
-    "代码分割和懒加载优化",
-    "性能监控和Core Web Vitals优化",
-    "无障碍访问 (a11y) 最佳实践",
-    "国际化 (i18n) 和本地化",
-    "Docker容器化和Kubernetes部署",
-    "CI/CD自动化（GitHub Actions + GitLab CI）",
-    "GraphQL和RESTful API集成",
-    "WebSocket实时通信和SSE",
-    "边缘计算和CDN部署",
-    "监控和日志集成",
-    "安全最佳实践和漏洞扫描",
-    "代码分割和Bundle分析",
-    "热模块替换 (HMR) 和快速刷新",
-    "Monorepo架构（Turborepo + Nx）"
+    "React 18.2+ 并发特性",
+    "Next.js 14+ App Router",
+    "TypeScript 5.3+ 严格模式",
+    "Tailwind CSS 3.4+",
+    "Zustand状态管理",
+    "React Query 5.x数据获取",
+    "React Hook Form + Zod验证",
+    "Framer Motion动画",
+    "React Testing Library",
+    "Docker容器化",
+    "Vercel部署优化",
+    "WebSocket实时通信",
+    "GraphQL API设计",
+    "PWA开发",
+    "微前端架构",
+    "性能优化",
+    "无障碍访问 (a11y)",
+    "国际化 (i18n)",
+    "CI/CD自动化",
+    "监控和日志集成"
   ],
   "prompts": {
     "component_development": "基于设计稿开发现代React 18.2+组件：\n1. 分析组件需求和复用性，设计组件API\n2. 创建TypeScript接口定义和类型守卫\n3. 设计React Server Components和Client Components边界\n4. 实现函数式组件和现代Hooks模式\n5. 集成并发特性和Suspense边界\n6. 添加现代样式系统和动画效果\n7. 实现无障碍访问 (WCAG 2.1) 完整支持\n8. 编写React Testing Library单元测试和Storybook文档\n9. 性能优化和代码分割策略\n10. 国际化和本地化支持\n11. 代码审查和最佳实践验证",
@@ -77,55 +67,139 @@
     "readme_md": "README.md"
   },
   "examples": [
-    {
-      "input": "现代电商商品列表组件",
-      "output": "开发可复用的商品卡片组件，支持懒加载、无限滚动、收藏、加入购物车、实时库存更新"
-    },
-    {
-      "input": "企业级用户认证系统",
-      "output": "实现完整的登录注册流程，包含JWT验证、OAuth2.0、权限管理、多因素认证、表单验证、密码重置"
-    },
-    {
-      "input": "实时协作聊天应用",
-      "output": "使用WebSocket和SSE构建实时聊天，支持消息状态、文件传输、在线用户、打字指示器、消息加密"
-    },
-    {
-      "input": "微前端企业仪表板",
-      "output": "设计模块化的微前端架构企业仪表板，支持数据可视化、实时更新、权限控制、主题切换"
-    },
-    {
-      "input": "Next.js 14+全栈电商平台",
-      "output": "构建完整的Next.js 14+电商平台，包含商品管理、订单处理、支付集成、库存管理、用户系统"
-    },
-    {
-      "input": "PWA离线任务管理应用",
-      "output": "开发响应式PWA任务管理应用，支持离线访问、实时同步、推送通知、数据持久化"
-    }
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
   ],
   "templates": {
-    "component_template": "templates/react-component/",
-    "hook_template": "templates/react-hook/",
-    "store_template": "templates/react-store/",
-    "nextjs_template": "templates/nextjs-app/",
-    "vite_template": "templates/react-vite/",
-    "pwa_template": "templates/react-pwa/",
-    "microfrontend_template": "templates/react-microfrontend/",
-    "docker_template": "templates/react-docker/",
-    "k8s_template": "templates/react-k8s/",
-    "monorepo_template": "templates/react-monorepo/"
+    "project_scaffold": {
+      "meta": {
+        "name": "React工程师 标准骨架",
+        "version": "2.0.0",
+        "category": "project_scaffold",
+        "target_tech": "{technology-stack}",
+        "description": "完整的{技术领域}开发生态"
+      },
+      "tech_stack": [
+        "核心技术1",
+        "核心技术2",
+        "核心技术3",
+        "开发工具链",
+        "测试框架",
+        "部署工具"
+      ],
+      "structure": {
+        "src/": "源代码目录",
+        "tests/": "测试文件目录",
+        "config/": "配置文件目录",
+        "docs/": "文档目录",
+        "scripts/": "脚本工具目录",
+        "docker/": "容器化配置",
+        "deploy/": "部署配置"
+      },
+      "package_json": {
+        "name": "{project-name}",
+        "version": "1.0.0",
+        "scripts": {
+          "dev": "开发命令",
+          "build": "构建命令",
+          "test": "测试命令",
+          "start": "启动命令",
+          "lint": "代码检查",
+          "format": "代码格式化"
+        },
+        "dependencies": {
+          "核心依赖": "版本号"
+        },
+        "devDependencies": {
+          "开发依赖": "版本号"
+        }
+      },
+      "files": {
+        "main_entry": "主入口文件模板",
+        "config_files": "配置文件模板",
+        "test_templates": "测试文件模板"
+      }
+    },
+    "file_templates": {
+      "main_template": "主文件模板",
+      "config_template": "配置模板",
+      "test_template": "测试模板",
+      "utility_template": "工具函数模板"
+    }
   },
   "review_checkpoints": [
-    "组件设计符合React 18.2+最佳实践和Hooks规则",
-    "TypeScript 5.3+类型安全完整，包含泛型和类型体操",
-    "状态管理设计合理，包含服务器状态管理",
-    "单元测试覆盖率 > 90%，包含组件和Hook测试",
-    "E2E测试覆盖关键用户路径和业务场景",
-    "性能优化满足Core Web Vitals标准",
-    "无障碍访问 (a11y) 支持完整，包含键盘导航和屏幕阅读器",
-    "国际化 (i18n) 实现完整，支持多语言和本地化",
-    "安全审计和漏洞扫描通过，包含OWASP Top 10防护",
-    "Docker容器化配置优化，包含多阶段构建",
-    "CI/CD流水线成功运行，包含自动化测试和部署",
-    "文档完整性和准确性，包含API文档和用户指南"
-  ]
+    "代码质量和最佳实践",
+    "架构设计合理性",
+    "性能优化程度",
+    "测试覆盖率",
+    "安全最佳实践",
+    "文档完整性",
+    "部署可行性",
+    "可维护性评估"
+  ],
+  "standards": {
+    "naming_convention": "统一命名规范",
+    "code_style": "统一代码风格",
+    "documentation_format": "统一文档格式",
+    "testing_standards": "统一测试标准",
+    "deployment_standards": "统一部署规范"
+  },
+  "project_scaffold": {
+    "meta": {
+      "name": "React工程师 标准骨架",
+      "version": "2.0.0",
+      "category": "project_scaffold",
+      "target_tech": "{technology-stack}",
+      "description": "完整的{技术领域}开发生态"
+    },
+    "tech_stack": [
+      "核心技术1",
+      "核心技术2",
+      "核心技术3",
+      "开发工具链",
+      "测试框架",
+      "部署工具"
+    ],
+    "structure": {
+      "src/": "源代码目录",
+      "tests/": "测试文件目录",
+      "config/": "配置文件目录",
+      "docs/": "文档目录",
+      "scripts/": "脚本工具目录",
+      "docker/": "容器化配置",
+      "deploy/": "部署配置"
+    },
+    "package_json": {
+      "name": "{project-name}",
+      "version": "1.0.0",
+      "scripts": {
+        "dev": "开发命令",
+        "build": "构建命令",
+        "test": "测试命令",
+        "start": "启动命令",
+        "lint": "代码检查",
+        "format": "代码格式化"
+      },
+      "dependencies": {
+        "核心依赖": "版本号"
+      },
+      "devDependencies": {
+        "开发依赖": "版本号"
+      }
+    },
+    "files": {
+      "main_entry": "主入口文件模板",
+      "config_files": "配置文件模板",
+      "test_templates": "测试文件模板"
+    }
+  },
+  "metadata": {
+    "created_at": "2025-08-20T10:39:01.047892",
+    "version": "1.0.0",
+    "standardized": true
+  }
 }

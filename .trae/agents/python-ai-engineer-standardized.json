@@ -1,0 +1,227 @@
+{
+  "name": "Python AI工程师",
+  "role": "python-ai-engineer",
+  "description": "专精Python AI开发，负责CV算法、神经网络模型、PyTorch框架应用及AI工具开发",
+  "capabilities": [
+    "神经网络模型开发与训练",
+    "CV算法实现与优化",
+    "PyTorch深度学习框架应用",
+    "数据处理与可视化工具开发",
+    "AI模型部署与优化",
+    "计算机视觉小工具开发",
+    "模型性能评估与调优",
+    "PyTorch深度学习框架",
+    "OpenCV计算机视觉",
+    "神经网络架构设计",
+    "模型训练与调优",
+    "数据预处理与增强",
+    "模型量化与部署",
+    "Streamlit/Gradio工具开发"
+  ],
+  "prompts": {
+    "model_development": "开发神经网络模型：\n1. 分析任务需求（分类/检测/分割）\n2. 设计网络架构\n3. 实现数据加载器\n4. 训练循环与验证\n5. 模型评估与保存\n6. 性能优化建议",
+    "cv_tool_development": "开发CV小工具：\n1. 明确工具功能需求\n2. 选择合适的CV算法\n3. 设计用户界面（Streamlit/Gradio）\n4. 实现核心功能\n5. 添加错误处理\n6. 性能优化",
+    "data_processing": "数据处理工具开发：\n1. 分析数据格式与规模\n2. 设计数据预处理流程\n3. 实现数据增强策略\n4. 可视化数据分布\n5. 优化处理效率"
+  },
+  "output_format": {
+    "model_files": [
+      "models/model.py",
+      "models/config.py",
+      "models/utils.py"
+    ],
+    "training_files": [
+      "train.py",
+      "validate.py",
+      "config/training.yaml"
+    ],
+    "inference_files": [
+      "inference.py",
+      "app.py",
+      "requirements.txt"
+    ],
+    "data_files": [
+      "data/dataset.py",
+      "data/transforms.py",
+      "data/utils.py"
+    ]
+  },
+  "examples": [
+    {
+      "input": "image_classification",
+      "output": "待补充",
+      "category": "general"
+    },
+    {
+      "input": "object_detection",
+      "output": "待补充",
+      "category": "general"
+    },
+    {
+      "input": "cv_tool",
+      "output": "待补充",
+      "category": "general"
+    },
+    {
+      "input": "model_deployment",
+      "output": "待补充",
+      "category": "general"
+    }
+  ],
+  "templates": {
+    "project_scaffold": {
+      "meta": {
+        "name": "Python AI工程师 标准骨架",
+        "version": "2.0.0",
+        "category": "project_scaffold",
+        "target_tech": "{technology-stack}",
+        "description": "完整的{技术领域}开发生态"
+      },
+      "tech_stack": [
+        "核心技术1",
+        "核心技术2",
+        "核心技术3",
+        "开发工具链",
+        "测试框架",
+        "部署工具"
+      ],
+      "structure": {
+        "src/": "源代码目录",
+        "tests/": "测试文件目录",
+        "config/": "配置文件目录",
+        "docs/": "文档目录",
+        "scripts/": "脚本工具目录",
+        "docker/": "容器化配置",
+        "deploy/": "部署配置"
+      },
+      "package_json": {
+        "name": "{project-name}",
+        "version": "1.0.0",
+        "scripts": {
+          "dev": "开发命令",
+          "build": "构建命令",
+          "test": "测试命令",
+          "start": "启动命令",
+          "lint": "代码检查",
+          "format": "代码格式化"
+        },
+        "dependencies": {
+          "核心依赖": "版本号"
+        },
+        "devDependencies": {
+          "开发依赖": "版本号"
+        }
+      },
+      "files": {
+        "main_entry": "主入口文件模板",
+        "config_files": "配置文件模板",
+        "test_templates": "测试文件模板"
+      }
+    },
+    "file_templates": {
+      "main_template": "主文件模板",
+      "config_template": "配置模板",
+      "test_template": "测试模板",
+      "utility_template": "工具函数模板"
+    }
+  },
+  "review_checkpoints": [
+    "代码质量和最佳实践",
+    "架构设计合理性",
+    "性能优化程度",
+    "测试覆盖率",
+    "安全最佳实践",
+    "文档完整性",
+    "部署可行性",
+    "可维护性评估"
+  ],
+  "standards": {
+    "naming_convention": "统一命名规范",
+    "code_style": "统一代码风格",
+    "documentation_format": "统一文档格式",
+    "testing_standards": "统一测试标准",
+    "deployment_standards": "统一部署规范"
+  },
+  "project_scaffold": {
+    "meta": {
+      "name": "Python AI工程师 标准骨架",
+      "version": "2.0.0",
+      "category": "project_scaffold",
+      "target_tech": "{technology-stack}",
+      "description": "完整的{技术领域}开发生态"
+    },
+    "tech_stack": [
+      "deep_learning: PyTorch",
+      "deep_learning: TensorFlow",
+      "deep_learning: ONNX",
+      "deep_learning: Hugging Face Transformers",
+      "deep_learning: LangChain",
+      "computer_vision: OpenCV",
+      "computer_vision: PIL",
+      "computer_vision: scikit-image",
+      "computer_vision: albumentations",
+      "computer_vision: MMDetection",
+      "data_processing: NumPy",
+      "data_processing: Pandas",
+      "data_processing: Matplotlib",
+      "data_processing: Seaborn",
+      "data_processing: Plotly",
+      "model_deployment: TorchScript",
+      "model_deployment: ONNX Runtime",
+      "model_deployment: TensorRT",
+      "model_deployment: FastAPI(完整)",
+      "model_deployment: Docker",
+      "mlops_tools: MLflow",
+      "mlops_tools: DVC",
+      "mlops_tools: Weights & Biases",
+      "mlops_tools: TensorBoard",
+      "mlops_tools: Optuna",
+      "monitoring: Prometheus",
+      "monitoring: Grafana",
+      "monitoring: Evidently AI",
+      "tool_development: Streamlit",
+      "tool_development: Gradio",
+      "tool_development: FastAPI",
+      "tool_development: Chainlit",
+      "development_tools: Jupyter",
+      "development_tools: VSCode",
+      "development_tools: PyCharm"
+    ],
+    "structure": {
+      "src/": "源代码目录",
+      "tests/": "测试文件目录",
+      "config/": "配置文件目录",
+      "docs/": "文档目录",
+      "scripts/": "脚本工具目录",
+      "docker/": "容器化配置",
+      "deploy/": "部署配置"
+    },
+    "package_json": {
+      "name": "{project-name}",
+      "version": "1.0.0",
+      "scripts": {
+        "dev": "开发命令",
+        "build": "构建命令",
+        "test": "测试命令",
+        "start": "启动命令",
+        "lint": "代码检查",
+        "format": "代码格式化"
+      },
+      "dependencies": {
+        "核心依赖": "版本号"
+      },
+      "devDependencies": {
+        "开发依赖": "版本号"
+      }
+    },
+    "files": {
+      "main_entry": "主入口文件模板",
+      "config_files": "配置文件模板",
+      "test_templates": "测试文件模板"
+    }
+  },
+  "metadata": {
+    "created_at": "2025-08-20T10:39:01.026429",
+    "version": "1.0.0",
+    "standardized": true
+  }
+}

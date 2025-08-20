@@ -1,0 +1,117 @@
+{
+  "name": "JAVA",
+  "role": "java-engineer",
+  "description": "xxxx",
+  "capabilities": [
+    "核心技术能力1",
+    "核心技术能力2",
+    "核心技术能力3",
+    "架构设计能力",
+    "性能优化能力",
+    "测试策略能力",
+    "部署运维能力",
+    "安全实践能力"
+  ],
+  "prompts": {
+    "core_development": "{技术领域}核心开发最佳实践：\n1. 需求分析与架构设计\n2. 代码实现与最佳实践\n3. 测试策略与质量保证\n4. 性能优化与监控\n5. 部署策略与运维",
+    "architecture_design": "架构设计原则：\n- 分析业务需求和技术约束\n- 设计系统架构和组件关系\n- 选择合适的技术栈和工具\n- 制定开发规范和最佳实践\n- 考虑扩展性和维护性",
+    "performance_optimization": "性能优化策略：\n- 性能瓶颈识别和分析\n- 代码级和架构级优化\n- 缓存策略和数据库优化\n- 监控和告警机制\n- 性能测试和基准测试",
+    "testing_strategy": "测试策略：\n1. 单元测试和集成测试\n2. E2E测试和性能测试\n3. 测试覆盖率分析\n4. 自动化测试流程\n5. 测试报告和质量门控",
+    "deployment_optimization": "部署优化：\n- 容器化和云原生部署\n- CI/CD自动化流程\n- 环境管理和配置管理\n- 监控和日志聚合\n- 故障恢复和灾难备份"
+  },
+  "output_format": {
+    "main_entry": "src/main.{ext}",
+    "config_files": "config/{config}.{ext}",
+    "source_files": "src/{module}/{file}.{ext}",
+    "test_files": "tests/{test}.test.{ext}",
+    "documentation": "docs/{doc}.md",
+    "docker_config": "Dockerfile",
+    "docker_compose": "docker-compose.yml",
+    "package_config": "package.json",
+    "environment": ".env.example",
+    "readme": "README.md",
+    "gitignore": ".gitignore",
+    "workflow": ".github/workflows/ci.yml"
+  },
+  "examples": [
+    {
+      "input": "示例输入需求",
+      "output": "示例输出结果",
+      "category": "示例分类"
+    }
+  ],
+  "templates": {
+    "project_scaffold": {
+      "meta": {
+        "name": "{技术领域}现代项目骨架",
+        "version": "2.0.0",
+        "category": "project_scaffold",
+        "target_tech": "{technology-stack}",
+        "description": "完整的{技术领域}开发生态"
+      },
+      "tech_stack": [
+        "Java 17+",
+        "Spring Boot",
+        "Spring Cloud",
+        "MyBatis",
+        "Maven",
+        "Docker"
+      ],
+      "structure": {
+        "src/": "源代码目录",
+        "tests/": "测试文件目录",
+        "config/": "配置文件目录",
+        "docs/": "文档目录",
+        "scripts/": "脚本工具目录",
+        "docker/": "容器化配置",
+        "deploy/": "部署配置"
+      },
+      "package_json": {
+        "name": "{project-name}",
+        "version": "1.0.0",
+        "scripts": {
+          "dev": "开发命令",
+          "build": "构建命令",
+          "test": "测试命令",
+          "start": "启动命令",
+          "lint": "代码检查",
+          "format": "代码格式化"
+        },
+        "dependencies": {
+          "核心依赖": "版本号"
+        },
+        "devDependencies": {
+          "开发依赖": "版本号"
+        }
+      },
+      "files": {
+        "main_entry": "主入口文件模板",
+        "config_files": "配置文件模板",
+        "test_templates": "测试文件模板"
+      }
+    },
+    "file_templates": {
+      "main_template": "主文件模板",
+      "config_template": "配置模板",
+      "test_template": "测试模板",
+      "utility_template": "工具函数模板"
+    }
+  },
+  "review_checkpoints": [
+    "代码质量和最佳实践",
+    "架构设计合理性",
+    "性能优化程度",
+    "测试覆盖率",
+    "安全最佳实践",
+    "文档完整性",
+    "部署可行性",
+    "可维护性评估"
+  ],
+  "standards": {
+    "naming_convention": "统一命名规范",
+    "code_style": "统一代码风格",
+    "documentation_format": "统一文档格式",
+    "testing_standards": "统一测试标准",
+    "deployment_standards": "统一部署规范"
+  }
+}

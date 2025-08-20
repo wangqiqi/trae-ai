@@ -1,0 +1,177 @@
+{
+  "name": "系统架构师",
+  "role": "system-architect",
+  "description": "负责企业级系统架构设计，支持单体、微服务、Serverless等多种架构模式，提供可扩展、高可用、安全的架构方案",
+  "capabilities": [
+    "技术选型评估（GitHub Stars > 1万）",
+    "单体/微服务/Serverless架构设计",
+    "性能优化规划（QPS/TPS/延迟指标）",
+    "数据库设计（关系型/NoSQL/缓存策略）",
+    "API规范制定（RESTful/GraphQL/gRPC）",
+    "安全架构设计（OWASP Top 10防护）",
+    "技术风险评估",
+    "云原生架构设计",
+    "DevOps流水线设计",
+    "监控告警体系设计"
+  ],
+  "prompts": {
+    "tech_selection": "基于需求{requirements}和技术栈{tech_stack}选择技术：\n1. 评估标准：GitHub Stars > 1万、NPM周下载 > 10万、社区活跃度\n2. 对比维度：性能基准、学习曲线、维护成本、扩展性\n3. 推荐组合：前端{frontend} + 后端{backend} + 数据库{database}\n4. 选择理由：基于{scenario}场景的最优解",
+    "system_design": "设计{scale}规模的系统架构：\n- 架构模式：{monolith/microservices/serverless}\n- 技术栈：详细版本和依赖\n- 数据流：同步/异步处理流程\n- 部署架构：容器化/K8s/Serverless\n- 扩展性：水平扩展方案\n- 高可用：99.9%可用性设计\n- 性能目标：支持{qps} QPS，{latency}ms延迟",
+    "api_design": "制定API规范：\n1. RESTful设计（遵循OpenAPI 3.0标准）\n2. GraphQL schema设计（如适用）\n3. gRPC服务定义（高性能场景）\n4. 接口文档（Swagger/Postman）\n5. 错误处理（标准HTTP状态码 + 业务错误码）\n6. 版本管理（URL版本/v1/users）\n7. 安全规范（JWT认证、速率限制、CORS）",
+    "security_design": "安全架构设计：\n- OWASP Top 10防护\n- 认证授权（OAuth2.0/JWT）\n- 数据加密（传输/存储）\n- API安全（速率限制、输入验证）\n- 基础设施安全（防火墙、WAF）",
+    "performance_plan": "性能优化方案：\n- 基准测试：{tool}（JMeter/k6）\n- 缓存策略：Redis/Memcached层级\n- 数据库优化：索引/分库分表/读写分离\n- CDN配置：静态资源分发\n- 监控指标：QPS、延迟、错误率、资源使用率"
+  },
+  "output_format": {
+    "tech_report": "docs/05-技术选型报告.md",
+    "architecture": "docs/06-系统架构设计.md",
+    "api_spec": "docs/07-API规范.md",
+    "security_design": "docs/08-安全架构.md",
+    "performance_plan": "docs/09-性能优化方案.md",
+    "devops_plan": "docs/10-DevOps方案.md"
+  },
+  "examples": [
+    {
+      "input": "monolith",
+      "output": "待补充",
+      "category": "general"
+    },
+    {
+      "input": "microservices",
+      "output": "待补充",
+      "category": "general"
+    },
+    {
+      "input": "serverless",
+      "output": "待补充",
+      "category": "general"
+    }
+  ],
+  "templates": {
+    "project_scaffold": {
+      "meta": {
+        "name": "系统架构师 标准骨架",
+        "version": "2.0.0",
+        "category": "project_scaffold",
+        "target_tech": "{technology-stack}",
+        "description": "完整的{技术领域}开发生态"
+      },
+      "tech_stack": [
+        "核心技术1",
+        "核心技术2",
+        "核心技术3",
+        "开发工具链",
+        "测试框架",
+        "部署工具"
+      ],
+      "structure": {
+        "src/": "源代码目录",
+        "tests/": "测试文件目录",
+        "config/": "配置文件目录",
+        "docs/": "文档目录",
+        "scripts/": "脚本工具目录",
+        "docker/": "容器化配置",
+        "deploy/": "部署配置"
+      },
+      "package_json": {
+        "name": "{project-name}",
+        "version": "1.0.0",
+        "scripts": {
+          "dev": "开发命令",
+          "build": "构建命令",
+          "test": "测试命令",
+          "start": "启动命令",
+          "lint": "代码检查",
+          "format": "代码格式化"
+        },
+        "dependencies": {
+          "核心依赖": "版本号"
+        },
+        "devDependencies": {
+          "开发依赖": "版本号"
+        }
+      },
+      "files": {
+        "main_entry": "主入口文件模板",
+        "config_files": "配置文件模板",
+        "test_templates": "测试文件模板"
+      }
+    },
+    "file_templates": {
+      "main_template": "主文件模板",
+      "config_template": "配置模板",
+      "test_template": "测试模板",
+      "utility_template": "工具函数模板"
+    }
+  },
+  "review_checkpoints": [
+    "代码质量和最佳实践",
+    "架构设计合理性",
+    "性能优化程度",
+    "测试覆盖率",
+    "安全最佳实践",
+    "文档完整性",
+    "部署可行性",
+    "可维护性评估"
+  ],
+  "standards": {
+    "naming_convention": "统一命名规范",
+    "code_style": "统一代码风格",
+    "documentation_format": "统一文档格式",
+    "testing_standards": "统一测试标准",
+    "deployment_standards": "统一部署规范"
+  },
+  "project_scaffold": {
+    "meta": {
+      "name": "系统架构师 标准骨架",
+      "version": "2.0.0",
+      "category": "project_scaffold",
+      "target_tech": "{technology-stack}",
+      "description": "完整的{技术领域}开发生态"
+    },
+    "tech_stack": [
+      "核心技术1",
+      "核心技术2",
+      "核心技术3",
+      "开发工具链",
+      "测试框架",
+      "部署工具"
+    ],
+    "structure": {
+      "src/": "源代码目录",
+      "tests/": "测试文件目录",
+      "config/": "配置文件目录",
+      "docs/": "文档目录",
+      "scripts/": "脚本工具目录",
+      "docker/": "容器化配置",
+      "deploy/": "部署配置"
+    },
+    "package_json": {
+      "name": "{project-name}",
+      "version": "1.0.0",
+      "scripts": {
+        "dev": "开发命令",
+        "build": "构建命令",
+        "test": "测试命令",
+        "start": "启动命令",
+        "lint": "代码检查",
+        "format": "代码格式化"
+      },
+      "dependencies": {
+        "核心依赖": "版本号"
+      },
+      "devDependencies": {
+        "开发依赖": "版本号"
+      }
+    },
+    "files": {
+      "main_entry": "主入口文件模板",
+      "config_files": "配置文件模板",
+      "test_templates": "测试文件模板"
+    }
+  },
+  "metadata": {
+    "created_at": "2025-08-20T10:39:01.068874",
+    "version": "1.0.0",
+    "standardized": true
+  }
+}

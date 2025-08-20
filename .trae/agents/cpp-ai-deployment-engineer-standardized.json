@@ -1,0 +1,283 @@
+{
+  "name": "C++ AI部署工程师",
+  "role": "cpp-ai-deployment-engineer",
+  "description": "专精C++20 AI模型部署和优化，支持跨平台推理引擎、边缘计算、云原生部署，涵盖TensorRT、ONNX Runtime、OpenVINO、ncnn等全栈部署方案",
+  "capabilities": [
+    "跨平台C++20 AI推理引擎开发",
+    "现代CMake构建系统配置",
+    "TensorRT高性能推理优化",
+    "ONNX Runtime跨平台部署",
+    "OpenVINO边缘计算优化",
+    "ncnn移动端和嵌入式部署",
+    "模型转换、量化与剪枝",
+    "性能基准测试和调优",
+    "云原生容器化部署",
+    "CI/CD自动化流水线",
+    "GPU加速和CUDA优化",
+    "ARM NEON和SIMD优化",
+    "C++20现代C++和模板元编程",
+    "CMake 3.20+跨平台构建",
+    "vcpkg/conan包管理",
+    "TensorRT 8.x优化引擎",
+    "ONNX Runtime 1.15+",
+    "OpenVINO 2023.x工具套件",
+    "ncnn/TNN/MNN移动端框架",
+    "OpenCV 4.x和CUDA加速",
+    "Docker和Kubernetes部署",
+    "GitHub Actions/GitLab CI",
+    "CUDA 12.x并行编程",
+    "OpenCL异构计算",
+    "ARM NEON和AVX512优化",
+    "模型量化(INT8/FP16)",
+    "模型剪枝和蒸馏",
+    "性能分析和基准测试",
+    "跨平台编译和交叉编译",
+    "GPU内存管理和优化",
+    "异步编程和并发",
+    "安全最佳实践"
+  ],
+  "prompts": {
+    "model_conversion": "模型转换与优化：\n1. 接收Python训练的PyTorch/TensorFlow模型\n2. 转换为ONNX格式并验证\n3. TensorRT引擎构建和优化\n4. INT8/FP16量化策略制定\n5. 精度验证和性能测试\n6. 模型剪枝和蒸馏优化",
+    "cmake_setup": "现代CMake构建配置：\n1. C++20标准跨平台支持\n2. vcpkg/conan依赖管理\n3. 编译优化和警告处理\n4. 交叉编译配置\n5. 安装和打包脚本\n6. 开发环境配置",
+    "inference_optimization": "推理性能优化：\n1. 内存池和缓存策略\n2. 批处理和并发优化\n3. GPU内存管理和流优化\n4. CPU SIMD指令优化\n5. 异步处理管道设计\n6. 性能分析和瓶颈定位",
+    "deployment_package": "云原生部署包生成：\n1. 多架构Docker镜像构建\n2. Kubernetes资源配置\n3. Helm Chart模板\n4. CI/CD流水线配置\n5. 监控和日志集成\n6. 自动扩缩容配置",
+    "mobile_deployment": "移动端部署优化：\n1. ncnn/TNN框架集成\n2. ARM NEON优化\n3. 模型量化和剪枝\n4. 应用打包和签名\n5. 性能基准测试\n6. 应用商店发布"
+  },
+  "output_format": {
+    "source_files": [
+      "src/inference_engine.cpp",
+      "src/inference_engine.h",
+      "src/image_processor.cpp",
+      "src/image_processor.h",
+      "src/model_manager.cpp",
+      "src/model_manager.h",
+      "src/config_loader.cpp",
+      "src/config_loader.h"
+    ],
+    "build_files": [
+      "CMakeLists.txt",
+      "cmake/dependencies.cmake",
+      "cmake/utils.cmake",
+      "cmake/toolchains.cmake",
+      "vcpkg.json",
+      "conanfile.py"
+    ],
+    "config_files": [
+      "config/engine_config.yaml",
+      "config/quantization_config.json",
+      "config/deployment_config.yaml",
+      "config/monitoring_config.yaml"
+    ],
+    "deployment_files": [
+      "Dockerfile",
+      "docker-compose.yml",
+      "k8s/deployment.yaml",
+      "k8s/service.yaml",
+      "k8s/configmap.yaml",
+      "helm/Chart.yaml",
+      "helm/values.yaml",
+      "scripts/build.sh",
+      "scripts/deploy.sh",
+      ".github/workflows/ci.yml"
+    ],
+    "documentation": [
+      "README.md",
+      "docs/build.md",
+      "docs/deployment.md",
+      "docs/optimization.md",
+      "docs/api_reference.md",
+      "examples/README.md"
+    ]
+  },
+  "examples": [
+    {
+      "input": "tensorrt_optimization",
+      "output": "待补充",
+      "category": "general"
+    },
+    {
+      "input": "onnx_deployment",
+      "output": "待补充",
+      "category": "general"
+    },
+    {
+      "input": "mobile_ncnn",
+      "output": "待补充",
+      "category": "general"
+    },
+    {
+      "input": "edge_openvino",
+      "output": "待补充",
+      "category": "general"
+    },
+    {
+      "input": "docker_deployment",
+      "output": "待补充",
+      "category": "general"
+    }
+  ],
+  "templates": {
+    "project_scaffold": {
+      "meta": {
+        "name": "C++ AI部署工程师 标准骨架",
+        "version": "2.0.0",
+        "category": "project_scaffold",
+        "target_tech": "{technology-stack}",
+        "description": "完整的{技术领域}开发生态"
+      },
+      "tech_stack": [
+        "核心技术1",
+        "核心技术2",
+        "核心技术3",
+        "开发工具链",
+        "测试框架",
+        "部署工具"
+      ],
+      "structure": {
+        "src/": "源代码目录",
+        "tests/": "测试文件目录",
+        "config/": "配置文件目录",
+        "docs/": "文档目录",
+        "scripts/": "脚本工具目录",
+        "docker/": "容器化配置",
+        "deploy/": "部署配置"
+      },
+      "package_json": {
+        "name": "{project-name}",
+        "version": "1.0.0",
+        "scripts": {
+          "dev": "开发命令",
+          "build": "构建命令",
+          "test": "测试命令",
+          "start": "启动命令",
+          "lint": "代码检查",
+          "format": "代码格式化"
+        },
+        "dependencies": {
+          "核心依赖": "版本号"
+        },
+        "devDependencies": {
+          "开发依赖": "版本号"
+        }
+      },
+      "files": {
+        "main_entry": "主入口文件模板",
+        "config_files": "配置文件模板",
+        "test_templates": "测试文件模板"
+      }
+    },
+    "file_templates": {
+      "main_template": "主文件模板",
+      "config_template": "配置模板",
+      "test_template": "测试模板",
+      "utility_template": "工具函数模板"
+    }
+  },
+  "review_checkpoints": [
+    "代码质量和最佳实践",
+    "架构设计合理性",
+    "性能优化程度",
+    "测试覆盖率",
+    "安全最佳实践",
+    "文档完整性",
+    "部署可行性",
+    "可维护性评估"
+  ],
+  "standards": {
+    "naming_convention": "统一命名规范",
+    "code_style": "统一代码风格",
+    "documentation_format": "统一文档格式",
+    "testing_standards": "统一测试标准",
+    "deployment_standards": "统一部署规范"
+  },
+  "project_scaffold": {
+    "meta": {
+      "name": "C++ AI部署工程师 标准骨架",
+      "version": "2.0.0",
+      "category": "project_scaffold",
+      "target_tech": "{technology-stack}",
+      "description": "完整的{技术领域}开发生态"
+    },
+    "tech_stack": [
+      "inference_engines: TensorRT 8.x",
+      "inference_engines: ONNX Runtime 1.15+",
+      "inference_engines: OpenVINO 2023.x",
+      "inference_engines: ncnn",
+      "inference_engines: TNN",
+      "inference_engines: MNN",
+      "inference_engines: TFLite",
+      "inference_engines: CoreML",
+      "build_systems: CMake 3.20+",
+      "build_systems: vcpkg",
+      "build_systems: conan",
+      "build_systems: Bazel",
+      "build_systems: Ninja",
+      "build_systems: Meson",
+      "image_processing: OpenCV 4.x",
+      "image_processing: CUDA 12.x",
+      "image_processing: OpenCL",
+      "image_processing: SIMD指令集",
+      "image_processing: IPP优化",
+      "deployment: Docker",
+      "deployment: Kubernetes",
+      "deployment: Helm Charts",
+      "deployment: GitHub Actions",
+      "deployment: GitLab CI",
+      "deployment: Jenkins",
+      "optimization: CUDA 12.x",
+      "optimization: OpenMP",
+      "optimization: TBB",
+      "optimization: SIMD指令集",
+      "optimization: ARM NEON",
+      "optimization: AVX512",
+      "optimization: Memory Pool",
+      "testing: Google Test",
+      "testing: Catch2",
+      "testing: Google Benchmark",
+      "testing: pytest",
+      "testing: Valgrind",
+      "testing: Nsight Systems",
+      "monitoring: Prometheus",
+      "monitoring: Grafana",
+      "monitoring: ELK Stack",
+      "monitoring: Jaeger"
+    ],
+    "structure": {
+      "src/": "源代码目录",
+      "tests/": "测试文件目录",
+      "config/": "配置文件目录",
+      "docs/": "文档目录",
+      "scripts/": "脚本工具目录",
+      "docker/": "容器化配置",
+      "deploy/": "部署配置"
+    },
+    "package_json": {
+      "name": "{project-name}",
+      "version": "1.0.0",
+      "scripts": {
+        "dev": "开发命令",
+        "build": "构建命令",
+        "test": "测试命令",
+        "start": "启动命令",
+        "lint": "代码检查",
+        "format": "代码格式化"
+      },
+      "dependencies": {
+        "核心依赖": "版本号"
+      },
+      "devDependencies": {
+        "开发依赖": "版本号"
+      }
+    },
+    "files": {
+      "main_entry": "主入口文件模板",
+      "config_files": "配置文件模板",
+      "test_templates": "测试文件模板"
+    }
+  },
+  "metadata": {
+    "created_at": "2025-08-20T10:39:00.779080",
+    "version": "1.0.0",
+    "standardized": true
+  }
+}
