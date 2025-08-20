@@ -1,47 +1,95 @@
 {
   "trae_ai_assistant": {
-    "version": "2.0",
-    "mode": "in_dialog",
+    "version": "3.0",
+    "mode": "principle_driven",
+    "core_principles": {
+      "PRINCIPLE-001": "需求澄清原则",
+      "PRINCIPLE-002": "技术选型对比原则", 
+      "PRINCIPLE-003": "文档驱动开发原则",
+      "PRINCIPLE-004": "渐进式实施原则"
+    },
     "interaction_modes": {
       "direct_call": "@智能体名 需求描述",
-      "project_mode": "#项目类型 需求描述"
+      "project_mode": "#项目类型 需求描述",
+      "principle_mode": "!原则 需求描述"
     },
     "response_format": {
       "structured": true,
       "include_code": true,
       "include_plan": true,
-      "include_next_steps": true
+      "include_next_steps": true,
+      "mandatory_sections": [
+        "需求重述",
+        "方案对比", 
+        "实施计划",
+        "文档清单"
+      ]
     },
     "workflows": {
       "project_startup": {
-        "name": "项目启动",
-        "description": "从需求到代码的完整流程",
+        "name": "原则驱动的项目启动",
+        "description": "基于PRINCIPLE-001~004的完整开发流程",
+        "prerequisites": ["principles.md"],
         "steps": [
           {
             "step": 1,
             "agent": "@产品经理",
-            "action": "需求分析",
-            "output": "功能清单"
+            "action": "需求澄清",
+            "principle": "PRINCIPLE-001",
+            "output": "docs/requirements.md"
           },
           {
             "step": 2,
-            "agent": "@系统架构师",
-            "action": "技术选型",
-            "output": "技术方案"
+            "agent": "@系统架构师", 
+            "action": "技术选型对比",
+            "principle": "PRINCIPLE-002",
+            "output": "docs/tech-choice.md"
           },
           {
             "step": 3,
             "agent": "@项目经理",
-            "action": "任务分解",
-            "output": "开发计划"
+            "action": "渐进式计划制定",
+            "principle": "PRINCIPLE-004",
+            "output": "docs/roadmap.md"
           },
           {
             "step": 4,
+            "agent": "@技术文档工程师",
+            "action": "文档框架建立",
+            "principle": "PRINCIPLE-003",
+            "output": "docs/structure.md"
+          },
+          {
+            "step": 5,
             "agent": "开发工程师",
-            "action": "代码实现",
-            "output": "项目代码"
+            "action": "MVP开发",
+            "principle": "PRINCIPLE-004",
+            "output": "代码+测试"
           }
         ]
+      },
+      "tech_selection": {
+        "name": "技术选型流程",
+        "description": "基于PRINCIPLE-002的标准化技术选型",
+        "template": {
+          "scheme_a": {"name": "", "pros": [], "cons": [], "score": 0},
+          "scheme_b": {"name": "", "pros": [], "cons": [], "score": 0},
+          "scheme_c": {"name": "", "pros": [], "cons": [], "score": 0}
+        }
+      }
+    },
+    "quality_gates": {
+      "requirement_check": {
+        "gate": "需求确认",
+        "checklist": ["功能明确", "约束清晰", "目标量化", "标准具体"]
+      },
+      "tech_choice_check": {
+        "gate": "技术选型", 
+        "checklist": ["≥2方案", "学习成本", "扩展性", "维护成本"]
+      },
+      "documentation_check": {
+        "gate": "文档完整",
+        "checklist": ["需求文档", "技术文档", "部署文档", "用户文档"]
       }
     }
   }
