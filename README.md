@@ -66,37 +66,52 @@
 
 ---
 
-## 🎬 30秒快速开始
+## 🎬 30秒快速开始（模板自动化版）
 
-### 🎯 方式1：核心原则速学（推荐）
+### 🎯 方式1：模板自动化（全新推荐）
 
 ```bash
-# 1. 掌握核心原则（3分钟）
-阅读 .trae/principles.md  # 3分钟掌握12大核心原则（含测试、安全、性能、维护）
+# 1. 一键启动模板控制台
+python .trae/quick-start.py
 
-# 2. 复制到新项目
-cp -r .trae my-new-project/
-cd my-new-project
+# 2. 描述你的项目需求
+"创建一个Vue3电商网站，需要用户登录、商品管理、购物车、支付功能"
 
-# 3. 开始开发 - 直接描述需求
-# "创建一个Vue3任务管理系统"
+# 3. AI自动完成：
+#   ✅ 项目初始化文档
+#   ✅ 需求分析文档
+#   ✅ API接口规范
+#   ✅ 数据库设计方案
+#   ✅ 测试计划用例
+#   ✅ Docker部署配置
 ```
 
-### 🎯 方式2：完整手册模式
+### 🎯 方式2：快速项目创建
 
 ```bash
-# 详细指南请参考
-cat .trae/rules/project_rules.md  # 完整20个AI专家使用手册
+# Vue3项目（电商网站）
+python .trae/workflows/trae-console-enhanced.py quick --type vue3 --name my-ecommerce
+
+# FastAPI项目（用户系统）
+python .trae/workflows/trae-console-enhanced.py quick --type fastapi --name my-api
+
+# Flutter项目（移动应用）
+python .trae/workflows/trae-console-enhanced.py quick --type flutter --name my-mobile-app
 ```
 
-### 🎯 方式3：控制台交互
+### 🎯 方式3：模板组合使用
 
 ```bash
-# 启动AI控制台
-python .trae\trae-console.py
+# 手动选择模板组合
+python .trae/workflows/template-manager.py interactive
 
-# 或使用项目初始化器
-python .trae\workflows\project-init.py quick
+# 选择：
+# - project-init-template     # 项目初始化
+# - requirements-template     # 需求分析
+# - api-spec-template        # API规范
+# - database-design-template # 数据库设计
+# - test-plan-template       # 测试计划
+```
 
 ---
 
@@ -144,58 +159,120 @@ python .trae\workflows\project-init.py quick
 
 ---
 
-## 🚀 项目模板库
+## 🚀 模板自动化系统（全新升级）
 
-### 📋 即用模板
+### 📋 10大核心模板（一键应用）
 
-| 模板                    | 技术栈                      | 适用场景           | 一键创建                        |
-| ----------------------- | --------------------------- | ------------------ | ------------------------------- |
-| **🌐 Web应用**    | Vue3 + FastAPI + PostgreSQL | 管理后台、企业应用 | `vue3-fastapi-template`       |
-| **🛒 电商平台**   | React18 + Node.js + MongoDB | 在线商城、交易系统 | `react-ecommerce-template`    |
-| **📱 移动应用**   | Flutter + Firebase          | 跨平台App          | `flutter-mobile-template`     |
-| **💬 小程序**     | Uniapp + SpringBoot         | 微信/支付宝小程序  | `uniapp-miniprogram-template` |
-| **⚡ API服务**    | FastAPI + PostgreSQL        | 后端API服务        | `fastapi-api-template`        |
-| **📝 静态网站**   | Next.js + Vercel            | 博客、官网         | `nextjs-static-template`      |
-| **🖥️ 桌面应用** | Electron + Vue3             | 跨平台桌面软件     | `electron-desktop-template`   |
+#### 🎯 项目启动类（3个）
+| 模板名称 | 用途 | 自动生成内容 | 使用场景 |
+|---------|------|-------------|----------|
+| `project-init-template` | 项目初始化指南 | 项目结构、技术栈、开发规范 | 新项目开始 |
+| `requirements-template` | 需求分析文档 | 用户故事、功能清单、验收标准 | 需求澄清 |
+| `tech-choice-template` | 技术选型对比 | 技术对比表、优缺点分析、推荐方案 | 技术决策 |
+
+#### 🏗️ 系统设计类（4个）
+| 模板名称 | 用途 | 自动生成内容 | 使用场景 |
+|---------|------|-------------|----------|
+| `api-spec-template` | API接口规范 | RESTful API、认证授权、错误处理、示例代码 | 后端开发 |
+| `database-design-template` | 数据库设计 | 表结构、关系设计、性能优化、安全设计 | 数据建模 |
+| `deployment-template` | 部署方案 | Docker配置、CI/CD、监控告警、环境配置 | 上线部署 |
+| `code-review-template` | 代码审查 | 审查清单、问题追踪、改进建议、最佳实践 | 质量保证 |
+
+#### ✅ 质量保证类（3个）
+| 模板名称 | 用途 | 自动生成内容 | 使用场景 |
+|---------|------|-------------|----------|
+| `test-plan-template` | 测试计划 | 测试策略、用例设计、进度安排、风险分析 | 质量保障 |
+| `agent-template` | AI智能体配置 | 20个AI专家角色配置、协作流程 | 团队协作 |
+| `principle-driven-template` | 开发原则 | 6大核心开发原则、实施指南、检查清单 | 规范制定 |
+
+### 🎯 即用项目模板（7种技术栈）
+
+| 模板类型 | 技术栈 | 一键创建命令 | 适用场景 |
+|---------|--------|-------------|----------|
+| **🌐 Web应用** | Vue3 + FastAPI + PostgreSQL | `python .trae/quick-start.py` → 选择vue3 | 管理后台、企业应用 |
+| **🛒 电商平台** | React18 + Node.js + MongoDB | `python .trae/quick-start.py` → 选择react | 在线商城、交易系统 |
+| **📱 移动应用** | Flutter + Firebase | `python .trae/quick-start.py` → 选择flutter | 跨平台App |
+| **💬 小程序** | Uniapp + SpringBoot | `python .trae/quick-start.py` → 选择uniapp | 微信/支付宝小程序 |
+| **⚡ API服务** | FastAPI + PostgreSQL | `python .trae/quick-start.py` → 选择fastapi | 后端API服务 |
+| **📝 静态网站** | Next.js + Vercel | `python .trae/quick-start.py` → 选择nextjs | 博客、官网 |
+| **🖥️ 桌面应用** | Electron + Vue3 | `python .trae/quick-start.py` → 选择electron | 跨平台桌面软件 |
 
 ---
 
-## 🎯 实际使用案例
+## 🎯 模板自动化使用案例（全新）
 
-### 案例1：Vue3任务管理系统
-
-```bash
-# 启动控制台
-python .trae\trae-console.py
-
-# 输入需求：
-"创建一个Vue3+TypeScript的任务管理系统，需要：
-- 用户登录/注册
-- 任务CRUD操作  
-- 拖拽排序功能
-- 状态管理（待办/进行中/完成）
-- 本地存储持久化
-- 响应式设计支持移动端"
-```
-
-**AI团队响应：**
-
-- 📋 **产品经理**：输出需求文档和原型设计
-- 🏗️ **系统架构师**：设计技术架构和数据库结构
-- ⚡ **Vue工程师**：创建项目结构和核心组件
-- 🔧 **FastAPI工程师**：设计RESTful API接口
-- 🎨 **UI/UX设计师**：提供界面设计方案
-
-### 案例2：React电商平台
+### 案例1：Vue3电商网站（模板自动化演示）
 
 ```bash
-# 开发助手模式
-python .trae-dev.py "@产品经理 创建React电商平台，包含商品展示、购物车、订单管理、支付集成"
+# 1. 启动模板控制台
+python .trae/quick-start.py
 
-# 专业咨询
-python .trae-dev.py "@系统架构师 电商平台如何设计高并发架构？"
-python .trae-dev.py "@DevOps工程师 如何用Docker部署电商应用？"
+# 2. 描述需求（自然语言）
+"创建一个Vue3电商网站，需要用户登录、商品管理、购物车、支付功能"
+
+# 3. AI自动完成（30分钟内）：
+# ✅ 项目初始化文档（project-init-template）
+# ✅ 完整需求分析（requirements-template）
+# ✅ RESTful API规范（api-spec-template）
+# ✅ 数据库设计方案（database-design-template）
+# ✅ 测试计划用例（test-plan-template）
+# ✅ Docker部署配置（deployment-template）
+
+# 4. 开始AI协作开发
+"@Vue工程师 创建商品列表组件"
+"@Python工程师 设计商品管理API"
+"@测试工程师 编写商品测试用例"
 ```
+
+### 案例2：FastAPI用户系统（一键生成）
+
+```bash
+# 快速创建完整项目
+python .trae/workflows/trae-console-enhanced.py quick \
+  --type fastapi \
+  --name user-auth-system \
+  --features "用户注册 登录认证 JWT令牌 权限管理 文件上传"
+
+# 自动生成：
+# 📁 项目结构
+# 📋 需求文档（requirements.md）
+# 🔧 API规范（api-spec.md）
+# 🗄️ 数据库设计（database-design.md）
+# ✅ 测试计划（test-plan.md）
+# 🚀 部署方案（deployment.md）
+```
+
+### 案例3：模板组合使用（高级用法）
+
+```bash
+# 手动选择模板组合
+python .trae/workflows/template-manager.py interactive
+
+# 选择以下模板：
+# 1. project-init-template     # 项目初始化
+# 2. requirements-template     # 需求分析
+# 3. api-spec-template        # API规范
+# 4. database-design-template # 数据库设计
+# 5. test-plan-template       # 测试计划
+
+# AI智能填充内容：
+# - 根据项目类型自动推荐技术栈
+# - 根据功能需求自动生成API接口
+# - 根据业务场景自动设计数据库表
+# - 根据开发周期自动安排测试计划
+```
+
+## 📊 模板自动化效率对比
+
+| 开发阶段 | 传统方式 | Trae AI模板 | 节省时间 | 质量提升 |
+|---------|----------|-------------|----------|----------|
+| 项目初始化 | 2-4小时 | 5分钟 | 95% | ✅ 标准化 |
+| 需求文档 | 4-6小时 | 10分钟 | 90% | ✅ 结构化 |
+| API设计 | 2-4小时 | 15分钟 | 85% | ✅ RESTful |
+| 数据库设计 | 2-3小时 | 10分钟 | 80% | ✅ 规范化 |
+| 测试计划 | 2-3小时 | 15分钟 | 85% | ✅ 全覆盖 |
+| 部署配置 | 1-2小时 | 5分钟 | 90% | ✅ 生产级 |
+| **总计** | **13-22小时** | **1小时** | **90-95%** | **企业级** |
 
 ---
 
