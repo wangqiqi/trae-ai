@@ -1,11 +1,6 @@
 {
-  "project_name": "EasyMan",
+  "project_name": "learn_trae",
   "trae_version": "3.0",
-  "initialized_at": "auto-generated",
-  "features": {
-    "ai_agents": true,
-    "environment_management": true,
-    "deployment_tools": true,
-    "monitoring": true
-  }
+  "initialized_at": "auto",
+  "status": "ready"
 }

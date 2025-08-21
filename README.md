@@ -15,6 +15,41 @@
 
 ---
 
+## 📚 文档使用指南
+
+### 🎯 学习路径（推荐顺序）
+
+1. **[项目主页](README.md)** ← 你现在在这里
+   - 项目全貌展示
+   - 30秒快速开始
+   - 20个AI专家团队介绍
+
+2. **[核心原则速查](.trae/principles.md)** 📋
+   - 3分钟掌握7大核心原则
+   - 快速参考卡格式
+   - 复制即用模板
+
+3. **[技术架构](.trae/README.md)** 🔧
+   - 系统内部技术细节
+   - 20个AI智能体完整介绍
+   - 故障排除指南
+
+4. **[完整手册](.trae/rules/project_rules.md)** 📖
+   - 详细使用指南
+   - 工作流自动化
+   - 高级配置技巧
+
+### 🎪 快速选择
+
+| 用户需求 | 推荐文件 | 阅读时间 |
+| -------- | -------- | -------- |
+| **快速上手** | principles.md | 3分钟 |
+| **完整学习** | rules/project_rules.md | 15分钟 |
+| **技术细节** | .trae/README.md | 10分钟 |
+| **项目展示** | README.md | 5分钟 |
+
+---
+
 ## ✨ 核心特性
 
 <div align="center">
@@ -33,38 +68,35 @@
 
 ## 🎬 30秒快速开始
 
-### 🎯 方式1：控制台模式（推荐）
+### 🎯 方式1：核心原则速学（推荐）
 
 ```bash
-# 直接下载项目文件
-cd learn_trae
+# 1. 掌握核心原则（3分钟）
+阅读 .trae/principles.md  # 3分钟掌握7大核心原则
 
+# 2. 复制到新项目
+cp -r .trae my-new-project/
+cd my-new-project
+
+# 3. 开始开发 - 直接描述需求
+# "创建一个Vue3任务管理系统"
+```
+
+### 🎯 方式2：完整手册模式
+
+```bash
+# 详细指南请参考
+cat .trae/rules/project_rules.md  # 完整20个AI专家使用手册
+```
+
+### 🎯 方式3：控制台交互
+
+```bash
 # 启动AI控制台
 python .trae\trae-console.py
 
-# 输入你的需求：
-# "创建一个Vue3+TypeScript的任务管理系统"
-```
-
-### 🎯 方式2：开发助手模式
-
-```bash
-# 直接创建项目
+# 或开发助手模式
 python .trae-dev.py "@产品经理 创建React电商平台"
-
-# 或专业咨询
-python .trae-dev.py "@系统架构师 如何设计微服务架构？"
-```
-
-### 🎯 方式3：命令行模式
-
-```bash
-# 创建新项目
-python .trae\trae-console.py create "我的新项目"
-
-# 查看项目列表
-python .trae\trae-console.py list
-```
 
 ---
 

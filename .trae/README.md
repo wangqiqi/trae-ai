@@ -1,6 +1,7 @@
-# Trae AI 超级团队 - 零感知版本 v2.0
+# Trae AI 超级团队 - 技术架构 v4.0
 
 > 📚 **文档导航**：请先阅读项目主页了解项目全貌 → [项目根目录README.md](../README.md)
+> 再阅读快速原则 → [principles.md](./principles.md) → 最后阅读完整手册 → [rules/project_rules.md](./rules/project_rules.md)
 >
 > 这是**系统内部技术文档**，包含详细技术架构、20个AI智能体完整介绍、故障排除等深度内容。
 
@@ -104,6 +105,12 @@ your-project/
 - **技术文档工程师** - 技术文档、API文档、用户手册
 - **C++部署工程师** - C++系统部署和优化
 - **环境管理工程师** - 统一环境配置和管理
+
+## 🎯 优雅开发原则
+
+**快速上手**：直接阅读 [principles.md](./principles.md) - 3分钟掌握全部核心原则
+
+**完整手册**：深入理解请阅读 [rules/project_rules.md](./rules/project_rules.md) - 包含20个AI智能体详细指南
 
 ## 🎯 使用方法（全新升级）
 

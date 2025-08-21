@@ -266,6 +266,8 @@ class UniversalEnvironmentManager:
             checks["java"] = {"installed": False}
         
         return checks
+
+
     
     def create_environment_template(self, tech_stack: str = None) -> bool:
         """创建环境模板"""

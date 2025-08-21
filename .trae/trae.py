@@ -59,7 +59,7 @@ class TraeAuto:
         try:
             result = subprocess.run([
                 sys.executable, 
-                str(self.trae_dir / "scripts" / "universal-env-manager.py"),
+                str(self.trae_dir / "workflows" / "universal-env-manager.py"),
                 "check"
             ], capture_output=True, text=True, cwd=str(self.project_root))
             
@@ -84,7 +84,7 @@ class TraeAuto:
         try:
             subprocess.run([
                 sys.executable,
-                str(self.trae_dir / "scripts" / "team-launcher.py"),
+                str(self.trae_dir / "workflows" / "team-launcher.py"),
                 "start"
             ])
         except FileNotFoundError:
@@ -96,7 +96,7 @@ class TraeAuto:
         try:
             subprocess.run([
                 sys.executable,
-                str(self.trae_dir / "scripts" / "trae-console.py")
+                str(self.trae_dir / "workflows" / "trae-console.py")
             ])
         except FileNotFoundError:
             print("🤖 控制台已集成，直接输入需求即可")
@@ -107,7 +107,7 @@ class TraeAuto:
         try:
             subprocess.run([
                 sys.executable,
-                str(self.trae_dir / "scripts" / ".trae-dev.py")
+                str(self.trae_dir / "workflows" / ".trae-dev.py")
             ])
         except FileNotFoundError:
             print("🎯 开发助手已就绪")
