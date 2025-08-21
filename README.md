@@ -15,187 +15,98 @@
 
 ---
 
-## 📚 文档使用指南
+## 📋 3秒导航（选择你的需求）
 
-### 🎯 学习路径（推荐顺序）
-
-1. **[项目主页](README.md)** ← 你现在在这里
-   - 项目全貌展示
-   - 30秒快速开始
-   - 20个AI专家团队介绍
-
-2. **[核心原则速查](.trae/principles.md)** 📋
-   - 3分钟掌握12大核心原则（新增测试优先、安全优先、性能优化、可持续维护）
-   - 完整开发闭环：需求→设计→开发→部署→协作
-   - 快速检查清单 + 决策工具 + 实战案例
-
-3. **[技术架构](.trae/README.md)** 🔧
-   - 系统内部技术细节
-   - 20个AI智能体完整介绍
-   - 故障排除指南
-
-4. **[完整手册](.trae/rules/project_rules.md)** 📖
-   - 详细使用指南
-   - 工作流自动化
-   - 高级配置技巧
-
-### 🎪 快速选择
-
-| 用户需求 | 推荐文件 | 阅读时间 |
-| -------- | -------- | -------- |
-| **快速上手** | principles.md | 3分钟 |
-| **完整学习** | rules/project_rules.md | 15分钟 |
-| **技术细节** | .trae/README.md | 10分钟 |
-| **项目展示** | README.md | 5分钟 |
+| 🚀 立即开始 | 🎭 20个专家 | 📋 模板系统 | 🔧 技术细节 | 🆘 需要帮助 |
+|-------------|-------------|-------------|-------------|-------------|
+| [3秒上手](#-3秒快速开始) | [专家列表](#-20个ai专家团队) | [一键模板](#-模板自动化系统) | [技术架构](.trae/README.md) | [故障排除](.trae/README.md#-故障排除2025新版) |
+| [实战案例](#-实战案例) | [使用示例](#-使用示例) | [效率对比](#-模板自动化效率对比) | [完整手册](.trae/rules/project_rules.md) | [核心原则](.trae/principles.md) |
 
 ---
 
-## ✨ 核心特性
+---
 
-<div align="center">
+## ✨ 项目亮点（一眼看懂）
 
-|   🎭**20个AI专家**   | 🚀**一键启动** | 🔧**零配置** | 📱**跨平台** |
-| :------------------------: | :------------------: | :----------------: | :----------------: |
-| 产品经理+架构师+开发工程师 |   一个命令开始开发   |      复制即用      |   Win/Mac/Linux   |
-
-| 🎯**项目模板** | 🔄**智能协作** | 📊**企业级** | 🌐**中文优先** |
-| :------------------: | :------------------: | :----------------: | :------------------: |
-|    7种技术栈模板    |    AI团队协同工作    |    生产环境就绪    |     完整中文支持     |
-
-</div>
+| 🎯 **核心优势** | 🚀 **实际效果** |
+|-----------------|-----------------|
+| **20个AI专家** | 产品经理+架构师+开发工程师+测试工程师 |
+| **一键启动** | 一个命令开始完整开发流程 |
+| **零配置** | 复制即用，无需任何环境配置 |
+| **跨平台** | Windows/Mac/Linux完美兼容 |
+| **7种技术栈** | Vue3/React/Flutter/FastAPI/Node.js/Go/Rust |
+| **模板自动化** | 30秒生成完整项目框架 |
+| **企业级标准** | 生产环境就绪的代码规范 |
+| **中文优先** | 完整中文文档和示例 |
 
 ---
 
-## 🎬 30秒快速开始（模板自动化版）
+## 🚀 3秒快速开始（选择你的风格）
 
-### 🎯 方式1：模板自动化（全新推荐）
+| 用户类型 | 操作步骤 | 预计时间 |
+|----------|----------|----------|
+| **🟢 新手用户** | 复制`.trae` → 完成！ | 3秒 |
+| **🟡 效率用户** | `python .trae/trae.py start` | 5秒 |
+| **🔵 专业用户** | `python .trae/workflows/trae-console.py` → 输入需求 | 10秒 |
 
+### 🎯 实战示例
 ```bash
-# 1. 一键启动模板控制台
-python .trae/quick-start.py
+# 场景1：快速创建Vue3项目
+python .trae/workflows/template-manager.py create --name todo-app --type vue3
 
-# 2. 描述你的项目需求
-"创建一个Vue3电商网站，需要用户登录、商品管理、购物车、支付功能"
+# 场景2：AI增强创建电商网站
+python .trae/workflows/template-manager.py ai-create --name ecommerce --features "用户认证 商品管理 购物车"
 
-# 3. AI自动完成：
-#   ✅ 项目初始化文档
-#   ✅ 需求分析文档
-#   ✅ API接口规范
-#   ✅ 数据库设计方案
-#   ✅ 测试计划用例
-#   ✅ Docker部署配置
-```
-
-### 🎯 方式2：快速项目创建
-
-```bash
-# Vue3项目（电商网站）
-python .trae/workflows/trae-console-enhanced.py quick --type vue3 --name my-ecommerce
-
-# FastAPI项目（用户系统）
-python .trae/workflows/trae-console-enhanced.py quick --type fastapi --name my-api
-
-# Flutter项目（移动应用）
-python .trae/workflows/trae-console-enhanced.py quick --type flutter --name my-mobile-app
-```
-
-### 🎯 方式3：模板组合使用
-
-```bash
-# 手动选择模板组合
-python .trae/workflows/template-manager.py interactive
-
-# 选择：
-# - project-init-template     # 项目初始化
-# - requirements-template     # 需求分析
-# - api-spec-template        # API规范
-# - database-design-template # 数据库设计
-# - test-plan-template       # 测试计划
+# 场景3：进入AI控制台对话
+python .trae/workflows/trae-console.py
+# 输入："创建一个带用户认证的Vue3任务管理系统"
 ```
 
 ---
 
-## 🎭 20个AI专家团队
+## 🎭 20个AI专家团队（完整覆盖）
 
-### 👔 管理层 (4人)
+| 类别 | 专家角色 | 一句话介绍 |
+|------|----------|------------|
+| **管理层** | 产品经理、系统架构师、项目经理、项目协调员 | 从需求到部署的全流程管理 |
+| **前端开发** | Vue/React/Angular/Uniapp/Flutter工程师 | 覆盖所有主流前端技术栈 |
+| **后端开发** | Python/FastAPI/Node/Go/Rust工程师 | 高性能后端开发全覆盖 |
+| **专项技术** | 测试/DevOps/UI/文档/C++/环境工程师 | 专业领域深度支持 |
 
-| 角色                 | 专长               | 使用示例                         |
-| -------------------- | ------------------ | -------------------------------- |
-| **产品经理**   | 需求分析、产品设计 | `@产品经理 设计一个Todo应用`   |
-| **系统架构师** | 技术架构、系统设计 | `@系统架构师 微服务如何拆分？` |
-| **项目经理**   | 项目规划、进度管理 | `@项目经理 制定开发计划`       |
-| **项目协调员** | 团队协作、任务分配 | `@项目协调员 分配开发任务`     |
+### 🎯 使用示例
+```bash
+# 向特定专家提问
+python .trae/workflows/trae-console.py
+# 输入："@Vue工程师 创建一个响应式表格组件"
 
-### 💻 前端开发 (5人)
-
-| 角色                    | 技术栈                    | 使用示例                               |
-| ----------------------- | ------------------------- | -------------------------------------- |
-| **Vue工程师**     | Vue3 + TypeScript + Vite  | `@Vue工程师 创建响应式表格组件`      |
-| **React工程师**   | React18 + Hooks + Next.js | `@React工程师 实现状态管理`          |
-| **Angular工程师** | Angular15+企业级开发      | `@Angular工程师 设计模块化架构`      |
-| **Uniapp工程师**  | 小程序 + App跨平台        | `@Uniapp工程师 开发微信小程序`       |
-| **Flutter工程师** | 跨平台移动应用            | `@Flutter工程师 创建iOS/Android应用` |
-
-### 🔧 后端开发 (5人)
-
-| 角色                    | 技术栈                | 使用示例                          |
-| ----------------------- | --------------------- | --------------------------------- |
-| **Python工程师**  | FastAPI/Django/Flask  | `@Python工程师 设计RESTful API` |
-| **FastAPI工程师** | FastAPI专业开发       | `@FastAPI工程师 创建高性能API`  |
-| **Node工程师**    | Express/Nest.js服务端 | `@Node工程师 实现GraphQL接口`   |
-| **Go工程师**      | Go语言高性能后端      | `@Go工程师 开发微服务`          |
-| **Rust工程师**    | Rust系统级开发        | `@Rust工程师 实现高并发服务`    |
-
-### 🎯 专项技术 (6人)
-
-| 角色                     | 专长                 | 使用示例                         |
-| ------------------------ | -------------------- | -------------------------------- |
-| **测试工程师**     | 自动化测试、质量保证 | `@测试工程师 设计测试用例`     |
-| **DevOps工程师**   | CI/CD、容器化部署    | `@DevOps工程师 配置Docker部署` |
-| **UI/UX设计师**    | 界面设计、用户体验   | `@UI/UX设计师 设计现代化界面`  |
-| **技术文档工程师** | 文档编写、API文档    | `@技术文档工程师 生成API文档`  |
-| **C++部署工程师**  | C++系统部署优化      | `@C++部署工程师 优化系统性能`  |
-| **环境管理工程师** | 统一环境配置和管理   | `@环境管理工程师 配置开发环境` |
+# 团队协作模式
+python .trae/workflows/trae-console.py
+# 输入："@产品经理 帮我设计需求，然后@Vue工程师实现前端"
+```
 
 ---
 
-## 🚀 模板自动化系统（全新升级）
+## 🚀 模板系统（一键生成）
 
-### 📋 10大核心模板（一键应用）
+### 🎯 核心模板速查
+| 项目类型 | 一键命令 | 技术栈 | 包含功能 |
+|----------|----------|--------|----------|
+| **电商网站** | `python .trae/workflows/template-manager.py create ecommerce` | Vue3 + FastAPI | 用户认证、商品管理、购物车、支付 |
+| **管理后台** | `python .trae/workflows/template-manager.py create admin` | Vue3 + ElementPlus | 用户管理、权限控制、数据统计 |
+| **移动App** | `python .trae/workflows/template-manager.py create mobile` | Flutter + FastAPI | 跨平台、推送通知、离线存储 |
+| **API服务** | `python .trae/workflows/template-manager.py create api` | FastAPI + PostgreSQL | RESTful API、认证授权、文档生成 |
 
-#### 🎯 项目启动类（3个）
-| 模板名称 | 用途 | 自动生成内容 | 使用场景 |
-|---------|------|-------------|----------|
-| `project-init-template` | 项目初始化指南 | 项目结构、技术栈、开发规范 | 新项目开始 |
-| `requirements-template` | 需求分析文档 | 用户故事、功能清单、验收标准 | 需求澄清 |
-| `tech-choice-template` | 技术选型对比 | 技术对比表、优缺点分析、推荐方案 | 技术决策 |
+### 🚀 模板使用示例
+```bash
+# 查看所有模板
+python .trae/workflows/template-manager.py list
 
-#### 🏗️ 系统设计类（4个）
-| 模板名称 | 用途 | 自动生成内容 | 使用场景 |
-|---------|------|-------------|----------|
-| `api-spec-template` | API接口规范 | RESTful API、认证授权、错误处理、示例代码 | 后端开发 |
-| `database-design-template` | 数据库设计 | 表结构、关系设计、性能优化、安全设计 | 数据建模 |
-| `deployment-template` | 部署方案 | Docker配置、CI/CD、监控告警、环境配置 | 上线部署 |
-| `code-review-template` | 代码审查 | 审查清单、问题追踪、改进建议、最佳实践 | 质量保证 |
+# 快速创建Vue3项目
+python .trae/workflows/template-manager.py create --name my-app --type vue3
 
-#### ✅ 质量保证类（3个）
-| 模板名称 | 用途 | 自动生成内容 | 使用场景 |
-|---------|------|-------------|----------|
-| `test-plan-template` | 测试计划 | 测试策略、用例设计、进度安排、风险分析 | 质量保障 |
-| `agent-template` | AI智能体配置 | 20个AI专家角色配置、协作流程 | 团队协作 |
-| `principle-driven-template` | 开发原则 | 6大核心开发原则、实施指南、检查清单 | 规范制定 |
-
-### 🎯 即用项目模板（7种技术栈）
-
-| 模板类型 | 技术栈 | 一键创建命令 | 适用场景 |
-|---------|--------|-------------|----------|
-| **🌐 Web应用** | Vue3 + FastAPI + PostgreSQL | `python .trae/quick-start.py` → 选择vue3 | 管理后台、企业应用 |
-| **🛒 电商平台** | React18 + Node.js + MongoDB | `python .trae/quick-start.py` → 选择react | 在线商城、交易系统 |
-| **📱 移动应用** | Flutter + Firebase | `python .trae/quick-start.py` → 选择flutter | 跨平台App |
-| **💬 小程序** | Uniapp + SpringBoot | `python .trae/quick-start.py` → 选择uniapp | 微信/支付宝小程序 |
-| **⚡ API服务** | FastAPI + PostgreSQL | `python .trae/quick-start.py` → 选择fastapi | 后端API服务 |
-| **📝 静态网站** | Next.js + Vercel | `python .trae/quick-start.py` → 选择nextjs | 博客、官网 |
-| **🖥️ 桌面应用** | Electron + Vue3 | `python .trae/quick-start.py` → 选择electron | 跨平台桌面软件 |
+# AI智能创建（描述需求即可）
+python .trae/workflows/template-manager.py ai-create --description "创建一个带用户认证的Vue3任务管理系统"
+```
 
 ---
 
@@ -452,6 +363,20 @@ python .trae-dev.py "@DevOps工程师 如何优化Docker镜像大小？"
 - [FastAPI](https://github.com/tiangolo/fastapi) - 现代Python Web框架
 - [Vue.js](https://github.com/vuejs/vue) - 渐进式JavaScript框架
 - [React](https://github.com/facebook/react) - 用户界面库
+
+---
+
+## 🆘 故障排除（一键解决）
+
+| 问题 | 一键命令 | 时间 |
+|------|----------|------|
+| **无法运行** | `python .trae/trae.py doctor` | 5秒 |
+| **环境错误** | `python .trae/trae.py fix` | 10秒 |
+| **智能体问题** | `python .trae/trae.py restart` | 15秒 |
+
+### 🔗 快速帮助
+- 📖 [完整文档](.trae/README.md)
+- 💬 [GitHub Issues](https://github.com/your-repo/trae-ai-team/issues)
 
 ---
 
