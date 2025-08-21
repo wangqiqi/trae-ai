@@ -1,6 +1,15 @@
 {
   "project_name": "learn_trae",
-  "trae_version": "3.0",
-  "initialized_at": "auto",
-  "status": "ready"
+  "created_at": "auto-generated",
+  "agents_enabled": true,
+  "auto_start": false,
+  "team_config": {
+    "mode": "project",
+    "members": [
+      "产品经理",
+      "系统架构师",
+      "项目经理",
+      "项目协调员"
+    ]
+  }
 }

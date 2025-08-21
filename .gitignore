@@ -1,4 +1,7 @@
-# SOLO AI 开发助手 - Git忽略配置
+# Trae AI 超级团队
+.trae/logs/
+.trae/temp/
+.trae/cache/
 
 # Python
 __pycache__/
@@ -22,77 +25,10 @@ wheels/
 .installed.cfg
 *.egg
 
-agents-output
-demo-project
-EasyMan
-
-# 虚拟环境
+# Virtual Environment
 venv/
 env/
 ENV/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# 日志
-*.log
-logs/
-
-# 运行时文件
-*.pid
-*.seed
-*.pid.lock
-
-# 操作系统
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# 项目特定
-# 用户数据目录 - 不跟踪用户项目数据
-user-data/
-.temp/
-.cache/
-
-# 测试
-.coverage
-.pytest_cache/
-htmlcov/
-.tox/
-
-# 依赖
-node_modules/
-package-lock.json
-yarn.lock
-
-# Trae超级团队
-.trae/logs/
-.trae/backups/
-.trae/temp/
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
-
-# Node.js
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # IDE
 .vscode/
