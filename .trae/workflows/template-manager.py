@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
-Trae AI 超级团队 - 模板自动化管理器
+Trae AI 超级团队 - 模板自动化管理器（集成AI增强版）
 
 功能：
 1. 自动识别项目类型并应用相应模板
-2. 智能填充模板内容
+2. AI智能填充和增强模板内容
 3. 一键生成完整项目骨架
-4. 模板版本管理和更新
-5. 与AI智能体深度集成
+4. 与20个AI专家智能体深度集成
+5. 智能需求分析和项目建议
 
 作者：Trae AI团队
-版本：v3.0
+版本：v3.1 - 集成AI增强功能
 """
 
 import os
@@ -20,6 +20,7 @@ import argparse
 from datetime import datetime
 from pathlib import Path
 import sys
+import subprocess
 
 class TemplateManager:
     def __init__(self):
@@ -27,6 +28,35 @@ class TemplateManager:
         self.templates_path = self.base_path / "templates"
         self.project_root = Path.cwd()
         self.config_file = self.base_path / "config" / "template-config.json"
+        
+    def _run_ai_integration(self, action, **kwargs):
+        """调用AI集成模块（通过trae-console.py）"""
+        try:
+            cmd = [
+                sys.executable,
+                "trae-console.py",
+                "--ai-mode",
+                action
+            ]
+            
+            # 添加参数
+            for key, value in kwargs.items():
+                if value:
+                    cmd.extend([f"--{key}", str(value)])
+            
+            result = subprocess.run(
+                cmd,
+                cwd=str(Path(__file__).parent),
+                capture_output=True,
+                text=True,
+                timeout=30
+            )
+            return result.returncode == 0, result.stdout, result.stderr
+            
+        except subprocess.TimeoutExpired:
+            return False, "", "AI集成模块超时"
+        except Exception as e:
+            return False, "", f"AI集成不可用: {e}"
         
     def get_project_info(self):
         """智能识别项目信息"""
@@ -74,8 +104,8 @@ class TemplateManager:
             
         return info
     
-    def apply_template(self, template_name, project_info, custom_data=None):
-        """应用模板到项目"""
+    def apply_template(self, template_name, project_info, custom_data=None, use_ai_enhance=True):
+        """应用模板到项目（支持AI增强）"""
         template_file = self.templates_path / f"{template_name}.md"
         
         if not template_file.exists():
@@ -86,8 +116,15 @@ class TemplateManager:
         with open(template_file, 'r', encoding='utf-8') as f:
             content = f.read()
             
-        # 智能填充变量
+        # 基础变量填充
         filled_content = self.fill_template_variables(content, project_info, custom_data)
+        
+        # AI增强处理
+        if use_ai_enhance:
+            print(f"🤖 AI正在增强模板: {template_name}")
+            enhanced_content = self._enhance_with_ai(template_name, project_info)
+            if enhanced_content:
+                filled_content = enhanced_content
         
         # 生成目标文件
         target_file = self.get_target_filename(template_name)
@@ -102,6 +139,36 @@ class TemplateManager:
             
         print(f"✅ 已生成: {output_path}")
         return True
+        
+    def _enhance_with_ai(self, template_name, project_info):
+        """使用AI增强模板内容"""
+        try:
+            # 构建项目上下文
+            project_context = {
+                "name": project_info["name"],
+                "type": project_info["type"],
+                "tech_stack": project_info["tech_stack"],
+                "features": project_info.get("features", []),
+                "target_users": "end_users",
+                "timeline": "4 weeks"
+            }
+            
+            # 调用AI集成模块
+            success, stdout, stderr = self._run_ai_integration(
+                "enhance",
+                template=template_name,
+                project=json.dumps(project_context, ensure_ascii=False)
+            )
+            
+            if success and stdout:
+                return stdout.strip()
+            else:
+                print(f"⚠️ AI增强失败，使用基础模板: {stderr}")
+                return None
+                
+        except Exception as e:
+            print(f"⚠️ AI增强异常: {e}")
+            return None
     
     def fill_template_variables(self, content, project_info, custom_data=None):
         """智能填充模板变量"""
@@ -194,8 +261,57 @@ class TemplateManager:
         for template in selected_templates:
             self.apply_template(template, project_info)
             
-    def create_project_with_templates(self, project_name, project_type):
-        """使用模板创建新项目"""
+    def interactive_create(self):
+        """交互式创建项目（AI增强版）"""
+        print("\n🎯 交互式项目创建")
+        print("=" * 50)
+        
+        # 项目名称
+        project_name = input("项目名称: ").strip()
+        if not project_name:
+            print("❌ 项目名称不能为空")
+            return
+            
+        # 项目类型
+        print("\n📋 选择项目类型:")
+        project_types = ["vue3", "react", "fastapi", "flutter", "node"]
+        for i, ptype in enumerate(project_types, 1):
+            print(f"{i}. {ptype}")
+            
+        try:
+            choice = int(input("选择: ")) - 1
+            project_type = project_types[choice]
+        except (ValueError, IndexError):
+            print("❌ 无效选择")
+            return
+            
+        # 是否使用AI增强
+        use_ai = input("\n🤖 是否使用AI增强创建？(y/n): ").strip().lower() == 'y'
+        
+        features = []
+        if use_ai:
+            # 输入项目功能需求
+            print("\n✨ 请输入项目功能需求（用逗号分隔）:")
+            features_input = input("例如: 用户认证, 数据管理, 实时通信: ").strip()
+            features = [f.strip() for f in features_input.split(",") if f.strip()]
+            
+            if not features:
+                print("⚠️ 未输入功能需求，将使用基础模板")
+                use_ai = False
+        
+        # 创建项目
+        self.create_project_with_templates(
+            project_name, 
+            project_type, 
+            features=features,
+            use_ai_enhance=True
+        )
+        
+        # 返回原目录
+        os.chdir(self.project_root)
+
+    def create_project_with_templates(self, project_name, project_type, features=None, use_ai_enhance=False, use_ai_kit=False):
+        """使用模板创建新项目（支持AI完整套件）"""
         new_project_path = Path.cwd() / project_name
         
         if new_project_path.exists():
@@ -213,13 +329,19 @@ class TemplateManager:
             "name": project_name,
             "type": project_type,
             "tech_stack": self.get_tech_stack_for_type(project_type),
+            "features": features or [],
             "suggested_templates": self.get_templates_for_type(project_type)
         }
         
-        # 应用模板
-        for template in project_info["suggested_templates"]:
-            self.apply_template(template, project_info)
-            
+        if use_ai_enhance and features:
+            # 使用AI创建完整项目套件
+            print(f"🚀 使用AI创建 {project_name} 完整项目套件...")
+            self._create_ai_project_kit(project_name, project_type, features)
+        else:
+            # 传统模板应用
+            for template in project_info["suggested_templates"]:
+                self.apply_template(template, project_info, use_ai_enhance=use_ai_enhance)
+                
         print(f"✅ 项目 {project_name} 创建完成！")
         print(f"📁 路径: {new_project_path}")
         
@@ -227,6 +349,27 @@ class TemplateManager:
         self.create_project_structure(project_type, new_project_path)
         
         return True
+        
+    def _create_ai_project_kit(self, project_name, project_type, features):
+        """使用AI集成模块创建完整项目套件"""
+        try:
+            success, stdout, stderr = self._run_ai_integration(
+                "kit",
+                project=project_name,
+                type=project_type,
+                features=" ".join(features)
+            )
+            
+            if success:
+                print(f"✅ AI项目套件创建成功")
+                return True
+            else:
+                print(f"⚠️ AI套件创建失败: {stderr}")
+                return False
+                
+        except Exception as e:
+            print(f"⚠️ AI套件创建异常: {e}")
+            return False
     
     def get_tech_stack_for_type(self, project_type):
         """根据项目类型返回技术栈"""
@@ -268,13 +411,16 @@ class TemplateManager:
         print(f"📁 已创建项目目录结构")
 
 def main():
-    parser = argparse.ArgumentParser(description="Trae AI 模板自动化管理器")
-    parser.add_argument("action", choices=["auto", "interactive", "create", "list"], 
+    parser = argparse.ArgumentParser(description="Trae AI 模板自动化管理器（集成AI增强版）")
+    parser.add_argument("action", choices=["auto", "interactive", "create", "list", "ai-create"], 
                        help="操作类型")
     parser.add_argument("--name", help="项目名称 (用于create)")
     parser.add_argument("--type", choices=["vue3", "react", "fastapi", "flutter", "node"], 
                        help="项目类型 (用于create)")
     parser.add_argument("--template", help="指定模板名称")
+    parser.add_argument("--features", help="项目功能需求，用逗号分隔 (用于ai-create)")
+    parser.add_argument("--no-ai", action="store_true", 
+                       help="禁用AI增强，使用基础模板")
     
     args = parser.parse_args()
     
@@ -288,13 +434,29 @@ def main():
         if not args.name or not args.type:
             print("❌ 创建项目需要指定 --name 和 --type")
             sys.exit(1)
-        manager.create_project_with_templates(args.name, args.type)
+        manager.create_project_with_templates(args.name, args.type, use_ai_enhance=not args.no_ai)
+    elif args.action == "ai-create":
+        if not args.name or not args.type or not args.features:
+            print("❌ AI创建需要指定 --name, --type 和 --features")
+            sys.exit(1)
+        features = [f.strip() for f in args.features.split(",") if f.strip()]
+        manager.create_project_with_templates(
+            args.name, 
+            args.type, 
+            features=features,
+            use_ai_enhance=True
+        )
     elif args.action == "list":
         templates = [f.stem for f in manager.templates_path.glob("*.md") 
                     if f.stem != "README"]
         print("📋 可用模板:")
         for template in templates:
             print(f"  - {template}")
+    
+    print("\n💡 使用提示:")
+    print("  python template-manager.py ai-create --name myapp --type vue3 --features '用户认证,数据管理,图表展示'")
+    print("  python template-manager.py create --name myapp --type vue3")
+    print("  python template-manager.py interactive")
 
 if __name__ == "__main__":
     main()
