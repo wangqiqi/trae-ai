@@ -303,7 +303,7 @@ python .trae/core/system-enhancer.py optimize
 | 问题症状 | 一键解决 | 预计时间 |
 |----------|----------|----------|
 | **复制后无法运行** | `python --version`（需3.7+） | 5秒 |
-| **智能体无法识别** | `python .trae/workflows/team-launcher.py list` | 10秒 |
+| **智能体无法识别** | `python .trae/workflows/trae-console.py` → `list-agents` | 10秒 |
 | **环境配置问题** | `python .trae/workflows/universal-env-manager.py doctor` | 15秒 |
 | **添加自定义智能体** | `python .trae/workflows/agent-suite.py create-custom` | 30秒 |
 
@@ -552,6 +552,43 @@ python .trae/workflows/template-manager.py ai-create --name ecommerce --features
 # 场景3：进入AI控制台对话
 python .trae/workflows/trae-console.py
 # 输入："创建一个带用户认证的Vue3任务管理系统"
+```
+
+### 🔄 标准开发工作流
+
+#### 阶段1：项目启动
+```bash
+# 1. 初始化项目
+python .trae/workflows/project-init.py quick
+
+# 2. 启动AI控制台
+python .trae/workflows/trae-console.py
+
+# 3. 环境检查
+python .trae/workflows/universal-env-manager.py check
+```
+
+#### 阶段2：开发进行
+```bash
+# 1. 进入控制台
+python .trae/workflows/trae-console.py
+
+# 2. 对话式开发
+"我想创建一个Vue3电商网站"
+"@Vue工程师 创建商品列表组件"
+"@Python工程师 设计商品API"
+```
+
+#### 阶段3：部署上线
+```bash
+# 1. 部署准备
+python .trae/workflows/universal-env-manager.py setup
+
+# 2. 创建部署配置（通过模板）
+@DevOps工程师 使用deployment-template配置部署
+
+# 3. 执行部署
+# 部署方案已集成到deployment-template.md模板中
 ```
 
 ---

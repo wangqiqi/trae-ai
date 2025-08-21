@@ -56,18 +56,21 @@ cp -r .trae/rules/project_rules.md ../my-new-project/.trae/rules/
 2. **设计阶段** - @系统架构师设计架构
 3. **开发阶段** - 前后端工程师协作编码
 4. **测试阶段** - @测试工程师验证
-5. **部署阶段** - @DevOps工程师上线
+5. **部署阶段** - @DevOps工程师使用deployment-template上线
 
 ### 🛠️ 项目工具使用
 ```bash
 # 项目启动
 python .trae/workflows/project-init.py quick
 
-# AI控制台交互
+# AI控制台交互（已整合team-launcher功能）
 python .trae/workflows/trae-console.py
 
 # 智能体管理
 python .trae/workflows/agent-suite.py
+
+# 环境管理（包含部署准备）
+python .trae/workflows/universal-env-manager.py
 ```
 
 ## 📊 项目模板

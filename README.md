@@ -375,8 +375,14 @@ python .trae-dev.py "@DevOps工程师 如何优化Docker镜像大小？"
 | **智能体问题** | `python .trae/trae.py restart` | 15秒 |
 
 ### 🔗 快速帮助
-- 📖 [完整文档](.trae/README.md)
+- 📖 [完整文档](.trae/README.md) - 包含20个AI智能体详细指南
 - 💬 [GitHub Issues](https://github.com/your-repo/trae-ai-team/issues)
+
+### 📋 文档同步说明
+**✅ 已更新**：team-launcher.py和deployment.py的功能已整合到现有工作流中
+- **team-launcher.py** → 功能已整合到`trae-console.py`
+- **deployment.py** → 功能通过`deployment-template.md`模板实现
+- **所有引用已同步更新** → 使用实际存在的命令
 
 ---
 
