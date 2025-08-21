@@ -7,24 +7,38 @@
     "author": "AI升级系统"
   },
   "technical_stack": {
-    "primary_language": "Ui-X-Designer",
+    "primary_language": "HTML5+CSS3+JavaScript",
     "frameworks": [
-      "Ui-X-Designer"
+      "Vanilla HTML/CSS/JS",
+      "HTML组合式设计模式",
+      "CSS Grid + Flexbox",
+      "原生Web Components"
     ],
     "tools": [
       "git",
-      "docker"
+      "docker",
+      "Live Server",
+      "浏览器开发者工具"
     ],
-    "version_constraint": ">=1.0.0"
+    "design_patterns": [
+      "HTML模板组合",
+      "组件化HTML片段",
+      "CSS变量主题系统",
+      "事件委托交互模式"
+    ],
+    "version_constraint": "HTML5标准"
   },
   "required": {
     "role_name": "Ui-X-Designer工程师",
     "expertise": [
-      "ui-x-designer核心开发",
-      "现代化工程实践",
-      "代码质量保证",
-      "性能优化",
-      "安全防护"
+      "HTML组合式界面设计",
+      "多HTML片段合并渲染",
+      "CSS3动画与交互设计",
+      "原生JavaScript弱交互实现",
+      "响应式布局设计",
+      "组件化HTML模板系统",
+      "性能优化与加载策略",
+      "无障碍访问设计"
     ],
     "mandatory_tools": [
       "代码编辑器/IDE",
@@ -61,7 +75,7 @@
     "maintenance_plan": "定期更新+安全补丁"
   },
   "quality": {
-    "code_standards": "ui-x-designer官方最佳实践+团队规范",
+    "code_standards": "HTML5语义化标准+CSS3现代布局+原生JavaScript最佳实践+HTML组合式设计规范",
     "testing_requirements": [
       "单元测试覆盖率>80%",
       "集成测试覆盖核心业务流程",

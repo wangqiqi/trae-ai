@@ -81,6 +81,7 @@ python .trae/workflows/universal-env-manager.py
 - flutter-mobile-template - Flutter移动应用
 - uniapp-miniprogram-template - 小程序开发
 - fastapi-api-template - 纯API服务
+- **🆕 html-composition-template - HTML组合式设计（零框架依赖）**
 
 ## 🔧 项目级工具
 
@@ -119,6 +120,9 @@ python .trae/workflows/project-init.py vue3
 # 快速初始化React项目
 python .trae/workflows/project-init.py react
 
+# 🆕 快速初始化HTML组合式设计项目
+python .trae/workflows/project-init.py html-composition
+
 # 自定义初始化
 python .trae/workflows/project-init.py custom
 ```
@@ -156,6 +160,29 @@ python .trae/workflows/project-init.py custom
 
 # 部署配置
 @DevOps工程师 配置Docker容器化部署
+```
+
+### 🆕 HTML组合式设计开发流程
+```bash
+# 需求澄清
+@产品经理 设计一个企业官网，需要响应式、动画效果、SEO优化
+
+# UI/UX设计
+@UI/UX设计师 设计现代化企业官网界面，包含首页、产品页、关于我们
+
+# 前端实现
+@UI/UX设计师 使用HTML组合式设计创建响应式官网
+# 自动生成：
+# - HTML片段组合结构
+# - CSS设计系统（变量、组件、响应式）
+# - JavaScript弱交互实现
+# - SEO优化配置
+
+# 测试验证
+@测试工程师 验证响应式布局、交互功能、性能指标
+
+# 部署上线
+@DevOps工程师 配置静态网站部署（Nginx + CDN）
 ```
 
 ## 🛠️ 故障排除
@@ -219,6 +246,9 @@ python .trae/workflows/agent-suite.py generate react
 
 # 生成Flutter项目
 python .trae/workflows/agent-suite.py generate flutter
+
+# 🆕 生成HTML组合式设计项目
+python .trae/workflows/agent-suite.py generate html-composition
 ```
 
 ### 自定义模板

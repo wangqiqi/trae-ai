@@ -98,6 +98,12 @@ class TemplateManager:
             info["tech_stack"] = ["Flutter", "Dart", "Firebase"]
             info["suggested_templates"] = ["project-init-template", "requirements-template"]
         
+        # HTML组合式设计项目检测
+        elif any(f.suffix in ['.html', '.css', '.js'] for f in files[:10]):
+            info["type"] = "html-composition"
+            info["tech_stack"] = ["HTML5", "CSS3", "JavaScript", "Vanilla JS"]
+            info["suggested_templates"] = ["html-composition-template", "project-init-template", "requirements-template"]
+            
         # 通用模板
         if info["type"] == "unknown":
             info["suggested_templates"] = ["project-init-template", "requirements-template", "test-plan-template"]
@@ -201,7 +207,8 @@ class TemplateManager:
             "database-design-template": "docs/database-design.md",
             "test-plan-template": "docs/test-plan.md",
             "code-review-template": "docs/code-review.md",
-            "deployment-template": "docs/deployment.md"
+            "deployment-template": "docs/deployment.md",
+            "html-composition-template": "docs/html-composition-guide.md"
         }
         
         return filename_map.get(template_name, f"docs/{template_name}.md")
@@ -378,7 +385,8 @@ class TemplateManager:
             "react": ["React18", "TypeScript", "Next.js", "Redux", "React Router"],
             "fastapi": ["Python", "FastAPI", "SQLAlchemy", "PostgreSQL", "Docker"],
             "flutter": ["Flutter", "Dart", "Firebase", "Provider", "GetX"],
-            "node": ["Node.js", "Express", "TypeScript", "MongoDB", "Docker"]
+            "node": ["Node.js", "Express", "TypeScript", "MongoDB", "Docker"],
+            "html-composition": ["HTML5", "CSS3", "JavaScript", "Vanilla JS", "Web Components"]
         }
         return tech_stacks.get(project_type, ["通用技术栈"])
     
@@ -389,7 +397,8 @@ class TemplateManager:
             "react": ["project-init-template", "requirements-template", "test-plan-template"],
             "fastapi": ["project-init-template", "api-spec-template", "database-design-template", "test-plan-template"],
             "flutter": ["project-init-template", "requirements-template", "test-plan-template"],
-            "node": ["project-init-template", "api-spec-template", "test-plan-template"]
+            "node": ["project-init-template", "api-spec-template", "test-plan-template"],
+            "html-composition": ["html-composition-template", "project-init-template", "requirements-template"]
         }
         return template_sets.get(project_type, ["project-init-template", "requirements-template"])
     

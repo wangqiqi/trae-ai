@@ -331,6 +331,9 @@ python .trae/workflows/template-manager.py list
 
 # 快速创建常用类型
 vue3, react, angular, uniapp, flutter, fastapi, django, nodejs, go, rust
+
+# 🆕 HTML组合式设计（零框架依赖）
+html-composition  # 纯HTML+CSS+JS组合式设计
 ```
 
 ### 📊 模板分类与使用
@@ -341,6 +344,7 @@ vue3, react, angular, uniapp, flutter, fastapi, django, nodejs, go, rust
 | project-init-template | 项目初始化指南 | 新项目开始 |
 | requirements-template | 需求分析文档 | 需求澄清 |
 | tech-choice-template | 技术选型对比 | 技术决策 |
+| **🆕 html-composition-template** | **HTML组合式设计** | **零框架依赖界面开发** |
 
 #### 🏗️ 系统设计类
 | 模板名称 | 用途 | 使用场景 |
@@ -390,6 +394,21 @@ python .trae/workflows/template-manager.py ai-create --name ecommerce-vue3 --fea
 - 数据库设计（用户、商品、订单、支付表）
 - 测试计划（单元测试、集成测试）
 - 部署方案（Docker + Nginx）
+```
+
+#### 🆕 案例3：HTML组合式设计网站
+```bash
+# 零框架依赖创建
+python .trae/workflows/template-manager.py create --name portfolio-site --type html-composition
+
+# AI增强功能
+python .trae/workflows/template-manager.py ai-create --name portfolio-site --features "响应式布局 动画效果 表单验证 图片懒加载 SEO优化"
+
+# 自动生成
+- HTML片段组合架构
+- CSS设计系统（变量、组件、响应式）
+- JavaScript弱交互实现
+- 性能优化最佳实践
 ```
 
 #### 案例2：FastAPI用户系统
@@ -492,6 +511,12 @@ A: 目前支持：Vue3、React、Flutter、FastAPI、Node.js、Go、Rust等。
 
 **Q5: 团队协作如何同步模板？**
 A: 使用`template-manager.py export/import`命令分享模板配置。
+
+**Q6: HTML组合式设计适合什么场景？**
+A: 适合需要快速原型、零框架依赖、轻量级交互的项目，如企业官网、产品展示页、营销页面等。
+
+**Q7: HTML组合式 vs 传统框架开发对比？**
+A: HTML组合式：零依赖、学习成本低、SEO友好、加载快；传统框架：功能强大、生态丰富、适合复杂应用。
 
 ## 💡 使用技巧（专家级）
 
