@@ -37,8 +37,11 @@ class ProjectInitializer:
         # 3. 初始化Git忽略
         self.setup_gitignore()
         
+        # 4. 项目设置（来自team-launcher.py的setup功能）
+        self.setup_project_agents()
+        
         print(f"\n🎉 项目 {project_name} 初始化完成！")
-        print(f"💡 运行: python .trae/team-launcher.py start")
+        print(f"💡 运行: python .trae/workflows/trae-console.py 启动AI控制台")
     
     def create_project_config(self, project_name: str):
         """创建项目配置"""
@@ -62,11 +65,13 @@ class ProjectInitializer:
     
     def setup_gitignore(self):
         """设置Git忽略文件"""
-        gitignore_content = """
-# Trae超级团队
+        gitignore_path = self.target_dir / ".gitignore"
+        
+        ignore_content = """
+# Trae AI 超级团队
 .trae/logs/
-.trae/backups/
 .trae/temp/
+.trae/cache/
 
 # Python
 __pycache__/
@@ -74,15 +79,26 @@ __pycache__/
 *$py.class
 *.so
 .Python
-env/
-venv/
-ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Node.js
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Virtual Environment
+venv/
+env/
+ENV/
 
 # IDE
 .vscode/
@@ -95,16 +111,32 @@ yarn-error.log*
 Thumbs.db
 """
         
-        gitignore_file = self.target_dir / ".gitignore"
-        if not gitignore_file.exists():
-            with open(gitignore_file, 'w', encoding='utf-8') as f:
-                f.write(gitignore_content.strip())
-            print("✅ .gitignore 已创建")
-        else:
-            # 追加到现有文件
-            with open(gitignore_file, 'a', encoding='utf-8') as f:
-                f.write("\n\n" + gitignore_content.strip())
-            print("✅ .gitignore 已更新")
+        with open(gitignore_path, 'w', encoding='utf-8') as f:
+            f.write(ignore_content.strip())
+        
+        print("✅ .gitignore 已配置")
+
+    def setup_project_agents(self):
+        """项目智能体设置（来自team-launcher.py的setup功能）"""
+        print("🎯 正在配置项目智能体...")
+        
+        # 创建项目专用配置
+        project_config = {
+            "project_name": self.target_dir.name,
+            "created_at": "auto-generated",
+            "agents_enabled": True,
+            "auto_start": False,
+            "team_config": {
+                "mode": "project",
+                "members": ["产品经理", "系统架构师", "项目经理", "项目协调员"]
+            }
+        }
+        
+        config_path = self.target_dir / ".trae-project.json"
+        with open(config_path, 'w', encoding='utf-8') as f:
+            json.dump(project_config, f, ensure_ascii=False, indent=2)
+        
+        print("✅ 项目智能体配置完成")
     
     def quick_setup(self):
         """快速设置向导"""

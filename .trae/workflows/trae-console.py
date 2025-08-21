@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 Trae AI 控制台
-独立的系统，专注于智能体管理和项目协作
+整合.trae-dev.py功能的统一控制台系统
+支持智能体调用、项目管理和需求处理
 """
 import json
 import os
@@ -13,7 +14,7 @@ import argparse
 from typing import Dict, List, Optional, Any
 
 class TraeConsole:
-    """Trae AI 控制台"""
+    """Trae AI 控制台 - 整合版"""
     
     def __init__(self):
         self.base_dir = Path(__file__).parent.parent  # 指向 .trae 目录
@@ -23,6 +24,7 @@ class TraeConsole:
         
         self.user_data_dir.mkdir(exist_ok=True)
         self.init_projects_data()
+        self.agents = self._load_agents()
     
     def init_projects_data(self):
         """初始化项目数据"""
@@ -52,6 +54,40 @@ class TraeConsole:
         with open(self.projects_file, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
     
+    def _load_agents(self) -> Dict[str, Any]:
+        """加载智能体配置（来自.trae-dev.py）"""
+        agents = {}
+        if not self.agents_dir.exists():
+            return agents
+        
+        for agent_file in self.agents_dir.glob("*.json"):
+            try:
+                with open(agent_file, 'r', encoding='utf-8') as f:
+                    agent_config = json.load(f)
+                
+                name = agent_config.get('name', '')
+                role = agent_config.get('role', agent_file.stem)
+                
+                # 建立映射
+                if name:
+                    agents[name] = {
+                        'config': agent_config,
+                        'file': agent_file,
+                        'role': role
+                    }
+                
+                # 角色名映射
+                agents[role] = {
+                    'config': agent_config,
+                    'file': agent_file,
+                    'role': role
+                }
+                
+            except Exception as e:
+                print(f"⚠️ 加载智能体失败 {agent_file.name}: {e}")
+        
+        return agents
+
     def get_all_agents(self) -> List[Dict[str, Any]]:
         """获取所有智能体"""
         agents = []
@@ -75,6 +111,30 @@ class TraeConsole:
         print("🤖 Trae AI 控制台")
         print("="*50)
         print("💡 描述需求，让AI专家为你服务！")
+
+    def display_help(self):
+        """显示帮助（来自.trae-dev.py）"""
+        agents_list = [name for name in self.agents.keys() if "工程师" in name or "经理" in name]
+        
+        print("""
+📖 Trae AI 控制台 - 使用帮助
+
+用法:
+    • 直接描述需求: "创建一个Vue3电商网站"
+    • @智能体调用: "@产品经理 设计Vue3任务管理系统"
+    • @特定工程师: "@Vue工程师 创建商品列表组件"
+
+可用智能体:
+    管理类: @产品经理 @系统架构师 @项目经理 @项目协调员
+    前端: @Vue工程师 @React工程师 @Angular工程师 @Uniapp工程师 @Flutter工程师
+    后端: @Python工程师 @FastAPI工程师 @Node工程师 @Go工程师 @Rust工程师
+    专项: @测试工程师 @DevOps工程师 @UI/UX设计师 @技术文档工程师
+
+示例:
+    "@产品经理 帮我设计一个Vue3任务管理应用"
+    "@Vue工程师 实现响应式界面"
+    "创建Python数据分析项目"
+        """)
     
     def create_project(self, project_name: str):
         """创建项目"""
@@ -110,6 +170,61 @@ class TraeConsole:
             created = datetime.fromisoformat(project["created_at"]).strftime("%m-%d %H:%M")
             print(f"  • {project['name']} ({created})")
     
+    def _detect_agent_call(self, command: str) -> Optional[Dict[str, str]]:
+        """检测@智能体调用（来自.trae-dev.py）"""
+        for agent_name in self.agents:
+            if f"@{agent_name}" in command:
+                requirement = command.replace(f"@{agent_name}", "").strip()
+                return {
+                    'agent': agent_name,
+                    'requirement': requirement
+                }
+        return None
+
+    def call_agent(self, agent_name: str, requirement: str) -> Dict[str, Any]:
+        """调用智能体（来自.trae-dev.py）"""
+        if agent_name not in self.agents:
+            available_agents = [name for name in self.agents.keys() if "工程师" in name or "经理" in name]
+            return {
+                "error": f"智能体 '{agent_name}' 不存在",
+                "available_agents": available_agents
+            }
+        
+        agent_info = self.agents[agent_name]
+        config = agent_info['config']
+        
+        return {
+            "agent": agent_name,
+            "requirement": requirement,
+            "agent_config": {
+                "name": config.get('name', agent_name),
+                "role": config.get('role', agent_name),
+                "description": config.get('description', '暂无描述')
+            },
+            "response": f"🎯 {config.get('name', agent_name)} 正在处理您的需求...",
+            "next_steps": [
+                "分析需求",
+                "设计方案", 
+                "生成代码",
+                "测试验证"
+            ]
+        }
+
+    def create_project_from_description(self, description: str) -> Dict[str, Any]:
+        """从描述创建项目（来自.trae-dev.py）"""
+        return {
+            "project_name": f"项目_{description[:20]}...",
+            "description": description,
+            "status": "created",
+            "suggested_agents": [name for name in self.agents.keys() if "工程师" in name][:3],
+            "next_steps": [
+                "选择合适的技术栈",
+                "创建项目结构",
+                "开始开发",
+                "测试部署"
+            ]
+        }
+
     def interactive_mode(self):
         """交互模式"""
         self.display_welcome()
@@ -130,10 +245,18 @@ class TraeConsole:
                     break
                 
                 if user_input.lower() == 'help':
-                    print("📖 帮助：直接描述需求或@智能体名")
+                    self.display_help()
                     continue
                 
-                print(f"🚀 处理: {user_input}")
+                # 检测@智能体调用
+                agent_match = self._detect_agent_call(user_input)
+                if agent_match:
+                    result = self.call_agent(agent_match['agent'], agent_match['requirement'])
+                    print(json.dumps(result, indent=2, ensure_ascii=False))
+                else:
+                    # 创建项目
+                    result = self.create_project_from_description(user_input)
+                    print(json.dumps(result, indent=2, ensure_ascii=False))
                 
             except KeyboardInterrupt:
                 print("\n👋 再见！")
