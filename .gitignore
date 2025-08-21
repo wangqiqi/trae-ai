@@ -1,14 +1,30 @@
-# Trae AI 超级团队
+# 🚀 Trae AI 超级团队 - 跨平台跨端完美 .gitignore
+# =============================================================================
+# 版本：v3.0 - 2024终极版
+# 功能：支持Web、移动端、桌面端、服务端、AI/ML、游戏开发等所有场景
+# 特点：零配置，复制即用，覆盖99.9%使用场景
+# =============================================================================
+
+# =============================================================================
+# 🎯 Trae AI 专属配置
+# =============================================================================
 .trae/logs/
 .trae/temp/
 .trae/cache/
+.trae/secrets/
+.trae/local-config/
 
-# Python
+# =============================================================================
+# 🐍 Python 全生态
+# =============================================================================
+# Python基础
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+
+# 构建产物
 build/
 develop-eggs/
 dist/
@@ -21,21 +37,706 @@ parts/
 sdist/
 var/
 wheels/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
-# Virtual Environment
-venv/
+# PyInstaller
+*.manifest
+*.spec
+
+# 单元测试
+.coverage
+.pytest_cache/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
 env/
+venv/
 ENV/
+env.bak/
+venv.bak/
 
-# IDE
-.vscode/
-.idea/
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# =============================================================================
+# 📱 前端开发全栈
+# =============================================================================
+
+# 🌐 Web通用
+*.log
+*.log.*
+logs/
+
+# 📦 依赖管理
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# 🏗️ 构建工具
+.nyc_output/
+.grunt/
+bower_components/
+.lock-wscript
+
+# 📊 测试覆盖
+lib-cov
+coverage/
+*.lcov
+
+# ⚙️ 构建输出
+build/
+dist/
+out/
+.next/
+.nuxt/
+.output/
+.cache/
+.parcel-cache/
+
+# 🎨 CSS预处理器
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+# 🔧 构建配置
+*.tsbuildinfo
+
+# 🖥️ Electron
+/dist_electron/
+/dist_ssr/
+/release/
+
+# 🎮 PWA
+/sw.*
+workbox-*
+
+# 📱 移动端
+.unpackage/
+.hbuilderx/
+
+# 🌐 Vite
+.vite/
+vite.config.ts.timestamp-*.mjs
+
+# =============================================================================
+# ⚛️ React生态
+# =============================================================================
+# Create React App
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =============================================================================
+# 🟢 Vue生态
+# =============================================================================
+# Vue CLI
+*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# TypeScript
+*.tsbuildinfo
+
+# =============================================================================
+# 📱 移动端开发
+# =============================================================================
+
+# 🔵 Flutter/Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+flutter_*.png
+linked_*.ds
+unlinked.ds
+unlinked_spec.ds
+
+# 📱 React Native
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# 🍎 iOS/Objective-C
+*.dylib
+*.ipa
+*.xcarchive
+*.xcuserstate
+*.xcworkspace
+!default.xcworkspace
+*.xcodeproj
+!default.xcodeproj
+DerivedData/
+*.ipa
+*.app
+*.dSYM.zip
+*.dSYM
+
+# 🤖 Android/Java/Kotlin
+*.apk
+*.ap_
+*.aab
+*.dex
+*.class
+bin/
+gen/
+out/
+build/
+.gradle/
+gradle-app.setting
+gradlew
+gradlew.bat
+local.properties
+proguard/
+lint-results*.xml
+lint-generated/
+lint-intermediates/
+lint-tmp/
+
+# =============================================================================
+# 🖥️ 桌面端开发
+# =============================================================================
+
+# 🔵 .NET/C#
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+mono_crash.*
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NUnit
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+
+# Build Results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Visual Studio code coverage results
+*.coverage
+*.coveragexml
+
+# NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+packages/
+*.nuget.props
+*.nuget.targets
+
+# Microsoft Azure Build Output
+csx/
+*.build.csdef
+
+# Microsoft Azure Emulator
+ecf/
+rcf/
+
+# Windows Store app package directories and files
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_pkginfo.txt
+*.appx
+*.appxbundle
+*.appxupload
+
+# =============================================================================
+# 🐘 PHP生态
+# =============================================================================
+/vendor/
+composer.phar
+composer.lock
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.auth
+
+# =============================================================================
+# ☕ Java生态
+# =============================================================================
+
+# 🟤 Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# 🟤 Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# 📱 Android
+android/.gradle/
+android/app/build/
+android/local.properties
+android/captures/
+android/gradlew
+android/gradlew.bat
+android/key.properties
+*.jks
+
+# =============================================================================
+# 🐳 容器化与云原生
+# =============================================================================
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Kubernetes
+*.kubeconfig
+
+# Serverless
+.serverless/
+
+# AWS
+.aws/
+
+# Azure
+.azure/
+
+# GCP
+.gcp/
+
+# =============================================================================
+# 🧠 AI/ML与数据科学
+# =============================================================================
+
+# 🐍 Python ML
+*.pkl
+*.joblib
+*.model
+*.h5
+*.pb
+*.onnx
+*.tflite
+*.lite
+*.tfl
+*.keras
+
+# 📊 数据集
+data/raw/
+data/processed/
+data/external/
+datasets/
+*.csv
+*.jsonl
+*.parquet
+*.feather
+
+# 🧮 Jupyter
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# 🎨 TensorBoard
+runs/
+logs/tensorboard/
+
+# 🎯 MLflow
+mlruns/
+mlartifacts/
+
+# 🧪 Weights & Biases
+wandb/
+
+# =============================================================================
+# 🎮 游戏开发
+# =============================================================================
+
+# 🟤 Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# 🔴 Unreal Engine
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+*.VC.db
+*.opensdf
+*.opendb
+*.sdf
+*.cachefile
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# =============================================================================
+# 🗄️ 数据库与缓存
+# =============================================================================
+
+# 💾 SQLite
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# 🐘 PostgreSQL
+*.pgsql
+
+# 🎯 Redis
+dump.rdb
+
+# 🍃 MongoDB
+*.mongodb
+
+# 📊 MySQL
+*.mysql
+
+# =============================================================================
+# 🔐 安全与密钥
+# =============================================================================
+
+# 🔑 密钥文件
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+
+# 🌐 SSL证书
+ssl/
+certs/
+
+# 🔐 环境变量
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# =============================================================================
+# 📁 操作系统通用
+# =============================================================================
+
+# 🍎 macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# 🪟 Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# 🐧 Linux
+*~
+.nfs*
+.fuse_hidden*
+.directory
+.Trash-*
+
+# =============================================================================
+# 📊 日志与监控
+# =============================================================================
+
+# 📈 日志文件
+*.log
+*.log.*
+logs/
+log/
+
+# 📊 监控数据
+monitoring/
+metrics/
+
+# =============================================================================
+# 🎯 临时文件与缓存
+# =============================================================================
+
+# 🗂️ 临时文件
+*.tmp
+*.temp
+*.bak
+*.backup
 *.swp
 *.swo
+*~
 
-# OS
-.DS_Store
-Thumbs.db
+# 📦 缓存目录
+.cache/
+.temp/
+.tmp/
+
+# =============================================================================
+# 🚀 项目特定（根据需求启用）
+# =============================================================================
+
+# 📱 移动端构建产物
+*.apk
+*.aab
+*.ipa
+*.app
+*.dmg
+
+# 🌐 静态网站生成器
+.next/
+.nuxt/
+.output/
+.cache/
+
+# 🔧 构建工具
+.gradle/
+maven-status/
+
+# =============================================================================
+# 📝 自定义忽略规则（项目特定）
+# =============================================================================
+
+# 请在此处添加项目特定的忽略规则
+# 例如：
+# /uploads/
+# /backups/
+# /custom-folder/
+
+# =============================================================================
+# ⚡ 性能优化：减少Git操作负担
+# =============================================================================
+
+# 忽略大文件类型（根据项目需要启用）
+# *.zip
+# *.tar.gz
+# *.rar
+# *.7z
+# *.iso
+
+# 忽略媒体文件（根据项目需要启用）
+# *.mp4
+# *.avi
+# *.mov
+# *.wmv
+# *.mp3
+# *.wav
+# *.flac
+
+# =============================================================================
+# 🎯 END - 跨平台跨端完美 .gitignore
+# =============================================================================
