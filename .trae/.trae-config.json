@@ -61,7 +61,8 @@
             "agent": "@技术文档工程师",
             "action": "文档框架建立",
             "principle": "PRINCIPLE-003",
-            "output": "docs/structure.md""action_details": "自动生成API文档和用户手册，确保docs目录下包含所有必要文档"
+            "output": "docs/structure.md", 
+            "action_details": "自动生成API文档和用户手册，确保docs目录下包含所有必要文档"
           },
           {
             "step": 5,
