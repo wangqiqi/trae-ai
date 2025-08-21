@@ -95,8 +95,8 @@ cat .trae/rules/project_rules.md  # 完整20个AI专家使用手册
 # 启动AI控制台
 python .trae\trae-console.py
 
-# 或开发助手模式
-python .trae-dev.py "@产品经理 创建React电商平台"
+# 或使用项目初始化器
+python .trae\workflows\project-init.py quick
 
 ---
 

@@ -54,12 +54,10 @@ your-project/
 │   │   ├── smart-reminder.py          # 智能提醒
 │   │   └── system-enhancer.py         # 系统增强
 │   ├── workflows/           # 🔄 工作流工具
-│   │   ├── team-launcher.py      # 团队启动器
 │   │   ├── project-init.py       # 项目初始化器
 │   │   ├── agent-suite.py        # 智能体创建工具
 │   │   ├── trae-console.py       # AI控制台
-│   │   ├── universal-env-manager.py  # 统一环境管理
-│   │   └── .trae-dev.py          # 开发助手
+│   │   └── universal-env-manager.py  # 统一环境管理
 │   ├── agent/               # 🎭 智能体目录（20个专业智能体）
 │   ├── templates/           # 📋 项目模板
 │   │   ├── agent-template.json
@@ -122,8 +120,8 @@ your-project/
 # 启动完整团队向导
 python .trae/trae.py start
 
-# 或直接使用工作流
-python .trae/workflows/team-launcher.py start
+# 或使用项目初始化器
+python .trae/workflows/project-init.py quick
 ```
 
 ### 2. 项目初始化（新增）

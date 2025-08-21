@@ -63,11 +63,11 @@ cp -r .trae/rules/project_rules.md ../my-new-project/.trae/rules/
 # 项目启动
 python .trae/workflows/project-init.py quick
 
-# 团队启动
-python .trae/workflows/team-launcher.py start
-
-# 控制台交互
+# AI控制台交互
 python .trae/workflows/trae-console.py
+
+# 智能体管理
+python .trae/workflows/agent-suite.py
 ```
 
 ## 📊 项目模板
@@ -89,8 +89,8 @@ python .trae/workflows/trae-console.py
 
 ### 工作流工具
 - project-init.py - 项目初始化
-- team-launcher.py - 团队启动
 - trae-console.py - AI控制台
+- agent-suite.py - 智能体管理
 - universal-env-manager.py - 环境管理
 
 ## 🚀 详细快速上手
@@ -168,7 +168,7 @@ python .trae/workflows/project-init.py custom
 python .trae/core/project-assistant.py --status
 
 # 查看智能体列表
-python .trae/workflows/team-launcher.py list
+python .trae/workflows/agent-suite.py list
 
 # 环境诊断
 python .trae/workflows/universal-env-manager.py doctor

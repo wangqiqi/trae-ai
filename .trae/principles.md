@@ -287,7 +287,7 @@ python .trae/core/system-enhancer.py --full
 #### 团队协作包
 ```bash
 # 👥 查看可用智能体
-python .trae/workflows/team-launcher.py list
+python .trae/workflows/agent-suite.py list
 
 # 🔍 环境诊断
 python .trae/workflows/universal-env-manager.py doctor
@@ -503,7 +503,7 @@ python .trae/core/project-assistant.py --status
 | Python版本低 | `python --version` 需3.7+ |
 | 权限不足 | 右键管理员运行 |
 | 路径错误 | 确保在项目根目录 |
-| 智能体缺失 | `python .trae/workflows/team-launcher.py list` |
+| 智能体缺失 | `python .trae/workflows/agent-suite.py list` |
 
 ---
 

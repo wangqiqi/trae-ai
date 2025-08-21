@@ -48,9 +48,9 @@ class TraeAuto:
         
         # 4. 启动对应智能体
         if project_type == 'vue':
-            subprocess.run([sys.executable, str(self.trae_dir / "workflows" / "team-launcher.py"), "vue"])
+            subprocess.run([sys.executable, str(self.trae_dir / "workflows" / "trae-console.py"), "create", "vue"])
         elif project_type == 'fastapi':
-            subprocess.run([sys.executable, str(self.trae_dir / "workflows" / "team-launcher.py"), "fastapi"])
+            subprocess.run([sys.executable, str(self.trae_dir / "workflows" / "trae-console.py"), "create", "fastapi"])
         else:
             self.do_console()
         
