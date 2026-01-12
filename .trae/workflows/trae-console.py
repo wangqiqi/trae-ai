@@ -27,6 +27,7 @@ class TraeConsole:
         self.projects_file = self.user_data_dir / "projects.json"
         self.mcp_config_file = self.base_dir / "mcp-config.json"
         self.trae_config_file = self.base_dir / ".trae-config.json"
+        self.cursor_rules_dir = self.base_dir / "rules" / "cursor"
         
         self.user_data_dir.mkdir(exist_ok=True)
         self.init_projects_data()
@@ -34,6 +35,8 @@ class TraeConsole:
         self.templates = self._load_templates()
         self.mcp_config = self._load_mcp_config()
         self.trae_config = self._load_trae_config()
+        self.cursor_rules = self._load_cursor_rules()
+        self.cursor_constitution = self._load_cursor_constitution()
     
     def _load_mcp_config(self) -> Dict[str, Any]:
         """加载MCP配置"""
@@ -56,6 +59,33 @@ class TraeConsole:
             print(f"⚠️ 加载Trae配置失败: {e}")
         
         return {"trae_ai_assistant": {"version": "4.0"}}
+    
+    def _load_cursor_rules(self) -> Dict[str, Any]:
+        """加载Cursor规则"""
+        try:
+            if self.cursor_rules_dir.exists():
+                rules = {}
+                for rule_dir in self.cursor_rules_dir.iterdir():
+                    if rule_dir.is_dir():
+                        rule_file = rule_dir / "RULE.md"
+                        if rule_file.exists():
+                            with open(rule_file, 'r', encoding='utf-8') as f:
+                                rules[rule_dir.name] = f.read()
+                return rules
+        except Exception as e:
+            print(f"⚠️ 加载Cursor规则失败: {e}")
+        
+        return {}
+    
+    def _load_cursor_constitution(self) -> Dict[str, Any]:
+        """加载Cursor宪法"""
+        try:
+            if 'cursor_constitution' in self.trae_config.get('trae_ai_assistant', {}):
+                return self.trae_config['trae_ai_assistant']['cursor_constitution']
+        except Exception as e:
+            print(f"⚠️ 加载Cursor宪法失败: {e}")
+        
+        return {}
     
     def init_projects_data(self):
         """初始化项目数据"""

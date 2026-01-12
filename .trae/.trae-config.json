@@ -100,7 +100,39 @@
       "P-009": "测试优先原则",
       "P-010": "安全优先原则",
       "P-011": "性能优化原则",
-      "P-012": "可持续维护原则"
+      "P-012": "可持续维护原则",
+      "P-013": "AI共生宪法原则",
+      "P-014": "智能感知原则",
+      "P-015": "自适应学习原则"
+    },
+    "cursor_constitution": {
+      "human_intent_sovereignty": {
+        "principle": "人类意图主权",
+        "description": "人类决策始终优先于AI建议，AI提供选项，人类做出最终选择",
+        "requirements": [
+          "人类决策优先于AI建议",
+          "AI提供选项，人类做出最终选择",
+          "所有AI操作都需要人类确认"
+        ]
+      },
+      "signal_transparency": {
+        "principle": "信号透明性",
+        "description": "AI必须解释推理过程和数据来源，所有输出都应可追溯和可验证",
+        "requirements": [
+          "AI必须解释推理过程和数据来源",
+          "所有输出都应可追溯和可验证",
+          "明确标注信息来源归属"
+        ]
+      },
+      "safe_collaboration": {
+        "principle": "安全协作",
+        "description": "不自动执行破坏性操作，所有系统变更都需要明确批准",
+        "requirements": [
+          "不自动执行破坏性操作",
+          "所有系统变更都需要明确批准",
+          "对所有建议进行风险评估"
+        ]
+      }
     },
     "interaction_modes": {
       "direct_call": "@智能体名 需求描述",
@@ -423,6 +455,45 @@
       "project_created": "待记录",
       "project_duration": "待记录",
       "milestones": []
+    },
+    "cursor_rules": {
+      "enabled": true,
+      "description": "Cursor AI Rules 集成，提供智能协作规则系统",
+      "rules_directory": ".trae/rules/cursor",
+      "core_rules": [
+        "constitution",
+        "philosophy",
+        "intelligent_evolution",
+        "evolution-philosophy",
+        "evolution-manual",
+        "evolution-automation",
+        "evolution-governance",
+        "generator",
+        "system_info",
+        "templates",
+        "eslint",
+        "i18n",
+        "platform_adapter",
+        "module_manager"
+      ],
+      "features": {
+        "intelligent_perception": {
+          "enabled": true,
+          "description": "智能感知系统，自动分析项目结构和技术栈"
+        },
+        "adaptive_learning": {
+          "enabled": true,
+          "description": "自适应学习，根据使用习惯优化协作模式"
+        },
+        "safety_guarantee": {
+          "enabled": true,
+          "description": "安全保障，内置风险控制和隐私保护"
+        },
+        "plug_and_play": {
+          "enabled": true,
+          "description": "即插即用，快速部署和配置"
+        }
+      }
     }
   }
 }
