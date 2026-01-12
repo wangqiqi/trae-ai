@@ -1,7 +1,7 @@
 {
-  "schema_version": "3.0.0",
+  "schema_version": "4.0",
   "required": {
-    "schema_version": "3.0.0",
+    "schema_version": "4.0",
     "agent_info": "智能体基本信息",
     "technical_stack": "技术栈配置",
     "capabilities": "能力定义"
@@ -18,6 +18,46 @@
       "{tag1}",
       "{tag2}",
       "{tag3}"
+    ],
+    "marketplace": {
+      "shareable": true,
+      "composable": true,
+      "market_url": "https://marketplace.trae.ai/agents/{agent_id}",
+      "dependencies": [
+        "{dependency_agent1}",
+        "{dependency_agent2}"
+      ]
+    }
+  },
+  "development_modes": {
+    "ide_mode": {
+      "enabled": true,
+      "description": "IDE模式支持"
+    },
+    "solo_mode": {
+      "enabled": true,
+      "description": "SOLO模式支持",
+      "autonomous_level": "{high|medium|low}"
+    }
+  },
+  "mcp_support": {
+    "enabled": true,
+    "required_servers": [
+      "filesystem",
+      "brave-search"
+    ],
+    "optional_servers": [
+      "{optional_server1}",
+      "{optional_server2}"
+    ]
+  },
+  "context_management": {
+    "enabled": true,
+    "web_context": true,
+    "doc_context": true,
+    "preferred_contexts": [
+      "{context_type1}",
+      "{context_type2}"
     ]
   },
   "technical_stack": {

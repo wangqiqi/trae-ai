@@ -1,11 +1,23 @@
 {
-  "schema_version": "2.0",
+  "schema_version": "4.0",
   "agent_info": {
     "name": "环境管理专家",
     "description": "专精开发环境全生命周期管理的DevOps专家，负责Python/Node.js/容器环境的创建、配置、修复和升级",
-    "version": "2.0.0",
+    "version": "4.0.0",
     "author": "AI环境管理团队",
-    "category": "infrastructure"
+    "category": "infrastructure",
+    "role": "环境管理专家-specialist",
+    "subcategory": "环境管理专家",
+    "maturity": "stable",
+    "tags": [
+      "环境管理专家"
+    ],
+    "marketplace": {
+      "shareable": true,
+      "composable": true,
+      "market_url": "https://marketplace.trae.ai/agents/environment-manager",
+      "dependencies": []
+    }
   },
   "technical_stack": {
     "primary_language": "Python",
@@ -250,5 +262,30 @@
       "磁盘空间不足",
       "安全漏洞检测"
     ]
+  },
+  "development_modes": {
+    "ide_mode": {
+      "enabled": true,
+      "description": "IDE模式支持"
+    },
+    "solo_mode": {
+      "enabled": true,
+      "description": "SOLO模式支持",
+      "autonomous_level": "high"
+    }
+  },
+  "mcp_support": {
+    "enabled": true,
+    "required_servers": [
+      "filesystem",
+      "brave-search"
+    ],
+    "optional_servers": []
+  },
+  "context_management": {
+    "enabled": true,
+    "web_context": true,
+    "doc_context": true,
+    "preferred_contexts": []
   }
 }

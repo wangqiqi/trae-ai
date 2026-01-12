@@ -1,14 +1,106 @@
 {
   "trae_ai_assistant": {
-    "version": "2.0",
+    "version": "4.0",
     "mode": "principle_driven",
+    "development_modes": {
+      "ide_mode": {
+        "name": "IDE模式",
+        "description": "保留原有流程，控制感更强",
+        "features": [
+          "智能体协作",
+          "工作流管理",
+          "代码生成",
+          "实时预览"
+        ]
+      },
+      "solo_mode": {
+        "name": "SOLO模式",
+        "description": "让AI主导任务，自动推进开发任务",
+        "features": [
+          "自然语言输入",
+          "自动任务分解",
+          "自主代码生成",
+          "智能决策执行"
+        ],
+        "agent": "SOLO Coder",
+        "capabilities": [
+          "需求理解",
+          "架构设计",
+          "代码实现",
+          "测试验证"
+        ]
+      }
+    },
+    "mcp_support": {
+      "enabled": true,
+      "description": "模型上下文协议支持，连接外部工具和数据源",
+      "config_file": ".trae/mcp-config.json",
+      "available_servers": [
+        "filesystem",
+        "brave-search",
+        "postgres",
+        "sqlite",
+        "supabase",
+        "figma",
+        "github",
+        "gitlab"
+      ],
+      "default_servers": [
+        "filesystem",
+        "brave-search"
+      ]
+    },
+    "context_management": {
+      "enabled": true,
+      "description": "上下文管理功能，支持#Web和#Doc引用",
+      "features": {
+        "web_context": {
+          "name": "#Web",
+          "description": "引用网络资源作为上下文",
+          "usage": "#Web URL或搜索查询"
+        },
+        "doc_context": {
+          "name": "#Doc",
+          "description": "引用文档集作为上下文",
+          "usage": "#Doc 文档路径或集合名称"
+        }
+      },
+      "best_practices": [
+        "先引用文档集，再提出具体需求",
+        "使用#Web获取最新技术信息",
+        "使用#Doc引用项目文档",
+        "避免需求偏差"
+      ]
+    },
+    "agent_marketplace": {
+      "enabled": true,
+      "description": "智能体市场，支持智能体分享和组合",
+      "market_url": "https://marketplace.trae.ai",
+      "shareable": true,
+      "composable": true,
+      "categories": [
+        "frontend",
+        "backend",
+        "management",
+        "testing",
+        "devops",
+        "design",
+        "documentation"
+      ]
+    },
     "core_principles": {
-      "PRINCIPLE-005": "自动化文档生成原则",
-      "PRINCIPLE-006": "高效沟通协作原则",
-      "PRINCIPLE-001": "需求澄清原则",
-      "PRINCIPLE-002": "技术选型对比原则",
-      "PRINCIPLE-003": "文档驱动开发原则",
-      "PRINCIPLE-004": "渐进式实施原则"
+      "P-001": "需求澄清原则",
+      "P-002": "技术选型对比原则",
+      "P-003": "文档驱动开发原则",
+      "P-004": "渐进式实施原则",
+      "P-005": "自动化文档生成原则",
+      "P-006": "高效沟通协作原则",
+      "P-007": "时间信息原则",
+      "P-008": "结构化沟通原则",
+      "P-009": "测试优先原则",
+      "P-010": "安全优先原则",
+      "P-011": "性能优化原则",
+      "P-012": "可持续维护原则"
     },
     "interaction_modes": {
       "direct_call": "@智能体名 需求描述",
@@ -30,7 +122,7 @@
     "workflows": {
       "project_startup": {
         "name": "原则驱动的项目启动",
-        "description": "基于PRINCIPLE-001~004的完整开发流程",
+        "description": "基于P-001~P-012的完整开发流程",
         "prerequisites": [
           "principles.md"
         ],
@@ -39,43 +131,71 @@
             "step": 1,
             "agent": "@产品经理",
             "action": "需求澄清",
-            "principle": "PRINCIPLE-001",
+            "principle": "P-001",
             "output": "docs/requirements.md"
           },
           {
             "step": 2,
             "agent": "@系统架构师",
             "action": "技术选型对比",
-            "principle": "PRINCIPLE-002",
+            "principle": "P-002",
             "output": "docs/tech-choice.md"
           },
           {
             "step": 3,
             "agent": "@项目经理",
             "action": "渐进式计划制定",
-            "principle": "PRINCIPLE-004",
+            "principle": "P-004",
             "output": "docs/roadmap.md"
           },
           {
             "step": 4,
             "agent": "@技术文档工程师",
             "action": "文档框架建立",
-            "principle": "PRINCIPLE-003",
-            "output": "docs/structure.md", 
+            "principle": "P-003",
+            "output": "docs/structure.md",
             "action_details": "自动生成API文档和用户手册，确保docs目录下包含所有必要文档"
           },
           {
             "step": 5,
+            "agent": "@测试工程师",
+            "action": "测试用例设计",
+            "principle": "P-009",
+            "output": "tests/test-cases.md"
+          },
+          {
+            "step": 6,
+            "agent": "@DevOps工程师",
+            "action": "安全配置检查",
+            "principle": "P-010",
+            "output": "docs/security-config.md"
+          },
+          {
+            "step": 7,
             "agent": "开发工程师",
             "action": "MVP开发",
-            "principle": "PRINCIPLE-004",
+            "principle": "P-004",
             "output": "代码+测试"
+          },
+          {
+            "step": 8,
+            "agent": "@系统架构师",
+            "action": "性能优化分析",
+            "principle": "P-011",
+            "output": "docs/performance-report.md"
+          },
+          {
+            "step": 9,
+            "agent": "@技术文档工程师",
+            "action": "维护文档生成",
+            "principle": "P-012",
+            "output": "docs/maintenance-guide.md"
           }
         ]
       },
       "tech_selection": {
         "name": "技术选型流程",
-        "description": "基于PRINCIPLE-002的标准化技术选型",
+        "description": "基于P-002的标准化技术选型",
         "template": {
           "scheme_a": {
             "name": "",
@@ -96,11 +216,22 @@
             "score": 0
           }
         }
+      },
+      "structured_communication": {
+        "name": "结构化沟通流程",
+        "description": "基于P-008的标准化沟通模式",
+        "template": {
+          "understanding": "我理解你的需求是...",
+          "thinking": "我的思考过程是...",
+          "solution": "解决方案有A/B两种...",
+          "execution": "直接执行/需要你决策"
+        }
       }
     },
     "quality_gates": {
       "requirement_check": {
         "gate": "需求确认",
+        "principle": "P-001",
         "checklist": [
           "功能明确",
           "约束清晰",
@@ -110,6 +241,7 @@
       },
       "tech_choice_check": {
         "gate": "技术选型",
+        "principle": "P-002",
         "checklist": [
           "≥2方案",
           "学习成本",
@@ -119,13 +251,178 @@
       },
       "documentation_check": {
         "gate": "文档完整",
+        "principle": "P-003",
         "checklist": [
           "需求文档",
           "技术文档",
           "部署文档",
           "用户文档"
         ]
+      },
+      "test_check": {
+        "gate": "测试覆盖",
+        "principle": "P-009",
+        "checklist": [
+          "单元测试",
+          "集成测试",
+          "E2E测试",
+          "测试报告"
+        ]
+      },
+      "security_check": {
+        "gate": "安全审查",
+        "principle": "P-010",
+        "checklist": [
+          "输入验证",
+          "身份认证",
+          "数据加密",
+          "安全头配置"
+        ]
+      },
+      "performance_check": {
+        "gate": "性能优化",
+        "principle": "P-011",
+        "checklist": [
+          "前端加载<2s",
+          "API响应<200ms",
+          "数据库查询<100ms",
+          "移动端包大小<5MB"
+        ]
+      },
+      "maintenance_check": {
+        "gate": "可维护性",
+        "principle": "P-012",
+        "checklist": [
+          "代码规范",
+          "测试覆盖",
+          "文档完整",
+          "依赖更新",
+          "版本管理"
+        ]
       }
+    },
+    "principle_details": {
+      "P-001": {
+        "name": "需求澄清原则",
+        "description": "先问清楚再动手",
+        "formula": "需求 = 功能清单 + 技术约束 + 验收标准",
+        "checklist": [
+          "功能边界明确",
+          "技术约束清晰",
+          "验收标准量化",
+          "时间节点确定"
+        ]
+      },
+      "P-002": {
+        "name": "技术选型对比原则",
+        "description": "对比表一眼决策",
+        "dimensions": [
+          "学习成本",
+          "开发效率",
+          "社区生态",
+          "推荐指数"
+        ]
+      },
+      "P-003": {
+        "name": "文档驱动开发原则",
+        "description": "边开发边写文档",
+        "golden_rule": "代码未动，文档先行"
+      },
+      "P-004": {
+        "name": "渐进式实施原则",
+        "description": "小步快跑四阶段",
+        "model": "4D开发模型"
+      },
+      "P-005": {
+        "name": "自动化文档生成原则",
+        "description": "文档自动生成",
+        "features": [
+          "API文档自动生成",
+          "代码变更后自动同步",
+          "一键生成项目文档"
+        ]
+      },
+      "P-006": {
+        "name": "高效沟通协作原则",
+        "description": "一次说清减少往返",
+        "formula": "结构化提问 = 背景 + 目标 + 约束"
+      },
+      "P-007": {
+        "name": "时间信息原则",
+        "description": "每次对话先确认时间",
+        "requirements": [
+          "当前日期",
+          "用户信息",
+          "项目时间"
+        ],
+        "use_cases": [
+          "文档版权自动更新",
+          "项目里程碑提醒",
+          "代码提交时间记录"
+        ]
+      },
+      "P-008": {
+        "name": "结构化沟通原则",
+        "description": "理解→思考→方案→执行",
+        "flow": [
+          "理解复述",
+          "思考展示",
+          "方案提供",
+          "执行决策"
+        ]
+      },
+      "P-009": {
+        "name": "测试优先原则",
+        "description": "测试先行，质量保证",
+        "steps": [
+          "测试设计",
+          "代码开发",
+          "验证反馈"
+        ],
+        "test_pyramid": {
+          "unit_test": "80%覆盖率",
+          "integration_test": "关键路径覆盖",
+          "e2e_test": "用户场景验证"
+        }
+      },
+      "P-010": {
+        "name": "安全优先原则",
+        "description": "安全不是可选项，是必选项",
+        "checklist": [
+          "输入验证和消毒",
+          "身份认证和授权",
+          "数据加密传输",
+          "敏感信息脱敏",
+          "安全头配置"
+        ]
+      },
+      "P-011": {
+        "name": "性能优化原则",
+        "description": "先测量，再优化",
+        "metrics": {
+          "frontend": "首屏加载 < 2秒",
+          "backend": "API响应 < 200ms",
+          "database": "查询 < 100ms",
+          "mobile": "包大小 < 5MB"
+        }
+      },
+      "P-012": {
+        "name": "可持续维护原则",
+        "description": "今天写的代码6个月后还能维护",
+        "standards": [
+          "代码规范：统一编码风格",
+          "测试覆盖：关键功能100%测试",
+          "文档完整：README + API文档",
+          "依赖更新：定期安全检查",
+          "版本管理：语义化版本控制"
+        ]
+      }
+    },
+    "time_info": {
+      "current_date": "2026-01-12",
+      "project_created": "待记录",
+      "project_duration": "待记录",
+      "milestones": []
     }
   }
 }

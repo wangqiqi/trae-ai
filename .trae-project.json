@@ -1,8 +1,39 @@
 {
+  "schema_version": "4.0",
   "project_name": "learn_trae",
   "created_at": "auto-generated",
+  "updated_at": "2025-01-12",
+  "trae_version": "4.0",
   "agents_enabled": true,
   "auto_start": false,
+  "development_modes": {
+    "ide_mode": {
+      "enabled": true,
+      "description": "IDE模式：保留原有流程，控制感更强"
+    },
+    "solo_mode": {
+      "enabled": true,
+      "description": "SOLO模式：让AI主导任务，自动推进开发任务"
+    }
+  },
+  "mcp_support": {
+    "enabled": true,
+    "config_file": ".trae/mcp-config.json",
+    "active_servers": [
+      "filesystem",
+      "brave-search"
+    ]
+  },
+  "context_management": {
+    "enabled": true,
+    "web_context": true,
+    "doc_context": true
+  },
+  "agent_marketplace": {
+    "enabled": true,
+    "shareable": true,
+    "composable": true
+  },
   "team_config": {
     "mode": "project",
     "members": [
@@ -11,5 +42,27 @@
       "项目经理",
       "项目协调员"
     ]
+  },
+  "principles": {
+    "enabled": true,
+    "version": "4.0",
+    "active_principles": [
+      "P-001",
+      "P-002",
+      "P-003",
+      "P-004",
+      "P-005",
+      "P-006",
+      "P-007",
+      "P-008",
+      "P-009",
+      "P-010",
+      "P-011",
+      "P-012"
+    ]
+  },
+  "quality_gates": {
+    "enabled": true,
+    "strict_mode": false
   }
 }

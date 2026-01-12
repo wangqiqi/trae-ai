@@ -1,0 +1,167 @@
+{
+  "mcp_config": {
+    "version": "4.0",
+    "description": "MCP（模型上下文协议）配置文件，用于连接外部工具和数据源",
+    "enabled": true,
+    "servers": {
+      "filesystem": {
+        "name": "文件系统",
+        "description": "访问本地文件系统",
+        "type": "builtin",
+        "enabled": true,
+        "capabilities": [
+          "read_file",
+          "write_file",
+          "list_directory",
+          "search_files"
+        ],
+        "config": {
+          "allowed_paths": [
+            ".",
+            "./src",
+            "./docs",
+            "./tests"
+          ],
+          "max_file_size": "10MB"
+        }
+      },
+      "brave-search": {
+        "name": "Brave搜索",
+        "description": "使用Brave搜索引擎获取网络信息",
+        "type": "external",
+        "enabled": true,
+        "capabilities": [
+          "web_search",
+          "get_url",
+          "fetch_content"
+        ],
+        "config": {
+          "api_key": "${BRAVE_API_KEY}",
+          "max_results": 10,
+          "timeout": 30000
+        }
+      },
+      "postgres": {
+        "name": "PostgreSQL",
+        "description": "PostgreSQL数据库连接",
+        "type": "external",
+        "enabled": false,
+        "capabilities": [
+          "execute_query",
+          "list_tables",
+          "get_schema"
+        ],
+        "config": {
+          "connection_string": "${POSTGRES_CONNECTION_STRING}",
+          "max_connections": 5,
+          "timeout": 10000
+        }
+      },
+      "sqlite": {
+        "name": "SQLite",
+        "description": "SQLite数据库连接",
+        "type": "external",
+        "enabled": false,
+        "capabilities": [
+          "execute_query",
+          "list_tables",
+          "get_schema"
+        ],
+        "config": {
+          "database_path": "${SQLITE_DB_PATH}",
+          "readonly": true
+        }
+      },
+      "supabase": {
+        "name": "Supabase",
+        "description": "Supabase后端服务连接",
+        "type": "external",
+        "enabled": false,
+        "capabilities": [
+          "database_query",
+          "auth_management",
+          "storage_operations",
+          "realtime_subscription"
+        ],
+        "config": {
+          "project_url": "${SUPABASE_PROJECT_URL}",
+          "anon_key": "${SUPABASE_ANON_KEY}",
+          "service_role_key": "${SUPABASE_SERVICE_ROLE_KEY}"
+        }
+      },
+      "figma": {
+        "name": "Figma",
+        "description": "Figma设计文件访问",
+        "type": "external",
+        "enabled": false,
+        "capabilities": [
+          "get_file",
+          "get_components",
+          "export_assets"
+        ],
+        "config": {
+          "access_token": "${FIGMA_ACCESS_TOKEN}",
+          "team_id": "${FIGMA_TEAM_ID}"
+        }
+      },
+      "github": {
+        "name": "GitHub",
+        "description": "GitHub仓库和API访问",
+        "type": "external",
+        "enabled": false,
+        "capabilities": [
+          "get_repository",
+          "get_file",
+          "create_issue",
+          "create_pull_request"
+        ],
+        "config": {
+          "access_token": "${GITHUB_ACCESS_TOKEN}",
+          "default_branch": "main",
+          "api_endpoint": "https://api.github.com"
+        }
+      },
+      "gitlab": {
+        "name": "GitLab",
+        "description": "GitLab仓库和API访问",
+        "type": "external",
+        "enabled": false,
+        "capabilities": [
+          "get_repository",
+          "get_file",
+          "create_issue",
+          "create_merge_request"
+        ],
+        "config": {
+          "access_token": "${GITLAB_ACCESS_TOKEN}",
+          "default_branch": "main",
+          "api_endpoint": "${GITLAB_API_ENDPOINT}"
+        }
+      }
+    },
+    "default_servers": [
+      "filesystem",
+      "brave-search"
+    ],
+    "security": {
+      "api_key_storage": "environment_variables",
+      "allowed_origins": [
+        "localhost",
+        "*.trae.ai"
+      ],
+      "rate_limiting": {
+        "enabled": true,
+        "requests_per_minute": 100
+      }
+    },
+    "logging": {
+      "enabled": true,
+      "level": "info",
+      "file": ".trae/logs/mcp.log"
+    },
+    "custom_servers": {
+      "description": "自定义MCP服务器配置",
+      "servers": []
+    }
+  }
+}

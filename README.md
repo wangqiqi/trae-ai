@@ -1,15 +1,16 @@
 <div align="center">
 
-# 🚀 Trae AI 超级团队
+# 🚀 Trae AI 超级团队 v4.0
 
 **一个命令，20个AI专家为你工作！**
 
 [![Python](https://img.shields.io/badge/Python-3.7+-3776ab.svg?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/Version-4.0-blue.svg)](.trae/.trae-config.json)
 
 ### 🎯 **复制即用 · 零配置 · 20个AI专家协作开发**
 
-**中文友好 | 跨平台支持 | 企业级开发工作流**
+**中文友好 | 跨平台支持 | 企业级开发工作流 | MCP支持 | SOLO模式**
 
 </div>
 
@@ -38,6 +39,103 @@
 | **模板自动化** | 30秒生成完整项目框架                       |
 | **企业级标准** | 生产环境就绪的代码规范                     |
 | **中文优先**   | 完整中文文档和示例                         |
+| **MCP支持**    | 连接外部工具和数据源（文件系统、搜索、数据库等） |
+| **SOLO模式**   | AI主导自动推进开发任务                     |
+| **上下文管理** | 支持#Web和#Doc引用，精准获取上下文         |
+| **智能体市场** | 智能体分享和组合，可扩展的AI生态           |
+
+---
+
+## 🆕 v4.0 新特性（2025年升级）
+
+### 🚀 MCP（模型上下文协议）支持
+
+Trae AI v4.0 现在支持 MCP 协议，可以连接各种外部工具和数据源：
+
+```bash
+# MCP 配置文件位置
+.trae/mcp-config.json
+
+# 支持的服务器
+- filesystem      # 本地文件系统访问
+- brave-search    # 网络搜索
+- postgres        # PostgreSQL 数据库
+- sqlite          # SQLite 数据库
+- supabase        # Supabase 平台
+- figma           # Figma 设计工具
+- github          # GitHub 代码仓库
+- gitlab          # GitLab 代码仓库
+```
+
+### 🤖 SOLO 模式
+
+全新的 SOLO 模式让 AI 主导任务，自动推进开发：
+
+```bash
+# 启动 SOLO 模式
+python .trae/workflows/trae-console.py --mode solo
+
+# 自然语言输入，AI 自动分解任务
+"创建一个带用户认证的 Vue3 任务管理系统"
+
+# AI 自动完成：
+✅ 需求理解
+✅ 架构设计
+✅ 代码实现
+✅ 测试验证
+```
+
+### 📚 上下文管理（#Web 和 #Doc）
+
+使用上下文引用功能，精准获取所需信息：
+
+```bash
+# 引用网络资源
+#Web https://vuejs.org/guide/introduction.html
+
+# 引用文档集
+#Doc .trae/docs/vue3-best-practices.md
+
+# 结合使用
+@Vue工程师 根据 #Web https://v3.vuejs.org/ 创建一个响应式组件
+```
+
+### 🎭 智能体市场
+
+智能体现在可以分享和组合，构建可扩展的 AI 生态：
+
+```json
+{
+  "marketplace": {
+    "shareable": true,
+    "composable": true,
+    "market_url": "https://marketplace.trae.ai/agents/vue-engineer",
+    "dependencies": [
+      "@技术文档工程师",
+      "@测试工程师"
+    ]
+  }
+}
+```
+
+### 📋 12 个核心原则（完整覆盖）
+
+v4.0 完整实现了 12 个核心开发原则：
+
+| 原则编号 | 原则名称             | 核心内容                           |
+| -------- | -------------------- | ---------------------------------- |
+| P-001    | 需求澄清原则         | 明确功能需求、技术约束、预期目标   |
+| P-002    | 技术选型对比原则     | 多方案对比，选择最优技术栈         |
+| P-003    | 文档驱动开发原则     | 文档先行，代码后行                 |
+| P-004    | 渐进式实施原则       | 小步快跑，持续交付                 |
+| P-005    | 自动化文档生成原则   | 代码即文档，自动生成               |
+| P-006    | 高效沟通协作原则     | 结构化沟通，避免误解               |
+| P-007    | 时间信息原则         | 明确时间节点，合理安排进度         |
+| P-008    | 结构化沟通原则       | 使用标准化格式，提高沟通效率       |
+| P-009    | 测试优先原则         | 测试先行，质量保障                 |
+| P-010    | 安全优先原则         | 安全第一，防范风险                 |
+| P-011    | 性能优化原则         | 性能导向，持续优化                 |
+| P-012    | 可持续维护原则       | 代码规范，易于维护                 |
 
 ---
 
@@ -48,6 +146,7 @@
 | **🟢 新手用户** | 复制`.trae` → 完成！                                | 3秒      |
 | **🟡 效率用户** | `python .trae/trae.py start`                        | 5秒      |
 | **🔵 专业用户** | `python .trae/workflows/trae-console.py` → 输入需求 | 10秒     |
+| **🟣 SOLO模式** | `python .trae/workflows/trae-console.py --mode solo` | 10秒     |
 
 ### 🎯 实战示例
 ```bash
@@ -57,9 +156,20 @@ python .trae/workflows/template-manager.py create --name todo-app --type vue3
 # 场景2：AI增强创建电商网站
 python .trae/workflows/template-manager.py ai-create --name ecommerce --features "用户认证 商品管理 购物车"
 
-# 场景3：进入AI控制台对话
+# 场景3：进入AI控制台对话（IDE模式）
 python .trae/workflows/trae-console.py
 # 输入："创建一个带用户认证的Vue3任务管理系统"
+
+# 场景4：使用SOLO模式（AI主导）
+python .trae/workflows/trae-console.py --mode solo
+# 输入："创建一个带用户认证的Vue3任务管理系统"
+# AI 自动完成：需求理解 → 架构设计 → 代码实现 → 测试验证
+
+# 场景5：使用上下文引用
+@Vue工程师 根据 #Web https://v3.vuejs.org/ 创建一个响应式组件
+
+# 场景6：使用MCP连接外部数据源
+@Python工程师 使用 MCP postgres 服务器查询用户数据
 ```
 
 ---

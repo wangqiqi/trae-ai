@@ -1,10 +1,23 @@
 {
-  "schema_version": "2.0",
+  "schema_version": "4.0",
   "agent_info": {
     "name": "System-Architect工程师",
     "description": "专精system-architect的现代化开发专家，具备全栈开发能力",
-    "version": "2.0.0",
-    "author": "AI升级系统"
+    "version": "4.0.0",
+    "author": "AI升级系统",
+    "role": "system-architect工程师-specialist",
+    "category": "other",
+    "subcategory": "system-architect",
+    "maturity": "stable",
+    "tags": [
+      "system-architect工程师"
+    ],
+    "marketplace": {
+      "shareable": true,
+      "composable": true,
+      "market_url": "https://marketplace.trae.ai/agents/system-architect-engineer",
+      "dependencies": []
+    }
   },
   "technical_stack": {
     "primary_language": "System-Architect",
@@ -140,5 +153,30 @@
       "权限管理",
       "审计日志"
     ]
+  },
+  "development_modes": {
+    "ide_mode": {
+      "enabled": true,
+      "description": "IDE模式支持"
+    },
+    "solo_mode": {
+      "enabled": true,
+      "description": "SOLO模式支持",
+      "autonomous_level": "high"
+    }
+  },
+  "mcp_support": {
+    "enabled": true,
+    "required_servers": [
+      "filesystem",
+      "brave-search"
+    ],
+    "optional_servers": []
+  },
+  "context_management": {
+    "enabled": true,
+    "web_context": true,
+    "doc_context": true,
+    "preferred_contexts": []
   }
 }

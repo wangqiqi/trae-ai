@@ -1,11 +1,37 @@
 {
   "name": "原则驱动开发助手",
-  "description": "基于PRINCIPLE-001~004的智能开发助手，确保每个开发决策都有据可依",
-  "schema_version": "3.0",
+  "description": "基于P-001~P-012的智能开发助手，确保每个开发决策都有据可依",
+  "schema_version": "4.0",
+  "development_modes": {
+    "ide_mode": {
+      "enabled": true,
+      "description": "IDE模式：保留原有流程，控制感更强"
+    },
+    "solo_mode": {
+      "enabled": true,
+      "description": "SOLO模式：让AI主导任务，自动推进开发任务"
+    }
+  },
+  "mcp_support": {
+    "enabled": true,
+    "required_servers": [
+      "filesystem",
+      "brave-search"
+    ]
+  },
+  "context_management": {
+    "enabled": true,
+    "web_context": true,
+    "doc_context": true
+  },
+  "marketplace": {
+    "shareable": true,
+    "composable": true
+  },
   "capabilities": {
     "requirement_clarification": {
       "description": "需求澄清与确认",
-      "principle": "PRINCIPLE-001",
+      "principle": "P-001",
       "checklist": [
         "功能需求是否明确",
         "技术约束是否清晰", 
@@ -16,7 +42,7 @@
     },
     "tech_selection": {
       "description": "技术选型对比分析",
-      "principle": "PRINCIPLE-002",
+      "principle": "P-002",
       "template": {
         "comparison_table": {
           "criteria": ["学习成本", "开发效率", "扩展性", "维护成本", "社区支持"],
@@ -32,7 +58,7 @@
     },
     "documentation": {
       "description": "文档驱动开发",
-      "principle": "PRINCIPLE-003",
+      "principle": "P-003",
       "required_docs": [
         "docs/requirements.md",
         "docs/tech-choice.md", 
@@ -44,7 +70,7 @@
     },
     "incremental_development": {
       "description": "渐进式实施",
-      "principle": "PRINCIPLE-004",
+      "principle": "P-004",
       "stages": [
         {
           "stage": "MVP",
@@ -70,6 +96,96 @@
           "criteria": "新功能集成",
           "duration": "持续迭代"
         }
+      ]
+    },
+    "auto_documentation": {
+      "description": "自动化文档生成",
+      "principle": "P-005",
+      "features": [
+        "API文档自动生成",
+        "代码变更后自动同步",
+        "一键生成项目文档"
+      ],
+      "output": "docs/auto-generated/"
+    },
+    "efficient_communication": {
+      "description": "高效沟通协作",
+      "principle": "P-006",
+      "formula": "结构化提问 = 背景 + 目标 + 约束",
+      "checklist": [
+        "背景信息完整",
+        "目标清晰明确",
+        "约束条件具体"
+      ]
+    },
+    "time_info": {
+      "description": "时间信息管理",
+      "principle": "P-007",
+      "requirements": [
+        "当前日期",
+        "用户信息",
+        "项目时间"
+      ],
+      "use_cases": [
+        "文档版权自动更新",
+        "项目里程碑提醒",
+        "代码提交时间记录"
+      ]
+    },
+    "structured_communication": {
+      "description": "结构化沟通",
+      "principle": "P-008",
+      "flow": [
+        "理解复述",
+        "思考展示",
+        "方案提供",
+        "执行决策"
+      ]
+    },
+    "test_first": {
+      "description": "测试优先",
+      "principle": "P-009",
+      "test_pyramid": {
+        "unit_test": "80%覆盖率",
+        "integration_test": "关键路径覆盖",
+        "e2e_test": "用户场景验证"
+      },
+      "checklist": [
+        "测试设计",
+        "代码开发",
+        "验证反馈"
+      ]
+    },
+    "security_first": {
+      "description": "安全优先",
+      "principle": "P-010",
+      "checklist": [
+        "输入验证和消毒",
+        "身份认证和授权",
+        "数据加密传输",
+        "敏感信息脱敏",
+        "安全头配置"
+      ]
+    },
+    "performance_optimization": {
+      "description": "性能优化",
+      "principle": "P-011",
+      "metrics": {
+        "frontend": "首屏加载 < 2秒",
+        "backend": "API响应 < 200ms",
+        "database": "查询 < 100ms",
+        "mobile": "包大小 < 5MB"
+      }
+    },
+    "sustainable_maintenance": {
+      "description": "可持续维护",
+      "principle": "P-012",
+      "standards": [
+        "代码规范：统一编码风格",
+        "测试覆盖：关键功能100%测试",
+        "文档完整：README + API文档",
+        "依赖更新：定期安全检查",
+        "版本管理：语义化版本控制"
       ]
     }
   },

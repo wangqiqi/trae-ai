@@ -25,22 +25,54 @@ class TraeConsole:
         self.user_data_dir = self.base_dir / "user-data"
         self.workflows_dir = self.base_dir / "workflows"
         self.projects_file = self.user_data_dir / "projects.json"
+        self.mcp_config_file = self.base_dir / "mcp-config.json"
+        self.trae_config_file = self.base_dir / ".trae-config.json"
         
         self.user_data_dir.mkdir(exist_ok=True)
         self.init_projects_data()
         self.agents = self._load_agents()
         self.templates = self._load_templates()
+        self.mcp_config = self._load_mcp_config()
+        self.trae_config = self._load_trae_config()
+    
+    def _load_mcp_config(self) -> Dict[str, Any]:
+        """加载MCP配置"""
+        try:
+            if self.mcp_config_file.exists():
+                with open(self.mcp_config_file, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+        except Exception as e:
+            print(f"⚠️ 加载MCP配置失败: {e}")
+        
+        return {"mcp_config": {"enabled": False}}
+    
+    def _load_trae_config(self) -> Dict[str, Any]:
+        """加载Trae配置"""
+        try:
+            if self.trae_config_file.exists():
+                with open(self.trae_config_file, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+        except Exception as e:
+            print(f"⚠️ 加载Trae配置失败: {e}")
+        
+        return {"trae_ai_assistant": {"version": "4.0"}}
     
     def init_projects_data(self):
         """初始化项目数据"""
         if not self.projects_file.exists():
             default_data = {
-                "version": "2.0.0",
+                "version": "4.0",
                 "created_at": datetime.now().isoformat(),
+                "trae_version": "4.0",
                 "projects": [],
                 "stats": {
                     "total_projects": 0,
                     "completed_projects": 0
+                },
+                "mcp_enabled": True,
+                "context_management": {
+                    "web_context": True,
+                    "doc_context": True
                 }
             }
             self.save_projects_data(default_data)
