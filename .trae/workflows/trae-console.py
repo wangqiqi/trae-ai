@@ -24,6 +24,7 @@ class TraeConsole:
         self.templates_dir = self.base_dir / "templates"
         self.user_data_dir = self.base_dir / "user-data"
         self.workflows_dir = self.base_dir / "workflows"
+        self.skills_dir = self.base_dir / "skills"
         self.projects_file = self.user_data_dir / "projects.json"
         self.mcp_config_file = self.base_dir / "mcp-config.json"
         self.trae_config_file = self.base_dir / ".trae-config.json"
@@ -37,6 +38,7 @@ class TraeConsole:
         self.trae_config = self._load_trae_config()
         self.cursor_rules = self._load_cursor_rules()
         self.cursor_constitution = self._load_cursor_constitution()
+        self.skills = self._load_skills()
     
     def _load_mcp_config(self) -> Dict[str, Any]:
         """加载MCP配置"""
@@ -86,6 +88,61 @@ class TraeConsole:
             print(f"⚠️ 加载Cursor宪法失败: {e}")
         
         return {}
+    
+    def _load_skills(self) -> Dict[str, Any]:
+        """加载技能系统"""
+        skills = {}
+        try:
+            # 动态导入技能模块
+            import importlib.util
+            import sys
+            
+            # 添加技能目录到路径
+            skills_path = str(self.skills_dir)
+            if skills_path not in sys.path:
+                sys.path.insert(0, skills_path)
+            
+            # 扫描技能文件
+            if self.skills_dir.exists():
+                for skill_file in self.skills_dir.glob("*.py"):
+                    if skill_file.stem == "__init__":
+                        continue
+                    try:
+                        spec = importlib.util.spec_from_file_location(skill_file.stem, skill_file)
+                        if spec and spec.loader:
+                            module = importlib.util.module_from_spec(spec)
+                            spec.loader.exec_module(module)
+                            if hasattr(module, "execute") and callable(module.execute):
+                                skills[skill_file.stem] = {
+                                    'module': module,
+                                    'name': skill_file.stem,
+                                    'file': skill_file
+                                }
+                    except Exception as e:
+                        print(f"⚠️ 加载技能失败 {skill_file.name}: {e}")
+        except Exception as e:
+            print(f"⚠️ 技能系统初始化失败: {e}")
+        
+        return skills
+    
+    def execute_skill(self, skill_name: str, **kwargs) -> Dict[str, Any]:
+        """执行技能"""
+        if skill_name not in self.skills:
+            return {
+                'success': False,
+                'message': f'技能不存在: {skill_name}',
+                'available_skills': list(self.skills.keys())
+            }
+        
+        try:
+            skill = self.skills[skill_name]
+            result = skill['module'].execute(**kwargs)
+            return result
+        except Exception as e:
+            return {
+                'success': False,
+                'message': f'执行技能失败: {e}'
+            }
     
     def init_projects_data(self):
         """初始化项目数据"""
@@ -228,13 +285,14 @@ class TraeConsole:
     def display_welcome(self):
         """显示欢迎界面"""
         print("\n" + "="*60)
-        print("🚀 Trae AI 控制台 - 模板自动化集成")
+        print("🚀 Trae AI 控制台 - 技能增强版")
         print("="*60)
-        print("💡 智能模板 + AI专家 = 高效开发！")
-        print(f"📊 已加载 {len(self.agents)} 个智能体, {len(self.templates)} 个模板")
+        print("💡 智能模板 + AI专家 + 技能系统 = 高效开发！")
+        print(f"📊 已加载 {len(self.agents)} 个智能体, {len(self.templates)} 个模板, {len(self.skills)} 个技能")
         print("\n🎯 快速开始：")
         print("  • 模板应用: template")
         print("  • 项目创建: create")
+        print("  • 技能使用: skills")
         print("  • AI协作: ai")
         print("  • 帮助: help")
 
@@ -589,13 +647,77 @@ ai                - AI协作模式
         suggestions.append("团队协作: 建议产品经理先行设计需求")
         
         return suggestions
+    
+    def skills_menu(self):
+        """技能菜单"""
+        print("\n🎯 技能系统")
+        print("=" * 40)
+        
+        if not self.skills:
+            print("❌ 没有可用的技能")
+            return
+        
+        print(f"📦 可用技能 ({len(self.skills)}):")
+        skills_list = list(self.skills.keys())
+        for i, skill_name in enumerate(skills_list, 1):
+            print(f"  {i}. {skill_name}")
+        
+        print("\n  0. 返回主菜单")
+        
+        choice = input("\n选择技能: ").strip()
+        
+        if choice == '0':
+            return
+        
+        try:
+            idx = int(choice) - 1
+            if 0 <= idx < len(skills_list):
+                skill_name = skills_list[idx]
+                self.run_skill_interactive(skill_name)
+        except ValueError:
+            print("❌ 无效选择")
+    
+    def run_skill_interactive(self, skill_name: str):
+        """交互式运行技能"""
+        print(f"\n🚀 执行技能: {skill_name}")
+        print("=" * 40)
+        
+        # 获取技能参数
+        kwargs = {}
+        print("\n输入技能参数（留空跳过，输入 'done' 完成）:")
+        
+        while True:
+            key = input("参数名: ").strip()
+            if key.lower() == 'done' or not key:
+                break
+            value = input(f"{key} = ").strip()
+            kwargs[key] = value
+        
+        print(f"\n⏳ 执行技能 {skill_name}...")
+        result = self.execute_skill(skill_name, **kwargs)
+        
+        print(f"\n📊 执行结果:")
+        print(json.dumps(result, indent=2, ensure_ascii=False))
 
     def interactive_mode(self):
         """交互模式"""
         while True:
             self.display_welcome()
             
-            choice = input("\n选择操作 (1-9): ").strip()
+            print("\n📋 菜单:")
+            print("  1. 项目列表")
+            print("  2. 智能体列表")
+            print("  3. 创建项目")
+            print("  4. 调用智能体")
+            print("  5. 项目需求分析")
+            print("  6. 自动应用模板")
+            print("  7. 模板选择")
+            print("  8. AI协作模式")
+            print("  9. 技能系统 🆕")
+            print("  10. 帮助")
+            print("  0. 退出")
+            
+            choice = input("\n选择操作: ").strip()
             
             if choice == '1':
                 self.list_projects()
@@ -634,6 +756,8 @@ ai                - AI协作模式
                 self.ai_collaboration_mode()
                 input("\n按回车键继续...")
             elif choice == '9':
+                self.skills_menu()
+            elif choice == '10':
                 self.display_help()
                 input("\n按回车键继续...")
             elif choice == '0':
