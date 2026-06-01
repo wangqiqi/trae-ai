@@ -1,223 +1,196 @@
-# 🚀 Trae AI 超级团队 v5.0
+# 🚀 Trae AI 超级团队
 
-> **宪法驱动 + VIBE方法论 + 智能学习 = 更懂你的AI开发伙伴**
+> **官方设计风格 · 零配置 · 开箱即用**
 
-[![Python](https://img.shields.io/badge/Python-3.7+-3776ab.svg?style=flat&logo=python&logoColor=white)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-5.0-blue.svg)](.trae/.trae-config.json)
+基于官方 Trae AI 设计模式重构的 AI 开发助手！
 
 ---
 
-## 🎯 核心理念
+## 📋 快速开始
 
-### 🏛️ 宪法驱动
-三大公理确保人机协作的安全和高效：
-- **意图主权** - 人类永远保留最终决策权
-- **信号可信** - AI输出可追溯、可验证
-- **认知可审计** - 所有过程可完整回溯
+### 使用方式：一句话唤起
 
-### 🚀 VIBE 开发方法论
-文档驱动 + 接口优先 + 测试保障 + 持续迭代
-
-### 🌱 智能学习
-自动适应你的偏好和项目特点，越用越懂你
+| 功能 | 唤起方式 | 示例 |
+|------|---------|------|
+| **Agents (智能体)** | `@智能体名` | `@Vue工程师` |
+| **Rules (规则)** | 自动应用 | `constitution` 自动生效 |
+| **Skills (技能)** | `@skill 技能名` | `@skill code_analyzer` |
 
 ---
 
-## ✨ v5.0 核心特性
+## 🎭 可用的 Agents
 
-| 特性 | 说明 |
+### 前端开发
+- `@Vue工程师` - Vue 3 专家
+- `@React工程师` - React 专家
+- `@Angular工程师` - Angular 专家
+- `@UI/X设计师` - UI/UX 设计
+- `@Uniapp工程师` - 跨平台小程序
+- `@Flutter工程师` - 跨平台移动应用
+
+### 后端开发
+- `@Python工程师` - Python 全栈
+- `@FastAPI工程师` - FastAPI 专家
+- `@NodeJS工程师` - Node.js 专家
+- `@Go工程师` - Go 语言专家
+- `@Rust工程师` - Rust 专家
+
+### 管理与支持
+- `@产品经理` - 需求分析与产品设计
+- `@系统架构师` - 技术架构设计
+- `@项目经理` - 项目管理与协调
+- `@测试工程师` - 测试与质量保证
+- `@DevOps工程师` - 部署与运维
+- `@技术文档工程师` - 文档编写
+- `@C++AI部署工程师` - C++ 系统优化
+- `@环境管理工程师` - 环境配置
+
+---
+
+## 🔧 可用的 Skills
+
+### 项目脚手架
+`@skill project_scaffold` - 快速生成 Vue/React/FastAPI/Node 项目
+
+### 项目分析
+`@skill code_analyzer` - 分析项目结构和代码质量  
+`@skill env_detector` - 检测项目技术栈和环境  
+`@skill project_intelligence` - 智能项目分析与推荐
+
+### 文档生成
+`@skill readme_generator` - 自动生成专业 README
+
+### Git 初始化
+`@skill git_initializer` - 快速初始化 Git 仓库
+
+### 配置生成
+`@skill docker_generator` - 生成 Dockerfile 和 docker-compose  
+`@skill file_searcher` - 搜索项目文件
+
+### 依赖安装
+`@skill dependency_installer` - 智能安装项目依赖
+
+### Trae 集成
+`@skill trae_integrator` - 配置 Trae AI 环境
+
+---
+
+## 📜 内置 Rules（自动生效）
+
+| 规则 | 作用 |
 |------|------|
-| 🏛️ **宪法驱动** | 三大公理 + 六大原则，保障人机协作 |
-| 🎨 **VIBE方法论** | 文档驱动、接口优先、测试先行 |
-| 📦 **双目录设计** | `.trae/` 配置可复制 + `.trae-data/` 隐私保护 |
-| 🎭 **人格系统** | 21种AI人格可选，让开发更有趣 |
-| ⚡ **Master命令** | 单一入口，智能编排所有功能 |
-| 🧠 **自学习** | 自动记忆偏好，持续优化推荐 |
-| 🔧 **10+ Skills** | 开箱即用的实用技能库 |
-| 🤖 **20个AI专家** | 全栈开发团队，随叫随到 |
+| **constitution** | AI 共生宪法 - 最高准则 |
+| **philosophy** | 开发哲学指导 |
+| **system_info** | 系统信息规则 |
+| **templates** | 模板管理规则 |
+| **evolution-automation** | 进化自动化 |
+| **evolution-governance** | 进化治理 |
+| **intelligent_evolution** | 智能进化系统 |
 
 ---
 
-## 🚀 快速开始
+## 🎯 实际使用示例
 
-### 1. 安装
-
-```bash
-# Linux/Mac
-chmod +x .trae/install.sh
-./.trae/install.sh
-
-# Windows
-.trae\install.bat
+### 1️⃣ 使用 Agent 开发
+```
+@Vue工程师 帮我创建一个用户管理页面，包含增删改查功能
 ```
 
-### 2. 启动控制台
-
-```bash
-python .trae/workflows/trae-console.py
+### 2️⃣ 使用 Skill 分析
+```
+@skill code_analyzer 分析当前项目的代码结构
 ```
 
-### 3. 使用 Master 命令
-
-```bash
-# 查看帮助
-python .trae/workflows/master.py help
-
-# 列出技能
-python .trae/workflows/master.py skills
-
-# 分析项目
-python .trae/workflows/master.py analyze
-
-# 启动 VIBE
-python .trae/workflows/master.py vibe start
+### 3️⃣ 使用 Skill 初始化
+```
+@skill git_initializer 初始化 Git 仓库
 ```
 
----
-
-## 🎯 Skills 技能系统
-
-| 技能 | 功能 |
-|------|------|
-| `project_scaffold` | 项目脚手架生成 |
-| `code_analyzer` | 代码结构分析 |
-| `readme_generator` | README 文档生成 |
-| `git_initializer` | Git 仓库初始化 |
-| `file_searcher` | 文件搜索工具 |
-| `docker_generator` | Dockerfile 生成 |
-| `env_detector` | 环境检测 |
-| `dependency_installer` | 依赖安装 |
-| `project_intelligence` | 项目智能分析 |
-| `trae_integrator` | Trae 集成 |
-
----
-
-## 🎭 人格角色
-
-支持 21 种 AI 人格：
-
-**专业角色** (8种)
-- 专业助手、谦逊助手、友好伙伴
-- 专家导师、创意艺术家、严格教师
-- 搞笑演员、极简禅者
-
-**动漫风格** (13种)
-- 可爱萝莉、御姐女王、赛博朋克黑客
-- 魔法少女程序员、完美女仆
-- ...更多角色
+### 4️⃣ 使用 Skill 生成文档
+```
+@skill readme_generator 为当前项目生成 README
+```
 
 ---
 
 ## 📂 项目结构
 
 ```
-.trae/                      # 📦 项目配置（可复制）
-├── CONSTITUTION.md         # 🏛️ 宪法
-├── docs/                   # 📖 文档
-│   ├── VIBE_METHODOLOGY.md    # VIBE方法论
-│   ├── DUAL_DIRECTORY_DESIGN.md # 双目录设计
-│   └── PERSONA_SYSTEM.md      # 人格系统
-├── agents/                 # 🤖 AI智能体
-├── core/                   # 🔧 核心脚本
-│   ├── console_utils.py    # 彩色输出
-│   ├── data_manager.py     # 数据管理
-│   └── learner.py          # 自学习系统
-├── skills/                 # 🎯 技能系统
-├── templates/              # 📝 项目模板
-├── workflows/              # ⚡ 工作流
-│   ├── trae-console.py    # 主控制台
-│   └── master.py           # Master命令
-└── install.sh              # 🚀 安装脚本
-
-.trae-data/                 # 🌱 私有数据（不复制）
-├── logs/                   # 📊 日志
-├── cache/                  # 💾 缓存
-├── learning/               # 🧠 学习记录
-└── stats/                  # 📈 统计
+你的项目/
+├── .trae/                          # Trae AI 配置（可复制到任意项目）
+│   ├── agent/                      # Agents (智能体)
+│   │   ├── vue-engineer.json
+│   │   ├── react-engineer.json
+│   │   └── ...
+│   ├── rules/                      # Rules (规则)
+│   │   └── cursor/
+│   │       ├── constitution/
+│   │       │   └── RULE.md
+│   │       └── ...
+│   ├── skills/                     # Skills (技能)
+│   │   ├── __init__.py
+│   │   ├── code_analyzer.py
+│   │   └── ...
+│   ├── templates/                  # Templates (模板)
+│   ├── core/                       # 核心工具
+│   ├── workflows/                  # 工作流工具
+│   └── install.sh                  # 一键安装脚本
+│
+└── ... 你的项目文件
 ```
 
 ---
 
-## 💡 使用示例
+## 🚀 安装与配置
 
-### 项目创建流程
+### 1. 复制到项目
+将 `.trae/` 文件夹复制到你的项目根目录。
 
+### 2. 一键安装
 ```bash
-# 1. 创建项目
-python .trae/workflows/master.py create my-project
+# Linux/Mac
+chmod +x .trae/install.sh
+./.trae/install.sh
 
-# 2. 初始化 Git
-python .trae/workflows/trae-console.py
-→ 选择技能 → git_initializer
-
-# 3. 生成 README
-→ 选择技能 → readme_generator
-
-# 4. 生成 Dockerfile
-→ 选择技能 → docker_generator
+# Windows
+.trae/install.bat
 ```
 
-### VIBE 开发流程
-
-```bash
-# 启动 VIBE
-python .trae/workflows/master.py vibe start
-
-# 按顺序执行
-Phase 1: 📝 文档驱动
-Phase 2: 🎨 接口优先
-Phase 3: 🧪 测试先行
-Phase 4: 🎨 前端实现
-Phase 5: 🔄 持续迭代
-```
+### 3. 开始使用
+直接在对话中使用 `@Agent名` 或 `@skill 技能名` 即可！
 
 ---
 
-## 📚 完整文档
+## 💡 核心设计理念（官方风格）
 
-| 文档 | 说明 |
-|------|------|
-| [宪法](.trae/CONSTITUTION.md) | 三大公理 + 六大原则 |
-| [VIBE方法论](.trae/docs/VIBE_METHODOLOGY.md) | 文档驱动开发流程 |
-| [双目录设计](.trae/docs/DUAL_DIRECTORY_DESIGN.md) | 配置与数据分离 |
-| [人格系统](.trae/docs/PERSONA_SYSTEM.md) | 21种AI人格 |
-| [快速入门](QUICKSTART.md) | 5分钟上手指南 |
-| [项目评估](PROJECT_EVALUATION.md) | 完整评估报告 |
+### 1. 宪法驱动 (Constitution Driven)
+- **意图主权** - 人类永远拥有最终决策权
+- **信号可信** - AI 输出可追溯、可验证
+- **认知可审计** - 所有过程支持 3 秒回溯
 
----
+### 2. 分层架构
+- **L1 信号层** - Context + Index + Rules
+- **L2 协议层** - MCP + Tools
+- **L3 代理层** - Agents + Model
+- **L4 主权层** - 人类决策界面
 
-## 🌟 核心优势
-
-### 任意人员
-- ✅ 零配置，开箱即用
-- ✅ 中文友好
-- ✅ 21种人格可选
-
-### 任意项目
-- ✅ 自动检测项目类型
-- ✅ 智能推荐技能
-- ✅ 支持 Vue/React/FastAPI/Django/Rust/Go 等
-
-### 任意平台
-- ✅ Windows / Mac / Linux
-- ✅ 纯 Python，零依赖
-- ✅ Docker 部署支持
+### 3. 自然语言唤起
+- `@Agent名` - 调用智能体
+- `@skill 技能名` - 调用技能
+- 规则自动生效 - 无需手动触发
 
 ---
 
-## 🤝 贡献
+## 🎊 开始使用
 
-欢迎提交 Issue 和 Pull Request！
+现在你可以：
+
+1. **找 Agent 帮忙**：`@Vue工程师 帮我写个组件`
+2. **用 Skill 加速**：`@skill code_analyzer`
+3. **让 Rules 护航**：自动确保最佳实践
+
+**一句话就能开始！** 🚀
 
 ---
 
-## 📜 许可证
-
-MIT License
-
----
-
-**🎉 Trae AI 超级团队 v5.0 - 让开发更智能、更有趣！**
-
-*基于宪法驱动 + VIBE方法论 + 智能学习 = 更懂你的AI开发伙伴*
+*基于官方 Trae AI 设计理念重构 · 零配置 · 开箱即用*
