@@ -15,6 +15,29 @@ import argparse
 import subprocess
 from typing import Dict, List, Optional, Any
 
+# 添加核心模块到路径
+core_path = Path(__file__).parent.parent / 'core'
+if str(core_path) not in sys.path:
+    sys.path.insert(0, str(core_path))
+
+# 导入彩色输出工具
+try:
+    from console_utils import (
+        Colors, colored, print_success, print_error, print_warning,
+        print_info, print_header, print_section, print_banner,
+        print_list, print_dict, print_divider
+    )
+    USE_COLORS = True
+except ImportError:
+    USE_COLORS = False
+    # 如果没有彩色工具，使用简单的打印函数
+    def print_success(text): print(f"✅ {text}")
+    def print_error(text): print(f"❌ {text}", file=sys.stderr)
+    def print_warning(text): print(f"⚠️  {text}")
+    def print_info(text): print(f"ℹ️  {text}")
+    def print_section(text): print(f"\n📋 {text}")
+    def print_divider(): print("─" * 60)
+
 class TraeConsole:
     """Trae AI 控制台 - 整合版"""
     
@@ -284,17 +307,16 @@ class TraeConsole:
     
     def display_welcome(self):
         """显示欢迎界面"""
-        print("\n" + "="*60)
-        print("🚀 Trae AI 控制台 - 技能增强版")
-        print("="*60)
-        print("💡 智能模板 + AI专家 + 技能系统 = 高效开发！")
-        print(f"📊 已加载 {len(self.agents)} 个智能体, {len(self.templates)} 个模板, {len(self.skills)} 个技能")
-        print("\n🎯 快速开始：")
-        print("  • 模板应用: template")
-        print("  • 项目创建: create")
-        print("  • 技能使用: skills")
-        print("  • AI协作: ai")
-        print("  • 帮助: help")
+        print_banner("🚀 Trae AI 控制台 - 技能增强版", "智能模板 + AI专家 + 技能系统 = 高效开发！")
+        print_info(f"已加载 {len(self.agents)} 个智能体, {len(self.templates)} 个模板, {len(self.skills)} 个技能")
+        print("\n🎯 快速操作：")
+        print_list([
+            "模板应用 (template)",
+            "项目创建 (create)", 
+            "技能使用 (skills)",
+            "AI协作 (ai)",
+            "查看帮助 (help)"
+        ])
 
     def display_help(self):
         """显示帮助（来自.trae-dev.py）"""
@@ -650,21 +672,31 @@ ai                - AI协作模式
     
     def skills_menu(self):
         """技能菜单"""
-        print("\n🎯 技能系统")
-        print("=" * 40)
+        print_section("🎯 技能系统")
         
         if not self.skills:
-            print("❌ 没有可用的技能")
+            print_error("没有可用的技能")
             return
         
-        print(f"📦 可用技能 ({len(self.skills)}):")
+        print_success(f"发现 {len(self.skills)} 个可用技能:")
         skills_list = list(self.skills.keys())
+        
+        # 技能描述（简单版）
+        skill_descriptions = {
+            'project_scaffold': '项目脚手架生成',
+            'code_analyzer': '代码结构分析',
+            'readme_generator': 'README 文档生成',
+            'git_initializer': 'Git 仓库初始化',
+            'file_searcher': '文件搜索工具'
+        }
+        
         for i, skill_name in enumerate(skills_list, 1):
-            print(f"  {i}. {skill_name}")
+            desc = skill_descriptions.get(skill_name, '自定义技能')
+            print(f"  {colored(str(i), Colors.BOLD)}. {colored(skill_name, Colors.CYAN)} - {desc}")
         
-        print("\n  0. 返回主菜单")
+        print(f"\n  {colored('0', Colors.YELLOW)}. 返回主菜单")
         
-        choice = input("\n选择技能: ").strip()
+        choice = input(f"\n{colored('选择技能', Colors.BOLD)}: ").strip()
         
         if choice == '0':
             return
@@ -674,59 +706,91 @@ ai                - AI协作模式
             if 0 <= idx < len(skills_list):
                 skill_name = skills_list[idx]
                 self.run_skill_interactive(skill_name)
+            else:
+                print_error("无效的选择")
         except ValueError:
-            print("❌ 无效选择")
+            print_error("请输入数字")
     
     def run_skill_interactive(self, skill_name: str):
         """交互式运行技能"""
-        print(f"\n🚀 执行技能: {skill_name}")
-        print("=" * 40)
+        print_header(f"🚀 执行技能: {skill_name}")
+        
+        # 预定义常用参数
+        common_params = {
+            'project_scaffold': ['project_name', 'project_type'],
+            'code_analyzer': ['target_path', 'languages'],
+            'readme_generator': ['project_name', 'description', 'author', 'tech_stack'],
+            'git_initializer': ['gitignore_template', 'init', 'first_commit'],
+            'file_searcher': ['pattern', 'search_type']
+        }
         
         # 获取技能参数
         kwargs = {}
-        print("\n输入技能参数（留空跳过，输入 'done' 完成）:")
+        params = common_params.get(skill_name, [])
         
+        if params:
+            print_info("请输入参数:")
+            for param in params:
+                value = input(f"  {colored(param, Colors.CYAN)}: ").strip()
+                if value:
+                    kwargs[param] = value
+        
+        print_info("还有其他参数吗？（留空跳过，逐个输入，输入 'done' 完成）:")
         while True:
-            key = input("参数名: ").strip()
+            key = input("  参数名: ").strip()
             if key.lower() == 'done' or not key:
                 break
-            value = input(f"{key} = ").strip()
+            value = input(f"  {key} = ").strip()
             kwargs[key] = value
         
-        print(f"\n⏳ 执行技能 {skill_name}...")
+        print_info(f"执行技能 {skill_name}...")
         result = self.execute_skill(skill_name, **kwargs)
         
-        print(f"\n📊 执行结果:")
-        print(json.dumps(result, indent=2, ensure_ascii=False))
+        print_section("📊 执行结果")
+        if result.get('success'):
+            print_success(result.get('message', '操作成功'))
+        else:
+            print_error(result.get('message', '操作失败'))
+        
+        if result.get('steps'):
+            print_list(result['steps'])
+        if result.get('matches'):
+            for i, match in enumerate(result['matches'][:10], 1):
+                print(f"  {i}. {match}")
+        if result.get('file'):
+            print_info(f"文件已保存: {result['file']}")
+        
+        # 显示完整结果（可选）
+        print_divider()
 
     def interactive_mode(self):
         """交互模式"""
         while True:
             self.display_welcome()
             
-            print("\n📋 菜单:")
-            print("  1. 项目列表")
-            print("  2. 智能体列表")
-            print("  3. 创建项目")
-            print("  4. 调用智能体")
-            print("  5. 项目需求分析")
-            print("  6. 自动应用模板")
-            print("  7. 模板选择")
-            print("  8. AI协作模式")
-            print("  9. 技能系统 🆕")
-            print("  10. 帮助")
-            print("  0. 退出")
+            print_section("📋 主菜单")
+            print(f"  {colored('1', Colors.CYAN)}. 项目列表")
+            print(f"  {colored('2', Colors.CYAN)}. 智能体列表")
+            print(f"  {colored('3', Colors.CYAN)}. 创建项目")
+            print(f"  {colored('4', Colors.CYAN)}. 调用智能体")
+            print(f"  {colored('5', Colors.CYAN)}. 项目需求分析")
+            print(f"  {colored('6', Colors.CYAN)}. 自动应用模板")
+            print(f"  {colored('7', Colors.CYAN)}. 模板选择")
+            print(f"  {colored('8', Colors.CYAN)}. AI协作模式")
+            print(f"  {colored('9', Colors.CYAN)}. 技能系统 🆕")
+            print(f"  {colored('10', Colors.CYAN)}. 帮助")
+            print(f"  {colored('0', Colors.YELLOW)}. 退出")
             
-            choice = input("\n选择操作: ").strip()
+            choice = input(f"\n{colored('选择操作', Colors.BOLD)}: ").strip()
             
             if choice == '1':
                 self.list_projects()
                 input("\n按回车键继续...")
             elif choice == '2':
                 agents = self.get_all_agents()
-                print(f"📊 已加载 {len(agents)} 个智能体")
+                print_section(f"📊 已加载 {len(agents)} 个智能体")
                 for agent in agents:
-                    print(f"  • {agent.get('name', '未知')} - {agent.get('description', '暂无描述')}")
+                    print(f"  • {colored(agent.get('name', '未知'), Colors.CYAN)} - {agent.get('description', '暂无描述')}")
                 input("\n按回车键继续...")
             elif choice == '3':
                 project_name = input("项目名称: ").strip()
@@ -738,13 +802,17 @@ ai                - AI协作模式
                 requirement = input("需求描述: ").strip()
                 if agent_name and requirement:
                     result = self.call_agent(agent_name.lstrip('@'), requirement)
+                    print_divider()
                     print(json.dumps(result, indent=2, ensure_ascii=False))
+                    print_divider()
                 input("\n按回车键继续...")
             elif choice == '5':
                 description = input("项目需求描述: ").strip()
                 if description:
                     result = self.create_project_from_description(description)
+                    print_divider()
                     print(json.dumps(result, indent=2, ensure_ascii=False))
+                    print_divider()
                 input("\n按回车键继续...")
             elif choice == '6':
                 self.auto_apply_templates()
@@ -761,10 +829,10 @@ ai                - AI协作模式
                 self.display_help()
                 input("\n按回车键继续...")
             elif choice == '0':
-                print("👋 再见！")
+                print_success("👋 再见！")
                 break
             else:
-                print("❌ 无效选择，请重试")
+                print_error("无效选择，请重试")
                 input("\n按回车键继续...")
 
 def main():
