@@ -62,6 +62,7 @@ class TraeConsole:
         self.cursor_rules = self._load_cursor_rules()
         self.cursor_constitution = self._load_cursor_constitution()
         self.skills = self._load_skills()
+        self.project_info = self._detect_current_project()
     
     def _load_mcp_config(self) -> Dict[str, Any]:
         """加载MCP配置"""
@@ -111,6 +112,77 @@ class TraeConsole:
             print(f"⚠️ 加载Cursor宪法失败: {e}")
         
         return {}
+    
+    def _detect_current_project(self) -> Dict[str, Any]:
+        """检测当前项目信息"""
+        import json
+        from pathlib import Path
+        
+        info = {
+            'type': 'unknown',
+            'name': Path.cwd().name,
+            'tech_stack': [],
+            'has_git': False,
+            'has_readme': False,
+            'recommended_skills': []
+        }
+        
+        try:
+            # 检测项目类型
+            if (Path('package.json').exists()):
+                try:
+                    with open('package.json', 'r', encoding='utf-8') as f:
+                        pkg = json.load(f)
+                        deps = str(pkg.get('dependencies', {})) + str(pkg.get('devDependencies', {}))
+                        if 'vue' in deps:
+                            info['type'] = 'vue'
+                        elif '@angular/core' in deps:
+                            info['type'] = 'angular'
+                        elif 'next' in deps:
+                            info['type'] = 'next'
+                        else:
+                            info['type'] = 'react'
+                        info['tech_stack'].append('Node.js')
+                except:
+                    pass
+            
+            elif (Path('requirements.txt').exists()):
+                try:
+                    with open('requirements.txt', 'r', encoding='utf-8') as f:
+                        content = f.read()
+                        if 'fastapi' in content:
+                            info['type'] = 'fastapi'
+                        elif 'django' in content:
+                            info['type'] = 'django'
+                        else:
+                            info['type'] = 'python'
+                        info['tech_stack'].append('Python')
+                except:
+                    pass
+            
+            elif (Path('Cargo.toml').exists()):
+                info['type'] = 'rust'
+                info['tech_stack'].append('Rust')
+            elif (Path('go.mod').exists()):
+                info['type'] = 'go'
+                info['tech_stack'].append('Go')
+            
+            # 检测其他信息
+            info['has_git'] = Path('.git').exists()
+            info['has_readme'] = Path('README.md').exists()
+            
+            # 推荐技能
+            if info['type'] != 'unknown':
+                info['recommended_skills'] = ['code_analyzer', 'readme_generator']
+                if not info['has_git']:
+                    info['recommended_skills'].append('git_initializer')
+                if not info['has_readme']:
+                    info['recommended_skills'].append('readme_generator')
+        
+        except Exception as e:
+            pass
+        
+        return info
     
     def _load_skills(self) -> Dict[str, Any]:
         """加载技能系统"""
@@ -307,8 +379,23 @@ class TraeConsole:
     
     def display_welcome(self):
         """显示欢迎界面"""
-        print_banner("🚀 Trae AI 控制台 - 技能增强版", "智能模板 + AI专家 + 技能系统 = 高效开发！")
+        print_banner("🚀 Trae AI 控制台 - 智能增强版", "任意人员 + 任意项目 + 任意平台 = 开箱即用！")
         print_info(f"已加载 {len(self.agents)} 个智能体, {len(self.templates)} 个模板, {len(self.skills)} 个技能")
+        
+        # 显示当前项目信息
+        if self.project_info['type'] != 'unknown':
+            print_section(f"📂 当前项目: {self.project_info['name']}")
+            print(f"  类型: {colored(self.project_info['type'], Colors.GREEN)}")
+            if self.project_info['tech_stack']:
+                print(f"  技术栈: {', '.join(self.project_info['tech_stack'])}")
+            print(f"  Git: {'✅' if self.project_info['has_git'] else '❌'}")
+            print(f"  README: {'✅' if self.project_info['has_readme'] else '❌'}")
+            
+            if self.project_info['recommended_skills']:
+                print(f"\n  推荐技能:")
+                for skill in self.project_info['recommended_skills'][:3]:
+                    print(f"    • {colored(skill, Colors.CYAN)}")
+        
         print("\n🎯 快速操作：")
         print_list([
             "模板应用 (template)",
