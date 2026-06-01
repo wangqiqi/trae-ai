@@ -411,17 +411,17 @@ ai                - AI协作模式
             
         print(f"🚀 创建项目: {project_name} ({project_type})")
         
-        # 调用AI模板集成
+        # 使用 template-manager.py 创建项目
         cmd = [
             sys.executable,
-            str(self.workflows_dir / "ai-template-integration.py"),
-            "kit",
-            "--project", project_name,
+            str(self.workflows_dir / "template-manager.py"),
+            "create",
+            "--name", project_name,
             "--type", project_type
         ]
         
         if features:
-            cmd.extend(["--features"] + features)
+            cmd.extend(["--features", ",".join(features)])
             
         try:
             result = subprocess.run(cmd, capture_output=False, text=True)
