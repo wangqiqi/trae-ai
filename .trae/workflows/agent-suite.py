@@ -25,7 +25,7 @@ class AgentSuite:
     def __init__(self, agents_dir: str):
         self.base_dir = Path(__file__).parent.parent  # 指向 .trae 目录
         self.agents_dir = Path(agents_dir) if agents_dir else self.base_dir / "agent"
-        self.template_path = Path(__file__).parent / "templates" / "agent-template.json"
+        self.template_path = self.base_dir / "templates" / "agent-template.json"
         
         # 确保输出目录存在
         self.agents_dir.mkdir(parents=True, exist_ok=True)

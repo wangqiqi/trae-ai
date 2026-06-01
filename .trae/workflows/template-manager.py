@@ -27,7 +27,8 @@ class TemplateManager:
         self.base_path = Path(__file__).parent.parent
         self.templates_path = self.base_path / "templates"
         self.project_root = Path.cwd()
-        self.config_file = self.base_path / "config" / "template-config.json"
+        # 配置文件路径已移除，使用默认配置
+        self.config = {}
         
     def _run_ai_integration(self, action, **kwargs):
         """调用AI集成模块（通过trae-console.py）"""

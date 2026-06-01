@@ -1,0 +1,21 @@
+{
+  "summary": {
+    "total_checks": 4,
+    "passed": 4,
+    "failed": 0,
+    "status": "ready"
+  },
+  "details": {
+    "syntax_errors": [],
+    "test_results": {
+      "port_8000": "✅ 可用",
+      "port_5173": "✅ 可用",
+      "port_3000": "✅ 可用",
+      "port_8080": "✅ 可用"
+    },
+    "runtime_errors": []
+  },
+  "recommendations": [
+    "✅ 代码完整性验证通过，可以启动项目"
+  ]
+}
