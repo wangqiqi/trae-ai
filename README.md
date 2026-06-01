@@ -1,20 +1,16 @@
 # 🚀 Trae AI 超级团队项目配置
 
-> 官方 Trae AI 规范 · 开箱即用 · 复制到任意项目即可使用
+> 官方 Trae AI 规范 · 100% 标准 · 开箱即用
 
-本项目包含完整的 Trae AI 配置，包括智能体（Agents）、技能（Skills）和规则（Rules），按照官方文档标准设计，可直接复制到任意项目使用。
+本项目包含完整的 Trae AI 配置，按照官方文档标准设计，可直接复制到任意项目使用。
 
 ---
 
-## 📋 目录结构（官方规范）
+## 📋 目录结构（100% 官方规范）
 
 ```
 .trae/
-├── agent/                    # 智能体配置
-│   ├── vue-engineer.json
-│   ├── react-engineer.json
-│   ├── fastapi-engineer.json
-│   └── ... (20+ 专业智能体)
+├── AGENTS.md                  # 智能体定义（官方标准 AGENTS.md）
 ├── skills/                   # 技能（官方 SKILL.md 格式）
 │   ├── code-analyzer/
 │   │   └── SKILL.md
@@ -27,21 +23,22 @@
 │   └── docker-generator/
 │       └── SKILL.md
 ├── rules/                    # 规则（官方 Front Matter 格式）
-│   └── principles.md
+│   ├── principles.md
+│   └── agents.md
 └── principles.md             # 开发原则
 ```
 
 ---
 
-## 🎮 使用方式（官方标准）
+## 🎮 使用方式（100% 官方标准）
 
-### 1️⃣ 智能体 (Agent)
+### 1️⃣ 智能体 (Agent) - 官方 AGENTS.md
 
-使用 `@` 符号调用智能体：
+使用官方标准方式：
 ```
-@Vue工程师 帮我创建一个用户管理组件
-@FastAPI工程师 帮我设计一个 RESTful API
-@产品经理 分析一下这个需求
+帮我用 Vue 3 开发一个用户管理组件 → 自动识别为 Vue工程师角色
+帮我设计一个 RESTful API → 自动识别为 FastAPI工程师角色
+帮我写单元测试 → 自动识别为 测试工程师角色
 ```
 
 ### 2️⃣ 技能 (Skill)
