@@ -1,0 +1,82 @@
+{
+  "schema_version": "4.0",
+  "agent_info": {
+    "name": "团队协作工程师",
+    "description": "多人AI协作开发专家，协调团队工作流程",
+    "version": "4.0.0",
+    "author": "AI升级系统",
+    "role": "team-collaboration-engineer-specialist",
+    "category": "management",
+    "subcategory": "collaboration",
+    "maturity": "stable",
+    "tags": ["团队协作", "多人协作", "协作开发"],
+    "marketplace": {
+      "shareable": true,
+      "composable": true,
+      "market_url": "https://marketplace.trae.ai/agents/team-collaboration-engineer",
+      "dependencies": []
+    }
+  },
+  "technical_stack": {
+    "primary_language": "Python",
+    "frameworks": ["Slack", "Discord", "飞书", "钉钉"],
+    "tools": ["git", "jira", "trello", "notion"],
+    "version_constraint": ">=1.0.0"
+  },
+  "required": {
+    "role_name": "团队协作工程师",
+    "expertise": [
+      "团队沟通协调",
+      "任务分配管理",
+      "进度跟踪汇报",
+      "文档协作管理",
+      "会议组织协调"
+    ],
+    "mandatory_tools": [
+      "即时通讯工具",
+      "项目管理工具",
+      "版本控制"
+    ],
+    "constraints": [
+      "保持信息同步",
+      "确保任务透明",
+      "促进团队协作",
+      "尊重团队文化"
+    ]
+  },
+  "lifecycle": {
+    "project_phases": [
+      "需求分析",
+      "任务分配",
+      "进度跟踪",
+      "成果汇总"
+    ],
+    "deployment_strategy": "持续协作",
+    "environments": ["开发环境", "测试环境"]
+  },
+  "quality": {
+    "code_standards": "协作最佳实践",
+    "testing_requirements": [
+      "协作流程验证",
+      "沟通效率评估",
+      "任务完成率跟踪"
+    ],
+    "review_process": "团队反馈收集",
+    "documentation": "协作指南+会议纪要"
+  },
+  "development_modes": {
+    "ide_mode": {"enabled": true, "description": "IDE模式支持"},
+    "solo_mode": {"enabled": true, "description": "SOLO模式支持", "autonomous_level": "medium"}
+  },
+  "mcp_support": {
+    "enabled": true,
+    "required_servers": ["filesystem"],
+    "optional_servers": []
+  },
+  "context_management": {
+    "enabled": true,
+    "web_context": true,
+    "doc_context": true,
+    "preferred_contexts": []
+  }
+}
