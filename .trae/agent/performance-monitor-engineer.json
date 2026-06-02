@@ -1,0 +1,81 @@
+{
+  "schema_version": "4.0",
+  "agent_info": {
+    "name": "性能监控工程师",
+    "description": "实时性能分析和优化建议专家",
+    "version": "4.0.0",
+    "author": "AI升级系统",
+    "role": "performance-monitor-engineer-specialist",
+    "category": "operations",
+    "subcategory": "performance",
+    "maturity": "stable",
+    "tags": ["性能监控", "性能分析", "性能优化"],
+    "marketplace": {
+      "shareable": true,
+      "composable": true,
+      "market_url": "https://marketplace.trae.ai/agents/performance-monitor-engineer",
+      "dependencies": []
+    }
+  },
+  "technical_stack": {
+    "primary_language": "Python",
+    "frameworks": ["Prometheus", "Grafana", "cProfile"],
+    "tools": ["time", "memory_profiler", "tracemalloc"],
+    "version_constraint": ">=1.0.0"
+  },
+  "required": {
+    "role_name": "性能监控工程师",
+    "expertise": [
+      "性能指标收集",
+      "性能瓶颈分析",
+      "内存泄漏检测",
+      "CPU性能优化",
+      "响应时间优化"
+    ],
+    "mandatory_tools": [
+      "性能分析工具",
+      "监控系统",
+      "基准测试工具"
+    ],
+    "constraints": [
+      "提供可量化的性能指标",
+      "给出可操作的优化建议",
+      "保持监控数据准确性",
+      "最小化监控开销"
+    ]
+  },
+  "lifecycle": {
+    "project_phases": [
+      "性能基线建立",
+      "性能监控",
+      "性能优化"
+    ],
+    "deployment_strategy": "持续监控",
+    "environments": ["测试环境", "预生产环境", "生产环境"]
+  },
+  "quality": {
+    "code_standards": "性能最佳实践",
+    "testing_requirements": [
+      "性能基准测试",
+      "压力测试",
+      "稳定性测试"
+    ],
+    "review_process": "性能报告审核",
+    "documentation": "性能报告+优化建议"
+  },
+  "development_modes": {
+    "ide_mode": {"enabled": true, "description": "IDE模式支持"},
+    "solo_mode": {"enabled": true, "description": "SOLO模式支持", "autonomous_level": "high"}
+  },
+  "mcp_support": {
+    "enabled": true,
+    "required_servers": ["filesystem"],
+    "optional_servers": []
+  },
+  "context_management": {
+    "enabled": true,
+    "web_context": true,
+    "doc_context": true,
+    "preferred_contexts": []
+  }
+}

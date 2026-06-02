@@ -29,6 +29,14 @@ class TraeAuto:
             return self.run_tests()
         elif self.action == 'clarify':
             return self.clarify_requirements()
+        elif self.action == 'review':
+            return self.do_review()
+        elif self.action == 'performance':
+            return self.do_performance()
+        elif self.action == 'team':
+            return self.do_team()
+        elif self.action == 'deploy':
+            return self.do_deploy()
         else:
             return getattr(self, f'do_{self.action}', self.show_help)()
     
@@ -264,6 +272,58 @@ class TraeAuto:
             print("🎯 开发助手已就绪")
         return {"status": "dev_started"}
     
+    def do_review(self):
+        """启动代码审查工程师"""
+        print("🔍 启动代码审查工程师...")
+        try:
+            subprocess.run([
+                sys.executable,
+                str(self.trae_dir / "core" / "code-review-engineer.py")
+            ] + sys.argv[2:])
+            return {"status": "code_review_completed"}
+        except Exception as e:
+            print(f"❌ 代码审查启动失败: {e}")
+            return {"status": "code_review_failed"}
+    
+    def do_performance(self):
+        """启动性能监控工程师"""
+        print("📊 启动性能监控工程师...")
+        try:
+            subprocess.run([
+                sys.executable,
+                str(self.trae_dir / "core" / "performance-monitor.py")
+            ])
+            return {"status": "performance_monitor_completed"}
+        except Exception as e:
+            print(f"❌ 性能监控启动失败: {e}")
+            return {"status": "performance_monitor_failed"}
+    
+    def do_team(self):
+        """启动团队协作工程师"""
+        print("👥 启动团队协作工程师...")
+        try:
+            subprocess.run([
+                sys.executable,
+                str(self.trae_dir / "core" / "team-collaboration.py")
+            ] + sys.argv[2:])
+            return {"status": "team_collaboration_started"}
+        except Exception as e:
+            print(f"❌ 团队协作启动失败: {e}")
+            return {"status": "team_collaboration_failed"}
+    
+    def do_deploy(self):
+        """启动云端部署工程师"""
+        print("☁️ 启动云端部署工程师...")
+        try:
+            subprocess.run([
+                sys.executable,
+                str(self.trae_dir / "core" / "cloud-deploy.py")
+            ] + sys.argv[2:])
+            return {"status": "cloud_deploy_started"}
+        except Exception as e:
+            print(f"❌ 云端部署启动失败: {e}")
+            return {"status": "cloud_deploy_failed"}
+    
     def show_help(self):
         """显示帮助"""
         return {
@@ -275,7 +335,11 @@ class TraeAuto:
                 "test": "运行自动测试",
                 "clarify": "需求澄清助手",
                 "dev": "开发环境配置",
-                "check": "检查开发环境"
+                "check": "检查开发环境",
+                "review": "代码审查工程师",
+                "performance": "性能监控工程师",
+                "team": "团队协作工程师",
+                "deploy": "云端部署工程师"
             },
             "note": "🎯 工作流程: 1.自动环境检查 → 2.代码验证 → 3.启动AI团队"
         }
@@ -314,10 +378,14 @@ class TraeAuto:
             "@UI/UX设计师 - 界面设计",
             "@技术文档工程师 - 技术文档",
             "@C++部署工程师 - C++系统优化",
-            "@环境管理工程师 - 环境配置"
+            "@环境管理工程师 - 环境配置",
+            "@代码审查工程师 - 自动化PR审查",
+            "@性能监控工程师 - 实时性能分析",
+            "@团队协作工程师 - 多人协作管理",
+            "@云端部署工程师 - 一键云平台部署"
         ]
         
-        print("\n🎭 可用智能体 (20个):")
+        print("\n🎭 可用智能体 (24个):")
         for agent in agents:
             print(f"  {agent}")
 

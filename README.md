@@ -3,6 +3,8 @@
 > **一个命令，20个AI专家为你工作！**
 >
 > 官方 Trae AI 规范 · 100% 标准 · 开箱即用
+>
+> 技术操作指南请参考：[.trae/README.md](file:///workspace/.trae/README.md)
 
 ---
 
@@ -188,6 +190,7 @@ VIBE 是一种文档驱动的迭代开发方法：
 .trae/
 ├── AGENTS.md                  # 🤖 AI智能体定义
 ├── CONSTITUTION.md            # 🏛️ 宪法（三大公理+六大原则）
+├── README.md                  # 🔧 技术操作指南
 ├── principles.md              # 🎯 12个开发原则
 │
 ├── agent/                     # 🤖 AI专家配置（20个）
@@ -206,7 +209,10 @@ VIBE 是一种文档驱动的迭代开发方法：
 │   ├── smart-reminder.py      # 智能提醒
 │   ├── auto-test-runner.py    # 自动测试
 │   ├── auto-environment-manager.py
-│   └── project-assistant.py
+│   ├── project-assistant.py
+│   ├── cross-platform-adapter.py
+│   ├── smart-requirements-clarifier.py
+│   └── system-enhancer.py
 │
 ├── docs/                      # 📖 方法论文档
 │   ├── VIBE_METHODOLOGY.md    # 🚀 VIBE开发方法论
@@ -218,6 +224,7 @@ VIBE 是一种文档驱动的迭代开发方法：
 │   ├── principles.md          # 开发原则
 │   ├── agents.md              # 智能体规则
 │   ├── roles.md               # 角色规则
+│   ├── git-commit-message.md  # Git提交规范
 │   └── project_rules.md       # 项目规则
 │
 ├── skills/                    # 🎯 技能系统
@@ -238,17 +245,25 @@ VIBE 是一种文档驱动的迭代开发方法：
 │   ├── code-review-template.md
 │   ├── database-design-template.md
 │   ├── test-plan-template.md
-│   └── requirements-template.md
+│   ├── requirements-template.md
+│   ├── tech-choice-template.md
+│   ├── deployment-template.md
+│   ├── html-composition-template.md
+│   └── principle-driven-template.json
 │
 ├── workflows/                 # ⚡ 工作流
 │   ├── trae-console.py       # AI控制台
 │   ├── master.py             # 命令中枢
 │   ├── agent-suite.py        # 智能体套件
 │   ├── template-manager.py    # 模板管理
-│   └── project-init.py       # 项目初始化
+│   ├── project-init.py       # 项目初始化
+│   └── universal-env-manager.py
 │
 ├── user-data/                 # 👤 用户数据
-│   └── projects.json          # 项目信息
+│   ├── projects.json
+│   ├── projects.json.example
+│   ├── user_preferences.json
+│   └── user_preferences.json.example
 │
 ├── install.sh                 # 🚀 Linux/macOS安装脚本
 ├── install.bat                # 🚀 Windows安装脚本
@@ -256,13 +271,14 @@ VIBE 是一种文档驱动的迭代开发方法：
 ├── start.sh / start.bat      # 🚀 启动脚本
 ├── trae.py                    # 🐍 主入口
 ├── mcp-config.json           # MCP协议配置
-├── .trae-config.json         # 📋 Trae配置
-└── principles.md             # 📜 开发原则
+└── .trae-config.json         # 📋 Trae配置
 ```
 
 ---
 
 ## 🚀 快速开始
+
+> 💡 **详细操作指南**请参考 [.trae/README.md](file:///workspace/.trae/README.md)
 
 ### 方式一：复制到现有项目
 
@@ -279,7 +295,7 @@ cd your-project
 ./.trae/install.bat # Windows
 
 # 4. 启动 Trae AI
-python .trae/workflows/trae-console.py
+python .trae/trae.py start
 ```
 
 ### 方式二：在新项目中初始化
@@ -289,12 +305,10 @@ python .trae/workflows/trae-console.py
 mkdir my-project && cd my-project
 
 # 2. 复制 .trae 配置
-git clone <your-repo> .trae-template
-mv .trae-template/.trae .
-rm -rf .trae-template
+cp -r /path/to/this/repo/.trae .
 
 # 3. 开始使用
-python .trae/workflows/trae-console.py
+python .trae/trae.py start
 ```
 
 ---
@@ -343,3 +357,5 @@ MIT License
 ---
 
 ✨ **现在开始享受 Trae AI 的强大功能吧！**
+
+> 技术操作指南请参考：[.trae/README.md](file:///workspace/.trae/README.md)
