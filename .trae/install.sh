@@ -37,7 +37,7 @@ echo ""
 
 # 创建必要的目录
 echo -e "${YELLOW}📁 创建必要目录...${NC}"
-mkdir -p .trae/user-data
+mkdir -p .trae-user
 mkdir -p .trae/cache
 echo -e "${GREEN}✅ 目录创建完成${NC}"
 echo ""
@@ -65,7 +65,7 @@ data = {
     }
 }
 
-projects_file = Path('.trae/user-data/projects.json')
+projects_file = Path('.trae-user/projects.json')
 if not projects_file.exists():
     with open(projects_file, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
@@ -122,8 +122,8 @@ echo -e "   运行控制台: ${YELLOW}python3 .trae/workflows/trae-console.py${N
 echo -e "   查看帮助:   ${YELLOW}python3 .trae/trae.py help${NC}"
 echo ""
 echo -e "${BLUE}📚 文档：${NC}"
-echo -e "   快速入门:   查看 ${YELLOW}QUICKSTART.md${NC}"
-echo -e "   项目评估:   查看 ${YELLOW}PROJECT_EVALUATION.md${NC}"
+echo -e "   安装指南:   查看 ${YELLOW}INSTALL.md${NC}"
+echo -e "   项目文档:   查看 ${YELLOW}README.md${NC}"
 echo ""
 echo -e "${GREEN}🎉 祝你使用愉快！${NC}"
 echo ""

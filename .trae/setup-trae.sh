@@ -50,7 +50,7 @@ if [ -f ".gitignore" ]; then
         echo "" >> .gitignore
         echo "# Trae AI" >> .gitignore
         echo ".trae/cache/" >> .gitignore
-        echo ".trae/user-data/" >> .gitignore
+        echo ".trae-user/" >> .gitignore
         echo "*.pyc" >> .gitignore
         echo "__pycache__/" >> .gitignore
     fi

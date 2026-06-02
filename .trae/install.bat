@@ -31,10 +31,10 @@ echo.
 
 REM 创建必要的目录
 echo 📁 创建必要目录...
-if not exist ".trae\user-data" mkdir ".trae\user-data"
+if not exist ".trae-user" mkdir ".trae-user"
 if not exist ".trae\cache" mkdir ".trae\cache"
 echo ✅ 目录创建完成
-echo.
+echo .
 
 REM 初始化项目数据
 echo 💾 初始化项目数据...
@@ -59,7 +59,7 @@ data = {
     }
 }
 
-projects_file = Path('.trae/user-data/projects.json')
+projects_file = Path('.trae-user/projects.json')
 if not projects_file.exists():
     with open(projects_file, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
@@ -95,9 +95,9 @@ echo   运行控制台: python .trae\workflows\trae-console.py
 echo   查看帮助:   python .trae\trae.py help
 echo.
 echo 📚 文档：
-echo   快速入门:   查看 QUICKSTART.md
-echo   项目评估:   查看 PROJECT_EVALUATION.md
-echo.
+echo   安装指南:   查看 INSTALL.md
+echo   项目文档:   查看 README.md
+echo .
 echo 🎉 祝你使用愉快！
 echo.
 pause
