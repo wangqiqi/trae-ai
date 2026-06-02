@@ -13,9 +13,8 @@
 .trae/cache/
 .trae/secrets/
 .trae/local-config/
-
-# 用户数据（项目级）
-.trae-user/
+.trae/user-data/*.json
+!.trae/user-data/projects.json.example
 
 # =============================================================================
 # 🐍 Python 全生态

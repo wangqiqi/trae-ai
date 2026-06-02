@@ -37,7 +37,7 @@ echo ""
 
 # 创建必要的目录
 echo -e "${YELLOW}📁 创建必要目录...${NC}"
-mkdir -p .trae-user
+mkdir -p .trae/user-data
 mkdir -p .trae/cache
 echo -e "${GREEN}✅ 目录创建完成${NC}"
 echo ""
@@ -65,7 +65,7 @@ data = {
     }
 }
 
-projects_file = Path('.trae-user/projects.json')
+projects_file = Path('.trae/user-data/projects.json')
 if not projects_file.exists():
     with open(projects_file, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)

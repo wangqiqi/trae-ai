@@ -43,10 +43,9 @@ class TraeConsole:
     
     def __init__(self):
         self.base_dir = Path(__file__).parent.parent  # 指向 .trae 目录
-        self.project_root = self.base_dir.parent  # 指向项目根目录
         self.agents_dir = self.base_dir / "agent"
         self.templates_dir = self.base_dir / "templates"
-        self.user_data_dir = self.project_root / ".trae-user"
+        self.user_data_dir = self.base_dir / "user-data"
         self.workflows_dir = self.base_dir / "workflows"
         self.skills_dir = self.base_dir / "skills"
         self.projects_file = self.user_data_dir / "projects.json"

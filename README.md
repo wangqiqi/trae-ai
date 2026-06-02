@@ -23,11 +23,11 @@
 
 ## 🏛️ 核心设计理念
 
-### 三目录架构
+### 双目录架构
 
 ```
 my-project/
-├── .trae/                      # 📦 项目配置（可复制，完全独立）
+├── .trae/                      # 📦 项目配置（可复制）
 │   ├── AGENTS.md              # AI智能体定义
 │   ├── CONSTITUTION.md        # 🏛️ 宪法
 │   ├── skills/                # 🎯 技能系统
@@ -37,22 +37,17 @@ my-project/
 │   ├── templates/             # 📝 项目模板
 │   └── agent/                 # 🤖 智能体配置
 │
-├── .trae-user/                # 👤 用户数据（项目级/用户级）
-│   ├── preferences.json       # 用户偏好设置
-│   ├── projects.json          # 项目列表
-│   └── .example/             # 示例文件
-│
-└── .trae-data/                # 🌱 项目运行时数据（不复制）
-    ├── logs/                  # 📊 操作日志
-    ├── cache/                 # 💾 缓存数据
-    ├── learning/              # 🧠 学习记录
-    └── stats/                 # 📈 统计数据
+├── .trae-data/                # 🌱 项目私有数据（不复制）
+│   ├── logs/                  # 📊 操作日志
+│   ├── cache/                 # 💾 缓存数据
+│   ├── learning/              # 🧠 学习记录
+│   └── stats/                 # 📈 统计数据
 ```
 
 **设计原则**：
 - 📦 **项目独立** - 复制 `.trae/` 到任何项目，立即获得完整 AI 能力
-- 👤 **用户灵活** - `.trae-user/` 可项目级或用户级（HOME目录）
-- 🔒 **隐私保护** - `.trae-user/` 和 `.trae-data/` 自动添加到 `.gitignore`
+- 🔒 **隐私保护** - `.trae-data/` 自动添加到 `.gitignore`，保护用户数据
+- 🌐 **即插即用** - 智能检测项目类型、技术栈、环境配置
 
 ---
 
@@ -217,7 +212,7 @@ VIBE 是一种文档驱动的迭代开发方法：
 │   ├── VIBE_METHODOLOGY.md    # 🚀 VIBE开发方法论
 │   ├── PERSONA_SYSTEM.md     # 🎭 人格角色系统
 │   ├── ROLES.md              # 角色定义文档
-│   └── DUAL_DIRECTORY_DESIGN.md # 🏗️ 三目录架构
+│   └── DUAL_DIRECTORY_DESIGN.md # 🏗️ 双目录架构
 │
 ├── rules/                     # 📋 协作规则
 │   ├── principles.md          # 开发原则
@@ -251,6 +246,9 @@ VIBE 是一种文档驱动的迭代开发方法：
 │   ├── agent-suite.py        # 智能体套件
 │   ├── template-manager.py    # 模板管理
 │   └── project-init.py       # 项目初始化
+│
+├── user-data/                 # 👤 用户数据
+│   └── projects.json          # 项目信息
 │
 ├── install.sh                 # 🚀 Linux/macOS安装脚本
 ├── install.bat                # 🚀 Windows安装脚本

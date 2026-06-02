@@ -31,7 +31,7 @@ echo.
 
 REM 创建必要的目录
 echo 📁 创建必要目录...
-if not exist ".trae-user" mkdir ".trae-user"
+if not exist ".trae\user-data" mkdir ".trae\user-data"
 if not exist ".trae\cache" mkdir ".trae\cache"
 echo ✅ 目录创建完成
 echo .
@@ -59,7 +59,7 @@ data = {
     }
 }
 
-projects_file = Path('.trae-user/projects.json')
+projects_file = Path('.trae/user-data/projects.json')
 if not projects_file.exists():
     with open(projects_file, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
