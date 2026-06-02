@@ -1,3 +1,8 @@
+---
+alwaysApply: true
+description: AI 智能体定义 - 20个专业角色和21种人格角色
+---
+
 # Trae AI 超级团队 - 智能体定义
 
 ## 开发模式与角色
