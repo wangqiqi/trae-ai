@@ -456,10 +456,10 @@
       "project_duration": "待记录",
       "milestones": []
     },
-    "cursor_rules": {
+    "trae_rules": {
       "enabled": true,
-      "description": "Cursor AI Rules 集成，提供智能协作规则系统",
-      "rules_directory": ".trae/rules/cursor",
+      "description": "Trae AI Rules 系统，提供智能协作规则",
+      "rules_directory": ".trae/rules",
       "core_rules": [
         "constitution",
         "philosophy",

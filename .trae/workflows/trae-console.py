@@ -15,6 +15,29 @@ import argparse
 import subprocess
 from typing import Dict, List, Optional, Any
 
+# 添加核心模块到路径
+core_path = Path(__file__).parent.parent / 'core'
+if str(core_path) not in sys.path:
+    sys.path.insert(0, str(core_path))
+
+# 导入彩色输出工具
+try:
+    from console_utils import (
+        Colors, colored, print_success, print_error, print_warning,
+        print_info, print_header, print_section, print_banner,
+        print_list, print_dict, print_divider
+    )
+    USE_COLORS = True
+except ImportError:
+    USE_COLORS = False
+    # 如果没有彩色工具，使用简单的打印函数
+    def print_success(text): print(f"✅ {text}")
+    def print_error(text): print(f"❌ {text}", file=sys.stderr)
+    def print_warning(text): print(f"⚠️  {text}")
+    def print_info(text): print(f"ℹ️  {text}")
+    def print_section(text): print(f"\n📋 {text}")
+    def print_divider(): print("─" * 60)
+
 class TraeConsole:
     """Trae AI 控制台 - 整合版"""
     
@@ -24,6 +47,7 @@ class TraeConsole:
         self.templates_dir = self.base_dir / "templates"
         self.user_data_dir = self.base_dir / "user-data"
         self.workflows_dir = self.base_dir / "workflows"
+        self.skills_dir = self.base_dir / "skills"
         self.projects_file = self.user_data_dir / "projects.json"
         self.mcp_config_file = self.base_dir / "mcp-config.json"
         self.trae_config_file = self.base_dir / ".trae-config.json"
@@ -37,6 +61,8 @@ class TraeConsole:
         self.trae_config = self._load_trae_config()
         self.cursor_rules = self._load_cursor_rules()
         self.cursor_constitution = self._load_cursor_constitution()
+        self.skills = self._load_skills()
+        self.project_info = self._detect_current_project()
     
     def _load_mcp_config(self) -> Dict[str, Any]:
         """加载MCP配置"""
@@ -86,6 +112,132 @@ class TraeConsole:
             print(f"⚠️ 加载Cursor宪法失败: {e}")
         
         return {}
+    
+    def _detect_current_project(self) -> Dict[str, Any]:
+        """检测当前项目信息"""
+        import json
+        from pathlib import Path
+        
+        info = {
+            'type': 'unknown',
+            'name': Path.cwd().name,
+            'tech_stack': [],
+            'has_git': False,
+            'has_readme': False,
+            'recommended_skills': []
+        }
+        
+        try:
+            # 检测项目类型
+            if (Path('package.json').exists()):
+                try:
+                    with open('package.json', 'r', encoding='utf-8') as f:
+                        pkg = json.load(f)
+                        deps = str(pkg.get('dependencies', {})) + str(pkg.get('devDependencies', {}))
+                        if 'vue' in deps:
+                            info['type'] = 'vue'
+                        elif '@angular/core' in deps:
+                            info['type'] = 'angular'
+                        elif 'next' in deps:
+                            info['type'] = 'next'
+                        else:
+                            info['type'] = 'react'
+                        info['tech_stack'].append('Node.js')
+                except:
+                    pass
+            
+            elif (Path('requirements.txt').exists()):
+                try:
+                    with open('requirements.txt', 'r', encoding='utf-8') as f:
+                        content = f.read()
+                        if 'fastapi' in content:
+                            info['type'] = 'fastapi'
+                        elif 'django' in content:
+                            info['type'] = 'django'
+                        else:
+                            info['type'] = 'python'
+                        info['tech_stack'].append('Python')
+                except:
+                    pass
+            
+            elif (Path('Cargo.toml').exists()):
+                info['type'] = 'rust'
+                info['tech_stack'].append('Rust')
+            elif (Path('go.mod').exists()):
+                info['type'] = 'go'
+                info['tech_stack'].append('Go')
+            
+            # 检测其他信息
+            info['has_git'] = Path('.git').exists()
+            info['has_readme'] = Path('README.md').exists()
+            
+            # 推荐技能
+            if info['type'] != 'unknown':
+                info['recommended_skills'] = ['code_analyzer', 'readme_generator']
+                if not info['has_git']:
+                    info['recommended_skills'].append('git_initializer')
+                if not info['has_readme']:
+                    info['recommended_skills'].append('readme_generator')
+        
+        except Exception as e:
+            pass
+        
+        return info
+    
+    def _load_skills(self) -> Dict[str, Any]:
+        """加载技能系统"""
+        skills = {}
+        try:
+            # 动态导入技能模块
+            import importlib.util
+            import sys
+            
+            # 添加技能目录到路径
+            skills_path = str(self.skills_dir)
+            if skills_path not in sys.path:
+                sys.path.insert(0, skills_path)
+            
+            # 扫描技能文件
+            if self.skills_dir.exists():
+                for skill_file in self.skills_dir.glob("*.py"):
+                    if skill_file.stem == "__init__":
+                        continue
+                    try:
+                        spec = importlib.util.spec_from_file_location(skill_file.stem, skill_file)
+                        if spec and spec.loader:
+                            module = importlib.util.module_from_spec(spec)
+                            spec.loader.exec_module(module)
+                            if hasattr(module, "execute") and callable(module.execute):
+                                skills[skill_file.stem] = {
+                                    'module': module,
+                                    'name': skill_file.stem,
+                                    'file': skill_file
+                                }
+                    except Exception as e:
+                        print(f"⚠️ 加载技能失败 {skill_file.name}: {e}")
+        except Exception as e:
+            print(f"⚠️ 技能系统初始化失败: {e}")
+        
+        return skills
+    
+    def execute_skill(self, skill_name: str, **kwargs) -> Dict[str, Any]:
+        """执行技能"""
+        if skill_name not in self.skills:
+            return {
+                'success': False,
+                'message': f'技能不存在: {skill_name}',
+                'available_skills': list(self.skills.keys())
+            }
+        
+        try:
+            skill = self.skills[skill_name]
+            result = skill['module'].execute(**kwargs)
+            return result
+        except Exception as e:
+            return {
+                'success': False,
+                'message': f'执行技能失败: {e}'
+            }
     
     def init_projects_data(self):
         """初始化项目数据"""
@@ -227,16 +379,31 @@ class TraeConsole:
     
     def display_welcome(self):
         """显示欢迎界面"""
-        print("\n" + "="*60)
-        print("🚀 Trae AI 控制台 - 模板自动化集成")
-        print("="*60)
-        print("💡 智能模板 + AI专家 = 高效开发！")
-        print(f"📊 已加载 {len(self.agents)} 个智能体, {len(self.templates)} 个模板")
-        print("\n🎯 快速开始：")
-        print("  • 模板应用: template")
-        print("  • 项目创建: create")
-        print("  • AI协作: ai")
-        print("  • 帮助: help")
+        print_banner("🚀 Trae AI 控制台 - 智能增强版", "任意人员 + 任意项目 + 任意平台 = 开箱即用！")
+        print_info(f"已加载 {len(self.agents)} 个智能体, {len(self.templates)} 个模板, {len(self.skills)} 个技能")
+        
+        # 显示当前项目信息
+        if self.project_info['type'] != 'unknown':
+            print_section(f"📂 当前项目: {self.project_info['name']}")
+            print(f"  类型: {colored(self.project_info['type'], Colors.GREEN)}")
+            if self.project_info['tech_stack']:
+                print(f"  技术栈: {', '.join(self.project_info['tech_stack'])}")
+            print(f"  Git: {'✅' if self.project_info['has_git'] else '❌'}")
+            print(f"  README: {'✅' if self.project_info['has_readme'] else '❌'}")
+            
+            if self.project_info['recommended_skills']:
+                print(f"\n  推荐技能:")
+                for skill in self.project_info['recommended_skills'][:3]:
+                    print(f"    • {colored(skill, Colors.CYAN)}")
+        
+        print("\n🎯 快速操作：")
+        print_list([
+            "模板应用 (template)",
+            "项目创建 (create)", 
+            "技能使用 (skills)",
+            "AI协作 (ai)",
+            "查看帮助 (help)"
+        ])
 
     def display_help(self):
         """显示帮助（来自.trae-dev.py）"""
@@ -411,17 +578,17 @@ ai                - AI协作模式
             
         print(f"🚀 创建项目: {project_name} ({project_type})")
         
-        # 调用AI模板集成
+        # 使用 template-manager.py 创建项目
         cmd = [
             sys.executable,
-            str(self.workflows_dir / "ai-template-integration.py"),
-            "kit",
-            "--project", project_name,
+            str(self.workflows_dir / "template-manager.py"),
+            "create",
+            "--name", project_name,
             "--type", project_type
         ]
         
         if features:
-            cmd.extend(["--features"] + features)
+            cmd.extend(["--features", ",".join(features)])
             
         try:
             result = subprocess.run(cmd, capture_output=False, text=True)
@@ -589,22 +756,128 @@ ai                - AI协作模式
         suggestions.append("团队协作: 建议产品经理先行设计需求")
         
         return suggestions
+    
+    def skills_menu(self):
+        """技能菜单"""
+        print_section("🎯 技能系统")
+        
+        if not self.skills:
+            print_error("没有可用的技能")
+            return
+        
+        print_success(f"发现 {len(self.skills)} 个可用技能:")
+        skills_list = list(self.skills.keys())
+        
+        # 技能描述（简单版）
+        skill_descriptions = {
+            'project_scaffold': '项目脚手架生成',
+            'code_analyzer': '代码结构分析',
+            'readme_generator': 'README 文档生成',
+            'git_initializer': 'Git 仓库初始化',
+            'file_searcher': '文件搜索工具'
+        }
+        
+        for i, skill_name in enumerate(skills_list, 1):
+            desc = skill_descriptions.get(skill_name, '自定义技能')
+            print(f"  {colored(str(i), Colors.BOLD)}. {colored(skill_name, Colors.CYAN)} - {desc}")
+        
+        print(f"\n  {colored('0', Colors.YELLOW)}. 返回主菜单")
+        
+        choice = input(f"\n{colored('选择技能', Colors.BOLD)}: ").strip()
+        
+        if choice == '0':
+            return
+        
+        try:
+            idx = int(choice) - 1
+            if 0 <= idx < len(skills_list):
+                skill_name = skills_list[idx]
+                self.run_skill_interactive(skill_name)
+            else:
+                print_error("无效的选择")
+        except ValueError:
+            print_error("请输入数字")
+    
+    def run_skill_interactive(self, skill_name: str):
+        """交互式运行技能"""
+        print_header(f"🚀 执行技能: {skill_name}")
+        
+        # 预定义常用参数
+        common_params = {
+            'project_scaffold': ['project_name', 'project_type'],
+            'code_analyzer': ['target_path', 'languages'],
+            'readme_generator': ['project_name', 'description', 'author', 'tech_stack'],
+            'git_initializer': ['gitignore_template', 'init', 'first_commit'],
+            'file_searcher': ['pattern', 'search_type']
+        }
+        
+        # 获取技能参数
+        kwargs = {}
+        params = common_params.get(skill_name, [])
+        
+        if params:
+            print_info("请输入参数:")
+            for param in params:
+                value = input(f"  {colored(param, Colors.CYAN)}: ").strip()
+                if value:
+                    kwargs[param] = value
+        
+        print_info("还有其他参数吗？（留空跳过，逐个输入，输入 'done' 完成）:")
+        while True:
+            key = input("  参数名: ").strip()
+            if key.lower() == 'done' or not key:
+                break
+            value = input(f"  {key} = ").strip()
+            kwargs[key] = value
+        
+        print_info(f"执行技能 {skill_name}...")
+        result = self.execute_skill(skill_name, **kwargs)
+        
+        print_section("📊 执行结果")
+        if result.get('success'):
+            print_success(result.get('message', '操作成功'))
+        else:
+            print_error(result.get('message', '操作失败'))
+        
+        if result.get('steps'):
+            print_list(result['steps'])
+        if result.get('matches'):
+            for i, match in enumerate(result['matches'][:10], 1):
+                print(f"  {i}. {match}")
+        if result.get('file'):
+            print_info(f"文件已保存: {result['file']}")
+        
+        # 显示完整结果（可选）
+        print_divider()
 
     def interactive_mode(self):
         """交互模式"""
         while True:
             self.display_welcome()
             
-            choice = input("\n选择操作 (1-9): ").strip()
+            print_section("📋 主菜单")
+            print(f"  {colored('1', Colors.CYAN)}. 项目列表")
+            print(f"  {colored('2', Colors.CYAN)}. 智能体列表")
+            print(f"  {colored('3', Colors.CYAN)}. 创建项目")
+            print(f"  {colored('4', Colors.CYAN)}. 调用智能体")
+            print(f"  {colored('5', Colors.CYAN)}. 项目需求分析")
+            print(f"  {colored('6', Colors.CYAN)}. 自动应用模板")
+            print(f"  {colored('7', Colors.CYAN)}. 模板选择")
+            print(f"  {colored('8', Colors.CYAN)}. AI协作模式")
+            print(f"  {colored('9', Colors.CYAN)}. 技能系统 🆕")
+            print(f"  {colored('10', Colors.CYAN)}. 帮助")
+            print(f"  {colored('0', Colors.YELLOW)}. 退出")
+            
+            choice = input(f"\n{colored('选择操作', Colors.BOLD)}: ").strip()
             
             if choice == '1':
                 self.list_projects()
                 input("\n按回车键继续...")
             elif choice == '2':
                 agents = self.get_all_agents()
-                print(f"📊 已加载 {len(agents)} 个智能体")
+                print_section(f"📊 已加载 {len(agents)} 个智能体")
                 for agent in agents:
-                    print(f"  • {agent.get('name', '未知')} - {agent.get('description', '暂无描述')}")
+                    print(f"  • {colored(agent.get('name', '未知'), Colors.CYAN)} - {agent.get('description', '暂无描述')}")
                 input("\n按回车键继续...")
             elif choice == '3':
                 project_name = input("项目名称: ").strip()
@@ -616,13 +889,17 @@ ai                - AI协作模式
                 requirement = input("需求描述: ").strip()
                 if agent_name and requirement:
                     result = self.call_agent(agent_name.lstrip('@'), requirement)
+                    print_divider()
                     print(json.dumps(result, indent=2, ensure_ascii=False))
+                    print_divider()
                 input("\n按回车键继续...")
             elif choice == '5':
                 description = input("项目需求描述: ").strip()
                 if description:
                     result = self.create_project_from_description(description)
+                    print_divider()
                     print(json.dumps(result, indent=2, ensure_ascii=False))
+                    print_divider()
                 input("\n按回车键继续...")
             elif choice == '6':
                 self.auto_apply_templates()
@@ -634,13 +911,15 @@ ai                - AI协作模式
                 self.ai_collaboration_mode()
                 input("\n按回车键继续...")
             elif choice == '9':
+                self.skills_menu()
+            elif choice == '10':
                 self.display_help()
                 input("\n按回车键继续...")
             elif choice == '0':
-                print("👋 再见！")
+                print_success("👋 再见！")
                 break
             else:
-                print("❌ 无效选择，请重试")
+                print_error("无效选择，请重试")
                 input("\n按回车键继续...")
 
 def main():
