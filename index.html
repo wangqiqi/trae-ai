@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高标准农田财融融合系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        /* 顶部导航栏 */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            background: linear-gradient(90deg, #1e3a5f 0%, #0d2137 100%);
+            border-bottom: 1px solid rgba(100, 150, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: 600;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-item {
+            position: relative;
+            padding: 8px 16px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: #fff;
+            background: rgba(79, 172, 254, 0.2);
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            border-radius: 2px;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .notification {
+            position: relative;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .notification:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 16px;
+            height: 16px;
+            background: #ff4757;
+            border-radius: 50%;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .user-info:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b4513;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .user-name {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* 主内容区域 */
+        .main-content {
+            display: flex;
+            height: calc(100vh - 65px);
+        }
+
+        /* 左侧菜单 */
+        .sidebar {
+            width: 200px;
+            background: rgba(13, 33, 55, 0.9);
+            border-right: 1px solid rgba(100, 150, 255, 0.1);
+            padding: 16px 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .sidebar-item:hover {
+            background: rgba(79, 172, 254, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .sidebar-item.active {
+            background: linear-gradient(90deg, rgba(79, 172, 254, 0.25) 0%, transparent 100%);
+            color: #4facfe;
+            border-left: 3px solid #4facfe;
+        }
+
+        .sidebar-item i {
+            width: 20px;
+            font-size: 16px;
+        }
+
+        /* 数据面板 */
+        .data-panel {
+            width: 260px;
+            background: rgba(13, 33, 55, 0.85);
+            border-right: 1px solid rgba(100, 150, 255, 0.1);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            overflow-y: auto;
+        }
+
+        .data-card {
+            background: linear-gradient(180deg, rgba(30, 58, 95, 0.6) 0%, rgba(13, 33, 55, 0.8) 100%);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid rgba(100, 150, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .data-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.2);
+        }
+
+        .data-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .data-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .data-trend {
+            font-size: 11px;
+            color: #00ff88;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .data-value {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .data-unit {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-left: 4px;
+        }
+
+        .data-card.warning {
+            border-color: rgba(255, 147, 41, 0.3);
+        }
+
+        .data-card.warning .data-value {
+            background: linear-gradient(135deg, #ff9329 0%, #ff6b35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .filter-section {
+            background: rgba(30, 58, 95, 0.4);
+            border-radius: 12px;
+            padding: 14px;
+        }
+
+        .filter-title {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 12px;
+        }
+
+        .filter-item {
+            margin-bottom: 10px;
+        }
+
+        .filter-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .filter-select {
+            width: 100%;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: #fff;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-select:hover {
+            border-color: rgba(79, 172, 254, 0.5);
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.2);
+        }
+
+        .status-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .status-btn {
+            flex: 1;
+            padding: 7px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .status-btn.active {
+            background: rgba(79, 172, 254, 0.25);
+            border-color: #4facfe;
+            color: #4facfe;
+        }
+
+        .status-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #0a1628;
+        }
+
+        .action-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+        }
+
+        .action-btn.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .action-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* 地图区域 */
+        .map-container {
+            flex: 1;
+            position: relative;
+            background: linear-gradient(180deg, #0d2137 0%, #0a1628 100%);
+            overflow: hidden;
+        }
+
+        .map-canvas {
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .map-control {
+            width: 44px;
+            height: 44px;
+            background: rgba(13, 33, 55, 0.9);
+            border: 1px solid rgba(100, 150, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .map-control:hover {
+            background: rgba(79, 172, 254, 0.2);
+            color: #4facfe;
+        }
+
+        .map-control.active {
+            background: rgba(79, 172, 254, 0.3);
+            color: #4facfe;
+            border-color: #4facfe;
+        }
+
+        .layer-panel {
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            background: rgba(13, 33, 55, 0.95);
+            border: 1px solid rgba(100, 150, 255, 0.2);
+            border-radius: 12px;
+            padding: 14px;
+            width: 180px;
+        }
+
+        .layer-title {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .layer-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 6px;
+            padding: 6px 8px;
+        }
+
+        .layer-item:hover {
+            background: rgba(79, 172, 254, 0.1);
+        }
+
+        .layer-item.active {
+            background: rgba(79, 172, 254, 0.2);
+        }
+
+        .layer-checkbox {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .layer-item.active .layer-checkbox {
+            background: #4facfe;
+            border-color: #4facfe;
+        }
+
+        .layer-checkbox::after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 4px;
+            width: 4px;
+            height: 8px;
+            border: solid #0a1628;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .layer-item.active .layer-checkbox::after {
+            opacity: 1;
+        }
+
+        .layer-name {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* 地图元素 */
+        .map-area {
+            position: absolute;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-area:hover {
+            filter: brightness(1.2);
+            z-index: 10;
+        }
+
+        .map-area.green {
+            background: rgba(0, 255, 136, 0.15);
+            border: 2px solid rgba(0, 255, 136, 0.5);
+        }
+
+        .map-area.yellow {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+        }
+
+        .map-point {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+
+        .map-point:hover {
+            transform: scale(1.5);
+            z-index: 20;
+        }
+
+        .map-point.blue {
+            background: rgba(79, 172, 254, 0.9);
+            box-shadow: 0 0 15px rgba(79, 172, 254, 0.6);
+        }
+
+        .map-point.red {
+            background: rgba(255, 71, 87, 0.9);
+            box-shadow: 0 0 15px rgba(255, 71, 87, 0.6);
+            animation: pulse 2s infinite;
+        }
+
+        .map-point.orange {
+            background: rgba(255, 147, 41, 0.9);
+            box-shadow: 0 0 15px rgba(255, 147, 41, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+        }
+
+        .point-label {
+            position: absolute;
+            top: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(13, 33, 55, 0.95);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .map-point:hover .point-label {
+            opacity: 1;
+        }
+
+        /* 右侧面板 */
+        .right-panel {
+            width: 320px;
+            background: rgba(13, 33, 55, 0.85);
+            border-left: 1px solid rgba(100, 150, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .panel-section {
+            padding: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .panel-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .panel-title h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .panel-title a {
+            font-size: 12px;
+            color: #4facfe;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .panel-title a:hover {
+            color: #00f2fe;
+        }
+
+        /* 任务卡片 */
+        .task-card {
+            background: rgba(30, 58, 95, 0.4);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .task-card:hover {
+            background: rgba(30, 58, 95, 0.6);
+            border-color: rgba(79, 172, 254, 0.3);
+        }
+
+        .task-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .task-title {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .task-tag {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: rgba(255, 147, 41, 0.2);
+            color: #ff9329;
+        }
+
+        .task-info {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 8px;
+        }
+
+        .task-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status-text {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00ff88;
+        }
+
+        .status-dot.warning {
+            background: #ff9329;
+        }
+
+        .status-dot.danger {
+            background: #ff4757;
+        }
+
+        /* 预警卡片 */
+        .alert-card {
+            background: rgba(255, 71, 87, 0.15);
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .alert-card:hover {
+            background: rgba(255, 71, 87, 0.25);
+        }
+
+        .alert-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .alert-title {
+            font-size: 13px;
+            color: #ff4757;
+            font-weight: 600;
+        }
+
+        .alert-time {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .alert-desc {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .alert-action {
+            display: flex;
+            gap: 8px;
+        }
+
+        .alert-btn {
+            flex: 1;
+            padding: 6px;
+            border-radius: 6px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .alert-btn.primary {
+            background: #ff4757;
+            color: #fff;
+        }
+
+        .alert-btn.primary:hover {
+            background: #ff6b7a;
+        }
+
+        .alert-btn.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .alert-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* 状态统计 */
+        .status-stats {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .status-item {
+            flex: 1;
+            text-align: center;
+            padding: 12px 8px;
+            background: rgba(30, 58, 95, 0.4);
+            border-radius: 10px;
+        }
+
+        .status-item .value {
+            font-size: 22px;
+            font-weight: 700;
+            color: #00ff88;
+        }
+
+        .status-item.warning .value {
+            color: #ff9329;
+        }
+
+        .status-item.danger .value {
+            color: #ff4757;
+        }
+
+        .status-item .label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 4px;
+        }
+
+        /* 进度条 */
+        .progress-section {
+            margin-bottom: 16px;
+        }
+
+        .progress-item {
+            margin-bottom: 12px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .progress-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .progress-value {
+            font-size: 12px;
+            color: #4facfe;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-fill.blue {
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+        }
+
+        .progress-fill.orange {
+            background: linear-gradient(90deg, #ff9329, #ff6b35);
+        }
+
+        /* 最近活动 */
+        .activity-list {
+            margin-bottom: 0;
+        }
+
+        .activity-item {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-item:hover {
+            background: rgba(79, 172, 254, 0.08);
+        }
+
+        .activity-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .activity-icon.completed {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+
+        .activity-icon.started {
+            background: rgba(79, 172, 254, 0.2);
+            color: #4facfe;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-title {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2px;
+        }
+
+        .activity-time {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* 弹窗 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: linear-gradient(180deg, #1e3a5f 0%, #0d2137 100%);
+            border-radius: 16px;
+            padding: 24px;
+            width: 480px;
+            max-width: 90%;
+            border: 1px solid rgba(79, 172, 254, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.2);
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        /* 底部图例 */
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 24px;
+            background: rgba(13, 33, 55, 0.9);
+            padding: 12px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.blue {
+            background: #4facfe;
+        }
+
+        .legend-dot.green {
+            background: #00ff88;
+        }
+
+        .legend-dot.red {
+            background: #ff4757;
+        }
+
+        .legend-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* 响应式 */
+        @media (max-width: 1200px) {
+            .data-panel {
+                width: 220px;
+            }
+            
+            .right-panel {
+                width: 280px;
+            }
+        }
+
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(79, 172, 254, 0.3);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(79, 172, 254, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="logo-section">
+            <div class="logo">农</div>
+            <span class="logo-text">湖南高标准农田财融融合系统</span>
+        </div>
+        <nav class="nav-menu">
+            <a href="#" class="nav-item active">GIS驾驶舱</a>
+            <a href="#" class="nav-item">日常巡检</a>
+            <a href="#" class="nav-item">保险理赔</a>
+            <a href="#" class="nav-item">风险预警</a>
+            <a href="#" class="nav-item">大数据服务</a>
+            <a href="#" class="nav-item">物联网管理</a>
+        </nav>
+        <div class="user-section">
+            <div class="notification" onclick="showNotification()">
+                <span class="notification-badge">3</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                </svg>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar">李</div>
+                <span class="user-name">李卫国</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: rgba(255,255,255,0.5);">
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                    <path d="M4 22h16"/>
+                    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <!-- 左侧菜单 -->
+        <aside class="sidebar">
+            <div class="sidebar-item active">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/>
+                    <line x1="9" y1="3" x2="9" y2="18"/>
+                    <line x1="15" y1="6" x2="15" y2="21"/>
+                </svg>
+                <span>GIS空间一张图</span>
+            </div>
+            <div class="sidebar-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 7h-9"/>
+                    <path d="M14 17H5"/>
+                    <rect x="2" y="4" width="6" height="8"/>
+                    <rect x="16" y="12" width="6" height="8"/>
+                    <path d="M10 17c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7-3.134 7-7 7z"/>
+                    <circle cx="10" cy="10" r="3"/>
+                </svg>
+                <span>数字身份管理</span>
+            </div>
+            <div class="sidebar-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4"/>
+                    <path d="M12 20V10"/>
+                    <path d="M20.84 6.61a5 5 0 0 0-7.15-.95 4.97 4.97 0 0 0-3.7 4.65v1.91a4.93 4.93 0 0 0 2.36 4.24L13 21"/>
+                    <path d="M16 11a4 4 0 0 1 0 8"/>
+                </svg>
+                <span>图斑叠加预警</span>
+            </div>
+            <div class="sidebar-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4"/>
+                    <path d="M12 20V10"/>
+                    <path d="M20.84 6.61a5 5 0 0 0-7.15-.95 4.97 4.97 0 0 0-3.7 4.65v1.91a4.93 4.93 0 0 0 2.36 4.24L13 21"/>
+                    <path d="M16 11a4 4 0 0 1 0 8"/>
+                </svg>
+                <span>风险指标管理</span>
+            </div>
+            <div class="sidebar-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4"/>
+                    <path d="M12 20V10"/>
+                    <path d="M20.84 6.61a5 5 0 0 0-7.15-.95 4.97 4.97 0 0 0-3.7 4.65v1.91a4.93 4.93 0 0 0 2.36 4.24L13 21"/>
+                    <path d="M16 11a4 4 0 0 1 0 8"/>
+                </svg>
+                <span>风险指标管理</span>
+            </div>
+            <div class="sidebar-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"/>
+                    <rect x="14" y="3" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/>
+                    <rect x="3" y="14" width="7" height="7"/>
+                </svg>
+                <span>承保标的落图</span>
+            </div>
+            <div class="sidebar-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 22h16"/>
+                    <path d="M16 2V6"/>
+                    <path d="M8 2V10"/>
+                    <path d="M12 2V14"/>
+                    <path d="M4 22l4-10"/>
+                    <path d="M8 22l4-6"/>
+                    <path d="M12 22l4-8"/>
+                    <path d="M16 22l4-4"/>
+                </svg>
+                <span>地图图层配置</span>
+            </div>
+        </aside>
+
+        <!-- 左侧数据面板 -->
+        <aside class="data-panel">
+            <div class="data-card">
+                <div class="data-card-header">
+                    <span class="data-label">已购图面积</span>
+                    <span class="data-trend">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 19l7-7 7 7"/>
+                        </svg>
+                        +2.3%
+                    </span>
+                </div>
+                <div>
+                    <span class="data-value">1,247</span>
+                    <span class="data-unit">亩</span>
+                </div>
+            </div>
+
+            <div class="data-card">
+                <div class="data-card-header">
+                    <span class="data-label">承保地块面积</span>
+                    <span class="data-trend">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 19l7-7 7 7"/>
+                        </svg>
+                        +5.1%
+                    </span>
+                </div>
+                <div>
+                    <span class="data-value">32,560</span>
+                    <span class="data-unit">亩</span>
+                </div>
+            </div>
+
+            <div class="data-card">
+                <div class="data-card-header">
+                    <span class="data-label">本月投保次数</span>
+                    <span class="data-trend">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 19l7-7 7 7"/>
+                        </svg>
+                        +8.9%
+                    </span>
+                </div>
+                <div>
+                    <span class="data-value">1,247</span>
+                    <span class="data-unit">次</span>
+                </div>
+            </div>
+
+            <div class="data-card warning">
+                <div class="data-card-header">
+                    <span class="data-label">生效预警</span>
+                    <span class="data-trend">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 14l-7 7-7-7"/>
+                        </svg>
+                        高风险
+                    </span>
+                </div>
+                <div>
+                    <span class="data-value">23</span>
+                    <span class="data-unit">条</span>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-title">快速筛选</div>
+                
+                <div class="filter-item">
+                    <label class="filter-label">行政区</label>
+                    <select class="filter-select">
+                        <option>全部区域</option>
+                        <option>长沙市</option>
+                        <option>株洲市</option>
+                        <option>湘潭市</option>
+                        <option>衡阳市</option>
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label class="filter-label">险种类别</label>
+                    <select class="filter-select">
+                        <option>全部险种</option>
+                        <option>水稻种植险</option>
+                        <option>玉米种植险</option>
+                        <option>小麦种植险</option>
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label class="filter-label">状态</label>
+                    <div class="status-buttons">
+                        <button class="status-btn active" onclick="setStatus('all')">全部</button>
+                        <button class="status-btn" onclick="setStatus('normal')">正常</button>
+                        <button class="status-btn" onclick="setStatus('warning')">预警</button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="action-btn primary" onclick="executeQuery()">执行查询</button>
+                    <button class="action-btn secondary" onclick="resetFilter()">重置</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 中间地图区域 -->
+        <section class="map-container">
+            <div class="map-canvas">
+                <!-- 地图区域模拟 -->
+                <div class="map-area green" style="top: 25%; left: 20%; width: 18%; height: 28%; transform: rotate(-5deg);">
+                    <div style="position: absolute; top: 10px; left: 10px; font-size: 12px; color: rgba(255,255,255,0.7);">王家坝基地</div>
+                </div>
+                <div class="map-area green" style="top: 18%; left: 55%; width: 15%; height: 25%; transform: rotate(3deg);">
+                    <div style="position: absolute; top: 10px; left: 10px; font-size: 12px; color: rgba(255,255,255,0.7);">红旗渠灌区</div>
+                </div>
+                <div class="map-area yellow" style="top: 35%; left: 35%; width: 10%; height: 15%; border-radius: 50%;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 10px; color: rgba(255,215,0,0.8);">高风险区</div>
+                </div>
+                <div class="map-area yellow" style="top: 55%; left: 50%; width: 8%; height: 12%; border-radius: 50%;"></div>
+
+                <!-- 地图标记点 -->
+                <div class="map-point blue" style="top: 30%; left: 35%;" onclick="showPointInfo('王家坝站')">
+                    <div class="point-label">王家坝站</div>
+                </div>
+                <div class="map-point blue" style="top: 42%; left: 30%;" onclick="showPointInfo('水位监测点')">
+                    <div class="point-label">水位监测点</div>
+                </div>
+                <div class="map-point blue" style="top: 55%; left: 25%;" onclick="showPointInfo('气象站')">
+                    <div class="point-label">气象站</div>
+                </div>
+                <div class="map-point blue" style="top: 38%; left: 68%;" onclick="showPointInfo('红旗渠泵站')">
+                    <div class="point-label">红旗渠泵站</div>
+                </div>
+                <div class="map-point red" style="top: 28%; left: 62%;" onclick="showAlertInfo()">
+                    <div class="point-label">风险预警</div>
+                </div>
+                <div class="map-point red" style="top: 40%; left: 58%;" onclick="showAlertInfo()">
+                    <div class="point-label">风险预警</div>
+                </div>
+                <div class="map-point orange" style="top: 52%; left: 45%;" onclick="showPointInfo('待核查')">
+                    <div class="point-label">待核查</div>
+                </div>
+            </div>
+
+            <!-- 地图控制按钮 -->
+            <div class="map-overlay">
+                <div class="map-control active">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                        <path d="M12 2a14.5 14.5 0 0 1 0 20 14.5 14.5 0 0 1 0-20"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+                <div class="map-control">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div class="map-control">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20V10"/>
+                        <path d="M18 20V4"/>
+                        <path d="M6 20v-8"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- 图层控制 -->
+            <div class="layer-panel">
+                <div class="layer-title">图层管理</div>
+                <div class="layer-item active" onclick="toggleLayer('satellite')">
+                    <div class="layer-checkbox"></div>
+                    <span class="layer-name">卫星地图</span>
+                </div>
+                <div class="layer-item active" onclick="toggleLayer('vector')">
+                    <div class="layer-checkbox"></div>
+                    <span class="layer-name">矢量地图</span>
+                </div>
+                <div class="layer-item active" onclick="toggleLayer('terrain')">
+                    <div class="layer-checkbox"></div>
+                    <span class="layer-name">地形地图</span>
+                </div>
+                <div class="layer-title" style="margin-top: 12px;">业务图层</div>
+                <div class="layer-item active" onclick="toggleLayer('insurance')">
+                    <div class="layer-checkbox"></div>
+                    <span class="layer-name">承保地块</span>
+                </div>
+                <div class="layer-item active" onclick="toggleLayer('high')">
+                    <div class="layer-checkbox"></div>
+                    <span class="layer-name">高标准农田</span>
+                </div>
+                <div class="layer-item" onclick="toggleLayer('risk')">
+                    <div class="layer-checkbox"></div>
+                    <span class="layer-name">风险区域</span>
+                </div>
+                <div class="layer-item active" onclick="toggleLayer('weather')">
+                    <div class="layer-checkbox"></div>
+                    <span class="layer-name">监测站点</span>
+                </div>
+            </div>
+
+            <!-- 图例 -->
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-dot blue"></div>
+                    <span class="legend-label">监测站点</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot green"></div>
+                    <span class="legend-label">承保地块</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot red"></div>
+                    <span class="legend-label">风险预警</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 右侧面板 -->
+        <aside class="right-panel">
+            <!-- 灾前防范任务 -->
+            <section class="panel-section">
+                <div class="panel-title">
+                    <h3>灾前防范任务</h3>
+                    <a href="#">查看全部</a>
+                </div>
+                <div class="task-card" onclick="showTaskDetail()">
+                    <div class="task-header">
+                        <span class="task-title">预警响应: 王家坝站</span>
+                        <span class="task-tag">高风险</span>
+                    </div>
+                    <div class="task-info">预警时间: 2024-05-14 09:15</div>
+                    <div class="task-status">
+                        <span class="status-text">待处理</span>
+                        <div class="status-dot danger"></div>
+                    </div>
+                </div>
+                <div class="task-card" onclick="showTaskDetail()">
+                    <div class="task-header">
+                        <span class="task-title">红旗渠巡查</span>
+                        <span class="task-tag">巡检</span>
+                    </div>
+                    <div class="task-info">巡查时间: 2024-05-15 08:00</div>
+                    <div class="task-status">
+                        <span class="status-text">进行中</span>
+                        <div class="status-dot warning"></div>
+                    </div>
+                </div>
+                <div class="task-card" onclick="showTaskDetail()">
+                    <div class="task-header">
+                        <span class="task-title">防汛物资准备</span>
+                        <span class="task-tag">准备</span>
+                    </div>
+                    <div class="task-info">截止时间: 2024-05-20</div>
+                    <div class="task-status">
+                        <span class="status-text">正常</span>
+                        <div class="status-dot"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 实时预警事件 -->
+            <section class="panel-section">
+                <div class="panel-title">
+                    <h3>实时预警事件</h3>
+                    <a href="#">查看详情</a>
+                </div>
+                <div class="alert-card">
+                    <div class="alert-header">
+                        <span class="alert-title">洪涝风险预警</span>
+                        <span class="alert-time">10分钟前</span>
+                    </div>
+                    <div class="alert-desc">王家坝泵站位于洪涝高风险区内，预计未来24小时降雨量将达到警戒值。</div>
+                    <div class="alert-action">
+                        <button class="alert-btn primary">查看详情</button>
+                        <button class="alert-btn secondary">忽略</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 设施状态概览 -->
+            <section class="panel-section">
+                <div class="panel-title">
+                    <h3>设施状态概览</h3>
+                </div>
+                <div class="status-stats">
+                    <div class="status-item">
+                        <div class="value">852</div>
+                        <div class="label">正常</div>
+                    </div>
+                    <div class="status-item warning">
+                        <div class="value">47</div>
+                        <div class="label">需检修</div>
+                    </div>
+                    <div class="status-item danger">
+                        <div class="value">15</div>
+                        <div class="label">故障</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 今日工作进度 -->
+            <section class="panel-section">
+                <div class="panel-title">
+                    <h3>今日工作进度</h3>
+                </div>
+                <div class="progress-section">
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="progress-label">已完成任务</span>
+                            <span class="progress-value">83% (5/6)</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill blue" style="width: 83%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="progress-label">区域巡检完成率</span>
+                            <span class="progress-value">89%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill orange" style="width: 89%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 最近完成任务 -->
+            <section class="panel-section">
+                <div class="panel-title">
+                    <h3>最近完成</h3>
+                </div>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon completed">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">完成了王家坝站 巡检</div>
+                            <div class="activity-time">今天 10:21</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon completed">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">完成了红旗渠巡查 巡检</div>
+                            <div class="activity-time">今天 09:35</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon started">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">开始了 车岗泵站 巡检</div>
+                            <div class="activity-time">今天 08:15</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </aside>
+    </main>
+
+    <!-- 弹窗 -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">详情信息</h3>
+                <div class="modal-close" onclick="closeModal()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">名称</label>
+                    <input type="text" class="form-input" value="王家坝泵站" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">类型</label>
+                    <input type="text" class="form-input" value="水利监测站" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">状态</label>
+                    <input type="text" class="form-input" value="正常运行" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">位置</label>
+                    <input type="text" class="form-input" value="湖南省长沙市望城区" readonly>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="action-btn secondary" onclick="closeModal()">关闭</button>
+                <button class="action-btn primary">查看详情</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showNotification() {
+            alert('您有3条未读通知');
+        }
+
+        function setStatus(status) {
+            const buttons = document.querySelectorAll('.status-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function executeQuery() {
+            alert('查询执行成功！');
+        }
+
+        function resetFilter() {
+            const selects = document.querySelectorAll('.filter-select');
+            selects.forEach(select => select.selectedIndex = 0);
+            const buttons = document.querySelectorAll('.status-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            buttons[0].classList.add('active');
+        }
+
+        function toggleLayer(layer) {
+            const item = event.currentTarget;
+            item.classList.toggle('active');
+        }
+
+        function showPointInfo(name) {
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function showAlertInfo() {
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function showTaskDetail() {
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const mapPoints = document.querySelectorAll('.map-point');
+            mapPoints.forEach(point => {
+                point.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.5)';
+                });
+                point.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+
+            const sidebarItems = document.querySelectorAll('.sidebar-item');
+            sidebarItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    sidebarItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
